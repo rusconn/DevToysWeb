@@ -2,6 +2,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { RecoilRoot } from "recoil";
 
 import { emotion, mui } from "@/data";
 
@@ -21,7 +22,9 @@ const MyApp = ({ Component, emotionCache = emotion.cache, pageProps }: MyAppProp
     </Head>
     <ThemeProvider theme={mui.theme}>
       <CssBaseline />
-      <Component {...pageProps} />
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
     </ThemeProvider>
   </CacheProvider>
 );
