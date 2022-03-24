@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { RecoilRoot } from "recoil";
 
+import { Layout } from "@/components/layout";
 import { emotion, mui } from "@/data";
 
 import "@fontsource/roboto/300.css";
@@ -23,7 +24,9 @@ const MyApp = ({ Component, emotionCache = emotion.cache, pageProps }: MyAppProp
     <ThemeProvider theme={mui.theme}>
       <CssBaseline />
       <RecoilRoot>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </RecoilRoot>
     </ThemeProvider>
   </CacheProvider>
