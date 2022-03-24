@@ -5,7 +5,7 @@ A web clone of [DevToys](https://github.com/veler/DevToys)
 ## Todo
 
 - [x] Add site layout
-- [ ] Add all tools page mock
+- [x] Add all tools page mock
 - [ ] Implement tools
   - [ ] Converters
   - [ ] Encoders / Decoders
