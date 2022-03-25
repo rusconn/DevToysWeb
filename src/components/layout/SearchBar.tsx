@@ -1,5 +1,6 @@
-import SearchIcon from "@mui/icons-material/Search";
-import { Box, css, InputBase, Paper, Theme } from "@mui/material";
+import { Search } from "@mui/icons-material";
+import { Box, InputBase, Paper } from "@mui/material";
+import { css, Theme } from "@mui/material/styles";
 import { useRouter } from "next/router";
 import { ChangeEventHandler, memo, useCallback } from "react";
 import { useRecoilState } from "recoil";
@@ -41,7 +42,7 @@ const StyledComponent = ({ text, onChange }: Props) => (
       css={input}
     />
     <Box css={iconWrapper}>
-      <SearchIcon />
+      <Search />
     </Box>
   </Paper>
 );

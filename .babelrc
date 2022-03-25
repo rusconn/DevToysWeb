@@ -1,4 +1,5 @@
 // https://emotion.sh/docs/css-prop##babel-preset
+// https://mui.com/guides/minimizing-bundle-size/#option-2
 {
   "presets": [
     [
@@ -11,5 +12,25 @@
       }
     ]
   ],
-  "plugins": [["@emotion/babel-plugin"]]
+  "plugins": [
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "@mui/material",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      },
+      "core"
+    ],
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "@mui/icons-material",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      },
+      "icons"
+    ],
+    ["@emotion/babel-plugin"]
+  ]
 }

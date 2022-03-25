@@ -1,13 +1,15 @@
-import CodeIcon from "@mui/icons-material/Code";
-import DataObjectIcon from "@mui/icons-material/DataObject";
-import DragHandleIcon from "@mui/icons-material/DragHandle";
-import FilterIcon from "@mui/icons-material/Filter";
-import FingerprintIcon from "@mui/icons-material/Fingerprint";
-import KeyIcon from "@mui/icons-material/Key";
-import LinkIcon from "@mui/icons-material/Link";
-import NumbersIcon from "@mui/icons-material/Numbers";
-import TextIncreaseIcon from "@mui/icons-material/TextIncrease";
-import TransformIcon from "@mui/icons-material/Transform";
+import {
+  Code,
+  DataObject,
+  DragHandle,
+  Filter,
+  Fingerprint,
+  Key,
+  Link,
+  Numbers,
+  TextIncrease,
+  Transform,
+} from "@mui/icons-material";
 import { Grid } from "@mui/material";
 import Fuse from "fuse.js";
 import { memo } from "react";
@@ -25,7 +27,7 @@ type Props = {
 
 const tools = [
   {
-    icon: <TransformIcon />,
+    icon: <Transform />,
     title: "Json <> Yaml Converter",
     description: "Convert Json data to Yaml and vice versa",
     keywords: "json yaml converter",
@@ -33,7 +35,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <NumbersIcon />,
+    icon: <Numbers />,
     title: "Number Base Converter",
     description: "Convert numbers from one base to another",
     keywords: "number base converter",
@@ -41,7 +43,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <CodeIcon />,
+    icon: <Code />,
     title: "HTML Encoder / Decoder",
     description:
       "Encode or decode all the applicable characters to their corresponding HTML entities",
@@ -50,7 +52,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <LinkIcon />,
+    icon: <Link />,
     title: "URL Encoder / Decoder",
     description:
       "Encode or decode all the applicable characters to their corresponding URL entities",
@@ -59,7 +61,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <DragHandleIcon />,
+    icon: <DragHandle />,
     title: "Base 64 Encoder / Decoder",
     description: "Encode and decode Base64 data",
     keywords: "base64 encoder decocder",
@@ -67,7 +69,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <KeyIcon />,
+    icon: <Key />,
     title: "JWT Decoder",
     description: "Decode a JWT header, payload and signature",
     keywords: "jwt json web token decocder",
@@ -75,7 +77,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <DataObjectIcon />,
+    icon: <DataObject />,
     title: "JSON Formatter",
     description: "Indent or minify JSON data",
     keywords: "json formatter",
@@ -83,7 +85,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <FingerprintIcon />,
+    icon: <Fingerprint />,
     title: "Hash Generator",
     description: "Calculate MD5, SHA1, SHA256 and SHA512 hash from text data",
     keywords: "hash generator md5 sha1 sha256 sha512",
@@ -91,7 +93,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <NumbersIcon />,
+    icon: <Numbers />,
     title: "UUID Generator",
     description: "Generate UUIDs version 1 and 4",
     keywords: "guid uuid1 uuid4 generator",
@@ -99,7 +101,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <TextIncreaseIcon />,
+    icon: <TextIncrease />,
     title: "Regex Tester",
     description: "Validate and test regular expressions",
     keywords: "regular expression regex validator tester",
@@ -107,7 +109,7 @@ const tools = [
     disabled: true,
   },
   {
-    icon: <FilterIcon />,
+    icon: <Filter />,
     title: "PNG / JPEG Compressor",
     description: "Lossless PNG and JPEG optimizer",
     keywords: "png jpeg compressor optimizer image",

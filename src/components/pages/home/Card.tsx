@@ -4,11 +4,10 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
-  css,
-  Theme,
   Tooltip,
   Typography,
 } from "@mui/material";
+import { css, Theme } from "@mui/material/styles";
 import NextLink, { LinkProps } from "next/link";
 import { memo, ReactNode } from "react";
 

@@ -1,14 +1,6 @@
-import GitHubIcon from "@mui/icons-material/GitHub";
-import {
-  AppBar,
-  css,
-  IconButton,
-  Link as MuiLink,
-  Stack,
-  Theme,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { GitHub } from "@mui/icons-material";
+import { AppBar, IconButton, Link as MuiLink, Stack, Toolbar, Typography } from "@mui/material";
+import { css, Theme } from "@mui/material/styles";
 import NextLink from "next/link";
 import { memo } from "react";
 
@@ -73,7 +65,7 @@ const StyledComponent = () => (
           rel="noreferrer"
           css={gitHubLink}
         >
-          <GitHubIcon css={gitHubIcon} />
+          <GitHub css={gitHubIcon} />
         </a>
       </IconButton>
     </Toolbar>
