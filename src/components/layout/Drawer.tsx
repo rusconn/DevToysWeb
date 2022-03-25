@@ -1,20 +1,23 @@
-import CodeIcon from "@mui/icons-material/Code";
-import DataObjectIcon from "@mui/icons-material/DataObject";
-import DragHandleIcon from "@mui/icons-material/DragHandle";
-import FilterIcon from "@mui/icons-material/Filter";
-import FingerprintIcon from "@mui/icons-material/Fingerprint";
-import HomeIcon from "@mui/icons-material/Home";
-import ImageIcon from "@mui/icons-material/Image";
-import KeyIcon from "@mui/icons-material/Key";
-import LinkIcon from "@mui/icons-material/Link";
-import NoteAddIcon from "@mui/icons-material/NoteAdd";
-import NumbersIcon from "@mui/icons-material/Numbers";
-import SortIcon from "@mui/icons-material/Sort";
-import SyncAltIcon from "@mui/icons-material/SyncAlt";
-import TextFieldsIcon from "@mui/icons-material/TextFields";
-import TextIncreaseIcon from "@mui/icons-material/TextIncrease";
-import TransformIcon from "@mui/icons-material/Transform";
-import { Box, css, Divider, Drawer, List, Stack } from "@mui/material";
+import {
+  Code,
+  DataObject,
+  DragHandle,
+  Filter,
+  Fingerprint,
+  Home,
+  Image as ImageIcon,
+  Key,
+  Link,
+  NoteAdd,
+  Numbers,
+  Sort,
+  SyncAlt,
+  TextFields,
+  TextIncrease,
+  Transform,
+} from "@mui/icons-material";
+import { Box, Divider, Drawer, List, Stack } from "@mui/material";
+import { css } from "@mui/material/styles";
 import { memo } from "react";
 
 import { pagesPath } from "@/libs/$path";
@@ -41,41 +44,41 @@ const divider = css`
 
 const toolGroups = [
   {
-    icon: <TransformIcon />,
+    icon: <Transform />,
     title: "Converters",
     tools: [
-      { icon: <TransformIcon />, title: "Json <> Yaml", href: pagesPath.$url(), disabled: true },
-      { icon: <NumbersIcon />, title: "Number Base", href: pagesPath.$url(), disabled: true },
+      { icon: <Transform />, title: "Json <> Yaml", href: pagesPath.$url(), disabled: true },
+      { icon: <Numbers />, title: "Number Base", href: pagesPath.$url(), disabled: true },
     ],
   },
   {
-    icon: <SyncAltIcon />,
+    icon: <SyncAlt />,
     title: "Encoders / Decoders",
     tools: [
-      { icon: <CodeIcon />, title: "HTML", href: pagesPath.$url(), disabled: true },
-      { icon: <LinkIcon />, title: "URL", href: pagesPath.$url(), disabled: true },
-      { icon: <DragHandleIcon />, title: "Base 64", href: pagesPath.$url(), disabled: true },
-      { icon: <KeyIcon />, title: "JWT", href: pagesPath.$url(), disabled: true },
+      { icon: <Code />, title: "HTML", href: pagesPath.$url(), disabled: true },
+      { icon: <Link />, title: "URL", href: pagesPath.$url(), disabled: true },
+      { icon: <DragHandle />, title: "Base 64", href: pagesPath.$url(), disabled: true },
+      { icon: <Key />, title: "JWT", href: pagesPath.$url(), disabled: true },
     ],
   },
   {
-    icon: <SortIcon />,
+    icon: <Sort />,
     title: "Formatters",
-    tools: [{ icon: <DataObjectIcon />, title: "Json", href: pagesPath.$url(), disabled: true }],
+    tools: [{ icon: <DataObject />, title: "Json", href: pagesPath.$url(), disabled: true }],
   },
   {
-    icon: <NoteAddIcon />,
+    icon: <NoteAdd />,
     title: "Generators",
     tools: [
-      { icon: <FingerprintIcon />, title: "Hash", href: pagesPath.$url(), disabled: true },
-      { icon: <NumbersIcon />, title: "UUID", href: pagesPath.$url(), disabled: true },
+      { icon: <Fingerprint />, title: "Hash", href: pagesPath.$url(), disabled: true },
+      { icon: <Numbers />, title: "UUID", href: pagesPath.$url(), disabled: true },
     ],
   },
   {
-    icon: <TextFieldsIcon />,
+    icon: <TextFields />,
     title: "Text",
     tools: [
-      { icon: <TextIncreaseIcon />, title: "Regex Tester", href: pagesPath.$url(), disabled: true },
+      { icon: <TextIncrease />, title: "Regex Tester", href: pagesPath.$url(), disabled: true },
     ],
   },
   {
@@ -83,7 +86,7 @@ const toolGroups = [
     title: "Graphic",
     tools: [
       {
-        icon: <FilterIcon />,
+        icon: <Filter />,
         title: "PNG / JPEG Compressor",
         href: pagesPath.$url(),
         disabled: true,
@@ -99,7 +102,7 @@ const StyledComponent = () => (
     </Box>
     <List component="nav">
       <Stack spacing={1}>
-        <DrawerItem icon={<HomeIcon />} title="All tools" href={pagesPath.$url()} />
+        <DrawerItem icon={<Home />} title="All tools" href={pagesPath.$url()} />
         <Divider css={divider} />
         <Box>
           {toolGroups.map(({ icon, title, tools }) => (

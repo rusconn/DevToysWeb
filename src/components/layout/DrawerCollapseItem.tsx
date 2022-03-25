@@ -1,5 +1,4 @@
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Collapse, List, ListItemButton, ListItemText } from "@mui/material";
 import equal from "fast-deep-equal";
 import { ComponentPropsWithoutRef, memo, MouseEventHandler, useCallback, useState } from "react";

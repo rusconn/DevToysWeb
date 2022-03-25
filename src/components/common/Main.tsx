@@ -1,4 +1,5 @@
-import { Box, css, Stack, Theme, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import { css, Theme } from "@mui/material/styles";
 import { memo, PropsWithChildren } from "react";
 
 type Props = PropsWithChildren<{

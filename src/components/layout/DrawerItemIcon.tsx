@@ -1,4 +1,5 @@
-import { css, ListItemIcon } from "@mui/material";
+import { ListItemIcon } from "@mui/material";
+import { css } from "@mui/material/styles";
 import { memo, ReactNode } from "react";
 
 type Props = {

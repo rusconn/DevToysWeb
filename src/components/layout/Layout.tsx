@@ -1,4 +1,5 @@
-import { Box, css, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
+import { css } from "@mui/material/styles";
 import Head from "next/head";
 import { memo, PropsWithChildren } from "react";
 

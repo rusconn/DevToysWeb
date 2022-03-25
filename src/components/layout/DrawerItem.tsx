@@ -1,4 +1,5 @@
-import { Box, css, ListItemButton, ListItemText, Tooltip } from "@mui/material";
+import { Box, ListItemButton, ListItemText, Tooltip } from "@mui/material";
+import { css } from "@mui/material/styles";
 import NextLink, { LinkProps } from "next/link";
 import { ComponentPropsWithoutRef, memo } from "react";
 

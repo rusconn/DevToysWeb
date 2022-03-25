@@ -36,6 +36,7 @@
     "@types/react": "17.0.41",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
+    "babel-plugin-import": "^1.13.3",
     "eslint": "8.11.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^16.1.4",
