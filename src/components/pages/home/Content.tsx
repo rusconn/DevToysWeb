@@ -31,8 +31,8 @@ const tools = [
     title: "Json <> Yaml Converter",
     description: "Convert Json data to Yaml and vice versa",
     keywords: "json yaml converter",
-    href: pagesPath.$url(),
-    disabled: true,
+    href: pagesPath.converters.json_yaml.$url(),
+    disabled: false,
   },
   {
     icon: <Numbers />,
