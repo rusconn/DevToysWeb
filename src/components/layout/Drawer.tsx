@@ -47,7 +47,12 @@ const toolGroups = [
     icon: <Transform />,
     title: "Converters",
     tools: [
-      { icon: <Transform />, title: "Json <> Yaml", href: pagesPath.$url(), disabled: true },
+      {
+        icon: <Transform />,
+        title: "Json <> Yaml",
+        href: pagesPath.converters.json_yaml.$url(),
+        disabled: false,
+      },
       { icon: <Numbers />, title: "Number Base", href: pagesPath.$url(), disabled: true },
     ],
   },
