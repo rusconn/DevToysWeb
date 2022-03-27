@@ -6,6 +6,12 @@ export const pagesPath = {
         hash: url?.hash,
       }),
     },
+    number_base: {
+      $url: (url?: { hash?: string }) => ({
+        pathname: "/converters/number-base" as const,
+        hash: url?.hash,
+      }),
+    },
   },
   $url: (url?: { hash?: string }) => ({ pathname: "/" as const, hash: url?.hash }),
 };

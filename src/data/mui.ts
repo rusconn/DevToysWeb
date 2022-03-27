@@ -16,5 +16,12 @@ export const theme = createTheme({
         disableRipple: true,
       },
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "white",
+        },
+      },
+    },
   },
 });
