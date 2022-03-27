@@ -39,8 +39,8 @@ const tools = [
     title: "Number Base Converter",
     description: "Convert numbers from one base to another",
     keywords: "number base converter",
-    href: pagesPath.$url(),
-    disabled: true,
+    href: pagesPath.converters.number_base.$url(),
+    disabled: false,
   },
   {
     icon: <Code />,

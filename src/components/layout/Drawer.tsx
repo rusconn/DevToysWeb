@@ -53,7 +53,12 @@ const toolGroups = [
         href: pagesPath.converters.json_yaml.$url(),
         disabled: false,
       },
-      { icon: <Numbers />, title: "Number Base", href: pagesPath.$url(), disabled: true },
+      {
+        icon: <Numbers />,
+        title: "Number Base",
+        href: pagesPath.converters.number_base.$url(),
+        disabled: false,
+      },
     ],
   },
   {
