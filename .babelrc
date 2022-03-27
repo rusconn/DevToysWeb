@@ -1,5 +1,6 @@
 // https://emotion.sh/docs/css-prop##babel-preset
 // https://mui.com/guides/minimizing-bundle-size/#option-2
+// https://github.com/vercel/next.js/discussions/17822
 {
   "presets": [
     [
@@ -8,6 +9,12 @@
         "preset-react": {
           "runtime": "automatic",
           "importSource": "@emotion/react"
+        },
+        "preset-env": {
+          "debug": false,
+          "targets": {
+            "browsers": ">1%, not ie 11, not op_mini all"
+          }
         }
       }
     ]
