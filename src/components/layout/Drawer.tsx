@@ -65,7 +65,12 @@ const toolGroups = [
     icon: <SyncAlt />,
     title: "Encoders / Decoders",
     tools: [
-      { icon: <Code />, title: "HTML", href: pagesPath.$url(), disabled: true },
+      {
+        icon: <Code />,
+        title: "HTML",
+        href: pagesPath.encoders_decoders.html.$url(),
+        disabled: false,
+      },
       { icon: <Link />, title: "URL", href: pagesPath.$url(), disabled: true },
       { icon: <DragHandle />, title: "Base 64", href: pagesPath.$url(), disabled: true },
       { icon: <Key />, title: "JWT", href: pagesPath.$url(), disabled: true },

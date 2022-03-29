@@ -48,8 +48,8 @@ const tools = [
     description:
       "Encode or decode all the applicable characters to their corresponding HTML entities",
     keywords: "html encoder escaper decocder unescaper",
-    href: pagesPath.$url(),
-    disabled: true,
+    href: pagesPath.encoders_decoders.html.$url(),
+    disabled: false,
   },
   {
     icon: <Link />,
