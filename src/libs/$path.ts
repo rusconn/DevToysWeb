@@ -13,6 +13,14 @@ export const pagesPath = {
       }),
     },
   },
+  encoders_decoders: {
+    html: {
+      $url: (url?: { hash?: string }) => ({
+        pathname: "/encoders-decoders/html" as const,
+        hash: url?.hash,
+      }),
+    },
+  },
   $url: (url?: { hash?: string }) => ({ pathname: "/" as const, hash: url?.hash }),
 };
 
