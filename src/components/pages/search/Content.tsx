@@ -1,0 +1,45 @@
+import equal from "fast-deep-equal";
+import Fuse from "fuse.js";
+import { ComponentPropsWithoutRef, memo } from "react";
+import { selector, useRecoilValue } from "recoil";
+
+import { Main, ToolCardGrid } from "@/components/common";
+import { searchTextState } from "@/components/layout/states";
+import { allTools } from "@/data/tools";
+
+type Props = ComponentPropsWithoutRef<typeof ToolCardGrid>;
+
+const StyledComponent = ({ tools }: Props) => (
+  <Main title="Searched tools">
+    <ToolCardGrid {...{ tools }} />
+  </Main>
+);
+
+export const Component = memo(StyledComponent, equal);
+
+const filteredToolsState = selector({
+  key: "filteredToolsState",
+  get: ({ get }) => {
+    const searchText = get(searchTextState).trim();
+
+    if (searchText === "") {
+      return { filteredTools: allTools };
+    }
+
+    const searchWords = searchText.split(" ").map(word => ({ keywords: word }));
+
+    const fuse = new Fuse(allTools, { keys: ["keywords"], threshold: 0.5 });
+    const result = fuse.search({ $and: searchWords });
+    const filteredTools = result.map(({ item }) => item);
+
+    return { filteredTools };
+  },
+});
+
+const Container = () => {
+  const { filteredTools } = useRecoilValue(filteredToolsState);
+
+  return <Component tools={filteredTools} />;
+};
+
+export default Container;

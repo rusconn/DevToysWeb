@@ -56,8 +56,11 @@ const Container = () => {
   const onChange: Props["onChange"] = useCallback(
     ({ currentTarget: { value } }) => {
       setText(value);
+
+      const url = value === "" ? pagesPath.$url() : pagesPath.search.$url();
+
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      router.push(pagesPath.$url());
+      router.push(url);
     },
     [setText, router]
   );
