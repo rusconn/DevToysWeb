@@ -64,8 +64,8 @@ const toolGroups = [
         description:
           "Encode or decode all the applicable characters to their corresponding URL entities",
         keywords: "url encoder escaper decocder unescaper",
-        href: pagesPath.$url(),
-        disabled: true,
+        href: pagesPath.encoders_decoders.url.$url(),
+        disabled: false,
       },
       {
         icon: <DragHandle />,

@@ -20,6 +20,12 @@ export const pagesPath = {
         hash: url?.hash,
       }),
     },
+    url: {
+      $url: (url?: { hash?: string }) => ({
+        pathname: "/encoders-decoders/url" as const,
+        hash: url?.hash,
+      }),
+    },
   },
   search: {
     $url: (url?: { hash?: string }) => ({ pathname: "/search" as const, hash: url?.hash }),
