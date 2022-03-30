@@ -5,7 +5,7 @@ import { selector, useRecoilValue } from "recoil";
 
 import { Main, ToolCardGrid } from "@/components/common";
 import { searchTextState } from "@/components/layout/states";
-import { allTools } from "@/data/tools";
+import { homeTools } from "@/data/tools";
 
 type Props = ComponentPropsWithoutRef<typeof ToolCardGrid>;
 
@@ -23,12 +23,12 @@ const filteredToolsState = selector({
     const searchText = get(searchTextState).trim();
 
     if (searchText === "") {
-      return { filteredTools: allTools };
+      return { filteredTools: homeTools };
     }
 
     const searchWords = searchText.split(" ").map(word => ({ keywords: word }));
 
-    const fuse = new Fuse(allTools, { keys: ["keywords"], threshold: 0.5 });
+    const fuse = new Fuse(homeTools, { keys: ["keywords"], threshold: 0.5 });
     const result = fuse.search({ $and: searchWords });
     const filteredTools = result.map(({ item }) => item);
 
