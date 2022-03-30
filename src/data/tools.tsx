@@ -73,8 +73,8 @@ const toolGroups = [
         longTitle: "Base 64 Encoder / Decoder",
         description: "Encode and decode Base64 data",
         keywords: "base64 encoder decocder",
-        href: pagesPath.$url(),
-        disabled: true,
+        href: pagesPath.encoders_decoders.base64.$url(),
+        disabled: false,
       },
       {
         icon: <Key />,

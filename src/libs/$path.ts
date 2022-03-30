@@ -14,6 +14,12 @@ export const pagesPath = {
     },
   },
   encoders_decoders: {
+    base64: {
+      $url: (url?: { hash?: string }) => ({
+        pathname: "/encoders-decoders/base64" as const,
+        hash: url?.hash,
+      }),
+    },
     html: {
       $url: (url?: { hash?: string }) => ({
         pathname: "/encoders-decoders/html" as const,
