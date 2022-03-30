@@ -1,30 +1,18 @@
-import {
-  Code,
-  DataObject,
-  DragHandle,
-  Filter,
-  Fingerprint,
-  Home,
-  Image as ImageIcon,
-  Key,
-  Link,
-  NoteAdd,
-  Numbers,
-  Sort,
-  SyncAlt,
-  TextFields,
-  TextIncrease,
-  Transform,
-} from "@mui/icons-material";
+import { Home } from "@mui/icons-material";
 import { Box, Divider, Drawer, List, Stack } from "@mui/material";
 import { css } from "@mui/material/styles";
-import { memo } from "react";
+import { ComponentPropsWithoutRef, memo } from "react";
 
+import { drawerToolGroups } from "@/data/tools";
 import { pagesPath } from "@/libs/$path";
 
 import DrawerCollapseItem from "./DrawerCollapseItem";
 import DrawerItem from "./DrawerItem";
 import SearchBar from "./SearchBar";
+
+type Props = {
+  toolGroups: ComponentPropsWithoutRef<typeof DrawerCollapseItem>[];
+};
 
 export const drawerWidth = 300;
 
@@ -42,75 +30,7 @@ const divider = css`
   border-color: rgba(0, 0, 0, 0.08);
 `;
 
-const toolGroups = [
-  {
-    icon: <Transform />,
-    title: "Converters",
-    tools: [
-      {
-        icon: <Transform />,
-        title: "Json <> Yaml",
-        href: pagesPath.converters.json_yaml.$url(),
-        disabled: false,
-      },
-      {
-        icon: <Numbers />,
-        title: "Number Base",
-        href: pagesPath.converters.number_base.$url(),
-        disabled: false,
-      },
-    ],
-  },
-  {
-    icon: <SyncAlt />,
-    title: "Encoders / Decoders",
-    tools: [
-      {
-        icon: <Code />,
-        title: "HTML",
-        href: pagesPath.encoders_decoders.html.$url(),
-        disabled: false,
-      },
-      { icon: <Link />, title: "URL", href: pagesPath.$url(), disabled: true },
-      { icon: <DragHandle />, title: "Base 64", href: pagesPath.$url(), disabled: true },
-      { icon: <Key />, title: "JWT", href: pagesPath.$url(), disabled: true },
-    ],
-  },
-  {
-    icon: <Sort />,
-    title: "Formatters",
-    tools: [{ icon: <DataObject />, title: "Json", href: pagesPath.$url(), disabled: true }],
-  },
-  {
-    icon: <NoteAdd />,
-    title: "Generators",
-    tools: [
-      { icon: <Fingerprint />, title: "Hash", href: pagesPath.$url(), disabled: true },
-      { icon: <Numbers />, title: "UUID", href: pagesPath.$url(), disabled: true },
-    ],
-  },
-  {
-    icon: <TextFields />,
-    title: "Text",
-    tools: [
-      { icon: <TextIncrease />, title: "Regex Tester", href: pagesPath.$url(), disabled: true },
-    ],
-  },
-  {
-    icon: <ImageIcon />,
-    title: "Graphic",
-    tools: [
-      {
-        icon: <Filter />,
-        title: "PNG / JPEG Compressor",
-        href: pagesPath.$url(),
-        disabled: true,
-      },
-    ],
-  },
-];
-
-const StyledComponent = () => (
+const StyledComponent = ({ toolGroups }: Props) => (
   <Drawer variant="permanent" css={drawer}>
     <Box paddingLeft={2} paddingRight={2} marginTop="1px">
       <SearchBar />
@@ -131,4 +51,6 @@ const StyledComponent = () => (
 
 export const Component = memo(StyledComponent);
 
-export default Component;
+const Container = () => <Component toolGroups={drawerToolGroups} />;
+
+export default Container;

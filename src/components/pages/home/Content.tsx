@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, memo } from "react";
 
 import { Main, ToolCardGrid } from "@/components/common";
-import { allTools } from "@/data/tools";
+import { homeTools } from "@/data/tools";
 
 type Props = ComponentPropsWithoutRef<typeof ToolCardGrid>;
 
@@ -13,6 +13,6 @@ const StyledComponent = ({ tools }: Props) => (
 
 export const Component = memo(StyledComponent);
 
-const Container = () => <Component tools={allTools} />;
+const Container = () => <Component tools={homeTools} />;
 
 export default Container;
