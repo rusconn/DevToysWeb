@@ -26,6 +26,12 @@ export const pagesPath = {
         hash: url?.hash,
       }),
     },
+    jwt: {
+      $url: (url?: { hash?: string }) => ({
+        pathname: "/encoders-decoders/jwt" as const,
+        hash: url?.hash,
+      }),
+    },
     url: {
       $url: (url?: { hash?: string }) => ({
         pathname: "/encoders-decoders/url" as const,
