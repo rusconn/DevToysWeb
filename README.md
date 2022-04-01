@@ -8,7 +8,7 @@ A web clone of [DevToys](https://github.com/veler/DevToys)
 - [x] Add all tools page mock
 - [ ] Implement tools
   - [x] Converters
-  - [ ] Encoders / Decoders
+  - [x] Encoders / Decoders
   - [ ] Formatters
   - [ ] Generators
   - [ ] Text
