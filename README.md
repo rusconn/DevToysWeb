@@ -9,7 +9,7 @@ A web clone of [DevToys](https://github.com/veler/DevToys)
 - [ ] Implement tools
   - [x] Converters
   - [x] Encoders / Decoders
-  - [ ] Formatters
+  - [x] Formatters
   - [ ] Generators
   - [ ] Text
   - [ ] Graphic
