@@ -39,6 +39,14 @@ export const pagesPath = {
       }),
     },
   },
+  formatters: {
+    json: {
+      $url: (url?: { hash?: string }) => ({
+        pathname: "/formatters/json" as const,
+        hash: url?.hash,
+      }),
+    },
+  },
   search: {
     $url: (url?: { hash?: string }) => ({ pathname: "/search" as const, hash: url?.hash }),
   },
