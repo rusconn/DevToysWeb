@@ -1,0 +1,15 @@
+// https://emotion.sh/docs/css-prop##babel-preset
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-react": {
+          "runtime": "automatic",
+          "importSource": "@emotion/react"
+        }
+      }
+    ]
+  ],
+  "plugins": [["@emotion/babel-plugin"]]
+}
