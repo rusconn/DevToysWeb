@@ -54,6 +54,12 @@ export const pagesPath = {
         hash: url?.hash,
       }),
     },
+    uuid: {
+      $url: (url?: { hash?: string }) => ({
+        pathname: "/generators/uuid" as const,
+        hash: url?.hash,
+      }),
+    },
   },
   search: {
     $url: (url?: { hash?: string }) => ({ pathname: "/search" as const, hash: url?.hash }),
