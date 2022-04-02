@@ -47,6 +47,14 @@ export const pagesPath = {
       }),
     },
   },
+  generators: {
+    hash: {
+      $url: (url?: { hash?: string }) => ({
+        pathname: "/generators/hash" as const,
+        hash: url?.hash,
+      }),
+    },
+  },
   search: {
     $url: (url?: { hash?: string }) => ({ pathname: "/search" as const, hash: url?.hash }),
   },

@@ -112,8 +112,8 @@ const toolGroups = [
         longTitle: "Hash Generator",
         description: "Calculate MD5, SHA1, SHA256 and SHA512 hash from text data",
         keywords: "hash generator md5 sha1 sha256 sha512",
-        href: pagesPath.$url(),
-        disabled: true,
+        href: pagesPath.generators.hash.$url(),
+        disabled: false,
       },
       {
         icon: <Numbers />,
