@@ -36,6 +36,7 @@
     "react-ace": "^9.5.0",
     "react-dom": "17.0.2",
     "recoil": "^0.6.1",
+    "uuid": "^8.3.2",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
@@ -43,6 +44,7 @@
     "@types/create-hash": "^1.2.2",
     "@types/node": "^16.11.45",
     "@types/react": "17.0.41",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "babel-plugin-import": "^1.13.3",

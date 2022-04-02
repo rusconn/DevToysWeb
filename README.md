@@ -10,7 +10,7 @@ A web clone of [DevToys](https://github.com/veler/DevToys)
   - [x] Converters
   - [x] Encoders / Decoders
   - [x] Formatters
-  - [ ] Generators
+  - [x] Generators
   - [ ] Text
   - [ ] Graphic
 - [ ] Support dark mode
