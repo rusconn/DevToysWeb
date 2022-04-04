@@ -6,7 +6,7 @@ import { homeTools } from "@/data/tools";
 type Props = ComponentPropsWithoutRef<typeof ToolCardGrid>;
 
 const StyledComponent = ({ tools }: Props) => (
-  <Main title="All tools">
+  <Main title="All tools" height="fit-content">
     <ToolCardGrid {...{ tools }} />
   </Main>
 );

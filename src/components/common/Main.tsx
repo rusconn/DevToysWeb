@@ -1,24 +1,28 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { css, Theme } from "@mui/material/styles";
-import { memo, PropsWithChildren } from "react";
+import { ComponentPropsWithoutRef, memo, PropsWithChildren } from "react";
 
-type Props = PropsWithChildren<{
-  title: string;
-}>;
+type Props = PropsWithChildren<
+  {
+    title: string;
+  } & ComponentPropsWithoutRef<typeof Stack>
+>;
 
 const mainTitle = (theme: Theme) => css`
   font-size: ${theme.typography.fontSize * 3}px;
   font-weight: 400;
-  margin-bottom: ${theme.spacing(2)};
 `;
 
-const StyledComponent = ({ children, title }: Props) => (
-  <Box component="main" padding={6}>
+const StyledComponent = ({ children, title, ...stackProps }: Props) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <Stack component="main" height="100%" padding={6} spacing={2} {...stackProps}>
     <Typography variant="h1" css={mainTitle}>
       {title}
     </Typography>
-    <Stack spacing={2}>{children}</Stack>
-  </Box>
+    <Stack spacing={2} flexGrow={1}>
+      {children}
+    </Stack>
+  </Stack>
 );
 
 export const Component = memo(StyledComponent);

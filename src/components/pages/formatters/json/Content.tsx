@@ -1,23 +1,23 @@
-import { Stack } from "@mui/material";
+import { Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
 
-import { CodeEditorHalfLoading, Main, MainItem } from "@/components/common";
+import { Main, MainItem } from "@/components/common";
 
 import Configuration, { isSpaces, Spaces } from "./Configuration";
 
 // https://github.com/securingsincity/react-ace/issues/27
-const CodeEditorHalf = dynamic(
+const CodeEditor = dynamic(
   async () => {
-    const ace = await import("@/components/common/CodeEditorHalf");
+    const ace = await import("@/components/common/CodeEditor");
     await import("ace-builds/src-noconflict/mode-json");
     return ace;
   },
-  { ssr: false, loading: () => <CodeEditorHalfLoading /> }
+  { ssr: false, loading: () => <Skeleton variant="rectangular" height="100%" /> }
 );
 
-type CodeValue = NonNullable<ComponentPropsWithoutRef<typeof CodeEditorHalf>["value"]>;
-type OnCodeChange = NonNullable<ComponentPropsWithoutRef<typeof CodeEditorHalf>["onChange"]>;
+type CodeValue = NonNullable<ComponentPropsWithoutRef<typeof CodeEditor>["value"]>;
+type OnCodeChange = NonNullable<ComponentPropsWithoutRef<typeof CodeEditor>["onChange"]>;
 
 type Props = {
   json: CodeValue;
@@ -30,12 +30,12 @@ const StyledComponent = ({ json, formatted, spaces, onJsonChange, onSpacesChange
     <MainItem title="Configuration">
       <Configuration {...{ spaces, onSpacesChange }} />
     </MainItem>
-    <Stack direction="row" spacing={2}>
-      <MainItem title="Input">
-        <CodeEditorHalf name="json" mode="json" value={json} tabSize={2} onChange={onJsonChange} />
+    <Stack direction="row" spacing={2} height="100%">
+      <MainItem title="Input" height="100%" flexGrow={1}>
+        <CodeEditor name="json" mode="json" value={json} tabSize={2} onChange={onJsonChange} />
       </MainItem>
-      <MainItem title="Output">
-        <CodeEditorHalf name="formatted" mode="json" value={formatted} tabSize={spaces} readOnly />
+      <MainItem title="Output" height="100%" flexGrow={1}>
+        <CodeEditor name="formatted" mode="json" value={formatted} tabSize={spaces} readOnly />
       </MainItem>
     </Stack>
   </Main>

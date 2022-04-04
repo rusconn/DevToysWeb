@@ -1,4 +1,4 @@
-import { Paper } from "@mui/material";
+import { css, Theme } from "@mui/material/styles";
 import { config } from "ace-builds";
 import { ComponentPropsWithoutRef, memo } from "react";
 import AceEditor from "react-ace";
@@ -12,19 +12,24 @@ config.setModuleUrl(
 
 type Props = ComponentPropsWithoutRef<typeof AceEditor>;
 
+const editor = (theme: Theme) => css`
+  box-shadow: ${theme.shadows[1]};
+`;
+
 const StyledComponent = (props: Props) => (
-  <Paper>
-    <AceEditor
-      wrapEnabled
-      theme="textmate"
-      showPrintMargin={false}
-      highlightActiveLine={false}
-      editorProps={{ $blockScrolling: true }}
-      setOptions={{ mergeUndoDeltas: false }}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...props}
-    />
-  </Paper>
+  <AceEditor
+    wrapEnabled
+    width="auto"
+    height="100%"
+    theme="textmate"
+    showPrintMargin={false}
+    highlightActiveLine={false}
+    editorProps={{ $blockScrolling: true }}
+    setOptions={{ mergeUndoDeltas: false }}
+    css={editor}
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...props}
+  />
 );
 
 export const Component = memo(StyledComponent);
