@@ -1,19 +1,18 @@
+import { Skeleton } from "@mui/material";
 import dynamic from "next/dynamic";
 import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
 
 import { Main, MainItem, TextField } from "@/components/common";
 import { decode } from "@/libs/jwt";
 
-import CodeEditorLoading from "./CodeEditorLoading";
-
 // https://github.com/securingsincity/react-ace/issues/27
 const CodeEditor = dynamic(
   async () => {
-    const ace = await import("./CodeEditor");
+    const ace = await import("@/components/common/CodeEditor");
     await import("ace-builds/src-noconflict/mode-json");
     return ace;
   },
-  { ssr: false, loading: CodeEditorLoading }
+  { ssr: false, loading: () => <Skeleton variant="rectangular" width="100%" height="160px" /> }
 );
 
 type TextFieldValue = ComponentPropsWithoutRef<typeof TextField>["value"];
@@ -33,10 +32,10 @@ const StyledComponent = ({ jwt, header, payload, onJwtChange }: Props) => (
       <TextField multiline rows={5} value={jwt} onChange={onJwtChange} />
     </MainItem>
     <MainItem title="Header">
-      <CodeEditor name="header" mode="json" value={header} />
+      <CodeEditor readOnly height="160px" width="100%" name="header" mode="json" value={header} />
     </MainItem>
     <MainItem title="Payload">
-      <CodeEditor name="payload" mode="json" value={payload} />
+      <CodeEditor readOnly height="160px" width="100%" name="payload" mode="json" value={payload} />
     </MainItem>
   </Main>
 );

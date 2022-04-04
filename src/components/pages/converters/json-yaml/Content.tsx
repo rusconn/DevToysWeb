@@ -1,27 +1,27 @@
-import { Stack } from "@mui/material";
+import { Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
 import YAML from "yaml";
 
-import { CodeEditorHalfLoading, Main, MainItem } from "@/components/common";
+import { Main, MainItem } from "@/components/common";
 
 import Configuration, { isSpaces, Spaces } from "./Configuration";
 
 // https://github.com/securingsincity/react-ace/issues/27
-const CodeEditorHalf = dynamic(
+const CodeEditor = dynamic(
   async () => {
-    const ace = await import("@/components/common/CodeEditorHalf");
+    const ace = await import("@/components/common/CodeEditor");
     await Promise.all([
       import("ace-builds/src-noconflict/mode-json"),
       import("ace-builds/src-noconflict/mode-yaml"),
     ]);
     return ace;
   },
-  { ssr: false, loading: () => <CodeEditorHalfLoading /> }
+  { ssr: false, loading: () => <Skeleton variant="rectangular" height="100%" /> }
 );
 
-type CodeValue = NonNullable<ComponentPropsWithoutRef<typeof CodeEditorHalf>["value"]>;
-type OnCodeChange = NonNullable<ComponentPropsWithoutRef<typeof CodeEditorHalf>["onChange"]>;
+type CodeValue = NonNullable<ComponentPropsWithoutRef<typeof CodeEditor>["value"]>;
+type OnCodeChange = NonNullable<ComponentPropsWithoutRef<typeof CodeEditor>["onChange"]>;
 
 type Props = {
   json: CodeValue;
@@ -42,24 +42,12 @@ const StyledComponent = ({
     <MainItem title="Configuration">
       <Configuration {...{ spaces, onSpacesChange }} />
     </MainItem>
-    <Stack direction="row" spacing={2}>
-      <MainItem title="Json">
-        <CodeEditorHalf
-          name="json"
-          mode="json"
-          value={json}
-          tabSize={spaces}
-          onChange={onJsonChange}
-        />
+    <Stack direction="row" spacing={2} height="100%">
+      <MainItem title="Json" height="100%" flexGrow={1}>
+        <CodeEditor name="json" mode="json" value={json} tabSize={spaces} onChange={onJsonChange} />
       </MainItem>
-      <MainItem title="Yaml">
-        <CodeEditorHalf
-          name="yaml"
-          mode="yaml"
-          value={yaml}
-          tabSize={spaces}
-          onChange={onYamlChange}
-        />
+      <MainItem title="Yaml" height="100%" flexGrow={1}>
+        <CodeEditor name="yaml" mode="yaml" value={yaml} tabSize={spaces} onChange={onYamlChange} />
       </MainItem>
     </Stack>
   </Main>
