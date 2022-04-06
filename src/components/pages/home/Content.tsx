@@ -1,9 +1,9 @@
-import { ComponentPropsWithoutRef, memo } from "react";
+import { memo } from "react";
 
-import { Main, ToolCardGrid } from "@/components/common";
+import { Main, ToolCardGrid, ToolCardGridProps } from "@/components/common";
 import { homeTools } from "@/data/tools";
 
-type Props = ComponentPropsWithoutRef<typeof ToolCardGrid>;
+type Props = ToolCardGridProps;
 
 const StyledComponent = ({ tools }: Props) => (
   <Main title="All tools" height="fit-content">

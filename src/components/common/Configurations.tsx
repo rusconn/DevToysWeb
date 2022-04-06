@@ -1,11 +1,11 @@
 import { Stack } from "@mui/material";
 import equal from "fast-deep-equal";
-import { ComponentPropsWithoutRef, memo } from "react";
+import { memo } from "react";
 
-import Configuration from "./Configuration";
+import Configuration, { Props as ConfigurationProps } from "./Configuration";
 
-type Props = {
-  configurations: ComponentPropsWithoutRef<typeof Configuration>[];
+export type Props = {
+  configurations: ConfigurationProps[];
 };
 
 const StyledComponent = ({ configurations }: Props) => (

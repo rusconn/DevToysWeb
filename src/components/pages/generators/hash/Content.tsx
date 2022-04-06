@@ -1,13 +1,13 @@
 import { Stack } from "@mui/material";
 import createHash from "create-hash"; // smaller bundle size than Node.js standard library
-import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
-import { Main, MainItem, TextField } from "@/components/common";
+import { Main, MainItem, TextField, TextFieldProps } from "@/components/common";
 
-import Configuration from "./Configuration";
+import Configuration, { Props as ConfigurationProps } from "./Configuration";
 
-type TextFieldValue = ComponentPropsWithoutRef<typeof TextField>["value"];
-type OnTextFieldChange = NonNullable<ComponentPropsWithoutRef<typeof TextField>["onChange"]>;
+type TextFieldValue = TextFieldProps["value"];
+type OnTextFieldChange = NonNullable<TextFieldProps["onChange"]>;
 
 type Props = {
   input: TextFieldValue;
@@ -16,7 +16,7 @@ type Props = {
   sha256: TextFieldValue;
   sha512: TextFieldValue;
   onInputChange: OnTextFieldChange;
-} & ComponentPropsWithoutRef<typeof Configuration>;
+} & ConfigurationProps;
 
 const StyledComponent = ({
   uppercase,

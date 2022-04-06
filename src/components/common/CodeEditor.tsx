@@ -1,7 +1,7 @@
 import { css, Theme } from "@mui/material/styles";
 import { config } from "ace-builds";
-import { ComponentPropsWithoutRef, memo } from "react";
-import AceEditor from "react-ace";
+import { memo } from "react";
+import AceEditor, { IAceEditorProps } from "react-ace";
 
 // https://github.com/securingsincity/react-ace/issues/725
 config.set("basePath", "https://cdn.jsdelivr.net/npm/ace-builds@1.4.14/src-min-noconflict/");
@@ -10,7 +10,7 @@ config.setModuleUrl(
   "https://cdn.jsdelivr.net/npm/ace-builds@1.4.14/src-min-noconflict/worker-javascript.js"
 );
 
-type Props = ComponentPropsWithoutRef<typeof AceEditor>;
+export type Props = IAceEditorProps;
 
 const editor = (theme: Theme) => css`
   box-shadow: ${theme.shadows[1]};

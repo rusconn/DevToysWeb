@@ -1,8 +1,8 @@
 import { Skeleton } from "@mui/material";
 import dynamic from "next/dynamic";
-import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
-import { Main, MainItem, TextField } from "@/components/common";
+import { CodeEditorProps, Main, MainItem, TextField, TextFieldProps } from "@/components/common";
 import { decode } from "@/libs/jwt";
 
 // https://github.com/securingsincity/react-ace/issues/27
@@ -15,9 +15,9 @@ const CodeEditor = dynamic(
   { ssr: false, loading: () => <Skeleton variant="rectangular" width="100%" height="160px" /> }
 );
 
-type TextFieldValue = ComponentPropsWithoutRef<typeof TextField>["value"];
-type CodeValue = NonNullable<ComponentPropsWithoutRef<typeof CodeEditor>["value"]>;
-type OnTextFieldChange = NonNullable<ComponentPropsWithoutRef<typeof TextField>["onChange"]>;
+type TextFieldValue = TextFieldProps["value"];
+type CodeValue = NonNullable<CodeEditorProps["value"]>;
+type OnTextFieldChange = NonNullable<TextFieldProps["onChange"]>;
 
 type Props = {
   jwt: TextFieldValue;

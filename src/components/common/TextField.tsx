@@ -1,7 +1,7 @@
-import { TextField } from "@mui/material";
-import { ComponentPropsWithoutRef, memo } from "react";
+import { TextField, TextFieldProps } from "@mui/material";
+import { memo } from "react";
 
-type Props = ComponentPropsWithoutRef<typeof TextField>;
+export type Props = TextFieldProps;
 
 const StyledComponent = (props: Props) => (
   <TextField

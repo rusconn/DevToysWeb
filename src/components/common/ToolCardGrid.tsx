@@ -1,11 +1,11 @@
 import { Grid } from "@mui/material";
 import equal from "fast-deep-equal";
-import { ComponentPropsWithoutRef, memo } from "react";
+import { memo } from "react";
 
-import ToolCard from "./ToolCard";
+import ToolCard, { Props as ToolCardProps } from "./ToolCard";
 
-type Props = {
-  tools: ComponentPropsWithoutRef<typeof ToolCard>[];
+export type Props = {
+  tools: ToolCardProps[];
 };
 
 const StyledComponent = ({ tools }: Props) => (

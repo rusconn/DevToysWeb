@@ -1,13 +1,13 @@
 import equal from "fast-deep-equal";
 import Fuse from "fuse.js";
-import { ComponentPropsWithoutRef, memo } from "react";
+import { memo } from "react";
 import { selector, useRecoilValue } from "recoil";
 
-import { Main, ToolCardGrid } from "@/components/common";
+import { Main, ToolCardGrid, ToolCardGridProps } from "@/components/common";
 import { searchTextState } from "@/components/layout/states";
 import { homeTools } from "@/data/tools";
 
-type Props = ComponentPropsWithoutRef<typeof ToolCardGrid>;
+type Props = ToolCardGridProps;
 
 const StyledComponent = ({ tools }: Props) => (
   <Main title="Searched tools">

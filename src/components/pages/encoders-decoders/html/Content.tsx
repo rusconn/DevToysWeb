@@ -1,10 +1,10 @@
 import { decode, encode } from "html-entities";
-import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
-import { Main, MainItem, TextField } from "@/components/common";
+import { Main, MainItem, TextField, TextFieldProps } from "@/components/common";
 
-type TextFieldValue = ComponentPropsWithoutRef<typeof TextField>["value"];
-type OnTextFieldChange = NonNullable<ComponentPropsWithoutRef<typeof TextField>["onChange"]>;
+type TextFieldValue = TextFieldProps["value"];
+type OnTextFieldChange = NonNullable<TextFieldProps["onChange"]>;
 
 type Props = {
   decoded: TextFieldValue;

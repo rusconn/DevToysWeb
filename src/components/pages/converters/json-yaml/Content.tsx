@@ -1,11 +1,12 @@
 import { Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
-import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import YAML from "yaml";
 
 import { Main, MainItem } from "@/components/common";
+import { Props as CodeEditorProps } from "@/components/common/CodeEditor";
 
-import Configuration, { isSpaces, Spaces } from "./Configuration";
+import Configuration, { Props as ConfigurationProps, isSpaces, Spaces } from "./Configuration";
 
 // https://github.com/securingsincity/react-ace/issues/27
 const CodeEditor = dynamic(
@@ -20,15 +21,15 @@ const CodeEditor = dynamic(
   { ssr: false, loading: () => <Skeleton variant="rectangular" height="100%" /> }
 );
 
-type CodeValue = NonNullable<ComponentPropsWithoutRef<typeof CodeEditor>["value"]>;
-type OnCodeChange = NonNullable<ComponentPropsWithoutRef<typeof CodeEditor>["onChange"]>;
+type CodeValue = NonNullable<CodeEditorProps["value"]>;
+type OnCodeChange = NonNullable<CodeEditorProps["onChange"]>;
 
 type Props = {
   json: CodeValue;
   yaml: CodeValue;
   onJsonChange: OnCodeChange;
   onYamlChange: OnCodeChange;
-} & ComponentPropsWithoutRef<typeof Configuration>;
+} & ConfigurationProps;
 
 const StyledComponent = ({
   json,

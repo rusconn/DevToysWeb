@@ -1,17 +1,17 @@
 import { Home } from "@mui/icons-material";
 import { Box, Divider, Drawer, List, Stack } from "@mui/material";
 import { css } from "@mui/material/styles";
-import { ComponentPropsWithoutRef, memo } from "react";
+import { memo } from "react";
 
 import { drawerToolGroups } from "@/data/tools";
 import { pagesPath } from "@/libs/$path";
 
-import DrawerCollapseItem from "./DrawerCollapseItem";
+import DrawerCollapseItem, { Props as DrawerCollapseItemProps } from "./DrawerCollapseItem";
 import DrawerItem from "./DrawerItem";
 import SearchBar from "./SearchBar";
 
 type Props = {
-  toolGroups: ComponentPropsWithoutRef<typeof DrawerCollapseItem>[];
+  toolGroups: DrawerCollapseItemProps[];
 };
 
 export const drawerWidth = 300;

@@ -1,12 +1,8 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, StackProps, Typography } from "@mui/material";
 import { css, Theme } from "@mui/material/styles";
-import { ComponentPropsWithoutRef, memo, PropsWithChildren } from "react";
+import { memo, PropsWithChildren } from "react";
 
-type Props = PropsWithChildren<
-  {
-    title: string;
-  } & ComponentPropsWithoutRef<typeof Stack>
->;
+export type Props = PropsWithChildren<{ title: string } & StackProps>;
 
 const mainTitle = (theme: Theme) => css`
   font-size: ${theme.typography.fontSize * 3}px;

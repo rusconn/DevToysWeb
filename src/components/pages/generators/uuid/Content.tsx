@@ -1,22 +1,26 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, ButtonProps, Stack, Typography } from "@mui/material";
 import { range } from "fp-ts/NonEmptyArray";
-import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
-import { Main, MainItem, TextField } from "@/components/common";
+import { Main, MainItem, TextField, TextFieldProps } from "@/components/common";
 import { uuid } from "@/libs/uuid";
 
-import Configuration, { isUuidVersion, UuidVersion } from "./Configuration";
+import Configuration, {
+  Props as ConfigurationProps,
+  isUuidVersion,
+  UuidVersion,
+} from "./Configuration";
 
-type TextFieldValue = ComponentPropsWithoutRef<typeof TextField>["value"];
-type OnTextFieldChange = NonNullable<ComponentPropsWithoutRef<typeof TextField>["onChange"]>;
-type OnButtonClick = NonNullable<ComponentPropsWithoutRef<typeof Button>["onChange"]>;
+type TextFieldValue = TextFieldProps["value"];
+type OnTextFieldChange = NonNullable<TextFieldProps["onChange"]>;
+type OnButtonClick = NonNullable<ButtonProps["onChange"]>;
 
 type Props = {
   generates: TextFieldValue;
   uuids: TextFieldValue;
   onGeneratesChange: OnTextFieldChange;
   onGenerateClick: OnButtonClick;
-} & ComponentPropsWithoutRef<typeof Configuration>;
+} & ConfigurationProps;
 
 const StyledComponent = ({
   hyphens,

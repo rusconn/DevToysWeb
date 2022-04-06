@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
-import { ComponentPropsWithoutRef, memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
-import { Main, MainItem, TextField } from "@/components/common";
+import { Main, MainItem, TextField, TextFieldProps } from "@/components/common";
 import {
   formatBinary,
   formatDecimal,
@@ -17,10 +17,10 @@ import {
   unformatOctal,
 } from "@/libs/string";
 
-import Configuration from "./Configuration";
+import Configuration, { Props as ConfigurationProps } from "./Configuration";
 
-type TextFieldValue = ComponentPropsWithoutRef<typeof TextField>["value"];
-type OnTextFieldChange = NonNullable<ComponentPropsWithoutRef<typeof TextField>["onChange"]>;
+type TextFieldValue = TextFieldProps["value"];
+type OnTextFieldChange = NonNullable<TextFieldProps["onChange"]>;
 
 type Props = {
   dec: TextFieldValue;
@@ -31,7 +31,7 @@ type Props = {
   onHexChange: OnTextFieldChange;
   onOctChange: OnTextFieldChange;
   onBinChange: OnTextFieldChange;
-} & ComponentPropsWithoutRef<typeof Configuration>;
+} & ConfigurationProps;
 
 const StyledComponent = ({
   format,

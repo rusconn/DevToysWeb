@@ -11,7 +11,7 @@ import { css, Theme } from "@mui/material/styles";
 import NextLink, { LinkProps } from "next/link";
 import { memo, ReactNode } from "react";
 
-type Props = {
+export type Props = {
   icon: ReactNode;
   title: string;
   description: string;
