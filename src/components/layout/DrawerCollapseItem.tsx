@@ -1,22 +1,22 @@
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Collapse, List, ListItemButton, ListItemText } from "@mui/material";
 import equal from "fast-deep-equal";
-import { ComponentPropsWithoutRef, memo, MouseEventHandler, useCallback, useState } from "react";
+import { memo, MouseEventHandler, useCallback, useState } from "react";
 
-import DrawerItem from "./DrawerItem";
-import DrawerItemIcon from "./DrawerItemIcon";
+import DrawerItem, { Props as DrawerItemProps } from "./DrawerItem";
+import DrawerItemIcon, { Props as DrawerItemIconProps } from "./DrawerItemIcon";
 
-type ContainerProps = {
+export type Props = {
   title: string;
-  tools: ComponentPropsWithoutRef<typeof DrawerItem>[];
-} & ComponentPropsWithoutRef<typeof DrawerItemIcon>;
+  tools: DrawerItemProps[];
+} & DrawerItemIconProps;
 
-type Props = {
+type ComponentProps = {
   open: boolean;
   onClick: MouseEventHandler<HTMLDivElement>;
-} & ContainerProps;
+} & Props;
 
-const StyledComponent = ({ icon, title, tools, open, onClick }: Props) => (
+const StyledComponent = ({ icon, title, tools, open, onClick }: ComponentProps) => (
   <>
     <ListItemButton {...{ onClick }}>
       <DrawerItemIcon {...{ icon }} />
@@ -42,7 +42,7 @@ const StyledComponent = ({ icon, title, tools, open, onClick }: Props) => (
 
 export const Component = memo(StyledComponent, equal);
 
-const Container = ({ icon, title, tools }: ContainerProps) => {
+const Container = ({ icon, title, tools }: Props) => {
   const [open, setOpen] = useState(false);
 
   const onClick = useCallback(() => {

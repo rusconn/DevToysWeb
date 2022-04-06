@@ -1,16 +1,16 @@
 import { Box, ListItemButton, ListItemText, Tooltip } from "@mui/material";
 import { css } from "@mui/material/styles";
 import NextLink, { LinkProps } from "next/link";
-import { ComponentPropsWithoutRef, memo } from "react";
+import { memo } from "react";
 
-import DrawerItemIcon from "./DrawerItemIcon";
+import DrawerItemIcon, { Props as DrawerItemIconProps } from "./DrawerItemIcon";
 
-type Props = {
+export type Props = {
   title: string;
   disabled?: boolean;
   subItem?: true;
 } & Pick<LinkProps, "href"> &
-  ComponentPropsWithoutRef<typeof DrawerItemIcon>;
+  DrawerItemIconProps;
 
 const indent = css`
   text-indent: 40px;

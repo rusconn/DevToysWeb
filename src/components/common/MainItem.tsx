@@ -1,11 +1,7 @@
-import { Box, Stack, Typography } from "@mui/material";
-import { ComponentPropsWithoutRef, memo, PropsWithChildren } from "react";
+import { Box, Stack, StackProps, Typography } from "@mui/material";
+import { memo, PropsWithChildren } from "react";
 
-type Props = PropsWithChildren<
-  {
-    title: string;
-  } & ComponentPropsWithoutRef<typeof Stack>
->;
+export type Props = PropsWithChildren<{ title: string } & StackProps>;
 
 const StyledComponent = ({ children, title, ...stackProps }: Props) => (
   // eslint-disable-next-line react/jsx-props-no-spreading

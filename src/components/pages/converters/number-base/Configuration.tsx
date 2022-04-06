@@ -8,7 +8,7 @@ import { Configurations } from "@/components/common";
 type SwitchChecked = NonNullable<SwitchBaseProps["checked"]>;
 type OnSwitchChange = NonNullable<SwitchBaseProps["onChange"]>;
 
-type Props = {
+export type Props = {
   format: SwitchChecked;
   onFormatChange: OnSwitchChange;
 };

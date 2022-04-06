@@ -2,7 +2,7 @@ import { Box, Paper, Stack, Typography } from "@mui/material";
 import { css, Theme } from "@mui/material/styles";
 import { memo, ReactNode } from "react";
 
-type Props = {
+export type Props = {
   icon: ReactNode;
   title: string;
   input: ReactNode;

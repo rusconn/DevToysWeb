@@ -16,7 +16,7 @@ type SwitchChecked = NonNullable<SwitchBaseProps["checked"]>;
 type OnSwitchChange = NonNullable<SwitchBaseProps["onChange"]>;
 type OnSelectChange<T> = NonNullable<SelectInputProps<T>["onChange"]>;
 
-type Props = {
+export type Props = {
   hyphens: SwitchChecked;
   uppercase: SwitchChecked;
   uuidVersion: UuidVersion;

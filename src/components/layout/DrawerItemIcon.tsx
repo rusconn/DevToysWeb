@@ -2,7 +2,7 @@ import { ListItemIcon } from "@mui/material";
 import { css } from "@mui/material/styles";
 import { memo, ReactNode } from "react";
 
-type Props = {
+export type Props = {
   icon: ReactNode;
 };
 

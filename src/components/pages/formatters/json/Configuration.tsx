@@ -12,7 +12,7 @@ export const isSpaces = (x: number): x is Spaces => spacesArray.includes(x as Sp
 
 type OnSelectChange<T> = NonNullable<SelectInputProps<T>["onChange"]>;
 
-type Props = {
+export type Props = {
   spaces: Spaces;
   onSpacesChange: OnSelectChange<Spaces>;
 };
