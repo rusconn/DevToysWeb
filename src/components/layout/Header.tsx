@@ -1,5 +1,5 @@
-import { GitHub } from "@mui/icons-material";
-import { AppBar, IconButton, Link as MuiLink, Stack, Toolbar, Typography } from "@mui/material";
+import { GitHub, Menu, Code } from "@mui/icons-material";
+import { AppBar, IconButton, Link as MuiLink, Stack, Toolbar, Typography, Box, Button } from "@mui/material";
 import { css, Theme } from "@mui/material/styles";
 import NextLink from "next/link";
 import { memo } from "react";
@@ -23,6 +23,8 @@ const topLink = css`
   text-decoration: none;
   cursor: pointer;
   font-weight: 400;
+  display: flex;
+  align-items: center;
 `;
 
 const description = (theme: Theme) => css`
@@ -45,7 +47,10 @@ const gitHubIcon = (theme: Theme) => css`
 const StyledComponent = () => (
   <AppBar position="relative" css={appBar}>
     <Toolbar variant="dense" css={toolbar}>
-      <Stack direction="row" spacing={1} alignItems="baseline" flexGrow={1}>
+      <Stack direction="row" spacing={1} alignItems="center" flexGrow={1}>
+        <IconButton>
+          <Menu/>
+        </IconButton>
         <NextLink href={pagesPath.$url()} passHref>
           <MuiLink variant="h6" css={topLink}>
             {site.title}
