@@ -44,6 +44,15 @@ const gitHubIcon = (theme: Theme) => css`
   height: ${theme.typography.fontSize * 3};
 `;
 
+const devToysIcon = css`
+  color: white;
+  background: darkviolet;
+  border-radius: 2px;
+  padding: 2px;
+  display: inline-flex;
+  margin-right: 4px;
+`;
+
 const StyledComponent = () => (
   <AppBar position="relative" css={appBar}>
     <Toolbar variant="dense" css={toolbar}>
@@ -53,6 +62,9 @@ const StyledComponent = () => (
         </IconButton>
         <NextLink href={pagesPath.$url()} passHref>
           <MuiLink variant="h6" css={topLink}>
+            <Box css={devToysIcon}>
+              <Code fontSize="small" />
+            </Box>
             {site.title}
           </MuiLink>
         </NextLink>
