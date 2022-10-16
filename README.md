@@ -13,4 +13,7 @@ A web clone of [DevToys](https://github.com/veler/DevToys)
   - [x] Generators
   - [ ] Text
   - [ ] Graphic
-- [ ] Support dark mode
+- [ ] Settings
+  - [x] Settings menu item
+  - [ ] Support dark mode
+  - [ ] Support i18n
