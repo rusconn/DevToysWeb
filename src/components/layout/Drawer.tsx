@@ -30,7 +30,7 @@ const divider = css`
   border-color: rgba(0, 0, 0, 0.08);
 `;
 
-const fullHeight = { height: '100%' };
+const fullHeight = { height: "100%" };
 
 const StyledComponent = ({ toolGroups }: Props) => (
   <Drawer variant="permanent" css={drawer}>
@@ -46,7 +46,7 @@ const StyledComponent = ({ toolGroups }: Props) => (
         <Box>
           {toolGroups.map(({ icon, title, tools }) => (
             <DrawerCollapseItem key={title} {...{ icon, title, tools }} />
-            ))}
+          ))}
         </Box>
         <Box flex={1} />
         <DrawerItem icon={<Settings />} title="Settings" href="settings" disabled />
