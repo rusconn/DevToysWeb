@@ -49,7 +49,7 @@ const StyledComponent = ({ toolGroups }: Props) => (
           ))}
         </Box>
         <Box flex={1} />
-        <DrawerItem icon={<Settings />} title="Settings" href="settings" disabled />
+        <DrawerItem icon={<Settings />} title="Settings" href="/settings" disabled />
       </Stack>
     </List>
   </Drawer>
