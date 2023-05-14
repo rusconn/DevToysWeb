@@ -22,7 +22,7 @@
     "ms-azuretools.vscode-docker",
     "esbenp.prettier-vscode",
     "artdiniz.quitcontrol-vscode",
-    "styled-components.vscode-styled-components"
+    "bradlc.vscode-tailwindcss"
   ],
   "runServices": ["app"],
   "shutdownAction": "stopCompose"

@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 95%;
+    --foreground: 0 0% 19%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 0 0% 58%;
+
+    --accent: 0 0% 91%;
+    --accent-foreground: 0 0% 58%;
+
+    --border: 0 0% 92%;
+
+    --separator: 0 0% 90%;
+
+    --page: 0 0% 97%;
+
+    --card: 0 0% 98%;
+    --card-hover: 0 0% 96%;
+    --card-foreground: 0 0% 11%;
+    --card-muted-foreground: 0 0% 59%;
+
+    --card-icon: 0 0% 99%;
+    --card-icon-hover: 0 0% 98%;
+
+    --configuration: 0 0% 99%;
+
+    --switch: 0 0% 96%;
+    --switch-hover: 0 0% 93%;
+
+    --select: 0 0% 99%;
+    --select-hover: 0 0% 98%;
+
+    --select-content: 0 0% 97%;
+    --select-content-foreground: 0 0% 20%;
+
+    --select-item-hover: 0 0% 94%;
+
+    --input: 0 0% 99%;
+    --input-hover: 0 0% 97%;
+    --input-focus: 0 0% 100%;
+
+    --textarea: 0 0% 99%;
+    --textarea-hover: 0 0% 97%;
+    --textarea-focus: 0 0% 100%;
+
+    --primary: 0 0% 99%;
+    --primary-hover: 0 0% 97%;
+    --primary-foreground: 0 0% 20%;
+
+    --secondary: 215 62% 44%;
+    --secondary-hover: 213 53% 48%;
+    --secondary-foreground: 0 0% 94%;
+
+    --tooltip: 0 0% 97%;
+    --tooltip-foreground: 0 0% 23%;
+
+    --indicator: 215 62% 44%;
+    --indicator-hover: 213 53% 48%;
+
+    --link: 215 62% 44%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 12%;
+    --foreground: 0 0% 90%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 0 0% 66%;
+
+    --accent: 0 0% 22%;
+    --accent-foreground: 210 40% 98%;
+
+    --border: 0 0% 27% / 0;
+
+    --separator: 0 0% 18%;
+
+    --page: 0 1% 15%;
+
+    --card: 0 0% 19%;
+    --card-hover: 0 0% 23%;
+    --card-foreground: 213 31% 91%;
+    --card-muted-foreground: 0 0% 73%;
+
+    --card-icon: 0 0% 23%;
+    --card-icon-hover: 0 0% 28%;
+
+    --configuration: 0 0% 20%;
+
+    --switch: 0 0% 17%;
+    --switch-hover: 0 0% 23%;
+
+    --select: 0 0% 24%;
+    --select-hover: 0 0% 26%;
+
+    --select-content: 0 0% 17%;
+    --select-content-foreground: 0 0% 90%;
+
+    --select-item-hover: 0 0% 21%;
+
+    --input: 0 0% 20%;
+    --input-hover: 0 0% 22%;
+    --input-focus: 0 0% 12%;
+
+    --textarea: 0 0% 20%;
+    --textarea-hover: 0 0% 22%;
+    --textarea-focus: 0 0% 12%;
+
+    --primary: 0 0% 20%;
+    --primary-hover: 0 0% 22%;
+    --primary-foreground: 0 0% 90%;
+
+    --secondary: 205 93% 70%;
+    --secondary-hover: 204 70% 64%;
+    --secondary-foreground: 202 38% 9%;
+
+    --tooltip: 0 0% 17%;
+    --tooltip-foreground: 0 0% 90%;
+
+    --indicator: 205 93% 70%;
+    --indicator-hover: 204 70% 64%;
+
+    --link: 205 93% 70%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
