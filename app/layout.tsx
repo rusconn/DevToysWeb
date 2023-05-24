@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata } from "next";
+import { SearchTextProvider } from "@/contexts/search-text";
 
 import { siteConfig } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -44,16 +45,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
-          <div className="relative flex h-full flex-col">
-            <SiteHeader />
-            <div className="flex flex-1 overflow-y-hidden">
-              <Sidebar />
-              <main className="h-full flex-1 overflow-y-auto rounded-tl-md border bg-page p-12">
-                {children}
-              </main>
+          <SearchTextProvider>
+            <div className="relative flex h-full flex-col">
+              <SiteHeader />
+              <div className="flex flex-1 overflow-y-hidden">
+                <Sidebar />
+                <main className="h-full flex-1 overflow-y-auto rounded-tl-md border bg-page p-12">
+                  {children}
+                </main>
+              </div>
             </div>
-          </div>
-          <TailwindIndicator />
+            <TailwindIndicator />
+          </SearchTextProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -4,6 +4,8 @@ A web clone of [DevToys](https://github.com/veler/DevToys)
 
 ## Known issues
 
+- Tool search does not set query parameters
+  - [(Shallow routing) updating search params causes server code to rerun.](https://github.com/vercel/next.js/issues/49668)
 - [Editor may not resize to fit container size](https://github.com/suren-atoyan/monaco-react/issues/346)
 - CSS outlines messed up
 
