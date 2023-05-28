@@ -5,6 +5,4 @@ services:
     image: xxx/dev-toys-web-dev:1.0.0
     build:
       context: .devcontainer
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
     command: sleep infinity
