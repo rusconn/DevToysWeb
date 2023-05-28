@@ -40,3 +40,6 @@ tsconfig.tsbuildinfo
 
 # eslint
 .eslintcache
+
+# devcontainer
+.devcontainer

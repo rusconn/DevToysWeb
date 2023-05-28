@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   app:
-    image: rusconn/dev-toys-web-dev:1.0.0
+    image: xxx/dev-toys-web-dev:1.0.0
     build:
       context: .devcontainer
     volumes:
