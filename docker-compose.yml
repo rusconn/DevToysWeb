@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   app:
-    image: dev-toys-web-dev:1.0.0
+    image: dev-toys-web-dev:2.0.0
     build:
       context: docker
     working_dir: /app

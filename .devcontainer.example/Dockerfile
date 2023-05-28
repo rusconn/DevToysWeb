@@ -1,4 +1,4 @@
-FROM dev-toys-web-dev:1.0.0
+FROM dev-toys-web-dev:2.0.0
 
 RUN apt-get update \
   && apt-get install --no-install-recommends -y git ca-certificates fish \
