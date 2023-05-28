@@ -7,7 +7,7 @@ services:
       context: docker
     working_dir: /app
     volumes:
-      - .:/app:cached
+      - .:/app
       - next:/app/.next
       - node_modules:/app/node_modules
       - yarn-cache:/usr/local/share/.cache/yarn/v6
