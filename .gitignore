@@ -33,13 +33,9 @@ yarn-error.log*
 .turbo
 
 .contentlayer
-.env
 
 # typescript
 tsconfig.tsbuildinfo
 
 # eslint
 .eslintcache
-
-# devcontainer
-.devcontainer

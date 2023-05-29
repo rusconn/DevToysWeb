@@ -2,6 +2,10 @@
 
 A web clone of [DevToys](https://github.com/veler/DevToys)
 
+## Setup
+
+To reproduce environment, use [VOLTA](https://volta.sh/)
+
 ## Known issues
 
 - Tool search does not set query parameters

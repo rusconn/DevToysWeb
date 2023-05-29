@@ -4,7 +4,6 @@
     "davidanson.vscode-markdownlint",
     "irongeek.vscode-env",
     "dbaeumer.vscode-eslint",
-    "ms-azuretools.vscode-docker",
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss"
   ]
