@@ -1,6 +1,6 @@
 "use client";
 
-import { PropsWithChildren, createContext, useContext, useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 
 const SearchTextContext = createContext("");
 const SetSearchTextContext = createContext<(text: string) => void>(() => {});

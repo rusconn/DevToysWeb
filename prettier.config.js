@@ -3,6 +3,8 @@ module.exports = {
   printWidth: 100,
   arrowParens: "avoid",
   importOrder: [
+    "<BUILTIN_MODULES>",
+    "",
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",
     "<THIRD_PARTY_MODULES>",
@@ -19,11 +21,6 @@ module.exports = {
     "",
     "^[./]",
   ],
-  importOrderSeparation: false,
-  importOrderSortSpecifiers: true,
-  importOrderBuiltinModulesToTop: true,
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
-  importOrderMergeDuplicateImports: true,
-  importOrderCombineTypeAndValueImports: true,
   plugins: ["@ianvs/prettier-plugin-sort-imports"],
 };

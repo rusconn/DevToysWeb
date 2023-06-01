@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+
 import { Metadata } from "next";
 import { SearchTextProvider } from "@/contexts/search-text";
 

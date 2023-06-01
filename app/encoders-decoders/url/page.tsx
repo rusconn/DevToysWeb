@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import * as O from "fp-ts/lib/Option";
 import { constant } from "fp-ts/lib/function";
+import * as O from "fp-ts/lib/Option";
 
 import { toolGroups } from "@/config/tools";
 import { safeDecodeURIComponent, safeEncodeURIComponent } from "@/lib/uri";
