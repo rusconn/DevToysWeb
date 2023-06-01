@@ -27,12 +27,14 @@ import { icons } from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
-const two = "  ";
-const four = "    ";
+const indentations = {
+  two: "  ",
+  four: "    ",
+};
 
 export default function Page() {
   const [form, setForm] = useState({
-    indentation: two,
+    indentation: indentations.two,
     json: '{\n  "foo": "bar"\n}',
     yaml: "foo: bar",
   });
@@ -97,8 +99,8 @@ export default function Page() {
             <SelectValue placeholder={form.indentation} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value={two}>2 spaces</SelectItem>
-            <SelectItem value={four}>4 spaces</SelectItem>
+            <SelectItem value={indentations.two}>2 spaces</SelectItem>
+            <SelectItem value={indentations.four}>4 spaces</SelectItem>
           </SelectContent>
         </Select>
       }

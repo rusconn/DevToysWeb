@@ -24,13 +24,15 @@ import { icons } from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
-const two = "  ";
-const four = "    ";
-const zero = "";
-const tab = "\t";
+const indentations = {
+  two: "  ",
+  four: "    ",
+  zero: "",
+  tab: "\t",
+};
 
 export default function Page() {
-  const [indentation, setIndentation] = useState(two);
+  const [indentation, setIndentation] = useState(indentations.two);
   const [input, setInput] = useState('{\n"foo":"bar"\n}');
 
   const parsed = safeJsonParse(input);
@@ -56,10 +58,10 @@ export default function Page() {
               <SelectValue placeholder={indentation} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value={two}>2 spaces</SelectItem>
-              <SelectItem value={four}>4 spaces</SelectItem>
-              <SelectItem value={tab}>1 tab</SelectItem>
-              <SelectItem value={zero}>minified</SelectItem>
+              <SelectItem value={indentations.two}>2 spaces</SelectItem>
+              <SelectItem value={indentations.four}>4 spaces</SelectItem>
+              <SelectItem value={indentations.tab}>1 tab</SelectItem>
+              <SelectItem value={indentations.zero}>minified</SelectItem>
             </SelectContent>
           </Select>
         }

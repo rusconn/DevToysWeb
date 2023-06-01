@@ -28,10 +28,12 @@ import { LabeledSwitch } from "@/components/labeled-switch";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
-const v1 = "1";
-const v4 = "4";
+const versions = {
+  v1: "1",
+  v4: "4",
+} as const;
 
-const uuidVersions = t.keyof({ [v1]: null, [v4]: null });
+const uuidVersions = t.keyof({ [versions.v1]: null, [versions.v4]: null });
 type UuidVersion = t.TypeOf<typeof uuidVersions>;
 
 export default function Page() {
@@ -118,8 +120,8 @@ export default function Page() {
               <SelectValue placeholder={uuidVersion} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value={v1}>1</SelectItem>
-              <SelectItem value={v4}>4 (GUID)</SelectItem>
+              <SelectItem value={versions.v1}>1</SelectItem>
+              <SelectItem value={versions.v4}>4 (GUID)</SelectItem>
             </SelectContent>
           </Select>
         }
