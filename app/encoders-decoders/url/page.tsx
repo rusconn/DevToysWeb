@@ -1,8 +1,11 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import * as O from "fp-ts/lib/Option";
+import { constant } from "fp-ts/lib/function";
 
 import { toolGroups } from "@/config/tools";
+import { safeDecodeURIComponent, safeEncodeURIComponent } from "@/lib/uri";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import { ClearButton } from "@/components/buttons/clear";
 import { CopyButton } from "@/components/buttons/copy";
@@ -18,22 +21,12 @@ export default function Page() {
 
   const setDecodedReactively = useCallback((text: string) => {
     setDecoded(text);
-
-    try {
-      setEncoded(encodeURIComponent(text));
-    } catch {
-      setEncoded("");
-    }
+    setEncoded(O.getOrElse(constant(""))(safeEncodeURIComponent(text)));
   }, []);
 
   const setEncodedReactively = useCallback((text: string) => {
     setEncoded(text);
-
-    try {
-      setDecoded(decodeURIComponent(text));
-    } catch {
-      setDecoded("");
-    }
+    setDecoded(O.getOrElse(constant(""))(safeDecodeURIComponent(text)));
   }, []);
 
   const clearBoth = useCallback(() => {

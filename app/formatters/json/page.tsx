@@ -1,8 +1,10 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import * as O from "fp-ts/lib/Option";
 
 import { toolGroups } from "@/config/tools";
+import { safeJsonParse } from "@/lib/json";
 import { Editor, EditorProps } from "@/components/ui/editor";
 import {
   Select,
@@ -31,13 +33,8 @@ export default function Page() {
   const [indentation, setIndentation] = useState(two);
   const [input, setInput] = useState('{\n"foo":"bar"\n}');
 
-  let output: string;
-  try {
-    const parsed = JSON.parse(input) as unknown;
-    output = JSON.stringify(parsed, null, indentation);
-  } catch {
-    output = "";
-  }
+  const parsed = safeJsonParse(input);
+  const output = O.isNone(parsed) ? "" : JSON.stringify(parsed.value, null, indentation);
 
   const clearInput = useCallback(() => setInput(""), []);
 

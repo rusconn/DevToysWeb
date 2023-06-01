@@ -1,9 +1,12 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import * as O from "fp-ts/lib/Option";
 import YAML from "yaml";
 
 import { toolGroups } from "@/config/tools";
+import { safeJsonParse } from "@/lib/json";
+import { safeYamlParse } from "@/lib/yaml";
 import { Editor, EditorProps } from "@/components/ui/editor";
 import {
   Select,
@@ -34,28 +37,24 @@ export default function Page() {
 
   const setJsonReactively = useCallback(
     (text: string) => {
-      setJson(text);
+      const parsed = safeJsonParse(text);
 
-      try {
-        const parsed = JSON.parse(text) as unknown;
-        setYaml(YAML.stringify(parsed, { indent: indentation.length, simpleKeys: true }));
-      } catch {
-        setYaml("");
-      }
+      setJson(text);
+      setYaml(
+        O.isNone(parsed)
+          ? ""
+          : YAML.stringify(parsed.value, { indent: indentation.length, simpleKeys: true })
+      );
     },
     [indentation.length]
   );
 
   const setYamlReactively = useCallback(
     (text: string) => {
-      setYaml(text);
+      const parsed = safeYamlParse(text, (_, v) => v, { merge: true });
 
-      try {
-        const parsed = YAML.parse(text, { merge: true }) as unknown;
-        setJson(JSON.stringify(parsed, null, indentation));
-      } catch {
-        setJson("");
-      }
+      setYaml(text);
+      setJson(O.isNone(parsed) ? "" : JSON.stringify(parsed.value, null, indentation));
     },
     [indentation]
   );
@@ -68,12 +67,13 @@ export default function Page() {
   const onIndentationChange: SelectProps["onValueChange"] = value => {
     setIndentation(value);
 
-    try {
-      const parsed = JSON.parse(json) as unknown;
-      setJson(JSON.stringify(parsed, null, value));
-      setYaml(YAML.stringify(parsed, { indent: value.length, simpleKeys: true }));
-    } catch {
+    const parsed = safeJsonParse(json);
+
+    if (O.isNone(parsed)) {
       clearBoth();
+    } else {
+      setJson(JSON.stringify(parsed.value, null, value));
+      setYaml(YAML.stringify(parsed.value, { indent: value.length, simpleKeys: true }));
     }
   };
 

@@ -1,22 +1,16 @@
+import * as O from "fp-ts/lib/Option";
 import jwt_decode from "jwt-decode";
 
+const safeJwtDecode = O.tryCatchK(jwt_decode);
+
 export const decode = (token: string) => {
-  let headerObj;
-  let payloadObj;
+  let header: O.Option<Record<string, unknown>> = O.none;
+  let payload: O.Option<unknown> = O.none;
 
   if (token.split(".").length === 3) {
-    /* eslint-disable no-empty */
-
-    try {
-      headerObj = jwt_decode(token, { header: true });
-    } catch {}
-
-    try {
-      payloadObj = jwt_decode(token, { header: false });
-    } catch {}
-
-    /* eslint-enable no-empty */
+    header = safeJwtDecode(token, { header: true });
+    payload = safeJwtDecode(token, { header: false });
   }
 
-  return { headerObj, payloadObj };
+  return { header, payload };
 };
