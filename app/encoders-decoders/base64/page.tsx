@@ -14,29 +14,32 @@ import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
 export default function Page() {
-  const [decoded, setDecoded] = useState("😀😂🤣");
-  const [encoded, setEncoded] = useState("8J+YgPCfmILwn6Sj");
+  const [form, setForm] = useState({
+    decoded: "😀😂🤣",
+    encoded: "8J+YgPCfmILwn6Sj",
+  });
 
   const setDecodedReactively = useCallback((text: string) => {
-    setDecoded(text);
-    setEncoded(encode(text));
+    setForm({
+      decoded: text,
+      encoded: encode(text),
+    });
   }, []);
 
   const setEncodedReactively = useCallback((text: string) => {
-    setEncoded(text);
-
     const newDecoded = decode(text);
 
-    if (isValid(text) && !newDecoded.includes("�")) {
-      setDecoded(newDecoded);
-    } else {
-      setDecoded("");
-    }
+    setForm({
+      encoded: text,
+      decoded: isValid(text) && !newDecoded.includes("�") ? newDecoded : "",
+    });
   }, []);
 
   const clearBoth = useCallback(() => {
-    setDecoded("");
-    setEncoded("");
+    setForm({
+      decoded: "",
+      encoded: "",
+    });
   }, []);
 
   const onDecodedChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) =>
@@ -69,8 +72,8 @@ export default function Page() {
     [setEncodedReactively]
   );
 
-  const decodedCopyButton = useMemo(() => <CopyButton text={decoded} />, [decoded]);
-  const encodedCopyButton = useMemo(() => <CopyButton text={encoded} />, [encoded]);
+  const decodedCopyButton = useMemo(() => <CopyButton text={form.decoded} />, [form.decoded]);
+  const encodedCopyButton = useMemo(() => <CopyButton text={form.encoded} />, [form.encoded]);
 
   const clearButton = useMemo(
     () => <ClearButton onClick={clearBoth} iconOnly aria-label="clear decoded and encoded" />,
@@ -88,10 +91,10 @@ export default function Page() {
   return (
     <PageRootSection title={toolGroups.encodersDecoders.tools.base64.longTitle}>
       <PageSection title="Decoded" control={decodedControl}>
-        <Textarea value={decoded} onChange={onDecodedChange} rows={10} />
+        <Textarea value={form.decoded} onChange={onDecodedChange} rows={10} />
       </PageSection>
       <PageSection title="Encoded" control={encodedControl}>
-        <Textarea value={encoded} onChange={onEncodedChange} rows={10} />
+        <Textarea value={form.encoded} onChange={onEncodedChange} rows={10} />
       </PageSection>
     </PageRootSection>
   );

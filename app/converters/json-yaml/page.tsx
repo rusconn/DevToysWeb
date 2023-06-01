@@ -31,50 +31,52 @@ const two = "  ";
 const four = "    ";
 
 export default function Page() {
-  const [indentation, setIndentation] = useState(two);
-  const [json, setJson] = useState('{\n  "foo": "bar"\n}');
-  const [yaml, setYaml] = useState("foo: bar");
+  const [form, setForm] = useState({
+    indentation: two,
+    json: '{\n  "foo": "bar"\n}',
+    yaml: "foo: bar",
+  });
 
-  const setJsonReactively = useCallback(
-    (text: string) => {
-      const parsed = safeJsonParse(text);
+  const setJsonReactively = useCallback((text: string) => {
+    const parsed = safeJsonParse(text);
 
-      setJson(text);
-      setYaml(
-        O.isNone(parsed)
-          ? ""
-          : YAML.stringify(parsed.value, { indent: indentation.length, simpleKeys: true })
-      );
-    },
-    [indentation.length]
-  );
+    setForm(prev => ({
+      ...prev,
+      json: text,
+      yaml: O.isNone(parsed)
+        ? ""
+        : YAML.stringify(parsed.value, { indent: prev.indentation.length, simpleKeys: true }),
+    }));
+  }, []);
 
-  const setYamlReactively = useCallback(
-    (text: string) => {
-      const parsed = safeYamlParse(text, (_, v) => v, { merge: true });
+  const setYamlReactively = useCallback((text: string) => {
+    const parsed = safeYamlParse(text, (_, v) => v, { merge: true });
 
-      setYaml(text);
-      setJson(O.isNone(parsed) ? "" : JSON.stringify(parsed.value, null, indentation));
-    },
-    [indentation]
-  );
+    setForm(prev => ({
+      ...prev,
+      yaml: text,
+      json: O.isNone(parsed) ? "" : JSON.stringify(parsed.value, null, prev.indentation),
+    }));
+  }, []);
 
   const clearBoth = useCallback(() => {
-    setJson("");
-    setYaml("");
+    setForm(prev => ({ ...prev, json: "", yaml: "" }));
   }, []);
 
   const onIndentationChange: SelectProps["onValueChange"] = value => {
-    setIndentation(value);
+    const parsed = safeJsonParse(form.json);
 
-    const parsed = safeJsonParse(json);
+    const jsonYaml = O.isNone(parsed)
+      ? { json: "", yaml: "" }
+      : {
+          json: JSON.stringify(parsed.value, null, value),
+          yaml: YAML.stringify(parsed.value, { indent: value.length, simpleKeys: true }),
+        };
 
-    if (O.isNone(parsed)) {
-      clearBoth();
-    } else {
-      setJson(JSON.stringify(parsed.value, null, value));
-      setYaml(YAML.stringify(parsed.value, { indent: value.length, simpleKeys: true }));
-    }
+    setForm({
+      indentation: value,
+      ...jsonYaml,
+    });
   };
 
   const onJsonChange: EditorProps["onChange"] = value => setJsonReactively(value ?? "");
@@ -87,12 +89,12 @@ export default function Page() {
       icon={indentationIcon}
       title="Indentation"
       control={
-        <Select value={indentation} onValueChange={onIndentationChange}>
+        <Select value={form.indentation} onValueChange={onIndentationChange}>
           <SelectTrigger
             className="w-28"
             aria-label="toggle open/close state of indentation selection"
           >
-            <SelectValue placeholder={indentation} />
+            <SelectValue placeholder={form.indentation} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={two}>2 spaces</SelectItem>
@@ -137,8 +139,8 @@ export default function Page() {
     [setYamlReactively]
   );
 
-  const jsonCopyButton = <CopyButton text={json} />;
-  const yamlCopyButton = <CopyButton text={yaml} />;
+  const jsonCopyButton = <CopyButton text={form.json} />;
+  const yamlCopyButton = <CopyButton text={form.yaml} />;
 
   const clearButton = useMemo(
     () => <ClearButton onClick={clearBoth} iconOnly aria-label="clear json and yaml" />,
@@ -163,10 +165,10 @@ export default function Page() {
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
         <PageSection className="mt-0 min-h-[200px] flex-1" title="Json" control={jsonControl}>
-          <Editor language="json" value={json} onChange={onJsonChange} />
+          <Editor language="json" value={form.json} onChange={onJsonChange} />
         </PageSection>
         <PageSection className="mt-0 min-h-[200px] flex-1" title="Yaml" control={yamlControl}>
-          <Editor language="yaml" value={yaml} onChange={onYamlChange} />
+          <Editor language="yaml" value={form.yaml} onChange={onYamlChange} />
         </PageSection>
       </div>
     </PageRootSection>
