@@ -43,9 +43,9 @@ dependencies:
   fuse.js:
     specifier: ^6.6.2
     version: 6.6.2
-  html-entities:
-    specifier: ^2.3.3
-    version: 2.3.3
+  html-escaper:
+    specifier: ^3.0.3
+    version: 3.0.3
   io-ts:
     specifier: ^2.2.20
     version: 2.2.20(fp-ts@2.16.0)
@@ -99,6 +99,9 @@ devDependencies:
   '@types/create-hash':
     specifier: ^1.2.2
     version: 1.2.2
+  '@types/html-escaper':
+    specifier: ^3.0.0
+    version: 3.0.0
   '@types/js-yaml':
     specifier: ^4.0.5
     version: 4.0.5
@@ -1444,6 +1447,10 @@ packages:
     resolution: {integrity: sha512-Fg8/kfMJObbETFU/Tn+Y0jieYewryLrbKwLCEIwPyklZZVY2qB+64KFjhplGSw+cseZosfFXctXO+PyIYD8iZQ==}
     dependencies:
       '@types/node': 18.16.16
+    dev: true
+
+  /@types/html-escaper@3.0.0:
+    resolution: {integrity: sha512-OcJcvP3Yk8mjYwf/IdXZtTE1tb/u0WF0qa29ER07ZHCYUBZXSN29Z1mBS+/96+kNMGTFUAbSz9X+pHmHpZrTCw==}
     dev: true
 
   /@types/js-yaml@4.0.5:
@@ -2991,8 +2998,8 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /html-entities@2.3.3:
-    resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
+  /html-escaper@3.0.3:
+    resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
     dev: false
 
   /human-signals@2.1.0:

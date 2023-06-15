@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { decode, encode } from "html-entities";
+import { escape, unescape } from "html-escaper";
 
 import { toolGroups } from "@/config/tools";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
@@ -16,20 +16,20 @@ import { PageSection } from "@/components/page-section";
 export default function Page() {
   const [form, setForm] = useState({
     decoded: '> It\'s "HTML escaping".',
-    encoded: "&gt; It&apos;s &quot;HTML escaping&quot;.",
+    encoded: "&gt; It&#39;s &quot;HTML escaping&quot;.",
   });
 
   const setDecodedReactively = useCallback((text: string) => {
     setForm({
       decoded: text,
-      encoded: encode(text),
+      encoded: escape(text),
     });
   }, []);
 
   const setEncodedReactively = useCallback((text: string) => {
     setForm({
       encoded: text,
-      decoded: decode(text),
+      decoded: unescape(text),
     });
   }, []);
 
