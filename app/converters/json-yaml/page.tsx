@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useState } from "react";
 import * as O from "fp-ts/lib/Option";
-import YAML from "yaml";
+import yaml from "js-yaml";
 
 import { toolGroups } from "@/config/tools";
 import { safeJsonParse } from "@/lib/json";
@@ -47,12 +47,12 @@ export default function Page() {
       json: text,
       yaml: O.isNone(parsed)
         ? ""
-        : YAML.stringify(parsed.value, { indent: prev.indentation.length, simpleKeys: true }),
+        : yaml.dump(parsed.value, { indent: prev.indentation.length, quotingType: '"' }),
     }));
   }, []);
 
   const setYamlReactively = useCallback((text: string) => {
-    const parsed = safeYamlParse(text, (_, v) => v, { merge: true });
+    const parsed = safeYamlParse(text);
 
     setForm(prev => ({
       ...prev,
@@ -72,7 +72,7 @@ export default function Page() {
       ? { json: "", yaml: "" }
       : {
           json: JSON.stringify(parsed.value, null, value),
-          yaml: YAML.stringify(parsed.value, { indent: value.length, simpleKeys: true }),
+          yaml: yaml.dump(parsed.value, { indent: value.length, quotingType: '"' }),
         };
 
     setForm({

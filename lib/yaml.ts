@@ -1,4 +1,4 @@
 import { tryCatchK } from "fp-ts/lib/Option";
-import YAML from "yaml";
+import yaml from "js-yaml";
 
-export const safeYamlParse = tryCatchK(YAML.parse);
+export const safeYamlParse = tryCatchK(yaml.load);
