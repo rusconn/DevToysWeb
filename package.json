@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "analyze": "ANALYZE=true next build",
     "start": "next start",
     "check": "pnpm typecheck && pnpm lint && pnpm format:check",
     "fix": "pnpm lint:fix && pnpm format:write",
@@ -52,6 +53,7 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.0.1",
+    "@next/bundle-analyzer": "13.4.4",
     "@types/create-hash": "^1.2.2",
     "@types/node": "~18.16.16",
     "@types/react": "~18.2.7",
