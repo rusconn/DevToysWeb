@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import * as O from "fp-ts/lib/Option";
 import yaml from "js-yaml";
 
 import { toolGroups } from "@/config/tools";
@@ -45,7 +44,7 @@ export default function Page() {
     setForm(prev => ({
       ...prev,
       json: text,
-      yaml: O.isNone(parsed)
+      yaml: parsed.isErr()
         ? ""
         : yaml.dump(parsed.value, { indent: prev.indentation.length, quotingType: '"' }),
     }));
@@ -57,7 +56,7 @@ export default function Page() {
     setForm(prev => ({
       ...prev,
       yaml: text,
-      json: O.isNone(parsed) ? "" : JSON.stringify(parsed.value, null, prev.indentation),
+      json: parsed.isErr() ? "" : JSON.stringify(parsed.value, null, prev.indentation),
     }));
   }, []);
 
@@ -68,7 +67,7 @@ export default function Page() {
   const onIndentationChange: SelectProps["onValueChange"] = value => {
     const parsed = safeJsonParse(form.json);
 
-    const jsonYaml = O.isNone(parsed)
+    const jsonYaml = parsed.isErr()
       ? { json: "", yaml: "" }
       : {
           json: JSON.stringify(parsed.value, null, value),

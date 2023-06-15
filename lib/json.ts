@@ -1,3 +1,3 @@
-import { tryCatchK } from "fp-ts/lib/Option";
+import { fromThrowable } from "neverthrow";
 
-export const safeJsonParse = tryCatchK(JSON.parse);
+export const safeJsonParse = fromThrowable(JSON.parse);

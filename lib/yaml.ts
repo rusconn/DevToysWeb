@@ -1,4 +1,4 @@
-import { tryCatchK } from "fp-ts/lib/Option";
 import yaml from "js-yaml";
+import { fromThrowable } from "neverthrow";
 
-export const safeYamlParse = tryCatchK(yaml.load);
+export const safeYamlParse = fromThrowable(yaml.load);

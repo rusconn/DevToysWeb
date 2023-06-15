@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import * as O from "fp-ts/lib/Option";
 
 import { toolGroups } from "@/config/tools";
 import { decode } from "@/lib/jwt";
@@ -21,8 +20,8 @@ export default function Page() {
   );
 
   const { header: h, payload: p } = decode(jwt);
-  const header = O.isNone(h) ? "" : JSON.stringify(h.value, null, 2);
-  const payload = O.isNone(p) ? "" : JSON.stringify(p.value, null, 2);
+  const header = h.isErr() ? "" : JSON.stringify(h.value, null, 2);
+  const payload = p.isErr() ? "" : JSON.stringify(p.value, null, 2);
 
   const clearJwt = useCallback(() => setJwt(""), []);
 

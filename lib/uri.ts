@@ -1,4 +1,4 @@
-import { tryCatchK } from "fp-ts/lib/Option";
+import { fromThrowable } from "neverthrow";
 
-export const safeEncodeURIComponent = tryCatchK(encodeURIComponent);
-export const safeDecodeURIComponent = tryCatchK(decodeURIComponent);
+export const safeEncodeURIComponent = fromThrowable(encodeURIComponent);
+export const safeDecodeURIComponent = fromThrowable(decodeURIComponent);

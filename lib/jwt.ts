@@ -1,11 +1,11 @@
-import * as O from "fp-ts/lib/Option";
 import jwt_decode from "jwt-decode";
+import { err, fromThrowable, Result } from "neverthrow";
 
-const safeJwtDecode = O.tryCatchK(jwt_decode);
+const safeJwtDecode = fromThrowable(jwt_decode);
 
 export const decode = (token: string) => {
-  let header: O.Option<Record<string, unknown>> = O.none;
-  let payload: O.Option<unknown> = O.none;
+  let header: Result<unknown, unknown> = err("");
+  let payload: Result<unknown, unknown> = err("");
 
   if (token.split(".").length === 3) {
     header = safeJwtDecode(token, { header: true });

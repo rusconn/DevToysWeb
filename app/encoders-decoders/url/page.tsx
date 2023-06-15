@@ -1,8 +1,6 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { constant } from "fp-ts/lib/function";
-import * as O from "fp-ts/lib/Option";
 
 import { toolGroups } from "@/config/tools";
 import { safeDecodeURIComponent, safeEncodeURIComponent } from "@/lib/uri";
@@ -24,14 +22,14 @@ export default function Page() {
   const setDecodedReactively = useCallback((text: string) => {
     setForm({
       decoded: text,
-      encoded: O.getOrElse(constant(""))(safeEncodeURIComponent(text)),
+      encoded: safeEncodeURIComponent(text).unwrapOr(""),
     });
   }, []);
 
   const setEncodedReactively = useCallback((text: string) => {
     setForm({
       encoded: text,
-      decoded: O.getOrElse(constant(""))(safeDecodeURIComponent(text)),
+      decoded: safeDecodeURIComponent(text).unwrapOr(""),
     });
   }, []);
 

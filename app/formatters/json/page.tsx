@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import * as O from "fp-ts/lib/Option";
 
 import { toolGroups } from "@/config/tools";
 import { safeJsonParse } from "@/lib/json";
@@ -36,7 +35,7 @@ export default function Page() {
   const [input, setInput] = useState('{\n"foo":"bar"\n}');
 
   const parsed = safeJsonParse(input);
-  const output = O.isNone(parsed) ? "" : JSON.stringify(parsed.value, null, indentation);
+  const output = parsed.isErr() ? "" : JSON.stringify(parsed.value, null, indentation);
 
   const clearInput = useCallback(() => setInput(""), []);
 
