@@ -21,8 +21,6 @@ export const Editor = React.forwardRef<HTMLTextAreaElement, EditorProps>(
       <MonacoEditor
         {...{ ref }}
         theme={themeToUse}
-        // FIXME: why is `options` any?
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         options={{
           tabFocusMode: true,
           detectIndentation: false,
