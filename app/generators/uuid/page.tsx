@@ -48,11 +48,11 @@ export default function Page() {
 
   const clearUuids = useCallback(() => setUuids([]), []);
 
-  const onUuidVersionChange: SelectProps["onValueChange"] = value => {
+  const onUuidVersionChange: NonNullable<SelectProps["onValueChange"]> = useCallback(value => {
     if (uuidVersions.is(value)) {
       setUuidVersion(value);
     }
-  };
+  }, []);
 
   const onGeneratesChange: InputProps["onChange"] = ({ currentTarget: { value } }) => {
     const newGenerates = Number(value);
@@ -67,67 +67,58 @@ export default function Page() {
     setUuids([...uuids, ...newUuids]);
   };
 
-  const hyphensConfig = useMemo(
-    () => (
-      <Configuration
-        icon={<icons.Minus size={24} />}
-        title="Hyphens"
-        control={
-          <LabeledSwitch
-            id="hyphens-switch"
-            label={hyphens ? "On" : "Off"}
-            checked={hyphens}
-            onCheckedChange={setHyphens}
-            aria-label="toggle whether to add hyphens"
-          />
-        }
-      />
-    ),
-    [hyphens]
+  const hyphensConfig = (
+    <Configuration
+      icon={<icons.Minus size={24} />}
+      title="Hyphens"
+      control={
+        <LabeledSwitch
+          id="hyphens-switch"
+          label={hyphens ? "On" : "Off"}
+          checked={hyphens}
+          onCheckedChange={setHyphens}
+          aria-label="toggle whether to add hyphens"
+        />
+      }
+    />
   );
 
-  const uppercaseConfig = useMemo(
-    () => (
-      <Configuration
-        icon={<icons.CaseSensitive size={24} />}
-        title="Uppercase"
-        control={
-          <LabeledSwitch
-            id="uppercase-switch"
-            label={uppercase ? "On" : "Off"}
-            checked={uppercase}
-            onCheckedChange={setUppercase}
-            aria-label="toggle whether to generate in uppercase"
-          />
-        }
-      />
-    ),
-    [uppercase]
+  const uppercaseConfig = (
+    <Configuration
+      icon={<icons.CaseSensitive size={24} />}
+      title="Uppercase"
+      control={
+        <LabeledSwitch
+          id="uppercase-switch"
+          label={uppercase ? "On" : "Off"}
+          checked={uppercase}
+          onCheckedChange={setUppercase}
+          aria-label="toggle whether to generate in uppercase"
+        />
+      }
+    />
   );
 
-  const uuidVersionConfig = useMemo(
-    () => (
-      <Configuration
-        icon={<icons.Settings2 size={24} />}
-        title="UUID version"
-        description="Choose the version of UUID to generate"
-        control={
-          <Select value={uuidVersion} onValueChange={onUuidVersionChange}>
-            <SelectTrigger
-              className="w-28"
-              aria-label="toggle open/close state of uuid version selection"
-            >
-              <SelectValue placeholder={uuidVersion} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value={versions.v1}>1</SelectItem>
-              <SelectItem value={versions.v4}>4 (GUID)</SelectItem>
-            </SelectContent>
-          </Select>
-        }
-      />
-    ),
-    [uuidVersion]
+  const uuidVersionConfig = (
+    <Configuration
+      icon={<icons.Settings2 size={24} />}
+      title="UUID version"
+      description="Choose the version of UUID to generate"
+      control={
+        <Select value={uuidVersion} onValueChange={onUuidVersionChange}>
+          <SelectTrigger
+            className="w-28"
+            aria-label="toggle open/close state of uuid version selection"
+          >
+            <SelectValue placeholder={uuidVersion} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value={versions.v1}>1</SelectItem>
+            <SelectItem value={versions.v4}>4 (GUID)</SelectItem>
+          </SelectContent>
+        </Select>
+      }
+    />
   );
 
   const generatesInput = useMemo(

@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
 import { useTheme } from "next-themes";
 
 import { singleTools } from "@/config/tools";
@@ -20,30 +19,27 @@ import { PageSection } from "@/components/page-section";
 export default function Page() {
   const { theme = "system", setTheme } = useTheme();
 
-  const appThemeConfig = useMemo(
-    () => (
-      <Configuration
-        icon={<icons.Paintbrush size={24} />}
-        title="App theme"
-        description="Select which app theme to display"
-        control={
-          <Select value={theme} onValueChange={setTheme}>
-            <SelectTrigger
-              className="w-28"
-              aria-label="toggle open/close state of app theme selection"
-            >
-              <SelectValue placeholder={theme} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
-            </SelectContent>
-          </Select>
-        }
-      />
-    ),
-    [setTheme, theme]
+  const appThemeConfig = (
+    <Configuration
+      icon={<icons.Paintbrush size={24} />}
+      title="App theme"
+      description="Select which app theme to display"
+      control={
+        <Select value={theme} onValueChange={setTheme}>
+          <SelectTrigger
+            className="w-28"
+            aria-label="toggle open/close state of app theme selection"
+          >
+            <SelectValue placeholder={theme} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">Light</SelectItem>
+            <SelectItem value="dark">Dark</SelectItem>
+            <SelectItem value="system">System</SelectItem>
+          </SelectContent>
+        </Select>
+      }
+    />
   );
 
   return (

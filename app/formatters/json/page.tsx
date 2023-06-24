@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { safeJsonParse } from "@/lib/json";
@@ -41,30 +41,27 @@ export default function Page() {
 
   const onJsonChange: EditorProps["onChange"] = value => setInput(value ?? "");
 
-  const indentationConfig = useMemo(
-    () => (
-      <Configuration
-        icon={<icons.Space size={24} className="-translate-y-1.5" />}
-        title="Indentation"
-        control={
-          <Select value={indentation} onValueChange={setIndentation}>
-            <SelectTrigger
-              className="w-28"
-              aria-label="toggle open/close state of indentation selection"
-            >
-              <SelectValue placeholder={indentation} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value={indentations.two}>2 spaces</SelectItem>
-              <SelectItem value={indentations.four}>4 spaces</SelectItem>
-              <SelectItem value={indentations.tab}>1 tab</SelectItem>
-              <SelectItem value={indentations.zero}>minified</SelectItem>
-            </SelectContent>
-          </Select>
-        }
-      />
-    ),
-    [indentation]
+  const indentationConfig = (
+    <Configuration
+      icon={<icons.Space size={24} className="-translate-y-1.5" />}
+      title="Indentation"
+      control={
+        <Select value={indentation} onValueChange={setIndentation}>
+          <SelectTrigger
+            className="w-28"
+            aria-label="toggle open/close state of indentation selection"
+          >
+            <SelectValue placeholder={indentation} />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value={indentations.two}>2 spaces</SelectItem>
+            <SelectItem value={indentations.four}>4 spaces</SelectItem>
+            <SelectItem value={indentations.tab}>1 tab</SelectItem>
+            <SelectItem value={indentations.zero}>minified</SelectItem>
+          </SelectContent>
+        </Select>
+      }
+    />
   );
 
   const inputPasteButton = <PasteButton onClipboardRead={setInput} />;

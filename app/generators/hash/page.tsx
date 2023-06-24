@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import createHash from "create-hash";
 
 import { toolGroups } from "@/config/tools";
@@ -37,23 +37,20 @@ export default function Page() {
   const onInputChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) =>
     setInput(value);
 
-  const uppercaseConfig = useMemo(
-    () => (
-      <Configuration
-        icon={<icons.CaseSensitive size={24} />}
-        title="Uppercase"
-        control={
-          <LabeledSwitch
-            id="uppercase-switch"
-            label={uppercase ? "On" : "Off"}
-            checked={uppercase}
-            onCheckedChange={setUppercase}
-            aria-label="toggle whether to generate in uppercase"
-          />
-        }
-      />
-    ),
-    [uppercase]
+  const uppercaseConfig = (
+    <Configuration
+      icon={<icons.CaseSensitive size={24} />}
+      title="Uppercase"
+      control={
+        <LabeledSwitch
+          id="uppercase-switch"
+          label={uppercase ? "On" : "Off"}
+          checked={uppercase}
+          onCheckedChange={setUppercase}
+          aria-label="toggle whether to generate in uppercase"
+        />
+      }
+    />
   );
 
   const inputPasteButton = <PasteButton onClipboardRead={setInput} />;

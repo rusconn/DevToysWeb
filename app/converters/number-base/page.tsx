@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import * as baselib from "@/lib/base";
@@ -58,25 +58,21 @@ export default function Page() {
   const onOctChange: InputProps["onChange"] = ({ currentTarget: { value } }) => trySetOct(value);
   const onBinChange: InputProps["onChange"] = ({ currentTarget: { value } }) => trySetBin(value);
 
-  const formatNumberConfig = useMemo(
-    () => (
-      <Configuration
-        icon={<icons.CaseSensitive size={24} />}
-        title="Format number"
-        control={
-          <LabeledSwitch
-            id="format-number-switch"
-            label={format ? "On" : "Off"}
-            checked={format}
-            onCheckedChange={setFormat}
-            aria-label="toggle whether to format numbers"
-          />
-        }
-      />
-    ),
-    [format]
+  const formatNumberConfig = (
+    <Configuration
+      icon={<icons.CaseSensitive size={24} />}
+      title="Format number"
+      control={
+        <LabeledSwitch
+          id="format-number-switch"
+          label={format ? "On" : "Off"}
+          checked={format}
+          onCheckedChange={setFormat}
+          aria-label="toggle whether to format numbers"
+        />
+      }
+    />
   );
-
   const decPasteButton = <PasteButton onClipboardRead={trySetDec} />;
   const hexPasteButton = <PasteButton onClipboardRead={trySetHex} />;
   const octPasteButton = <PasteButton onClipboardRead={trySetOct} />;
