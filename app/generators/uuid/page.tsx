@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { range } from "fp-ts/NonEmptyArray";
 import * as t from "io-ts";
 
@@ -54,13 +54,16 @@ export default function Page() {
     }
   }, []);
 
-  const onGeneratesChange: InputProps["onChange"] = ({ currentTarget: { value } }) => {
-    const newGenerates = Number(value);
+  const onGeneratesChange: NonNullable<InputProps["onChange"]> = useCallback(
+    ({ currentTarget: { value } }) => {
+      const newGenerates = Number(value);
 
-    if (newGenerates >= 1 && newGenerates <= 1000) {
-      setGenerates(newGenerates);
-    }
-  };
+      if (newGenerates >= 1 && newGenerates <= 1000) {
+        setGenerates(newGenerates);
+      }
+    },
+    []
+  );
 
   const onGenerateClick = () => {
     const newUuids = range(1, generates).map(_ => uuid(uuidVersion, hyphens, uppercase));
@@ -121,18 +124,6 @@ export default function Page() {
     />
   );
 
-  const generatesInput = useMemo(
-    () => (
-      <Input
-        className="w-24 font-sans"
-        type="number"
-        value={generates}
-        onChange={onGeneratesChange}
-      />
-    ),
-    [generates]
-  );
-
   const uuidsCopyButton = <CopyButton text={uuidsString} />;
   const uuidsClearButton = <ClearButton onClick={clearUuids} iconOnly aria-label="clear uuids" />;
 
@@ -149,7 +140,12 @@ export default function Page() {
             Generate UUID(s)
           </Button>
           <span>×</span>
-          {generatesInput}
+          <Input
+            className="w-24 font-sans"
+            type="number"
+            value={generates}
+            onChange={onGeneratesChange}
+          />
         </div>
       </PageSection>
       <PageSection title="UUID(s)" control={uuidsControl}>

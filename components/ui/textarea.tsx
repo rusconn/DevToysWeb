@@ -1,10 +1,11 @@
 import * as React from "react";
+import equal from "react-fast-compare";
 
 import { cn } from "@/lib/style";
 
 export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+export const RawTextarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => (
     <textarea
       {...{ ref }}
@@ -17,4 +18,6 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     />
   )
 );
-Textarea.displayName = "Textarea";
+RawTextarea.displayName = "RawTextarea";
+
+export const Textarea = React.memo(RawTextarea, equal);
