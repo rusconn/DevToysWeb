@@ -1,4 +1,5 @@
-import { useCallback, useRef } from "react";
+import { memo, useCallback, useRef } from "react";
+import equal from "react-fast-compare";
 
 import { icons } from "@/components/icons";
 
@@ -12,7 +13,7 @@ export type FileButtonProps = Pick<InputProps, "accept"> &
     onFileRead: (text: string) => void;
   };
 
-export function FileButton({
+export function RawFileButton({
   accept,
   iconOnly,
   maxFileSizeMb = 20,
@@ -67,3 +68,5 @@ export function FileButton({
     </>
   );
 }
+
+export const FileButton = memo(RawFileButton, equal);

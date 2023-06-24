@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import yaml from "js-yaml";
 
 import { toolGroups } from "@/config/tools";
@@ -104,47 +104,30 @@ export default function Page() {
     />
   );
 
-  const jsonPasteButton = useMemo(
-    () => <PasteButton onClipboardRead={setJsonReactively} />,
-    [setJsonReactively]
-  );
+  const jsonPasteButton = <PasteButton onClipboardRead={setJsonReactively} />;
+  const yamlPasteButton = <PasteButton onClipboardRead={setYamlReactively} />;
 
-  const yamlPasteButton = useMemo(
-    () => <PasteButton onClipboardRead={setYamlReactively} />,
-    [setYamlReactively]
+  const jsonFileButton = (
+    <FileButton
+      accept=".json"
+      onFileRead={setJsonReactively}
+      iconOnly
+      aria-label="load a json file"
+    />
   );
-
-  const jsonFileButton = useMemo(
-    () => (
-      <FileButton
-        accept=".json"
-        onFileRead={setJsonReactively}
-        iconOnly
-        aria-label="load a json file"
-      />
-    ),
-    [setJsonReactively]
-  );
-
-  const yamlFileButton = useMemo(
-    () => (
-      <FileButton
-        accept=".yml,.yaml"
-        onFileRead={setYamlReactively}
-        iconOnly
-        aria-label="load a yaml file"
-      />
-    ),
-    [setYamlReactively]
+  const yamlFileButton = (
+    <FileButton
+      accept=".yml,.yaml"
+      onFileRead={setYamlReactively}
+      iconOnly
+      aria-label="load a yaml file"
+    />
   );
 
   const jsonCopyButton = <CopyButton text={form.json} />;
   const yamlCopyButton = <CopyButton text={form.yaml} />;
 
-  const clearButton = useMemo(
-    () => <ClearButton onClick={clearBoth} iconOnly aria-label="clear json and yaml" />,
-    [clearBoth]
-  );
+  const clearButton = <ClearButton onClick={clearBoth} iconOnly aria-label="clear json and yaml" />;
 
   const jsonControl = (
     <ControlMenu list={[jsonPasteButton, jsonFileButton, jsonCopyButton, clearButton]} />

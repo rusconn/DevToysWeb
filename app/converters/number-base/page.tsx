@@ -77,10 +77,10 @@ export default function Page() {
     [format]
   );
 
-  const decPasteButton = useMemo(() => <PasteButton onClipboardRead={trySetDec} />, [trySetDec]);
-  const hexPasteButton = useMemo(() => <PasteButton onClipboardRead={trySetHex} />, [trySetHex]);
-  const octPasteButton = useMemo(() => <PasteButton onClipboardRead={trySetOct} />, [trySetOct]);
-  const binPasteButton = useMemo(() => <PasteButton onClipboardRead={trySetBin} />, [trySetBin]);
+  const decPasteButton = <PasteButton onClipboardRead={trySetDec} />;
+  const hexPasteButton = <PasteButton onClipboardRead={trySetHex} />;
+  const octPasteButton = <PasteButton onClipboardRead={trySetOct} />;
+  const binPasteButton = <PasteButton onClipboardRead={trySetBin} />;
 
   const decControl = <ControlMenu list={[decPasteButton]} />;
   const hexControl = <ControlMenu list={[hexPasteButton]} />;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { escape, unescape } from "html-escaper";
 
 import { toolGroups } from "@/config/tools";
@@ -46,36 +46,21 @@ export default function Page() {
   const onEncodedChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) =>
     setEncodedReactively(value);
 
-  const decodedPasteButton = useMemo(
-    () => <PasteButton onClipboardRead={setDecodedReactively} />,
-    [setDecodedReactively]
+  const decodedPasteButton = <PasteButton onClipboardRead={setDecodedReactively} />;
+  const encodedPasteButton = <PasteButton onClipboardRead={setEncodedReactively} />;
+
+  const decodedFileButton = (
+    <FileButton onFileRead={setDecodedReactively} iconOnly aria-label="load a decoded file" />
+  );
+  const encodedFileButton = (
+    <FileButton onFileRead={setEncodedReactively} iconOnly aria-label="load a encoded file" />
   );
 
-  const encodedPasteButton = useMemo(
-    () => <PasteButton onClipboardRead={setEncodedReactively} />,
-    [setEncodedReactively]
-  );
+  const decodedCopyButton = <CopyButton text={form.decoded} />;
+  const encodedCopyButton = <CopyButton text={form.encoded} />;
 
-  const decodedFileButton = useMemo(
-    () => (
-      <FileButton onFileRead={setDecodedReactively} iconOnly aria-label="load a decoded file" />
-    ),
-    [setDecodedReactively]
-  );
-
-  const encodedFileButton = useMemo(
-    () => (
-      <FileButton onFileRead={setEncodedReactively} iconOnly aria-label="load a encoded file" />
-    ),
-    [setEncodedReactively]
-  );
-
-  const decodedCopyButton = useMemo(() => <CopyButton text={form.decoded} />, [form.decoded]);
-  const encodedCopyButton = useMemo(() => <CopyButton text={form.encoded} />, [form.encoded]);
-
-  const clearButton = useMemo(
-    () => <ClearButton onClick={clearBoth} iconOnly aria-label="clear decoded and encoded" />,
-    [clearBoth]
+  const clearButton = (
+    <ClearButton onClick={clearBoth} iconOnly aria-label="clear decoded and encoded" />
   );
 
   const decodedControl = (

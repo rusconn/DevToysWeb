@@ -142,12 +142,8 @@ export default function Page() {
     [generates]
   );
 
-  const uuidsCopyButton = useMemo(() => <CopyButton text={uuidsString} />, [uuidsString]);
-
-  const uuidsClearButton = useMemo(
-    () => <ClearButton onClick={clearUuids} iconOnly aria-label="clear uuids" />,
-    [clearUuids]
-  );
+  const uuidsCopyButton = <CopyButton text={uuidsString} />;
+  const uuidsClearButton = <ClearButton onClick={clearUuids} iconOnly aria-label="clear uuids" />;
 
   const uuidsControl = <ControlMenu list={[uuidsCopyButton, uuidsClearButton]} />;
 

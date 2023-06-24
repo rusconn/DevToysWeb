@@ -67,21 +67,15 @@ export default function Page() {
     [indentation]
   );
 
-  const inputPasteButton = useMemo(() => <PasteButton onClipboardRead={setInput} />, []);
+  const inputPasteButton = <PasteButton onClipboardRead={setInput} />;
 
-  const inputFileButton = useMemo(
-    () => (
-      <FileButton accept=".json" onFileRead={setInput} iconOnly aria-label="load a json file" />
-    ),
-    []
+  const inputFileButton = (
+    <FileButton accept=".json" onFileRead={setInput} iconOnly aria-label="load a json file" />
   );
 
-  const inputClearButton = useMemo(
-    () => <ClearButton onClick={clearInput} iconOnly aria-label="clear json" />,
-    [clearInput]
-  );
+  const inputClearButton = <ClearButton onClick={clearInput} iconOnly aria-label="clear json" />;
 
-  const outputCopyButton = useMemo(() => <CopyButton text={output} />, [output]);
+  const outputCopyButton = <CopyButton text={output} />;
 
   const inputControl = <ControlMenu list={[inputPasteButton, inputFileButton, inputClearButton]} />;
   const outputControl = <ControlMenu list={[outputCopyButton]} />;

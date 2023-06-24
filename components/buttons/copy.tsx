@@ -1,4 +1,5 @@
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
+import equal from "react-fast-compare";
 
 import { icons } from "@/components/icons";
 
@@ -8,7 +9,7 @@ export type CopyButtonProps = Omit<BaseButtonProps, "icon" | "labelText" | "onCl
   text: string;
 };
 
-export function CopyButton({ text, iconOnly, ...props }: CopyButtonProps) {
+function RawCopyButton({ text, iconOnly, ...props }: CopyButtonProps) {
   const onClick: BaseButtonProps["onClick"] = useCallback(() => {
     navigator.clipboard.writeText(text).catch(e => {
       if (e instanceof Error) {
@@ -27,3 +28,5 @@ export function CopyButton({ text, iconOnly, ...props }: CopyButtonProps) {
     />
   );
 }
+
+export const CopyButton = memo(RawCopyButton, equal);

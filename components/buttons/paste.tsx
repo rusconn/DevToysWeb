@@ -1,4 +1,5 @@
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
+import equal from "react-fast-compare";
 
 import { icons } from "@/components/icons";
 
@@ -8,7 +9,7 @@ export type PasteButtonProps = Omit<BaseButtonProps, "icon" | "labelText" | "onC
   onClipboardRead: (text: string) => void;
 };
 
-export function PasteButton({ iconOnly, onClipboardRead, ...props }: PasteButtonProps) {
+export function RawPasteButton({ iconOnly, onClipboardRead, ...props }: PasteButtonProps) {
   const onClick: BaseButtonProps["onClick"] = useCallback(() => {
     navigator.clipboard
       .readText()
@@ -30,3 +31,5 @@ export function PasteButton({ iconOnly, onClipboardRead, ...props }: PasteButton
     />
   );
 }
+
+export const PasteButton = memo(RawPasteButton, equal);

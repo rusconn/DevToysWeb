@@ -56,39 +56,16 @@ export default function Page() {
     [uppercase]
   );
 
-  const inputPasteButton = useMemo(() => <PasteButton onClipboardRead={setInput} />, []);
-
-  const inputFileButton = useMemo(
-    () => <FileButton onFileRead={setInput} iconOnly aria-label="load a file" />,
-    []
-  );
-
-  const inputClearButton = useMemo(
-    () => <ClearButton onClick={clearInput} iconOnly aria-label="clear input" />,
-    [clearInput]
-  );
+  const inputPasteButton = <PasteButton onClipboardRead={setInput} />;
+  const inputFileButton = <FileButton onFileRead={setInput} iconOnly aria-label="load a file" />;
+  const inputClearButton = <ClearButton onClick={clearInput} iconOnly aria-label="clear input" />;
 
   const inputControl = <ControlMenu list={[inputPasteButton, inputFileButton, inputClearButton]} />;
 
-  const md5CopyButton = useMemo(
-    () => <CopyButton text={md5} iconOnly aria-label="copy generated md5" />,
-    [md5]
-  );
-
-  const sha1CopyButton = useMemo(
-    () => <CopyButton text={sha1} iconOnly aria-label="copy generated sha1" />,
-    [sha1]
-  );
-
-  const sha256CopyButton = useMemo(
-    () => <CopyButton text={sha256} iconOnly aria-label="copy generated sha256" />,
-    [sha256]
-  );
-
-  const sha512CopyButton = useMemo(
-    () => <CopyButton text={sha512} iconOnly aria-label="copy generated sha512" />,
-    [sha512]
-  );
+  const md5CopyButton = <CopyButton text={md5} iconOnly aria-label="copy generated md5" />;
+  const sha1CopyButton = <CopyButton text={sha1} iconOnly aria-label="copy generated sha1" />;
+  const sha256CopyButton = <CopyButton text={sha256} iconOnly aria-label="copy generated sha256" />;
+  const sha512CopyButton = <CopyButton text={sha512} iconOnly aria-label="copy generated sha512" />;
 
   return (
     <PageRootSection title={toolGroups.generators.tools.hash.longTitle}>

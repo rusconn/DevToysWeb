@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { decode } from "@/lib/jwt";
@@ -27,20 +27,16 @@ export default function Page() {
 
   const onJwtChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) => setJwt(value);
 
-  const jwtTokenPasteButton = useMemo(() => <PasteButton onClipboardRead={setJwt} />, [setJwt]);
+  const jwtTokenPasteButton = <PasteButton onClipboardRead={setJwt} />;
 
-  const jwtTokenFileButton = useMemo(
-    () => <FileButton onFileRead={setJwt} iconOnly aria-label="load a token file" />,
-    [setJwt]
+  const jwtTokenFileButton = (
+    <FileButton onFileRead={setJwt} iconOnly aria-label="load a token file" />
   );
 
-  const jwtTokenClearButton = useMemo(
-    () => <ClearButton onClick={clearJwt} iconOnly aria-label="clear token" />,
-    [clearJwt]
-  );
+  const jwtTokenClearButton = <ClearButton onClick={clearJwt} iconOnly aria-label="clear token" />;
 
-  const heaederCopyButton = useMemo(() => <CopyButton text={header} />, [header]);
-  const payloadCopyButton = useMemo(() => <CopyButton text={payload} />, [payload]);
+  const heaederCopyButton = <CopyButton text={header} />;
+  const payloadCopyButton = <CopyButton text={payload} />;
 
   const jwtTokenControl = (
     <ControlMenu list={[jwtTokenPasteButton, jwtTokenFileButton, jwtTokenClearButton]} />
