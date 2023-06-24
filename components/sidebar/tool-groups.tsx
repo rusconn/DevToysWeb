@@ -9,9 +9,7 @@ import { toolGroups } from "@/config/tools";
 import { ToolGroup } from "./tool-group";
 
 const isGroupedTool = (path: string) =>
-  Object.values(toolGroups)
-    .map(({ href }) => href as string)
-    .some(group => path.startsWith(`${group}/`));
+  Object.values(toolGroups).some(({ href }) => path.startsWith(`${href}/`));
 
 export function ToolGroups() {
   const pathname = usePathname();
