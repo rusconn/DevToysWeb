@@ -1,5 +1,5 @@
 import { memo } from "react";
-import equal from "fast-deep-equal";
+import equal from "react-fast-compare";
 
 type Props = {
   list: React.ReactNode[];
