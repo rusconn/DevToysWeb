@@ -41,12 +41,10 @@ export default function Page() {
 
   const onJsonChange: EditorProps["onChange"] = value => setInput(value ?? "");
 
-  const indentationIcon = useMemo(() => <icons.Space size={24} className="-translate-y-1.5" />, []);
-
   const indentationConfig = useMemo(
     () => (
       <Configuration
-        icon={indentationIcon}
+        icon={<icons.Space size={24} className="-translate-y-1.5" />}
         title="Indentation"
         control={
           <Select value={indentation} onValueChange={setIndentation}>
@@ -66,7 +64,7 @@ export default function Page() {
         }
       />
     ),
-    [indentation, indentationIcon]
+    [indentation]
   );
 
   const inputPasteButton = useMemo(() => <PasteButton onClipboardRead={setInput} />, []);

@@ -83,11 +83,9 @@ export default function Page() {
   const onJsonChange: EditorProps["onChange"] = value => setJsonReactively(value ?? "");
   const onYamlChange: EditorProps["onChange"] = value => setYamlReactively(value ?? "");
 
-  const indentationIcon = useMemo(() => <icons.Space size={24} className="-translate-y-1.5" />, []);
-
   const indentationConfig = (
     <Configuration
-      icon={indentationIcon}
+      icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
         <Select value={form.indentation} onValueChange={onIndentationChange}>

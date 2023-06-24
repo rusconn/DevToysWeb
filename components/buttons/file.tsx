@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useRef } from "react";
 
 import { icons } from "@/components/icons";
 
@@ -55,11 +55,14 @@ export function FileButton({
     [maxFileSizeMb, onFileRead]
   );
 
-  const icon = useMemo(() => <icons.File size={16} />, []);
-
   return (
     <>
-      <BaseButton {...props} {...{ icon, iconOnly, onClick }} labelText="Load a file" />
+      <BaseButton
+        {...props}
+        icon={<icons.File size={16} />}
+        {...{ iconOnly, onClick }}
+        labelText="Load a file"
+      />
       <input hidden type="file" {...{ ref, accept, onChange }} />
     </>
   );

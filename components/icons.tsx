@@ -1,3 +1,4 @@
+import { memo, MemoExoticComponent } from "react";
 import {
   AlignLeft,
   ArrowRightLeft,
@@ -29,37 +30,38 @@ import {
   X,
   type Icon as LucideIcon,
 } from "lucide-react";
+import equal from "react-fast-compare";
 
-export type Icon = LucideIcon;
+export type Icon = LucideIcon | MemoExoticComponent<LucideIcon>;
 
 export const icons = {
-  AlignLeft,
-  ArrowRightLeft,
-  Binary,
-  Braces,
-  CaseSensitive,
-  Check,
-  ChevronDown,
-  Clipboard,
-  Code: Code2,
-  Copy,
-  Equal,
-  File: FileIcon,
-  Fingerprint,
-  Hash,
-  Home,
-  Key,
-  Link: Link2,
-  PackagePlus,
-  Paintbrush: Paintbrush2,
-  Search,
-  Settings,
-  Settings2,
-  Space,
-  Sun: SunMedium,
-  Minus,
-  Moon,
-  X,
+  AlignLeft: memo(AlignLeft, equal),
+  ArrowRightLeft: memo(ArrowRightLeft, equal),
+  Binary: memo(Binary, equal),
+  Braces: memo(Braces, equal),
+  CaseSensitive: memo(CaseSensitive, equal),
+  Check: memo(Check, equal),
+  ChevronDown: memo(ChevronDown, equal),
+  Clipboard: memo(Clipboard, equal),
+  Code: memo(Code2, equal),
+  Copy: memo(Copy, equal),
+  Equal: memo(Equal, equal),
+  File: memo(FileIcon, equal),
+  Fingerprint: memo(Fingerprint, equal),
+  Hash: memo(Hash, equal),
+  Home: memo(Home, equal),
+  Key: memo(Key, equal),
+  Link: memo(Link2, equal),
+  PackagePlus: memo(PackagePlus, equal),
+  Paintbrush: memo(Paintbrush2, equal),
+  Search: memo(Search, equal),
+  Settings: memo(Settings, equal),
+  Settings2: memo(Settings2, equal),
+  Space: memo(Space, equal),
+  Sun: memo(SunMedium, equal),
+  Minus: memo(Minus, equal),
+  Moon: memo(Moon, equal),
+  X: memo(X, equal),
   GitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path

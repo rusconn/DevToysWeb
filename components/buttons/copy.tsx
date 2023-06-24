@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 
 import { icons } from "@/components/icons";
 
@@ -18,7 +18,12 @@ export function CopyButton({ text, iconOnly, ...props }: CopyButtonProps) {
     });
   }, [text]);
 
-  const icon = useMemo(() => <icons.Copy size={16} />, []);
-
-  return <BaseButton {...props} {...{ icon, iconOnly, onClick }} labelText="Copy" />;
+  return (
+    <BaseButton
+      {...props}
+      icon={<icons.Copy size={16} />}
+      {...{ iconOnly, onClick }}
+      labelText="Copy"
+    />
+  );
 }

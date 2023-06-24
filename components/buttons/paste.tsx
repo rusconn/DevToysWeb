@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 
 import { icons } from "@/components/icons";
 
@@ -21,7 +21,12 @@ export function PasteButton({ iconOnly, onClipboardRead, ...props }: PasteButton
       });
   }, [onClipboardRead]);
 
-  const icon = useMemo(() => <icons.Clipboard size={16} />, []);
-
-  return <BaseButton {...props} {...{ icon, iconOnly, onClick }} labelText="Paste" />;
+  return (
+    <BaseButton
+      {...props}
+      icon={<icons.Clipboard size={16} />}
+      {...{ iconOnly, onClick }}
+      labelText="Paste"
+    />
+  );
 }

@@ -37,12 +37,10 @@ export default function Page() {
   const onInputChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) =>
     setInput(value);
 
-  const uppercaseIcon = useMemo(() => <icons.CaseSensitive size={24} />, []);
-
   const uppercaseConfig = useMemo(
     () => (
       <Configuration
-        icon={uppercaseIcon}
+        icon={<icons.CaseSensitive size={24} />}
         title="Uppercase"
         control={
           <LabeledSwitch
@@ -55,7 +53,7 @@ export default function Page() {
         }
       />
     ),
-    [uppercase, uppercaseIcon]
+    [uppercase]
   );
 
   const inputPasteButton = useMemo(() => <PasteButton onClipboardRead={setInput} />, []);

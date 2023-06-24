@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSetSearchText } from "@/contexts/search-text";
 
@@ -40,13 +40,6 @@ export function SearchBar() {
     inputRef.current?.focus();
   };
 
-  const clearIcon = useMemo(() => <icons.X className="p-1 text-muted-foreground" />, []);
-
-  const searchIcon = useMemo(
-    () => <icons.Search className="-scale-x-100 p-1 text-muted-foreground" />,
-    []
-  );
-
   return (
     <div className="relative flex w-full items-center">
       <Input
@@ -59,11 +52,11 @@ export function SearchBar() {
       />
       <div className="absolute right-1 flex gap-1">
         <Button className={cn("h-6 p-0", !text && "hidden")} variant="ghost" onClick={clearText}>
-          {clearIcon}
+          <icons.X className="p-1 text-muted-foreground" />
           <span className="sr-only">Clear search text</span>
         </Button>
         <Button className="h-6 p-0" variant="ghost" onClick={search} aria-label="search">
-          {searchIcon}
+          <icons.Search className="-scale-x-100 p-1 text-muted-foreground" />
           <span className="sr-only">Search tools</span>
         </Button>
       </div>

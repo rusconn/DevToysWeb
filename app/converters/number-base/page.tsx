@@ -58,12 +58,10 @@ export default function Page() {
   const onOctChange: InputProps["onChange"] = ({ currentTarget: { value } }) => trySetOct(value);
   const onBinChange: InputProps["onChange"] = ({ currentTarget: { value } }) => trySetBin(value);
 
-  const formatNumberIcon = useMemo(() => <icons.CaseSensitive size={24} />, []);
-
   const formatNumberConfig = useMemo(
     () => (
       <Configuration
-        icon={formatNumberIcon}
+        icon={<icons.CaseSensitive size={24} />}
         title="Format number"
         control={
           <LabeledSwitch
@@ -76,7 +74,7 @@ export default function Page() {
         }
       />
     ),
-    [format, formatNumberIcon]
+    [format]
   );
 
   const decPasteButton = useMemo(() => <PasteButton onClipboardRead={trySetDec} />, [trySetDec]);

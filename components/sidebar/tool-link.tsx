@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import Link, { LinkProps } from "next/link";
 
 import { Tool } from "@/config/tools";
@@ -13,8 +13,6 @@ type Props = Pick<Tool, "Icon" | "shortTitle"> &
   };
 
 function RawToolLink({ Icon, shortTitle: title, href, onClick, className, highlight }: Props) {
-  const icon = useMemo(() => <Icon size={16} />, [Icon]);
-
   return (
     <Link
       className={cn(
@@ -28,7 +26,7 @@ function RawToolLink({ Icon, shortTitle: title, href, onClick, className, highli
         <Indicator />
       </span>
       <span className="flex select-none items-center">
-        {icon}
+        <Icon size={16} />
         <span className="ml-4">{title}</span>
       </span>
     </Link>

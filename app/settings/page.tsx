@@ -20,12 +20,10 @@ import { PageSection } from "@/components/page-section";
 export default function Page() {
   const { theme = "system", setTheme } = useTheme();
 
-  const appThemeIcon = useMemo(() => <icons.Paintbrush size={24} />, []);
-
   const appThemeConfig = useMemo(
     () => (
       <Configuration
-        icon={appThemeIcon}
+        icon={<icons.Paintbrush size={24} />}
         title="App theme"
         description="Select which app theme to display"
         control={
@@ -45,7 +43,7 @@ export default function Page() {
         }
       />
     ),
-    [appThemeIcon, setTheme, theme]
+    [setTheme, theme]
   );
 
   return (
