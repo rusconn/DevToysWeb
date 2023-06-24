@@ -16,8 +16,9 @@ function RawToolLink({ Icon, shortTitle: title, href, onClick, className, highli
   return (
     <Link
       className={cn(
-        "flex h-10 items-center gap-3 rounded hover:bg-accent",
+        "flex h-10 items-center gap-3 rounded",
         highlight === "both" && "bg-accent",
+        "hover:bg-accent",
         className
       )}
       {...{ href, onClick }}

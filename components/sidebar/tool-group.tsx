@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import * as Accordion from "@radix-ui/react-accordion";
 
 import { ToolGroup as IToolGroup } from "@/config/tools";
+import { cn } from "@/lib/style";
 import { icons } from "@/components/icons";
 
 import { ToolLink } from "./tool-link";
@@ -38,14 +39,24 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
           />
           <Accordion.Trigger
             ref={triggerRef}
-            className="absolute right-0 flex h-10 w-10 items-center justify-center rounded transition-all duration-0 hover:bg-accent [&[data-state=open]>svg]:rotate-180"
+            className={cn(
+              "absolute right-0 flex h-10 w-10 items-center justify-center rounded transition-all duration-0",
+              "hover:bg-accent",
+              "[&[data-state=open]>svg]:rotate-180"
+            )}
             aria-label="toggle open/close state of the tool group"
           >
             <icons.ChevronDown className="h-4 w-4 transition-transform duration-200" />
           </Accordion.Trigger>
         </div>
       </Accordion.Header>
-      <Accordion.AccordionContent className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+      <Accordion.AccordionContent
+        className={cn(
+          "overflow-hidden transition-all",
+          "data-[state=open]:animate-accordion-down",
+          "data-[state=closed]:animate-accordion-up"
+        )}
+      >
         <ul>
           {Object.values(tools).map(tool => (
             <li className="mt-1" key={tool.href}>
