@@ -1,13 +1,13 @@
 import { Button, ButtonProps } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
-export type BaseButtonProps = ButtonProps & {
+export type BaseProps = ButtonProps & {
   icon: React.ReactNode;
   iconOnly?: true;
   labelText: string;
 };
 
-export function BaseButton({ icon, iconOnly, labelText, ...props }: BaseButtonProps) {
+export function Base({ icon, iconOnly, labelText, ...props }: BaseProps) {
   const button = (
     <Button className="w-fit border" {...props}>
       {icon}

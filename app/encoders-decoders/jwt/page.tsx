@@ -6,10 +6,7 @@ import { toolGroups } from "@/config/tools";
 import { decode } from "@/lib/jwt";
 import { Editor } from "@/components/ui/editor";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
-import { ClearButton } from "@/components/buttons/clear";
-import { CopyButton } from "@/components/buttons/copy";
-import { FileButton } from "@/components/buttons/file";
-import { PasteButton } from "@/components/buttons/paste";
+import * as Button from "@/components/buttons";
 import { ControlMenu } from "@/components/control-menu";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
@@ -20,23 +17,23 @@ export default function Page() {
   );
 
   const { header: h, payload: p } = decode(jwt);
-  const header = h.isErr() ? "" : JSON.stringify(h.value, null, 2);
-  const payload = p.isErr() ? "" : JSON.stringify(p.value, null, 2);
+  const header = h.map(x => JSON.stringify(x, null, 2)).unwrapOr("");
+  const payload = p.map(x => JSON.stringify(x, null, 2)).unwrapOr("");
 
   const clearJwt = useCallback(() => setJwt(""), []);
 
-  const onJwtChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) => setJwt(value);
+  const onJwtChange: TextareaProps["onChange"] = e => setJwt(e.currentTarget.value);
 
-  const jwtTokenPasteButton = <PasteButton onClipboardRead={setJwt} />;
+  const jwtTokenPasteButton = <Button.Paste onClipboardRead={setJwt} />;
 
   const jwtTokenFileButton = (
-    <FileButton onFileRead={setJwt} iconOnly aria-label="load a token file" />
+    <Button.File onFileRead={setJwt} iconOnly aria-label="load a token file" />
   );
 
-  const jwtTokenClearButton = <ClearButton onClick={clearJwt} iconOnly aria-label="clear token" />;
+  const jwtTokenClearButton = <Button.Clear onClick={clearJwt} iconOnly aria-label="clear token" />;
 
-  const heaederCopyButton = <CopyButton text={header} />;
-  const payloadCopyButton = <CopyButton text={payload} />;
+  const heaederCopyButton = <Button.Copy text={header} />;
+  const payloadCopyButton = <Button.Copy text={payload} />;
 
   const jwtTokenControl = (
     <ControlMenu list={[jwtTokenPasteButton, jwtTokenFileButton, jwtTokenClearButton]} />

@@ -27,7 +27,7 @@ export function SearchBar() {
     }
   };
 
-  const changeText: InputProps["onChange"] = ({ currentTarget }) => setText(currentTarget.value);
+  const changeText: InputProps["onChange"] = e => setText(e.currentTarget.value);
 
   const searchIfEnter: InputProps["onKeyDown"] = ({ code }) => {
     if (code === "Enter") {

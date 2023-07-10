@@ -6,10 +6,7 @@ import createHash from "create-hash";
 import { toolGroups } from "@/config/tools";
 import { Input } from "@/components/ui/input";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
-import { ClearButton } from "@/components/buttons/clear";
-import { CopyButton } from "@/components/buttons/copy";
-import { FileButton } from "@/components/buttons/file";
-import { PasteButton } from "@/components/buttons/paste";
+import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { ControlMenu } from "@/components/control-menu";
@@ -34,8 +31,7 @@ export default function Page() {
 
   const clearInput = useCallback(() => setInput(""), []);
 
-  const onInputChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) =>
-    setInput(value);
+  const onInputChange: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
 
   const uppercaseConfig = (
     <Configuration
@@ -53,16 +49,20 @@ export default function Page() {
     />
   );
 
-  const inputPasteButton = <PasteButton onClipboardRead={setInput} />;
-  const inputFileButton = <FileButton onFileRead={setInput} iconOnly aria-label="load a file" />;
-  const inputClearButton = <ClearButton onClick={clearInput} iconOnly aria-label="clear input" />;
+  const inputPasteButton = <Button.Paste onClipboardRead={setInput} />;
+  const inputFileButton = <Button.File onFileRead={setInput} iconOnly aria-label="load a file" />;
+  const inputClearButton = <Button.Clear onClick={clearInput} iconOnly aria-label="clear input" />;
 
   const inputControl = <ControlMenu list={[inputPasteButton, inputFileButton, inputClearButton]} />;
 
-  const md5CopyButton = <CopyButton text={md5} iconOnly aria-label="copy generated md5" />;
-  const sha1CopyButton = <CopyButton text={sha1} iconOnly aria-label="copy generated sha1" />;
-  const sha256CopyButton = <CopyButton text={sha256} iconOnly aria-label="copy generated sha256" />;
-  const sha512CopyButton = <CopyButton text={sha512} iconOnly aria-label="copy generated sha512" />;
+  const md5CopyButton = <Button.Copy text={md5} iconOnly aria-label="copy generated md5" />;
+  const sha1CopyButton = <Button.Copy text={sha1} iconOnly aria-label="copy generated sha1" />;
+  const sha256CopyButton = (
+    <Button.Copy text={sha256} iconOnly aria-label="copy generated sha256" />
+  );
+  const sha512CopyButton = (
+    <Button.Copy text={sha512} iconOnly aria-label="copy generated sha512" />
+  );
 
   return (
     <PageRootSection title={toolGroups.generators.tools.hash.longTitle}>

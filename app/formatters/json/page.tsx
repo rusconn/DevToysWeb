@@ -5,17 +5,8 @@ import { useCallback, useState } from "react";
 import { toolGroups } from "@/config/tools";
 import { safeJsonParse } from "@/lib/json";
 import { Editor, EditorProps } from "@/components/ui/editor";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { ClearButton } from "@/components/buttons/clear";
-import { CopyButton } from "@/components/buttons/copy";
-import { FileButton } from "@/components/buttons/file";
-import { PasteButton } from "@/components/buttons/paste";
+import * as Select from "@/components/ui/select";
+import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { ControlMenu } from "@/components/control-menu";
@@ -35,7 +26,7 @@ export default function Page() {
   const [input, setInput] = useState('{\n"foo":"bar"\n}');
 
   const parsed = safeJsonParse(input);
-  const output = parsed.isErr() ? "" : JSON.stringify(parsed.value, null, indentation);
+  const output = parsed.map(x => JSON.stringify(x, null, indentation)).unwrapOr("");
 
   const clearInput = useCallback(() => setInput(""), []);
 
@@ -46,33 +37,33 @@ export default function Page() {
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
-        <Select value={indentation} onValueChange={setIndentation}>
-          <SelectTrigger
+        <Select.Root value={indentation} onValueChange={setIndentation}>
+          <Select.Trigger
             className="w-28"
             aria-label="toggle open/close state of indentation selection"
           >
-            <SelectValue placeholder={indentation} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value={indentations.two}>2 spaces</SelectItem>
-            <SelectItem value={indentations.four}>4 spaces</SelectItem>
-            <SelectItem value={indentations.tab}>1 tab</SelectItem>
-            <SelectItem value={indentations.zero}>minified</SelectItem>
-          </SelectContent>
-        </Select>
+            <Select.Value placeholder={indentation} />
+          </Select.Trigger>
+          <Select.Content>
+            <Select.Item value={indentations.two}>2 spaces</Select.Item>
+            <Select.Item value={indentations.four}>4 spaces</Select.Item>
+            <Select.Item value={indentations.tab}>1 tab</Select.Item>
+            <Select.Item value={indentations.zero}>minified</Select.Item>
+          </Select.Content>
+        </Select.Root>
       }
     />
   );
 
-  const inputPasteButton = <PasteButton onClipboardRead={setInput} />;
+  const inputPasteButton = <Button.Paste onClipboardRead={setInput} />;
 
   const inputFileButton = (
-    <FileButton accept=".json" onFileRead={setInput} iconOnly aria-label="load a json file" />
+    <Button.File accept=".json" onFileRead={setInput} iconOnly aria-label="load a json file" />
   );
 
-  const inputClearButton = <ClearButton onClick={clearInput} iconOnly aria-label="clear json" />;
+  const inputClearButton = <Button.Clear onClick={clearInput} iconOnly aria-label="clear json" />;
 
-  const outputCopyButton = <CopyButton text={output} />;
+  const outputCopyButton = <Button.Copy text={output} />;
 
   const inputControl = <ControlMenu list={[inputPasteButton, inputFileButton, inputClearButton]} />;
   const outputControl = <ControlMenu list={[outputCopyButton]} />;

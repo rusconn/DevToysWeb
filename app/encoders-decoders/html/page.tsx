@@ -5,10 +5,7 @@ import { escape, unescape } from "html-escaper";
 
 import { toolGroups } from "@/config/tools";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
-import { ClearButton } from "@/components/buttons/clear";
-import { CopyButton } from "@/components/buttons/copy";
-import { FileButton } from "@/components/buttons/file";
-import { PasteButton } from "@/components/buttons/paste";
+import * as Button from "@/components/buttons";
 import { ControlMenu } from "@/components/control-menu";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
@@ -19,17 +16,17 @@ export default function Page() {
     encoded: "&gt; It&#39;s &quot;HTML escaping&quot;.",
   });
 
-  const setDecodedReactively = useCallback((text: string) => {
+  const setFormByDecoded = useCallback((text: string) => {
     setForm({
       decoded: text,
       encoded: escape(text),
     });
   }, []);
 
-  const setEncodedReactively = useCallback((text: string) => {
+  const setFormByEncoded = useCallback((text: string) => {
     setForm({
-      encoded: text,
       decoded: unescape(text),
+      encoded: text,
     });
   }, []);
 
@@ -40,33 +37,29 @@ export default function Page() {
     });
   }, []);
 
-  const onDecodedChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) =>
-    setDecodedReactively(value);
+  const onDecodedChange: TextareaProps["onChange"] = e => setFormByDecoded(e.currentTarget.value);
+  const onEncodedChange: TextareaProps["onChange"] = e => setFormByEncoded(e.currentTarget.value);
 
-  const onEncodedChange: TextareaProps["onChange"] = ({ currentTarget: { value } }) =>
-    setEncodedReactively(value);
-
-  const decodedPasteButton = <PasteButton onClipboardRead={setDecodedReactively} />;
-  const encodedPasteButton = <PasteButton onClipboardRead={setEncodedReactively} />;
+  const decodedPasteButton = <Button.Paste onClipboardRead={setFormByDecoded} />;
+  const encodedPasteButton = <Button.Paste onClipboardRead={setFormByEncoded} />;
 
   const decodedFileButton = (
-    <FileButton onFileRead={setDecodedReactively} iconOnly aria-label="load a decoded file" />
+    <Button.File onFileRead={setFormByDecoded} iconOnly aria-label="load a decoded file" />
   );
   const encodedFileButton = (
-    <FileButton onFileRead={setEncodedReactively} iconOnly aria-label="load a encoded file" />
+    <Button.File onFileRead={setFormByEncoded} iconOnly aria-label="load a encoded file" />
   );
 
-  const decodedCopyButton = <CopyButton text={form.decoded} />;
-  const encodedCopyButton = <CopyButton text={form.encoded} />;
+  const decodedCopyButton = <Button.Copy text={form.decoded} />;
+  const encodedCopyButton = <Button.Copy text={form.encoded} />;
 
   const clearButton = (
-    <ClearButton onClick={clearBoth} iconOnly aria-label="clear decoded and encoded" />
+    <Button.Clear onClick={clearBoth} iconOnly aria-label="clear decoded and encoded" />
   );
 
   const decodedControl = (
     <ControlMenu list={[decodedPasteButton, decodedFileButton, decodedCopyButton, clearButton]} />
   );
-
   const encodedControl = (
     <ControlMenu list={[encodedPasteButton, encodedFileButton, encodedCopyButton, clearButton]} />
   );

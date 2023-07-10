@@ -9,17 +9,10 @@ import { uuid } from "@/lib/uuid";
 import { useScrollFollow } from "@/hooks/useScrollFollow";
 import { Button } from "@/components/ui/button";
 import { Input, InputProps } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectProps,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import * as Select from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { ClearButton } from "@/components/buttons/clear";
-import { CopyButton } from "@/components/buttons/copy";
+import { Clear } from "@/components/buttons/clear";
+import { Copy } from "@/components/buttons/copy";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { ControlMenu } from "@/components/control-menu";
@@ -48,22 +41,19 @@ export default function Page() {
 
   const clearUuids = useCallback(() => setUuids([]), []);
 
-  const onUuidVersionChange: NonNullable<SelectProps["onValueChange"]> = useCallback(value => {
+  const onUuidVersionChange: NonNullable<Select.Props["onValueChange"]> = useCallback(value => {
     if (uuidVersions.is(value)) {
       setUuidVersion(value);
     }
   }, []);
 
-  const onGeneratesChange: NonNullable<InputProps["onChange"]> = useCallback(
-    ({ currentTarget: { value } }) => {
-      const newGenerates = Number(value);
+  const onGeneratesChange: NonNullable<InputProps["onChange"]> = useCallback(e => {
+    const newGenerates = Number(e.currentTarget.value);
 
-      if (newGenerates >= 1 && newGenerates <= 1000) {
-        setGenerates(newGenerates);
-      }
-    },
-    []
-  );
+    if (newGenerates >= 1 && newGenerates <= 1000) {
+      setGenerates(newGenerates);
+    }
+  }, []);
 
   const onGenerateClick = () => {
     const newUuids = range(1, generates).map(_ => uuid(uuidVersion, hyphens, uppercase));
@@ -108,24 +98,24 @@ export default function Page() {
       title="UUID version"
       description="Choose the version of UUID to generate"
       control={
-        <Select value={uuidVersion} onValueChange={onUuidVersionChange}>
-          <SelectTrigger
+        <Select.Root value={uuidVersion} onValueChange={onUuidVersionChange}>
+          <Select.Trigger
             className="w-28"
             aria-label="toggle open/close state of uuid version selection"
           >
-            <SelectValue placeholder={uuidVersion} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value={versions.v1}>1</SelectItem>
-            <SelectItem value={versions.v4}>4 (GUID)</SelectItem>
-          </SelectContent>
-        </Select>
+            <Select.Value placeholder={uuidVersion} />
+          </Select.Trigger>
+          <Select.Content>
+            <Select.Item value={versions.v1}>1</Select.Item>
+            <Select.Item value={versions.v4}>4 (GUID)</Select.Item>
+          </Select.Content>
+        </Select.Root>
       }
     />
   );
 
-  const uuidsCopyButton = <CopyButton text={uuidsString} />;
-  const uuidsClearButton = <ClearButton onClick={clearUuids} iconOnly aria-label="clear uuids" />;
+  const uuidsCopyButton = <Copy text={uuidsString} />;
+  const uuidsClearButton = <Clear onClick={clearUuids} iconOnly aria-label="clear uuids" />;
 
   const uuidsControl = <ControlMenu list={[uuidsCopyButton, uuidsClearButton]} />;
 

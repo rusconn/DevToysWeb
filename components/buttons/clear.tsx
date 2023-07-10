@@ -3,12 +3,12 @@ import equal from "react-fast-compare";
 
 import { icons } from "@/components/icons";
 
-import { BaseButton, BaseButtonProps } from "./base";
+import { Base, BaseProps } from "./base";
 
-export type ClearButtonProps = Omit<BaseButtonProps, "icon" | "labelText">;
+export type ClearProps = Omit<BaseProps, "icon" | "labelText">;
 
-function RawClearButton({ iconOnly, ...props }: ClearButtonProps) {
-  return <BaseButton {...props} icon={<icons.X size={16} />} {...{ iconOnly }} labelText="Clear" />;
+function RawClear({ iconOnly, ...props }: ClearProps) {
+  return <Base {...props} icon={<icons.X size={16} />} {...{ iconOnly }} labelText="Clear" />;
 }
 
-export const ClearButton = memo(RawClearButton, equal);
+export const Clear = memo(RawClear, equal);

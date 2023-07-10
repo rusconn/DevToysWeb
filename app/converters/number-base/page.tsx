@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import { toolGroups } from "@/config/tools";
 import * as baselib from "@/lib/base";
 import { Input, InputProps } from "@/components/ui/input";
-import { PasteButton } from "@/components/buttons/paste";
+import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { ControlMenu } from "@/components/control-menu";
@@ -53,10 +53,10 @@ export default function Page() {
   const trySetOct = useCallback((value: string) => trySetInt(8)(value), []);
   const trySetBin = useCallback((value: string) => trySetInt(2)(value), []);
 
-  const onDecChange: InputProps["onChange"] = ({ currentTarget: { value } }) => trySetDec(value);
-  const onHexChange: InputProps["onChange"] = ({ currentTarget: { value } }) => trySetHex(value);
-  const onOctChange: InputProps["onChange"] = ({ currentTarget: { value } }) => trySetOct(value);
-  const onBinChange: InputProps["onChange"] = ({ currentTarget: { value } }) => trySetBin(value);
+  const onDecChange: InputProps["onChange"] = e => trySetDec(e.currentTarget.value);
+  const onHexChange: InputProps["onChange"] = e => trySetHex(e.currentTarget.value);
+  const onOctChange: InputProps["onChange"] = e => trySetOct(e.currentTarget.value);
+  const onBinChange: InputProps["onChange"] = e => trySetBin(e.currentTarget.value);
 
   const formatNumberConfig = (
     <Configuration
@@ -73,10 +73,10 @@ export default function Page() {
       }
     />
   );
-  const decPasteButton = <PasteButton onClipboardRead={trySetDec} />;
-  const hexPasteButton = <PasteButton onClipboardRead={trySetHex} />;
-  const octPasteButton = <PasteButton onClipboardRead={trySetOct} />;
-  const binPasteButton = <PasteButton onClipboardRead={trySetBin} />;
+  const decPasteButton = <Button.Paste onClipboardRead={trySetDec} />;
+  const hexPasteButton = <Button.Paste onClipboardRead={trySetHex} />;
+  const octPasteButton = <Button.Paste onClipboardRead={trySetOct} />;
+  const binPasteButton = <Button.Paste onClipboardRead={trySetBin} />;
 
   const decControl = <ControlMenu list={[decPasteButton]} />;
   const hexControl = <ControlMenu list={[hexPasteButton]} />;

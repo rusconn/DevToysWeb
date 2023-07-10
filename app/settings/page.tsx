@@ -3,13 +3,7 @@
 import { useTheme } from "next-themes";
 
 import { singleTools } from "@/config/tools";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import * as Select from "@/components/ui/select";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { icons } from "@/components/icons";
@@ -25,19 +19,19 @@ export default function Page() {
       title="App theme"
       description="Select which app theme to display"
       control={
-        <Select value={theme} onValueChange={setTheme}>
-          <SelectTrigger
+        <Select.Root value={theme} onValueChange={setTheme}>
+          <Select.Trigger
             className="w-28"
             aria-label="toggle open/close state of app theme selection"
           >
-            <SelectValue placeholder={theme} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">Light</SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="system">System</SelectItem>
-          </SelectContent>
-        </Select>
+            <Select.Value placeholder={theme} />
+          </Select.Trigger>
+          <Select.Content>
+            <Select.Item value="light">Light</Select.Item>
+            <Select.Item value="dark">Dark</Select.Item>
+            <Select.Item value="system">System</Select.Item>
+          </Select.Content>
+        </Select.Root>
       }
     />
   );

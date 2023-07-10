@@ -7,18 +7,8 @@ import { toolGroups } from "@/config/tools";
 import { safeJsonParse } from "@/lib/json";
 import { safeYamlParse } from "@/lib/yaml";
 import { Editor, EditorProps } from "@/components/ui/editor";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectProps,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { ClearButton } from "@/components/buttons/clear";
-import { CopyButton } from "@/components/buttons/copy";
-import { FileButton } from "@/components/buttons/file";
-import { PasteButton } from "@/components/buttons/paste";
+import * as Select from "@/components/ui/select";
+import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { ControlMenu } from "@/components/control-menu";
@@ -38,41 +28,44 @@ export default function Page() {
     yaml: "foo: bar",
   });
 
-  const setJsonReactively = useCallback((text: string) => {
-    const parsed = safeJsonParse(text);
-
+  const setFormByJson = useCallback((text: string) => {
     setForm(prev => ({
       ...prev,
       json: text,
-      yaml: parsed.isErr()
-        ? ""
-        : yaml.dump(parsed.value, { indent: prev.indentation.length, quotingType: '"' }),
+      yaml: safeJsonParse(text)
+        .map(x => yaml.dump(x, { indent: prev.indentation.length, quotingType: '"' }))
+        .unwrapOr(""),
     }));
   }, []);
 
-  const setYamlReactively = useCallback((text: string) => {
-    const parsed = safeYamlParse(text);
-
+  const setFormByYaml = useCallback((text: string) => {
     setForm(prev => ({
       ...prev,
+      json: safeYamlParse(text)
+        .map(x => JSON.stringify(x, null, prev.indentation))
+        .unwrapOr(""),
       yaml: text,
-      json: parsed.isErr() ? "" : JSON.stringify(parsed.value, null, prev.indentation),
     }));
   }, []);
 
   const clearBoth = useCallback(() => {
-    setForm(prev => ({ ...prev, json: "", yaml: "" }));
+    setForm(prev => ({
+      ...prev,
+      json: "",
+      yaml: "",
+    }));
   }, []);
 
-  const onIndentationChange: SelectProps["onValueChange"] = value => {
-    const parsed = safeJsonParse(form.json);
-
-    const jsonYaml = parsed.isErr()
-      ? { json: "", yaml: "" }
-      : {
-          json: JSON.stringify(parsed.value, null, value),
-          yaml: yaml.dump(parsed.value, { indent: value.length, quotingType: '"' }),
-        };
+  const onIndentationChange: Select.Props["onValueChange"] = value => {
+    const jsonYaml = safeJsonParse(form.json)
+      .map(x => ({
+        json: JSON.stringify(x, null, value),
+        yaml: yaml.dump(x, { indent: value.length, quotingType: '"' }),
+      }))
+      .unwrapOr({
+        json: "",
+        yaml: "",
+      });
 
     setForm({
       indentation: value,
@@ -80,59 +73,55 @@ export default function Page() {
     });
   };
 
-  const onJsonChange: EditorProps["onChange"] = value => setJsonReactively(value ?? "");
-  const onYamlChange: EditorProps["onChange"] = value => setYamlReactively(value ?? "");
+  const onJsonChange: EditorProps["onChange"] = value => setFormByJson(value ?? "");
+  const onYamlChange: EditorProps["onChange"] = value => setFormByYaml(value ?? "");
 
   const indentationConfig = (
     <Configuration
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
-        <Select value={form.indentation} onValueChange={onIndentationChange}>
-          <SelectTrigger
+        <Select.Root value={form.indentation} onValueChange={onIndentationChange}>
+          <Select.Trigger
             className="w-28"
             aria-label="toggle open/close state of indentation selection"
           >
-            <SelectValue placeholder={form.indentation} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value={indentations.two}>2 spaces</SelectItem>
-            <SelectItem value={indentations.four}>4 spaces</SelectItem>
-          </SelectContent>
-        </Select>
+            <Select.Value placeholder={form.indentation} />
+          </Select.Trigger>
+          <Select.Content>
+            <Select.Item value={indentations.two}>2 spaces</Select.Item>
+            <Select.Item value={indentations.four}>4 spaces</Select.Item>
+          </Select.Content>
+        </Select.Root>
       }
     />
   );
 
-  const jsonPasteButton = <PasteButton onClipboardRead={setJsonReactively} />;
-  const yamlPasteButton = <PasteButton onClipboardRead={setYamlReactively} />;
+  const jsonPasteButton = <Button.Paste onClipboardRead={setFormByJson} />;
+  const yamlPasteButton = <Button.Paste onClipboardRead={setFormByYaml} />;
 
   const jsonFileButton = (
-    <FileButton
-      accept=".json"
-      onFileRead={setJsonReactively}
-      iconOnly
-      aria-label="load a json file"
-    />
+    <Button.File accept=".json" onFileRead={setFormByJson} iconOnly aria-label="load a json file" />
   );
   const yamlFileButton = (
-    <FileButton
+    <Button.File
       accept=".yml,.yaml"
-      onFileRead={setYamlReactively}
+      onFileRead={setFormByYaml}
       iconOnly
       aria-label="load a yaml file"
     />
   );
 
-  const jsonCopyButton = <CopyButton text={form.json} />;
-  const yamlCopyButton = <CopyButton text={form.yaml} />;
+  const jsonCopyButton = <Button.Copy text={form.json} />;
+  const yamlCopyButton = <Button.Copy text={form.yaml} />;
 
-  const clearButton = <ClearButton onClick={clearBoth} iconOnly aria-label="clear json and yaml" />;
+  const clearButton = (
+    <Button.Clear onClick={clearBoth} iconOnly aria-label="clear json and yaml" />
+  );
 
   const jsonControl = (
     <ControlMenu list={[jsonPasteButton, jsonFileButton, jsonCopyButton, clearButton]} />
   );
-
   const yamlControl = (
     <ControlMenu list={[yamlPasteButton, yamlFileButton, yamlCopyButton, clearButton]} />
   );

@@ -3,14 +3,14 @@ import equal from "react-fast-compare";
 
 import { icons } from "@/components/icons";
 
-import { BaseButton, BaseButtonProps } from "./base";
+import { Base, BaseProps } from "./base";
 
-export type CopyButtonProps = Omit<BaseButtonProps, "icon" | "labelText" | "onClick"> & {
+export type CopyProps = Omit<BaseProps, "icon" | "labelText" | "onClick"> & {
   text: string;
 };
 
-function RawCopyButton({ text, iconOnly, ...props }: CopyButtonProps) {
-  const onClick: BaseButtonProps["onClick"] = useCallback(() => {
+function RawButton({ text, iconOnly, ...props }: CopyProps) {
+  const onClick: BaseProps["onClick"] = useCallback(() => {
     navigator.clipboard.writeText(text).catch(e => {
       if (e instanceof Error) {
         // eslint-disable-next-line no-alert
@@ -20,13 +20,8 @@ function RawCopyButton({ text, iconOnly, ...props }: CopyButtonProps) {
   }, [text]);
 
   return (
-    <BaseButton
-      {...props}
-      icon={<icons.Copy size={16} />}
-      {...{ iconOnly, onClick }}
-      labelText="Copy"
-    />
+    <Base {...props} icon={<icons.Copy size={16} />} {...{ iconOnly, onClick }} labelText="Copy" />
   );
 }
 
-export const CopyButton = memo(RawCopyButton, equal);
+export const Copy = memo(RawButton, equal);

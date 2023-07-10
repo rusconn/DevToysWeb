@@ -3,30 +3,24 @@ import equal from "react-fast-compare";
 
 import { icons } from "@/components/icons";
 
-import { BaseButton, BaseButtonProps } from "./base";
+import { Base, BaseProps } from "./base";
 
 type InputProps = React.ComponentProps<"input">;
 
-export type FileButtonProps = Pick<InputProps, "accept"> &
-  Omit<BaseButtonProps, "icon" | "labelText" | "onClick"> & {
+export type FileProps = Pick<InputProps, "accept"> &
+  Omit<BaseProps, "icon" | "labelText" | "onClick"> & {
     maxFileSizeMb?: number;
     onFileRead: (text: string) => void;
   };
 
-export function RawFileButton({
-  accept,
-  iconOnly,
-  maxFileSizeMb = 20,
-  onFileRead,
-  ...props
-}: FileButtonProps) {
+export function RawFile({ accept, iconOnly, maxFileSizeMb = 20, onFileRead, ...props }: FileProps) {
   const ref = useRef<HTMLInputElement>(null);
 
   const onClick = () => ref.current?.click();
 
   const onChange: NonNullable<InputProps["onChange"]> = useCallback(
-    ({ currentTarget }) => {
-      const file = Array.from(currentTarget.files ?? []).at(0);
+    e => {
+      const file = Array.from(e.currentTarget.files ?? []).at(0);
 
       if (!file) {
         return;
@@ -51,14 +45,14 @@ export function RawFileButton({
 
       // clear selected file to accept the same file again
       // eslint-disable-next-line no-param-reassign
-      currentTarget.value = "";
+      e.currentTarget.value = "";
     },
     [maxFileSizeMb, onFileRead]
   );
 
   return (
     <>
-      <BaseButton
+      <Base
         {...props}
         icon={<icons.File size={16} />}
         {...{ iconOnly, onClick }}
@@ -69,4 +63,4 @@ export function RawFileButton({
   );
 }
 
-export const FileButton = memo(RawFileButton, equal);
+export const File = memo(RawFile, equal);
