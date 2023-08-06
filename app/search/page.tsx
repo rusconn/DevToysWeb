@@ -1,11 +1,11 @@
 "use client";
 
-import { useSearchText } from "@/contexts/search-text";
 import Fuse from "fuse.js";
 
 import { homeTools } from "@/config/tools";
 import { PageRootSection } from "@/components/page-root-section";
 import { ToolCards } from "@/components/tool-cards";
+import { useSearchText } from "@/contexts/search-text";
 
 export default function Page() {
   // use search params in context

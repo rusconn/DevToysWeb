@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSetSearchText } from "@/contexts/search-text";
 
 import { cn } from "@/lib/style";
 import { Button, ButtonProps } from "@/components/ui/button";
 import { Input, InputProps } from "@/components/ui/input";
 import { icons } from "@/components/icons";
+import { useSetSearchText } from "@/contexts/search-text";
 
 export function SearchBar() {
   const router = useRouter();

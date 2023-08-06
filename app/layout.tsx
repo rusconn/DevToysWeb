@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 
 import { Metadata } from "next";
-import { SearchTextProvider } from "@/contexts/search-text";
 
 import { siteConfig } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -10,6 +9,7 @@ import { Sidebar } from "@/components/sidebar";
 import { SiteHeader } from "@/components/site-header";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SearchTextProvider } from "@/contexts/search-text";
 
 export const metadata: Metadata = {
   generator: "Next.js",
