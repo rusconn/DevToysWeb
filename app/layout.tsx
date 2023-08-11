@@ -12,6 +12,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SearchTextProvider } from "@/contexts/search-text";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   generator: "Next.js",
   applicationName: siteConfig.name,
   referrer: "origin-when-cross-origin",

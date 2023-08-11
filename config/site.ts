@@ -5,4 +5,5 @@ export const siteConfig = {
     github: "https://github.com/rusconn/DevToysWeb",
     devtoys: "https://devtoys.app",
   },
+  url: "https://devtoysweb.web.app/",
 };
