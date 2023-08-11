@@ -83,6 +83,7 @@ export const Item = React.forwardRef<
     className={cn(
       "relative flex w-full cursor-default select-none items-center rounded-sm px-2.5 py-1.5 outline-none",
       "hover:bg-select-item-hover",
+      "focus:bg-select-item-focus",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className
     )}

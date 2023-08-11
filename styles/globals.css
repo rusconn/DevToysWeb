@@ -39,6 +39,7 @@
     --select-content-foreground: 0 0% 20%;
 
     --select-item-hover: 0 0% 94%;
+    --select-item-focus: 0 0% 94%;
 
     --input: 0 0% 99%;
     --input-hover: 0 0% 97%;
@@ -103,6 +104,7 @@
     --select-content-foreground: 0 0% 90%;
 
     --select-item-hover: 0 0% 21%;
+    --select-item-focus: 0 0% 21%;
 
     --input: 0 0% 20%;
     --input-hover: 0 0% 22%;

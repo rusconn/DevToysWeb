@@ -46,6 +46,7 @@ module.exports = {
           },
           item: {
             hover: "hsl(var(--select-item-hover))",
+            focus: "hsl(var(--select-item-focus))",
           },
         },
         input: {
