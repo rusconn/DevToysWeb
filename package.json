@@ -9,13 +9,13 @@
     "dev": "next dev",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
-    "start": "npx serve@latest out",
+    "start": "serve out",
     "deploy": "firebase deploy --project devtoysweb",
     "check": "pnpm typecheck && pnpm lint && pnpm format:check",
     "fix": "pnpm lint:fix && pnpm format:write",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "preview": "next build && npx serve@latest out",
+    "preview": "next build && serve out",
     "typecheck": "tsc --noEmit",
     "format:write": "pnpm format --write",
     "format:check": "pnpm format --check",
@@ -75,6 +75,7 @@
     "eslint-plugin-tailwindcss": "^3.12.0",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
+    "serve": "^14.2.1",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4"
   }
