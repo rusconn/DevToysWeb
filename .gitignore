@@ -40,3 +40,8 @@ tsconfig.tsbuildinfo
 # firebase
 .firebase
 firebase-debug.log
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/

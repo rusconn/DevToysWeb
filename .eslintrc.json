@@ -22,6 +22,10 @@
     "consistent-return": "off",
     "no-else-return": "off",
     "no-nested-ternary": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["tests/**", "playwright.config.ts"] }
+    ],
     "import/prefer-default-export": "off",
     "react/function-component-definition": "off",
     "react/jsx-key": "off",
