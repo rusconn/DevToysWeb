@@ -51,14 +51,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
           <SearchTextProvider>
-            <div className="relative flex h-full flex-col">
-              <SiteHeader />
-              <div className="flex flex-1 overflow-y-hidden">
-                <Sidebar />
-                <main className="h-full flex-1 overflow-y-auto rounded-tl-md border bg-page p-12">
-                  {children}
-                </main>
-              </div>
+            <div className="grid h-full grid-cols-[18rem_1fr] grid-rows-[3.5rem_1fr]">
+              <SiteHeader className="col-span-full" />
+              <Sidebar />
+              <main className="overflow-y-auto rounded-tl-md border bg-page p-12">{children}</main>
             </div>
             <TailwindIndicator />
           </SearchTextProvider>

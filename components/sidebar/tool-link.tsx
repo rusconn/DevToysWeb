@@ -26,9 +26,9 @@ function RawToolLink({ Icon, shortTitle: title, href, onClick, className, highli
       <span className={cn("invisible flex items-center", highlight !== "none" && "visible")}>
         <Indicator />
       </span>
-      <span className="flex select-none items-center">
+      <span className="flex select-none items-center gap-4">
         <Icon size={16} />
-        <span className="ml-4">{title}</span>
+        <span>{title}</span>
       </span>
     </Link>
   );
