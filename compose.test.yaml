@@ -1,0 +1,9 @@
+services:
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    working_dir: /work
+    volumes:
+      - .:/work
+    network_mode: host
+    environment:
+      - CI
