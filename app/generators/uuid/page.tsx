@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from "react";
 import { range } from "fp-ts/NonEmptyArray";
-import * as t from "io-ts";
 
 import { toolGroups } from "@/config/tools";
 import { uuid } from "@/lib/uuid";
@@ -26,8 +25,11 @@ const versions = {
   v4: "4",
 } as const;
 
-const uuidVersions = t.keyof({ [versions.v1]: null, [versions.v4]: null });
-type UuidVersion = t.TypeOf<typeof uuidVersions>;
+type UuidVersion = (typeof versions)[keyof typeof versions];
+
+function isUuidVersion(s: string): s is UuidVersion {
+  return Object.values(versions).includes(s as UuidVersion);
+}
 
 export default function Page() {
   const [hyphens, setHyphens] = useState(true);
@@ -42,7 +44,7 @@ export default function Page() {
   const clearUuids = useCallback(() => setUuids([]), []);
 
   const onUuidVersionChange: NonNullable<Select.Props["onValueChange"]> = useCallback(value => {
-    if (uuidVersions.is(value)) {
+    if (isUuidVersion(value)) {
       setUuidVersion(value);
     }
   }, []);
