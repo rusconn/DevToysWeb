@@ -68,12 +68,14 @@ export default function Page() {
 
   return (
     <PageRootSection title={toolGroups.encodersDecoders.tools.base64.longTitle}>
-      <PageSection title="Decoded" control={decodedControl}>
-        <Textarea value={form.decoded} onChange={onDecodedChange} rows={10} />
-      </PageSection>
-      <PageSection title="Encoded" control={encodedControl}>
-        <Textarea value={form.encoded} onChange={onEncodedChange} rows={10} />
-      </PageSection>
+      <div className="flex flex-col gap-3">
+        <PageSection title="Decoded" control={decodedControl}>
+          <Textarea value={form.decoded} onChange={onDecodedChange} rows={10} />
+        </PageSection>
+        <PageSection title="Encoded" control={encodedControl}>
+          <Textarea value={form.encoded} onChange={onEncodedChange} rows={10} />
+        </PageSection>
+      </div>
     </PageRootSection>
   );
 }

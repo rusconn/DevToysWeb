@@ -24,7 +24,7 @@ export function ToolGroups() {
 
   return (
     <Accordion.Root type="multiple" value={expandedGroups} onValueChange={setExpandedGroups}>
-      <ul className="space-y-1">
+      <ul className="flex flex-col gap-1">
         {Object.values(toolGroups).map(group => (
           <li key={group.href}>
             <ToolGroup {...group} isOpend={expandedGroups.includes(group.href)} />

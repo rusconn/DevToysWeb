@@ -127,18 +127,15 @@ export default function Page() {
   );
 
   return (
-    <PageRootSection
-      className="flex h-full flex-col"
-      title={toolGroups.converters.tools.jsonYaml.longTitle}
-    >
-      <PageSection className="mb-6 mt-0" title="Configuration">
+    <PageRootSection className="h-full" title={toolGroups.converters.tools.jsonYaml.longTitle}>
+      <PageSection title="Configuration">
         <Configurations list={[indentationConfig]} />
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSection className="mt-0 min-h-[200px] flex-1" title="Json" control={jsonControl}>
+        <PageSection className="min-h-[200px] flex-1" title="Json" control={jsonControl}>
           <Editor language="json" value={form.json} onChange={onJsonChange} />
         </PageSection>
-        <PageSection className="mt-0 min-h-[200px] flex-1" title="Yaml" control={yamlControl}>
+        <PageSection className="min-h-[200px] flex-1" title="Yaml" control={yamlControl}>
           <Editor language="yaml" value={form.yaml} onChange={onYamlChange} />
         </PageSection>
       </div>

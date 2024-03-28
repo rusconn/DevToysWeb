@@ -126,7 +126,7 @@ export default function Page() {
       <PageSection title="Configuration">
         <Configurations list={[hyphensConfig, uppercaseConfig, uuidVersionConfig]} />
       </PageSection>
-      <PageSection className="mt-6" title="Generate">
+      <PageSection title="Generate">
         <div className="flex items-center gap-2">
           <Button variant="secondary" onClick={onGenerateClick}>
             Generate UUID(s)
@@ -140,7 +140,7 @@ export default function Page() {
           />
         </div>
       </PageSection>
-      <PageSection title="UUID(s)" control={uuidsControl}>
+      <PageSection className="-mt-3" title="UUID(s)" control={uuidsControl}>
         <Textarea {...{ ref }} value={uuidsString} rows={10} readOnly />
       </PageSection>
     </PageRootSection>

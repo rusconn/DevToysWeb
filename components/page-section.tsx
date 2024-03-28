@@ -9,14 +9,14 @@ type Props = {
 
 export function PageSection({ className, children, title, control }: Props) {
   return (
-    <section className={cn("mt-3 flex flex-col", className)}>
+    <section className={cn("flex flex-col gap-1.5", className)}>
       {control ? (
-        <div className="mb-1.5 flex w-full items-end">
-          <h2 className="text-base">{title}</h2>
-          <div className="ml-auto">{control}</div>
+        <div className="flex justify-between">
+          <h2 className="self-end text-base">{title}</h2>
+          <div>{control}</div>
         </div>
       ) : (
-        <h2 className="mb-1.5 text-base">{title}</h2>
+        <h2 className="text-base">{title}</h2>
       )}
       {children}
     </section>
