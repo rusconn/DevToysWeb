@@ -69,11 +69,8 @@ export default function Page() {
   const outputControl = <ControlMenu list={[outputCopyButton]} />;
 
   return (
-    <PageRootSection
-      className="flex h-full flex-col"
-      title={toolGroups.formatters.tools.json.longTitle}
-    >
-      <PageSection className="mt-0" title="Configuration">
+    <PageRootSection className="h-full" title={toolGroups.formatters.tools.json.longTitle}>
+      <PageSection title="Configuration">
         <Configurations list={[indentationConfig]} />
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">

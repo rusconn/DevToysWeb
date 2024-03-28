@@ -85,21 +85,23 @@ export default function Page() {
 
   return (
     <PageRootSection title={toolGroups.converters.tools.numberBase.longTitle}>
-      <PageSection className="mb-6" title="Configuration">
+      <PageSection title="Configuration">
         <Configurations list={[formatNumberConfig]} />
       </PageSection>
-      <PageSection title="Decimal" control={decControl}>
-        <Input value={dec} onChange={onDecChange} />
-      </PageSection>
-      <PageSection title="Hexadecimal" control={hexControl}>
-        <Input value={hex} onChange={onHexChange} />
-      </PageSection>
-      <PageSection title="Octal" control={octControl}>
-        <Input value={oct} onChange={onOctChange} />
-      </PageSection>
-      <PageSection title="Binary" control={binControl}>
-        <Input value={bin} onChange={onBinChange} />
-      </PageSection>
+      <div className="flex flex-col gap-3">
+        <PageSection title="Decimal" control={decControl}>
+          <Input value={dec} onChange={onDecChange} />
+        </PageSection>
+        <PageSection title="Hexadecimal" control={hexControl}>
+          <Input value={hex} onChange={onHexChange} />
+        </PageSection>
+        <PageSection title="Octal" control={octControl}>
+          <Input value={oct} onChange={onOctChange} />
+        </PageSection>
+        <PageSection title="Binary" control={binControl}>
+          <Input value={bin} onChange={onBinChange} />
+        </PageSection>
+      </div>
     </PageRootSection>
   );
 }

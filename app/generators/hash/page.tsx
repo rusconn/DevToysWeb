@@ -69,33 +69,35 @@ export default function Page() {
       <PageSection title="Configuration">
         <Configurations list={[uppercaseConfig]} />
       </PageSection>
-      <PageSection className="my-4" title="Input" control={inputControl}>
+      <PageSection className="-mt-2" title="Input" control={inputControl}>
         <Textarea value={input} onChange={onInputChange} rows={5} />
       </PageSection>
-      <PageSection title="MD5">
-        <div className="flex gap-2">
-          <Input className="flex-1" value={md5} readOnly />
-          <ControlMenu list={[md5CopyButton]} />
-        </div>
-      </PageSection>
-      <PageSection title="SHA1">
-        <div className="flex gap-2">
-          <Input className="flex-1" value={sha1} readOnly />
-          <ControlMenu list={[sha1CopyButton]} />
-        </div>
-      </PageSection>
-      <PageSection title="SHA256">
-        <div className="flex gap-2">
-          <Input className="flex-1" value={sha256} readOnly />
-          <ControlMenu list={[sha256CopyButton]} />
-        </div>
-      </PageSection>
-      <PageSection title="SHA512">
-        <div className="flex gap-2">
-          <Input className="flex-1" value={sha512} readOnly />
-          <ControlMenu list={[sha512CopyButton]} />
-        </div>
-      </PageSection>
+      <div className="flex flex-col gap-3">
+        <PageSection title="MD5">
+          <div className="flex gap-2">
+            <Input className="flex-1" value={md5} readOnly />
+            <ControlMenu list={[md5CopyButton]} />
+          </div>
+        </PageSection>
+        <PageSection title="SHA1">
+          <div className="flex gap-2">
+            <Input className="flex-1" value={sha1} readOnly />
+            <ControlMenu list={[sha1CopyButton]} />
+          </div>
+        </PageSection>
+        <PageSection title="SHA256">
+          <div className="flex gap-2">
+            <Input className="flex-1" value={sha256} readOnly />
+            <ControlMenu list={[sha256CopyButton]} />
+          </div>
+        </PageSection>
+        <PageSection title="SHA512">
+          <div className="flex gap-2">
+            <Input className="flex-1" value={sha512} readOnly />
+            <ControlMenu list={[sha512CopyButton]} />
+          </div>
+        </PageSection>
+      </div>
     </PageRootSection>
   );
 }
