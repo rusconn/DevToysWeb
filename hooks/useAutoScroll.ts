@@ -1,6 +1,6 @@
 import { DependencyList, useEffect, useRef } from "react";
 
-export const useScrollFollow = <T extends HTMLElement = HTMLElement>(
+export const useAutoScroll = <T extends HTMLElement = HTMLElement>(
   deps: DependencyList,
   behavior: ScrollBehavior = "smooth"
 ) => {

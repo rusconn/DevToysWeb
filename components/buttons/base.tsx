@@ -9,7 +9,7 @@ export type BaseProps = ButtonProps & {
 
 export function Base({ icon, iconOnly, labelText, ...props }: BaseProps) {
   const button = (
-    <Button className="w-fit border" {...props}>
+    <Button className="border" {...props}>
       {icon}
       {!iconOnly && <span className="ml-1">{labelText}</span>}
     </Button>

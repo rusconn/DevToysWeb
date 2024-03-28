@@ -14,7 +14,6 @@ type Props = IToolGroup & {
   isOpend: boolean;
 };
 
-// FIXME: css outline messed up
 export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
   const pathname = usePathname();
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -25,18 +24,19 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
     <Accordion.AccordionItem value={href}>
       <Accordion.Header asChild>
         <div className="relative flex">
-          <ToolLink
-            className="flex-1"
-            {...{ Icon, href, onClick }}
-            shortTitle={title}
-            highlight={
-              pathname === href
-                ? "both"
-                : !isOpend && pathname.startsWith(`${href}/`)
-                ? "indicatorOnly"
-                : "none"
-            }
-          />
+          <div className="flex-1">
+            <ToolLink
+              {...{ Icon, href, onClick }}
+              shortTitle={title}
+              highlight={
+                pathname === href
+                  ? "both"
+                  : !isOpend && pathname.startsWith(`${href}/`)
+                  ? "indicatorOnly"
+                  : "none"
+              }
+            />
+          </div>
           <Accordion.Trigger
             ref={triggerRef}
             className={cn(
@@ -61,10 +61,9 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
           {Object.values(tools).map(tool => (
             <li className="mt-1" key={tool.href}>
               <ToolLink
-                // -outline-offset-1: ugly hack for Chrome outlines
-                className="pl-8 -outline-offset-1"
                 {...tool}
                 highlight={isOpend && pathname === tool.href ? "both" : "none"}
+                grouped
               />
             </li>
           ))}

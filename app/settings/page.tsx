@@ -8,7 +8,6 @@ import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { icons } from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
-import { PageSection } from "@/components/page-section";
 
 export default function Page() {
   const { theme = "system", setTheme } = useTheme();
@@ -38,9 +37,7 @@ export default function Page() {
 
   return (
     <PageRootSection title={singleTools.settings.longTitle}>
-      <PageSection>
-        <Configurations list={[appThemeConfig]} />
-      </PageSection>
+      <Configurations list={[appThemeConfig]} />
     </PageRootSection>
   );
 }

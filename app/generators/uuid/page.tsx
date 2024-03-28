@@ -5,7 +5,7 @@ import { range } from "fp-ts/NonEmptyArray";
 
 import { toolGroups } from "@/config/tools";
 import { uuid } from "@/lib/uuid";
-import { useScrollFollow } from "@/hooks/useScrollFollow";
+import { useAutoScroll } from "@/hooks/useAutoScroll";
 import { Button } from "@/components/ui/button";
 import { Input, InputProps } from "@/components/ui/input";
 import * as Select from "@/components/ui/select";
@@ -37,7 +37,7 @@ export default function Page() {
   const [uuidVersion, setUuidVersion] = useState<UuidVersion>("4");
   const [generates, setGenerates] = useState(1);
   const [uuids, setUuids] = useState<string[]>([]);
-  const ref = useScrollFollow<HTMLTextAreaElement>([uuids]);
+  const ref = useAutoScroll<HTMLTextAreaElement>([uuids]);
 
   const uuidsString = uuids.join("\n");
 

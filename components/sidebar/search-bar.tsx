@@ -41,10 +41,10 @@ export function SearchBar() {
   };
 
   return (
-    <div className="relative flex w-full items-center">
+    <div className="relative flex items-center">
       <Input
         ref={inputRef}
-        className="flex-1 pr-16 font-sans"
+        className="w-full pr-16 font-sans"
         value={text}
         onChange={changeText}
         onKeyDown={searchIfEnter}
