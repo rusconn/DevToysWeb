@@ -3,23 +3,28 @@ import equal from "react-fast-compare";
 
 import { cn } from "@/lib/style";
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  fontMono?: true;
+};
 
-const RawInput = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => (
-  <input
-    {...{ ref }}
-    className={cn(
-      "border-b-1 h-9 rounded border border-b-muted-foreground bg-input px-3 py-2 font-mono outline-none",
-      "placeholder:text-muted-foreground",
-      "hover:bg-input-hover",
-      "focus:border-b-2 focus:border-b-indicator focus:bg-input-focus focus:pb-[7px]",
-      "disabled:cursor-not-allowed disabled:opacity-50",
-      className
-    )}
-    spellCheck="false"
-    {...props}
-  />
-));
+const RawInput = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, fontMono, ...props }, ref) => (
+    <input
+      {...{ ref }}
+      className={cn(
+        "border-b-1 h-9 rounded border border-b-muted-foreground bg-input px-3 py-2 outline-none",
+        "placeholder:text-muted-foreground",
+        "hover:bg-input-hover",
+        "focus:border-b-2 focus:border-b-indicator focus:bg-input-focus focus:pb-[7px]",
+        "disabled:cursor-not-allowed disabled:opacity-50",
+        fontMono && "font-mono",
+        className
+      )}
+      spellCheck="false"
+      {...props}
+    />
+  )
+);
 RawInput.displayName = "RawInput";
 
 export const Input = React.memo(RawInput, equal);

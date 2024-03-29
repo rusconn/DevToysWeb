@@ -10,8 +10,9 @@ export function ThemeToggle() {
 
   return (
     <Button
-      className="h-10 w-10 p-0"
+      className="inline-flex aspect-square items-center justify-center"
       variant="ghost"
+      size="taller"
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
     >
       <icons.Sun className="h-7 w-7 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

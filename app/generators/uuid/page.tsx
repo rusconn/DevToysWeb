@@ -132,12 +132,7 @@ export default function Page() {
             Generate UUID(s)
           </Button>
           <span>×</span>
-          <Input
-            className="w-24 font-sans"
-            type="number"
-            value={generates}
-            onChange={onGeneratesChange}
-          />
+          <Input className="w-24" type="number" value={generates} onChange={onGeneratesChange} />
         </div>
       </PageSection>
       <PageSection className="-mt-3" title="UUID(s)" control={uuidsControl}>
