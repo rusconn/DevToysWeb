@@ -6,7 +6,7 @@ import { singleTools } from "@/config/tools";
 import * as Select from "@/components/ui/select";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
-import { icons } from "@/components/icons";
+import * as icons from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
 
 export default function Page() {

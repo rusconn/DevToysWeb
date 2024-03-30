@@ -1,7 +1,7 @@
 import { memo } from "react";
 import equal from "react-fast-compare";
 
-import { icons } from "@/components/icons";
+import * as icons from "@/components/icons";
 
 import { Base, BaseProps } from "./base";
 

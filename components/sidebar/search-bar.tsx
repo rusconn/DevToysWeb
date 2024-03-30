@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/style";
 import { Button, ButtonProps } from "@/components/ui/button";
 import { Input, InputProps } from "@/components/ui/input";
-import { icons } from "@/components/icons";
+import * as icons from "@/components/icons";
 import { useSetSearchText } from "@/contexts/search-text";
 
 export function SearchBar() {

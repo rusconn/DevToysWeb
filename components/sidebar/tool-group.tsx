@@ -6,7 +6,7 @@ import * as Accordion from "@radix-ui/react-accordion";
 
 import { ToolGroup as IToolGroup } from "@/config/tools";
 import { cn } from "@/lib/style";
-import { icons } from "@/components/icons";
+import * as icons from "@/components/icons";
 
 import { ToolLink } from "./tool-link";
 

@@ -1,19 +1,19 @@
 import { ValidHref } from "@/types/route";
-import { icons, type Icon } from "@/components/icons";
+import * as icons from "@/components/icons";
 
 type ToolGroups = {
   [key: string]: ToolGroup;
 };
 
 export type ToolGroup = {
-  Icon: Icon;
+  Icon: icons.Icon;
   title: string;
   href: ValidHref;
   tools: { [key: string]: Tool };
 };
 
 export type Tool = {
-  Icon: Icon;
+  Icon: icons.Icon;
   shortTitle: string;
   longTitle: string;
   description: string;

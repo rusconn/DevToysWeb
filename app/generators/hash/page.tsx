@@ -10,7 +10,7 @@ import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { ControlMenu } from "@/components/control-menu";
-import { icons } from "@/components/icons";
+import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";

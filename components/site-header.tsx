@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/style";
-import { icons } from "@/components/icons";
+import * as icons from "@/components/icons";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 type Props = {

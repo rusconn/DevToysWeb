@@ -4,7 +4,7 @@ import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 
 import { cn } from "@/lib/style";
-import { icons } from "@/components/icons";
+import * as icons from "@/components/icons";
 import { Indicator } from "@/components/indicator";
 
 export type Props = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>;
