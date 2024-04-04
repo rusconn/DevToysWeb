@@ -4,6 +4,7 @@ import { toolGroups } from "@/config/tools";
 
 export const metadata: Metadata = {
   title: toolGroups.generators.tools.uuid.longTitle,
+  description: toolGroups.generators.tools.uuid.description,
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
