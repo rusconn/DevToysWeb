@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  robots: {
+    googleBot: {
+      index: true,
+    },
+  },
   openGraph: {
     title: siteConfig.name,
     siteName: siteConfig.name,
