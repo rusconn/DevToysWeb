@@ -124,6 +124,21 @@ export const toolGroups = {
       },
     },
   },
+  text: {
+    Icon: icons.Type,
+    title: "Text",
+    href: "/text",
+    tools: {
+      inspector_and_case_converter: {
+        Icon: icons.CaseSensitive,
+        shortTitle: "Inspector & Case Converter",
+        longTitle: "Text Inspector & Case Converter",
+        description: "Analyze text and convert it to a different case",
+        keywords: "case converter convert text inspector inspect",
+        href: "/text/inspector",
+      },
+    },
+  },
 } as const satisfies ToolGroups;
 
 export const singleTools = {

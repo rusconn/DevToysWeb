@@ -28,6 +28,7 @@ export const Settings = memo(icons.Settings, equal);
 export const Settings2 = memo(icons.Settings2, equal);
 export const Space = memo(icons.Space, equal);
 export const Sun = memo(icons.SunMedium, equal);
+export const Type = memo(icons.Type, equal);
 export const Minus = memo(icons.Minus, equal);
 export const Moon = memo(icons.Moon, equal);
 export const X = memo(icons.X, equal);
