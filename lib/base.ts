@@ -20,3 +20,5 @@ export const formatOctal = formatNumber(3, " ");
 export const formatBinary = formatNumber(4, " ");
 
 export const unformatNumber = (x: string) => x.replaceAll(/[ ,]/g, "");
+
+export function noOp() {}
