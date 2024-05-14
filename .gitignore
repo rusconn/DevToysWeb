@@ -45,3 +45,6 @@ firebase-debug.log
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# editors
+.idea
