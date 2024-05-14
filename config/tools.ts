@@ -55,7 +55,7 @@ export const toolGroups = {
         shortTitle: "HTML",
         longTitle: "HTML Encoder / Decoder",
         description:
-          "Encode or decode all the applicable characters to their corresponding HTML entities",
+            "Encode or decode all the applicable characters to their corresponding HTML entities",
         keywords: "html encoder escaper decocder unescaper",
         href: "/encoders-decoders/html",
       },
@@ -64,7 +64,7 @@ export const toolGroups = {
         shortTitle: "URL",
         longTitle: "URL Encoder / Decoder",
         description:
-          "Encode or decode all the applicable characters to their corresponding URL entities",
+            "Encode or decode all the applicable characters to their corresponding URL entities",
         keywords: "url encoder escaper decocder unescaper",
         href: "/encoders-decoders/url",
       },
@@ -136,6 +136,14 @@ export const toolGroups = {
         description: "Analyze text and convert it to a different case",
         keywords: "case converter convert text inspector inspect",
         href: "/text/inspector",
+      },
+      diff: {
+        Icon: icons.Diff,
+        shortTitle: "Text diff",
+        longTitle: "Text Inspector & Case Converter",
+        description: "Analyze text and convert it to a different case",
+        keywords: "case converter convert text inspector inspect",
+        href: "/text/diff",
       },
     },
   },
