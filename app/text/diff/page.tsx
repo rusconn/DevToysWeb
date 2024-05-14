@@ -5,16 +5,13 @@ import { Panel, PanelGroup } from "react-resizable-panels";
 
 import { PERSISTENCE_KEY } from "@/config/persistence-keys";
 import { toolGroups } from "@/config/tools";
-import { cn } from "@/lib/style";
 import { DiffEditor } from "@/components/ui/diff-editor";
 import { Editor } from "@/components/ui/editor";
 import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
 import { ControlMenu } from "@/components/control-menu";
-import * as Icon from "@/components/icons";
 import * as icons from "@/components/icons";
-import { Rows } from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
@@ -69,6 +66,7 @@ export default function Page() {
     ),
     [setInput1, clearInput1]
   );
+
   const input2Control = useMemo(
     () => (
       <ControlMenu
@@ -93,16 +91,15 @@ export default function Page() {
     [diffFullHeight, toggleFullHeight]
   );
 
+  const hiddenInFullHeightMode = useMemo(() => (diffFullHeight ? "hidden" : ""), [diffFullHeight]);
+
   return (
-    <PageRootSection
-      className="h-full"
-      title={toolGroups.text.tools.inspector_and_case_converter.longTitle}
-    >
-      <PageSection title="Configuration" className={cn(diffFullHeight && "hidden")}>
+    <PageRootSection className="h-full" title={toolGroups.text.tools.diff.longTitle}>
+      <PageSection title="Configuration" className={hiddenInFullHeightMode}>
         <Configurations list={[inlineModeConfig]} />
       </PageSection>
       <PanelGroup direction="vertical" autoSaveId={PERSISTENCE_KEY.panels.textDiff.vertical}>
-        <Panel maxSize={VERTICAL_PANEL_MAX_SIZE} className={cn(diffFullHeight && "hidden")}>
+        <Panel maxSize={VERTICAL_PANEL_MAX_SIZE} className={hiddenInFullHeightMode}>
           <PanelGroup
             direction="horizontal"
             autoSaveId={PERSISTENCE_KEY.panels.textDiff.horizontal}
@@ -121,7 +118,7 @@ export default function Page() {
             </Panel>
           </PanelGroup>
         </Panel>
-        <PanelResizeHandle direction="horizontal" className={cn(diffFullHeight && "hidden")} />
+        <PanelResizeHandle direction="horizontal" className={hiddenInFullHeightMode} />
         <Panel maxSize={diffPanelMaxSize}>
           <PageSection className="h-full" title="Difference" control={diffControl}>
             <DiffEditor

@@ -1,10 +1,11 @@
+import { PropsWithChildren } from "react";
 import { Metadata } from "next";
 
 import { toolGroups } from "@/config/tools";
 
 export const metadata: Metadata = {
-  title: toolGroups.text.tools.inspector_and_case_converter.longTitle,
-  description: toolGroups.text.tools.inspector_and_case_converter.description,
+  title: toolGroups.text.tools.diff.longTitle,
+  description: toolGroups.text.tools.diff.description,
   robots: {
     googleBot: {
       index: true,
@@ -12,6 +13,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: PropsWithChildren) {
   return children;
 }
