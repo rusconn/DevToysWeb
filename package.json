@@ -39,7 +39,6 @@
     "fp-ts": "^2.16.0",
     "fuse.js": "^6.6.2",
     "html-escaper": "^3.0.3",
-    "js-base64": "^3.7.5",
     "js-yaml": "^4.1.0",
     "jwt-decode": "^3.1.2",
     "lucide-react": "^0.221.0",

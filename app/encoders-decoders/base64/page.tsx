@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { decode, encode, isValid } from "js-base64";
 
 import { toolGroups } from "@/config/tools";
+import { decode, encode } from "@/lib/base64";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import * as Button from "@/components/buttons";
 import { ControlMenu } from "@/components/control-menu";
@@ -24,10 +24,10 @@ export default function Page() {
   }, []);
 
   const setFormByEncoded = useCallback((text: string) => {
-    const newDecoded = decode(text);
+    const newDecoded = decode(text) ?? "";
 
     setForm({
-      decoded: isValid(text) && !newDecoded.includes("�") ? newDecoded : "",
+      decoded: newDecoded.includes("�") ? "" : newDecoded,
       encoded: text,
     });
   }, []);
