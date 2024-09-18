@@ -34,9 +34,6 @@ dependencies:
   create-hash:
     specifier: ^1.2.0
     version: 1.2.0
-  fp-ts:
-    specifier: ^2.16.0
-    version: 2.16.0
   fuse.js:
     specifier: ^6.6.2
     version: 6.6.2
@@ -3082,10 +3079,6 @@ packages:
     dependencies:
       is-callable: 1.2.7
     dev: true
-
-  /fp-ts@2.16.0:
-    resolution: {integrity: sha512-bLq+KgbiXdTEoT1zcARrWEpa5z6A/8b7PcDW7Gef3NSisQ+VS7ll2Xbf1E+xsgik0rWub/8u0qP/iTTjj+PhxQ==}
-    dev: false
 
   /fraction.js@4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}

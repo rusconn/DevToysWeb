@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { range } from "fp-ts/NonEmptyArray";
 
 import { toolGroups } from "@/config/tools";
 import { uuid } from "@/lib/uuid";
@@ -58,7 +57,7 @@ export default function Page() {
   }, []);
 
   const onGenerateClick = () => {
-    const newUuids = range(1, generates).map(_ => uuid(uuidVersion, hyphens, uppercase));
+    const newUuids = Array.from({ length: generates }, () => uuid(uuidVersion, hyphens, uppercase));
     setUuids([...uuids, ...newUuids]);
   };
 
