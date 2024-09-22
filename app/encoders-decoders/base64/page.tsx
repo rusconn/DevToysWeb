@@ -6,7 +6,7 @@ import { toolGroups } from "@/config/tools";
 import { decode, encode } from "@/lib/base64";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import * as Button from "@/components/buttons";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
@@ -60,10 +60,20 @@ export default function Page() {
   );
 
   const decodedControl = (
-    <ControlMenu list={[decodedPasteButton, decodedFileButton, decodedCopyButton, clearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>{decodedPasteButton}</ControlMenuItem>
+      <ControlMenuItem>{decodedFileButton}</ControlMenuItem>
+      <ControlMenuItem>{decodedCopyButton}</ControlMenuItem>
+      <ControlMenuItem>{clearButton}</ControlMenuItem>
+    </ControlMenu>
   );
   const encodedControl = (
-    <ControlMenu list={[encodedPasteButton, encodedFileButton, encodedCopyButton, clearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>{encodedPasteButton}</ControlMenuItem>
+      <ControlMenuItem>{encodedFileButton}</ControlMenuItem>
+      <ControlMenuItem>{encodedCopyButton}</ControlMenuItem>
+      <ControlMenuItem>{clearButton}</ControlMenuItem>
+    </ControlMenu>
   );
 
   return (

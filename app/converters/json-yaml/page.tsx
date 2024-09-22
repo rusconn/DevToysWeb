@@ -10,7 +10,7 @@ import { Editor, EditorProps } from "@/components/ui/editor";
 import * as Select from "@/components/ui/select";
 import * as Button from "@/components/buttons";
 import { Configuration, ConfigurationItem } from "@/components/configuration";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
@@ -96,33 +96,47 @@ export default function Page() {
     />
   );
 
-  const jsonPasteButton = <Button.Paste onClipboardRead={setFormByJson} />;
-  const yamlPasteButton = <Button.Paste onClipboardRead={setFormByYaml} />;
-
-  const jsonFileButton = (
-    <Button.File accept=".json" onFileRead={setFormByJson} iconOnly aria-label="load a json file" />
-  );
-  const yamlFileButton = (
-    <Button.File
-      accept=".yml,.yaml"
-      onFileRead={setFormByYaml}
-      iconOnly
-      aria-label="load a yaml file"
-    />
-  );
-
-  const jsonCopyButton = <Button.Copy text={form.json} />;
-  const yamlCopyButton = <Button.Copy text={form.yaml} />;
-
   const clearButton = (
     <Button.Clear onClick={clearBoth} iconOnly aria-label="clear json and yaml" />
   );
 
   const jsonControl = (
-    <ControlMenu list={[jsonPasteButton, jsonFileButton, jsonCopyButton, clearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setFormByJson} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File
+          accept=".json"
+          onFileRead={setFormByJson}
+          iconOnly
+          aria-label="load a json file"
+        />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Copy text={form.json} />
+      </ControlMenuItem>
+      <ControlMenuItem>{clearButton}</ControlMenuItem>
+    </ControlMenu>
   );
   const yamlControl = (
-    <ControlMenu list={[yamlPasteButton, yamlFileButton, yamlCopyButton, clearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setFormByYaml} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File
+          accept=".yml,.yaml"
+          onFileRead={setFormByYaml}
+          iconOnly
+          aria-label="load a yaml file"
+        />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Copy text={form.yaml} />
+      </ControlMenuItem>
+      <ControlMenuItem>{clearButton}</ControlMenuItem>
+    </ControlMenu>
   );
 
   return (

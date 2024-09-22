@@ -16,7 +16,7 @@ import {
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import * as Button from "@/components/buttons";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
@@ -45,14 +45,26 @@ export default function Page() {
     }
   };
 
-  const inputPasteButton = <Button.Paste onClipboardRead={setInput} />;
-  const inputFileButton = <Button.File onFileRead={setInput} iconOnly aria-label="load a file" />;
-  const inputClearButton = <Button.Clear onClick={clearInput} iconOnly aria-label="clear input" />;
-
-  const outputCopyButton = <Button.Copy text={output} />;
-
-  const inputControl = <ControlMenu list={[inputPasteButton, inputFileButton, inputClearButton]} />;
-  const outputControl = <ControlMenu list={[outputCopyButton]} />;
+  const inputControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setInput} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File onFileRead={setInput} iconOnly aria-label="load a file" />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Clear onClick={clearInput} iconOnly aria-label="clear input" />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
+  const outputControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Copy text={output} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
 
   return (
     <PageRootSection title={toolGroups.text.tools.inspector_and_case_converter.longTitle}>

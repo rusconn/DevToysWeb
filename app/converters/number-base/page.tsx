@@ -7,7 +7,7 @@ import * as baselib from "@/lib/base";
 import { Input, InputProps } from "@/components/ui/input";
 import * as Button from "@/components/buttons";
 import { Configuration, ConfigurationItem } from "@/components/configuration";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
 import { PageRootSection } from "@/components/page-root-section";
@@ -72,15 +72,35 @@ export default function Page() {
       }
     />
   );
-  const decPasteButton = <Button.Paste onClipboardRead={trySetDec} />;
-  const hexPasteButton = <Button.Paste onClipboardRead={trySetHex} />;
-  const octPasteButton = <Button.Paste onClipboardRead={trySetOct} />;
-  const binPasteButton = <Button.Paste onClipboardRead={trySetBin} />;
 
-  const decControl = <ControlMenu list={[decPasteButton]} />;
-  const hexControl = <ControlMenu list={[hexPasteButton]} />;
-  const octControl = <ControlMenu list={[octPasteButton]} />;
-  const binControl = <ControlMenu list={[binPasteButton]} />;
+  const decControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={trySetDec} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
+  const hexControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={trySetHex} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
+  const octControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={trySetOct} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
+  const binControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={trySetBin} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
 
   return (
     <PageRootSection title={toolGroups.converters.tools.numberBase.longTitle}>

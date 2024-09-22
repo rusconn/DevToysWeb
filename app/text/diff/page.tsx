@@ -9,7 +9,7 @@ import { DiffEditor } from "@/components/ui/diff-editor";
 import { Editor } from "@/components/ui/editor";
 import * as Button from "@/components/buttons";
 import { Configuration, ConfigurationItem } from "@/components/configuration";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
 import { PageRootSection } from "@/components/page-root-section";
@@ -55,37 +55,45 @@ export default function Page() {
   );
   const input1Control = useMemo(
     () => (
-      <ControlMenu
-        list={[
-          <Button.Paste onClipboardRead={setInput1} />,
-          <Button.File onFileRead={setInput1} iconOnly aria-label="load a file with old text" />,
-          <Button.Clear onClick={clearInput1} iconOnly aria-label="clear old text input" />,
-        ]}
-      />
+      <ControlMenu>
+        <ControlMenuItem>
+          <Button.Paste onClipboardRead={setInput1} />
+        </ControlMenuItem>
+        <ControlMenuItem>
+          <Button.File onFileRead={setInput1} iconOnly aria-label="load a file with old text" />
+        </ControlMenuItem>
+        <ControlMenuItem>
+          <Button.Clear onClick={clearInput1} iconOnly aria-label="clear old text input" />
+        </ControlMenuItem>
+      </ControlMenu>
     ),
     [setInput1, clearInput1]
   );
 
   const input2Control = useMemo(
     () => (
-      <ControlMenu
-        list={[
-          <Button.Paste onClipboardRead={setInput2} />,
-          <Button.File onFileRead={setInput2} iconOnly aria-label="load a file with new text" />,
-          <Button.Clear onClick={clearInput2} iconOnly aria-label="clear new text input" />,
-        ]}
-      />
+      <ControlMenu>
+        <ControlMenuItem>
+          <Button.Paste onClipboardRead={setInput2} />
+        </ControlMenuItem>
+        <ControlMenuItem>
+          <Button.File onFileRead={setInput2} iconOnly aria-label="load a file with new text" />
+        </ControlMenuItem>
+        <ControlMenuItem>
+          <Button.Clear onClick={clearInput2} iconOnly aria-label="clear new text input" />
+        </ControlMenuItem>
+      </ControlMenu>
     ),
     [setInput2, clearInput2]
   );
 
   const diffControl = useMemo(
     () => (
-      <ControlMenu
-        list={[
-          <Button.ToggleFullSize iconOnly onClick={toggleFullHeight} expanded={diffFullHeight} />,
-        ]}
-      />
+      <ControlMenu>
+        <ControlMenuItem>
+          <Button.ToggleFullSize iconOnly onClick={toggleFullHeight} expanded={diffFullHeight} />
+        </ControlMenuItem>
+      </ControlMenu>
     ),
     [diffFullHeight, toggleFullHeight]
   );
