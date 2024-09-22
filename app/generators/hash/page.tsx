@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import MD5 from "crypto-js/md5";
 import SHA1 from "crypto-js/sha1";
 import SHA256 from "crypto-js/sha256";
@@ -22,10 +22,10 @@ export default function Page() {
   const [uppercase, setUppercase] = useState(false);
   const [input, setInput] = useState("Hello there !");
 
-  const newMd5 = MD5(input).toString();
-  const newSha1 = SHA1(input).toString();
-  const newSha256 = SHA256(input).toString();
-  const newSha512 = SHA512(input).toString();
+  const newMd5 = useMemo(() => MD5(input).toString(), [input]);
+  const newSha1 = useMemo(() => SHA1(input).toString(), [input]);
+  const newSha256 = useMemo(() => SHA256(input).toString(), [input]);
+  const newSha512 = useMemo(() => SHA512(input).toString(), [input]);
 
   const md5 = uppercase ? newMd5.toUpperCase() : newMd5;
   const sha1 = uppercase ? newSha1.toUpperCase() : newSha1;

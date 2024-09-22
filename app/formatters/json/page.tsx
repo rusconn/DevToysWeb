@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { safeJsonParse } from "@/lib/json";
@@ -25,7 +25,7 @@ export default function Page() {
   const [indentation, setIndentation] = useState(indentations.two);
   const [input, setInput] = useState('{\n"foo":"bar"\n}');
 
-  const parsed = safeJsonParse(input);
+  const parsed = useMemo(() => safeJsonParse(input), [input]);
   const output = parsed.map(x => JSON.stringify(x, null, indentation)).unwrapOr("");
 
   const clearInput = useCallback(() => setInput(""), []);
