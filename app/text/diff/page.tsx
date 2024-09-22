@@ -8,8 +8,7 @@ import { toolGroups } from "@/config/tools";
 import { DiffEditor } from "@/components/ui/diff-editor";
 import { Editor } from "@/components/ui/editor";
 import * as Button from "@/components/buttons";
-import { Configuration } from "@/components/configuration";
-import { Configurations } from "@/components/configurations";
+import { Configuration, ConfigurationItem } from "@/components/configuration";
 import { ControlMenu } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
@@ -38,7 +37,7 @@ export default function Page() {
 
   const inlineModeConfig = useMemo(
     () => (
-      <Configuration
+      <ConfigurationItem
         icon={<icons.Rows size={24} />}
         title="Inline mode"
         control={
@@ -96,7 +95,7 @@ export default function Page() {
   return (
     <PageRootSection className="h-full" title={toolGroups.text.tools.diff.longTitle}>
       <PageSection title="Configuration" className={hiddenInFullHeightMode}>
-        <Configurations list={[inlineModeConfig]} />
+        <Configuration>{inlineModeConfig}</Configuration>
       </PageSection>
       <PanelGroup direction="vertical" autoSaveId={PERSISTENCE_KEY.panels.textDiff.vertical}>
         <Panel maxSize={VERTICAL_PANEL_MAX_SIZE} className={hiddenInFullHeightMode}>

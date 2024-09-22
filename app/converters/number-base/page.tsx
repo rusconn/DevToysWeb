@@ -6,8 +6,7 @@ import { toolGroups } from "@/config/tools";
 import * as baselib from "@/lib/base";
 import { Input, InputProps } from "@/components/ui/input";
 import * as Button from "@/components/buttons";
-import { Configuration } from "@/components/configuration";
-import { Configurations } from "@/components/configurations";
+import { Configuration, ConfigurationItem } from "@/components/configuration";
 import { ControlMenu } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
@@ -59,7 +58,7 @@ export default function Page() {
   const onBinChange: InputProps["onChange"] = e => trySetBin(e.currentTarget.value);
 
   const formatNumberConfig = (
-    <Configuration
+    <ConfigurationItem
       icon={<icons.CaseSensitive size={24} />}
       title="Format number"
       control={
@@ -86,7 +85,7 @@ export default function Page() {
   return (
     <PageRootSection title={toolGroups.converters.tools.numberBase.longTitle}>
       <PageSection title="Configuration">
-        <Configurations list={[formatNumberConfig]} />
+        <Configuration>{formatNumberConfig}</Configuration>
       </PageSection>
       <div className="flex flex-col gap-3">
         <PageSection title="Decimal" control={decControl}>

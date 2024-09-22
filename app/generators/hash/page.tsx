@@ -10,8 +10,7 @@ import { toolGroups } from "@/config/tools";
 import { Input } from "@/components/ui/input";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import * as Button from "@/components/buttons";
-import { Configuration } from "@/components/configuration";
-import { Configurations } from "@/components/configurations";
+import { Configuration, ConfigurationItem } from "@/components/configuration";
 import { ControlMenu } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
@@ -37,7 +36,7 @@ export default function Page() {
   const onInputChange: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
 
   const uppercaseConfig = (
-    <Configuration
+    <ConfigurationItem
       icon={<icons.CaseSensitive size={24} />}
       title="Uppercase"
       control={
@@ -70,7 +69,7 @@ export default function Page() {
   return (
     <PageRootSection title={toolGroups.generators.tools.hash.longTitle}>
       <PageSection title="Configuration">
-        <Configurations list={[uppercaseConfig]} />
+        <Configuration>{uppercaseConfig}</Configuration>
       </PageSection>
       <PageSection className="-mt-2" title="Input" control={inputControl}>
         <Textarea value={input} onChange={onInputChange} rows={5} />

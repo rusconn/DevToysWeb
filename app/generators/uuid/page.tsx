@@ -11,8 +11,7 @@ import * as Select from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Clear } from "@/components/buttons/clear";
 import { Copy } from "@/components/buttons/copy";
-import { Configuration } from "@/components/configuration";
-import { Configurations } from "@/components/configurations";
+import { Configuration, ConfigurationItem } from "@/components/configuration";
 import { ControlMenu } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
@@ -62,7 +61,7 @@ export default function Page() {
   };
 
   const hyphensConfig = (
-    <Configuration
+    <ConfigurationItem
       icon={<icons.Minus size={24} />}
       title="Hyphens"
       control={
@@ -78,7 +77,7 @@ export default function Page() {
   );
 
   const uppercaseConfig = (
-    <Configuration
+    <ConfigurationItem
       icon={<icons.CaseSensitive size={24} />}
       title="Uppercase"
       control={
@@ -94,7 +93,7 @@ export default function Page() {
   );
 
   const uuidVersionConfig = (
-    <Configuration
+    <ConfigurationItem
       icon={<icons.Settings2 size={24} />}
       title="UUID version"
       description="Choose the version of UUID to generate"
@@ -123,7 +122,11 @@ export default function Page() {
   return (
     <PageRootSection title={toolGroups.generators.tools.uuid.longTitle}>
       <PageSection title="Configuration">
-        <Configurations list={[hyphensConfig, uppercaseConfig, uuidVersionConfig]} />
+        <Configuration>
+          {hyphensConfig}
+          {uppercaseConfig}
+          {uuidVersionConfig}
+        </Configuration>
       </PageSection>
       <PageSection title="Generate">
         <div className="flex items-center gap-2">

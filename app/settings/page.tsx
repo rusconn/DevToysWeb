@@ -4,8 +4,7 @@ import { useTheme } from "next-themes";
 
 import { singleTools } from "@/config/tools";
 import * as Select from "@/components/ui/select";
-import { Configuration } from "@/components/configuration";
-import { Configurations } from "@/components/configurations";
+import { Configuration, ConfigurationItem } from "@/components/configuration";
 import * as icons from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
 
@@ -13,7 +12,7 @@ export default function Page() {
   const { theme = "system", setTheme } = useTheme();
 
   const appThemeConfig = (
-    <Configuration
+    <ConfigurationItem
       icon={<icons.Paintbrush size={24} />}
       title="App theme"
       description="Select which app theme to display"
@@ -37,7 +36,7 @@ export default function Page() {
 
   return (
     <PageRootSection title={singleTools.settings.longTitle}>
-      <Configurations list={[appThemeConfig]} />
+      <Configuration>{appThemeConfig}</Configuration>
     </PageRootSection>
   );
 }
