@@ -11,7 +11,7 @@ import * as Select from "@/components/ui/select";
 import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
@@ -120,10 +120,20 @@ export default function Page() {
   );
 
   const jsonControl = (
-    <ControlMenu list={[jsonPasteButton, jsonFileButton, jsonCopyButton, clearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>{jsonPasteButton}</ControlMenuItem>
+      <ControlMenuItem>{jsonFileButton}</ControlMenuItem>
+      <ControlMenuItem>{jsonCopyButton}</ControlMenuItem>
+      <ControlMenuItem>{clearButton}</ControlMenuItem>
+    </ControlMenu>
   );
   const yamlControl = (
-    <ControlMenu list={[yamlPasteButton, yamlFileButton, yamlCopyButton, clearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>{yamlPasteButton}</ControlMenuItem>
+      <ControlMenuItem>{yamlFileButton}</ControlMenuItem>
+      <ControlMenuItem>{yamlCopyButton}</ControlMenuItem>
+      <ControlMenuItem>{clearButton}</ControlMenuItem>
+    </ControlMenu>
   );
 
   return (

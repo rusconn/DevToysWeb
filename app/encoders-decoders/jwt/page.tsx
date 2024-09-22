@@ -7,7 +7,7 @@ import { decode } from "@/lib/jwt";
 import { Editor } from "@/components/ui/editor";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import * as Button from "@/components/buttons";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
@@ -36,11 +36,23 @@ export default function Page() {
   const payloadCopyButton = <Button.Copy text={payload} />;
 
   const jwtTokenControl = (
-    <ControlMenu list={[jwtTokenPasteButton, jwtTokenFileButton, jwtTokenClearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>{jwtTokenPasteButton}</ControlMenuItem>
+      <ControlMenuItem>{jwtTokenFileButton}</ControlMenuItem>
+      <ControlMenuItem>{jwtTokenClearButton}</ControlMenuItem>
+    </ControlMenu>
   );
 
-  const heaederControl = <ControlMenu list={[heaederCopyButton]} />;
-  const payloadControl = <ControlMenu list={[payloadCopyButton]} />;
+  const heaederControl = (
+    <ControlMenu>
+      <ControlMenuItem>{heaederCopyButton}</ControlMenuItem>
+    </ControlMenu>
+  );
+  const payloadControl = (
+    <ControlMenu>
+      <ControlMenuItem>{payloadCopyButton}</ControlMenuItem>
+    </ControlMenu>
+  );
 
   return (
     <PageRootSection title={toolGroups.encodersDecoders.tools.jwt.longTitle}>

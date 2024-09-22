@@ -8,7 +8,7 @@ import { Input, InputProps } from "@/components/ui/input";
 import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
 import { PageRootSection } from "@/components/page-root-section";
@@ -78,10 +78,26 @@ export default function Page() {
   const octPasteButton = <Button.Paste onClipboardRead={trySetOct} />;
   const binPasteButton = <Button.Paste onClipboardRead={trySetBin} />;
 
-  const decControl = <ControlMenu list={[decPasteButton]} />;
-  const hexControl = <ControlMenu list={[hexPasteButton]} />;
-  const octControl = <ControlMenu list={[octPasteButton]} />;
-  const binControl = <ControlMenu list={[binPasteButton]} />;
+  const decControl = (
+    <ControlMenu>
+      <ControlMenuItem>{decPasteButton}</ControlMenuItem>
+    </ControlMenu>
+  );
+  const hexControl = (
+    <ControlMenu>
+      <ControlMenuItem>{hexPasteButton}</ControlMenuItem>
+    </ControlMenu>
+  );
+  const octControl = (
+    <ControlMenu>
+      <ControlMenuItem>{octPasteButton}</ControlMenuItem>
+    </ControlMenu>
+  );
+  const binControl = (
+    <ControlMenu>
+      <ControlMenuItem>{binPasteButton}</ControlMenuItem>
+    </ControlMenu>
+  );
 
   return (
     <PageRootSection title={toolGroups.converters.tools.numberBase.longTitle}>

@@ -14,7 +14,7 @@ import { Clear } from "@/components/buttons/clear";
 import { Copy } from "@/components/buttons/copy";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
 import { PageRootSection } from "@/components/page-root-section";
@@ -119,7 +119,12 @@ export default function Page() {
   const uuidsCopyButton = <Copy text={uuidsString} />;
   const uuidsClearButton = <Clear onClick={clearUuids} iconOnly aria-label="clear uuids" />;
 
-  const uuidsControl = <ControlMenu list={[uuidsCopyButton, uuidsClearButton]} />;
+  const uuidsControl = (
+    <ControlMenu>
+      <ControlMenuItem>{uuidsCopyButton}</ControlMenuItem>
+      <ControlMenuItem>{uuidsClearButton}</ControlMenuItem>
+    </ControlMenu>
+  );
 
   return (
     <PageRootSection title={toolGroups.generators.tools.uuid.longTitle}>

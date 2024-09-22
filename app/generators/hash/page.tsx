@@ -9,7 +9,7 @@ import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { LabeledSwitch } from "@/components/labeled-switch";
 import { PageRootSection } from "@/components/page-root-section";
@@ -53,7 +53,13 @@ export default function Page() {
   const inputFileButton = <Button.File onFileRead={setInput} iconOnly aria-label="load a file" />;
   const inputClearButton = <Button.Clear onClick={clearInput} iconOnly aria-label="clear input" />;
 
-  const inputControl = <ControlMenu list={[inputPasteButton, inputFileButton, inputClearButton]} />;
+  const inputControl = (
+    <ControlMenu>
+      <ControlMenuItem>{inputPasteButton}</ControlMenuItem>
+      <ControlMenuItem>{inputFileButton}</ControlMenuItem>
+      <ControlMenuItem>{inputClearButton}</ControlMenuItem>
+    </ControlMenu>
+  );
 
   const md5CopyButton = <Button.Copy text={md5} iconOnly aria-label="copy generated md5" />;
   const sha1CopyButton = <Button.Copy text={sha1} iconOnly aria-label="copy generated sha1" />;
@@ -76,25 +82,33 @@ export default function Page() {
         <PageSection title="MD5">
           <div className="flex gap-2">
             <Input fontMono className="flex-1" value={md5} readOnly />
-            <ControlMenu list={[md5CopyButton]} />
+            <ControlMenu>
+              <ControlMenuItem>{md5CopyButton}</ControlMenuItem>
+            </ControlMenu>
           </div>
         </PageSection>
         <PageSection title="SHA1">
           <div className="flex gap-2">
             <Input fontMono className="flex-1" value={sha1} readOnly />
-            <ControlMenu list={[sha1CopyButton]} />
+            <ControlMenu>
+              <ControlMenuItem>{sha1CopyButton}</ControlMenuItem>
+            </ControlMenu>
           </div>
         </PageSection>
         <PageSection title="SHA256">
           <div className="flex gap-2">
             <Input fontMono className="flex-1" value={sha256} readOnly />
-            <ControlMenu list={[sha256CopyButton]} />
+            <ControlMenu>
+              <ControlMenuItem>{sha256CopyButton}</ControlMenuItem>
+            </ControlMenu>
           </div>
         </PageSection>
         <PageSection title="SHA512">
           <div className="flex gap-2">
             <Input fontMono className="flex-1" value={sha512} readOnly />
-            <ControlMenu list={[sha512CopyButton]} />
+            <ControlMenu>
+              <ControlMenuItem>{sha512CopyButton}</ControlMenuItem>
+            </ControlMenu>
           </div>
         </PageSection>
       </div>

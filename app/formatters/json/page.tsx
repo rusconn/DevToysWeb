@@ -9,7 +9,7 @@ import * as Select from "@/components/ui/select";
 import * as Button from "@/components/buttons";
 import { Configuration } from "@/components/configuration";
 import { Configurations } from "@/components/configurations";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
@@ -65,8 +65,18 @@ export default function Page() {
 
   const outputCopyButton = <Button.Copy text={output} />;
 
-  const inputControl = <ControlMenu list={[inputPasteButton, inputFileButton, inputClearButton]} />;
-  const outputControl = <ControlMenu list={[outputCopyButton]} />;
+  const inputControl = (
+    <ControlMenu>
+      <ControlMenuItem>{inputPasteButton}</ControlMenuItem>
+      <ControlMenuItem>{inputFileButton}</ControlMenuItem>
+      <ControlMenuItem>{inputClearButton}</ControlMenuItem>
+    </ControlMenu>
+  );
+  const outputControl = (
+    <ControlMenu>
+      <ControlMenuItem>{outputCopyButton}</ControlMenuItem>
+    </ControlMenu>
+  );
 
   return (
     <PageRootSection className="h-full" title={toolGroups.formatters.tools.json.longTitle}>
