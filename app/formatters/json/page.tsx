@@ -8,7 +8,7 @@ import { Editor, EditorProps } from "@/components/ui/editor";
 import * as Select from "@/components/ui/select";
 import * as Button from "@/components/buttons";
 import { Configuration, ConfigurationItem } from "@/components/configuration";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
@@ -54,18 +54,26 @@ export default function Page() {
     />
   );
 
-  const inputPasteButton = <Button.Paste onClipboardRead={setInput} />;
-
-  const inputFileButton = (
-    <Button.File accept=".json" onFileRead={setInput} iconOnly aria-label="load a json file" />
+  const inputControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setInput} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File accept=".json" onFileRead={setInput} iconOnly aria-label="load a json file" />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Clear onClick={clearInput} iconOnly aria-label="clear json" />
+      </ControlMenuItem>
+    </ControlMenu>
   );
-
-  const inputClearButton = <Button.Clear onClick={clearInput} iconOnly aria-label="clear json" />;
-
-  const outputCopyButton = <Button.Copy text={output} />;
-
-  const inputControl = <ControlMenu list={[inputPasteButton, inputFileButton, inputClearButton]} />;
-  const outputControl = <ControlMenu list={[outputCopyButton]} />;
+  const outputControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Copy text={output} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
 
   return (
     <PageRootSection className="h-full" title={toolGroups.formatters.tools.json.longTitle}>

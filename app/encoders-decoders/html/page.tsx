@@ -6,7 +6,7 @@ import { escape, unescape } from "html-escaper";
 import { toolGroups } from "@/config/tools";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import * as Button from "@/components/buttons";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
@@ -40,28 +40,37 @@ export default function Page() {
   const onDecodedChange: TextareaProps["onChange"] = e => setFormByDecoded(e.currentTarget.value);
   const onEncodedChange: TextareaProps["onChange"] = e => setFormByEncoded(e.currentTarget.value);
 
-  const decodedPasteButton = <Button.Paste onClipboardRead={setFormByDecoded} />;
-  const encodedPasteButton = <Button.Paste onClipboardRead={setFormByEncoded} />;
-
-  const decodedFileButton = (
-    <Button.File onFileRead={setFormByDecoded} iconOnly aria-label="load a decoded file" />
-  );
-  const encodedFileButton = (
-    <Button.File onFileRead={setFormByEncoded} iconOnly aria-label="load a encoded file" />
-  );
-
-  const decodedCopyButton = <Button.Copy text={form.decoded} />;
-  const encodedCopyButton = <Button.Copy text={form.encoded} />;
-
   const clearButton = (
     <Button.Clear onClick={clearBoth} iconOnly aria-label="clear decoded and encoded" />
   );
 
   const decodedControl = (
-    <ControlMenu list={[decodedPasteButton, decodedFileButton, decodedCopyButton, clearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setFormByDecoded} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File onFileRead={setFormByDecoded} iconOnly aria-label="load a decoded file" />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Copy text={form.decoded} />
+      </ControlMenuItem>
+      <ControlMenuItem>{clearButton}</ControlMenuItem>
+    </ControlMenu>
   );
   const encodedControl = (
-    <ControlMenu list={[encodedPasteButton, encodedFileButton, encodedCopyButton, clearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setFormByEncoded} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File onFileRead={setFormByEncoded} iconOnly aria-label="load a encoded file" />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Copy text={form.encoded} />
+      </ControlMenuItem>
+      <ControlMenuItem>{clearButton}</ControlMenuItem>
+    </ControlMenu>
   );
 
   return (

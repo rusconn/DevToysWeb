@@ -7,7 +7,7 @@ import { decode } from "@/lib/jwt";
 import { Editor } from "@/components/ui/editor";
 import { Textarea, TextareaProps } from "@/components/ui/textarea";
 import * as Button from "@/components/buttons";
-import { ControlMenu } from "@/components/control-menu";
+import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
 import { PageRootSection } from "@/components/page-root-section";
 import { PageSection } from "@/components/page-section";
 
@@ -24,23 +24,34 @@ export default function Page() {
 
   const onJwtChange: TextareaProps["onChange"] = e => setJwt(e.currentTarget.value);
 
-  const jwtTokenPasteButton = <Button.Paste onClipboardRead={setJwt} />;
-
-  const jwtTokenFileButton = (
-    <Button.File onFileRead={setJwt} iconOnly aria-label="load a token file" />
-  );
-
-  const jwtTokenClearButton = <Button.Clear onClick={clearJwt} iconOnly aria-label="clear token" />;
-
-  const heaederCopyButton = <Button.Copy text={header} />;
-  const payloadCopyButton = <Button.Copy text={payload} />;
-
   const jwtTokenControl = (
-    <ControlMenu list={[jwtTokenPasteButton, jwtTokenFileButton, jwtTokenClearButton]} />
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setJwt} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File onFileRead={setJwt} iconOnly aria-label="load a token file" />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Clear onClick={clearJwt} iconOnly aria-label="clear token" />
+      </ControlMenuItem>
+    </ControlMenu>
   );
 
-  const heaederControl = <ControlMenu list={[heaederCopyButton]} />;
-  const payloadControl = <ControlMenu list={[payloadCopyButton]} />;
+  const heaederControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Copy text={header} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
+  const payloadControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Copy text={payload} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
 
   return (
     <PageRootSection title={toolGroups.encodersDecoders.tools.jwt.longTitle}>
