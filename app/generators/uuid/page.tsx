@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { uuid } from "@/lib/uuid";
@@ -38,7 +38,7 @@ export default function Page() {
   const [uuids, setUuids] = useState<string[]>([]);
   const ref = useAutoScroll<HTMLTextAreaElement>([uuids]);
 
-  const uuidsString = uuids.join("\n");
+  const uuidsString = useMemo(() => uuids.join("\n"), [uuids]);
 
   const clearUuids = useCallback(() => setUuids([]), []);
 
