@@ -9,8 +9,7 @@ import { safeYamlParse } from "@/lib/yaml";
 import { Editor, EditorProps } from "@/components/ui/editor";
 import * as Select from "@/components/ui/select";
 import * as Button from "@/components/buttons";
-import { Configuration } from "@/components/configuration";
-import { Configurations } from "@/components/configurations";
+import { Configuration, ConfigurationItem } from "@/components/configuration";
 import { ControlMenu } from "@/components/control-menu";
 import * as icons from "@/components/icons";
 import { PageRootSection } from "@/components/page-root-section";
@@ -77,7 +76,7 @@ export default function Page() {
   const onYamlChange: EditorProps["onChange"] = value => setFormByYaml(value ?? "");
 
   const indentationConfig = (
-    <Configuration
+    <ConfigurationItem
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
@@ -129,7 +128,7 @@ export default function Page() {
   return (
     <PageRootSection className="h-full" title={toolGroups.converters.tools.jsonYaml.longTitle}>
       <PageSection title="Configuration">
-        <Configurations list={[indentationConfig]} />
+        <Configuration>{indentationConfig}</Configuration>
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
         <PageSection className="min-h-[200px] flex-1" title="Json" control={jsonControl}>
