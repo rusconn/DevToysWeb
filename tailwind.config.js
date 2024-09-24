@@ -7,77 +7,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+        neutral: {
+          0: "#ffffff",
+          150: "#f2f2f2",
+          250: "#dcdcdc",
+          350: "#bbbbbb",
+          450: "#8b8b8b",
+          550: "#626262",
+          650: "#494949",
+          750: "#323232",
+          850: "#1f1f1f",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        border: "hsl(var(--border))",
-        separator: "hsl(var(--separator))",
-        page: "hsl(var(--page))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-          hover: "hsl(var(--card-hover))",
-          icon: {
-            DEFAULT: "hsl(var(--card-icon))",
-            hover: "hsl(var(--card-icon-hover))",
-          },
-          muted: {
-            foreground: "hsl(var(--card-muted-foreground))",
-          },
-        },
-        configuration: "hsl(var(--configuration))",
-        switch: {
-          DEFAULT: "hsl(var(--switch))",
-          hover: "hsl(var(--switch-hover))",
-        },
-        select: {
-          DEFAULT: "hsl(var(--select))",
-          hover: "hsl(var(--select-hover))",
-          content: {
-            DEFAULT: "hsl(var(--select-content))",
-            foreground: "hsl(var(--select-content-foreground))",
-          },
-          item: {
-            hover: "hsl(var(--select-item-hover))",
-            focus: "hsl(var(--select-item-focus))",
-          },
-        },
-        input: {
-          DEFAULT: "hsl(var(--input))",
-          hover: "hsl(var(--input-hover))",
-          focus: "hsl(var(--input-focus))",
-        },
-        textarea: {
-          DEFAULT: "hsl(var(--textarea))",
-          hover: "hsl(var(--textarea-hover))",
-          focus: "hsl(var(--textarea-focus))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-          hover: "hsl(var(--primary-hover))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-          hover: "hsl(var(--secondary-hover))",
-        },
-        tooltip: {
-          DEFAULT: "hsl(var(--tooltip))",
-          foreground: "hsl(var(--tooltip-foreground))",
-        },
-        indicator: {
-          DEFAULT: "hsl(var(--indicator))",
-          hover: "hsl(var(--indicator-hover))",
-        },
-        link: "hsl(var(--link))",
+        border: "var(--border)",
       },
       borderRadius: {
         lg: "var(--radius)",
