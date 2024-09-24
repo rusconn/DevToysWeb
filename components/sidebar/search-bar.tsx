@@ -57,11 +57,21 @@ export function SearchBar() {
           size="shorter"
           onClick={clearText}
         >
-          <icons.X className="p-1 text-muted-foreground" />
+          <icons.X
+            className={cn(
+              "p-1 text-neutral-450", //
+              "dark:text-neutral-400"
+            )}
+          />
           <span className="sr-only">Clear search text</span>
         </Button>
         <Button variant="ghost" size="shorter" onClick={search} aria-label="search">
-          <icons.Search className="-scale-x-100 p-1 text-muted-foreground" />
+          <icons.Search
+            className={cn(
+              "-scale-x-100 p-1 text-neutral-450", //
+              "dark:text-neutral-400"
+            )}
+          />
           <span className="sr-only">Search tools</span>
         </Button>
       </div>

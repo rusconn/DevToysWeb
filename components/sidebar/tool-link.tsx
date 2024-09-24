@@ -18,9 +18,10 @@ export function ToolLink({ Icon, shortTitle: title, href, onClick, highlight, gr
     <Link
       className={cn(
         "flex h-10 items-center gap-3 rounded",
-        highlight === "both" && "bg-accent",
+        highlight === "both" && "bg-neutral-200 dark:bg-neutral-750",
         grouped && "pl-8 -outline-offset-1", // -outline-offset-1: ugly hack for Chrome outlines
-        "hover:bg-accent"
+        "hover:bg-neutral-200",
+        "dark:hover:bg-neutral-750"
       )}
       {...{ href, onClick }}
     >

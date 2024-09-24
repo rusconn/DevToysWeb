@@ -52,7 +52,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "h-screen bg-background font-sans text-sm font-medium text-foreground antialiased",
+          "h-screen bg-neutral-150 font-sans text-sm font-medium text-neutral-750 antialiased",
+          "dark:bg-neutral-850 dark:text-neutral-200",
           fontSans.variable,
           fontMono.variable
         )}
@@ -62,7 +63,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div className="grid h-full grid-cols-[18rem_1fr] grid-rows-[3.5rem_1fr]">
               <SiteHeader className="col-span-full" />
               <Sidebar />
-              <main className="overflow-y-auto rounded-tl-md border bg-page p-12">{children}</main>
+              <main
+                className={cn(
+                  "overflow-y-auto rounded-tl-md border bg-neutral-100 p-12",
+                  "dark:bg-neutral-800"
+                )}
+              >
+                {children}
+              </main>
             </div>
             <TailwindIndicator />
           </SearchTextProvider>

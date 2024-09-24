@@ -18,10 +18,13 @@ export const Trigger = ({
 }: React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger>) => (
   <SelectPrimitive.Trigger
     className={cn(
-      "flex h-9 items-center justify-between rounded-md border bg-select px-2.5 py-1.5",
-      "placeholder:text-muted-foreground",
-      "hover:bg-select-hover",
+      "flex h-9 items-center justify-between rounded-md border bg-neutral-50 px-2.5 py-1.5",
+      "placeholder:text-neutral-450",
+      "hover:bg-neutral-100",
       "disabled:cursor-not-allowed disabled:opacity-50",
+      "dark:bg-neutral-700",
+      "dark:placeholder:text-neutral-400",
+      "dark:hover:bg-neutral-650",
       className
     )}
     {...props}
@@ -43,7 +46,8 @@ export const Content = ({
     <SelectPrimitive.Content
       {...{ position }}
       className={cn(
-        "relative z-50 overflow-hidden rounded-md border bg-select-content text-select-content-foreground shadow-md animate-in fade-in-80",
+        "relative z-50 overflow-hidden rounded-md border bg-neutral-50 text-neutral-750 shadow-md animate-in fade-in-80",
+        "dark:bg-neutral-800 dark:text-neutral-200",
         position === "popper" && "translate-y-1",
         className
       )}
@@ -77,9 +81,11 @@ export const Item = ({
   <SelectPrimitive.Item
     className={cn(
       "relative flex w-full cursor-default select-none items-center rounded-sm px-2.5 py-1.5 outline-none",
-      "hover:bg-select-item-hover",
-      "focus:bg-select-item-focus",
+      "hover:bg-neutral-150",
+      "focus:bg-neutral-150",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "dark:hover:bg-neutral-750",
+      "dark:focus:bg-neutral-750",
       className
     )}
     {...props}
@@ -97,5 +103,8 @@ export const Separator = ({
   className,
   ...props
 }: React.ComponentPropsWithRef<typeof SelectPrimitive.Separator>) => (
-  <SelectPrimitive.Separator className={cn("-mx-1 my-1 h-px bg-muted", className)} {...props} />
+  <SelectPrimitive.Separator
+    className={cn("-mx-1 my-1 h-px bg-neutral-850", className)}
+    {...props}
+  />
 );

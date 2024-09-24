@@ -1,5 +1,7 @@
 import { PropsWithChildren } from "react";
 
+import { cn } from "@/lib/style";
+
 export function Configuration({ children }: PropsWithChildren) {
   return <ul className="flex flex-col gap-1.5">{children}</ul>;
 }
@@ -16,12 +18,24 @@ export function ConfigurationItem({
   control: React.ReactNode;
 }) {
   return (
-    <li className="flex h-16 items-center gap-6 rounded border bg-configuration px-4">
+    <li
+      className={cn(
+        "flex h-16 items-center gap-6 rounded border bg-neutral-50 px-4",
+        "dark:bg-neutral-750"
+      )}
+    >
       {icon}
       {description ? (
         <div className="flex flex-col">
           <span>{title}</span>
-          <span className="text-xs text-muted-foreground">{description}</span>
+          <span
+            className={cn(
+              "text-xs text-neutral-450", //
+              "dark:text-neutral-400"
+            )}
+          >
+            {description}
+          </span>
         </div>
       ) : (
         <span>{title}</span>

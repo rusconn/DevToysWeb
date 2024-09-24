@@ -41,8 +41,9 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
             ref={triggerRef}
             className={cn(
               "absolute right-0 flex h-10 w-10 items-center justify-center rounded transition-all duration-0",
-              "hover:bg-accent",
-              "[&[data-state=open]>svg]:rotate-180"
+              "hover:bg-neutral-200",
+              "[&[data-state=open]>svg]:rotate-180",
+              "dark:hover:bg-neutral-750"
             )}
             aria-label="toggle open/close state of the tool group"
           >

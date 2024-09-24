@@ -8,9 +8,22 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary-hover",
-        ghost: "hover:bg-accent",
+        default: cn(
+          "bg-neutral-50 text-neutral-750",
+          "hover:bg-neutral-100",
+          "dark:bg-neutral-750 dark:text-neutral-200",
+          "dark:hover:bg-neutral-700"
+        ),
+        secondary: cn(
+          "bg-sky-700 text-neutral-150",
+          "hover:bg-sky-600",
+          "dark:bg-indigo-300 dark:text-neutral-850",
+          "dark:hover:bg-indigo-400"
+        ),
+        ghost: cn(
+          "hover:bg-neutral-200", //
+          "dark:hover:bg-neutral-750"
+        ),
       },
       size: {
         default: "h-9 rounded-md px-3 py-2",

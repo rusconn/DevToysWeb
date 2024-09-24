@@ -19,7 +19,10 @@ export function SiteHeader({ className }: Props) {
         <small className="text-xs">
           web clone of{" "}
           <a
-            className="text-link hover:underline"
+            className={cn(
+              "text-sky-700 hover:underline", //
+              "dark:text-indigo-300"
+            )}
             href={siteConfig.links.devtoys}
             target="_blank"
             rel="noreferrer"
