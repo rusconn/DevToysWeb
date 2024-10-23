@@ -1,5 +1,4 @@
-import { memo, useCallback, useRef } from "react";
-import equal from "react-fast-compare";
+import { useRef } from "react";
 
 import * as icons from "@/components/icons";
 
@@ -13,42 +12,39 @@ export type FileProps = Pick<InputProps, "accept"> &
     onFileRead: (text: string) => void;
   };
 
-export function RawFile({ accept, iconOnly, maxFileSizeMb = 20, onFileRead, ...props }: FileProps) {
+export function File({ accept, iconOnly, maxFileSizeMb = 20, onFileRead, ...props }: FileProps) {
   const ref = useRef<HTMLInputElement>(null);
 
   const onClick = () => ref.current?.click();
 
-  const onChange: NonNullable<InputProps["onChange"]> = useCallback(
-    e => {
-      const file = Array.from(e.currentTarget.files ?? []).at(0);
+  const onChange: NonNullable<InputProps["onChange"]> = e => {
+    const file = Array.from(e.currentTarget.files ?? []).at(0);
 
-      if (!file) {
-        return;
+    if (!file) {
+      return;
+    }
+
+    // TODO: reject if the file is unsupported
+
+    if (file.size > maxFileSizeMb * 2 ** 20) {
+      // eslint-disable-next-line no-alert
+      return alert(`The file is too big. Up to ${maxFileSizeMb}MiB.`);
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = ({ target }) => {
+      if (typeof target?.result === "string") {
+        onFileRead(target?.result);
       }
+    };
 
-      // TODO: reject if the file is unsupported
+    reader.readAsText(file);
 
-      if (file.size > maxFileSizeMb * 2 ** 20) {
-        // eslint-disable-next-line no-alert
-        return alert(`The file is too big. Up to ${maxFileSizeMb}MiB.`);
-      }
-
-      const reader = new FileReader();
-
-      reader.onload = ({ target }) => {
-        if (typeof target?.result === "string") {
-          onFileRead(target?.result);
-        }
-      };
-
-      reader.readAsText(file);
-
-      // clear selected file to accept the same file again
-      // eslint-disable-next-line no-param-reassign
-      e.currentTarget.value = "";
-    },
-    [maxFileSizeMb, onFileRead]
-  );
+    // clear selected file to accept the same file again
+    // eslint-disable-next-line no-param-reassign
+    e.currentTarget.value = "";
+  };
 
   return (
     <>
@@ -62,5 +58,3 @@ export function RawFile({ accept, iconOnly, maxFileSizeMb = 20, onFileRead, ...p
     </>
   );
 }
-
-export const File = memo(RawFile, equal);

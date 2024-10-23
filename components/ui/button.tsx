@@ -31,4 +31,3 @@ export type ButtonProps = React.ComponentPropsWithRef<"button"> &
 export const Button = ({ className, variant, size, ...props }: ButtonProps) => (
   <button className={cn(buttonVariants({ variant, size }), className)} type="button" {...props} />
 );
-Button.displayName = "Button";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import * as baselib from "@/lib/base";
@@ -48,10 +48,10 @@ export default function Page() {
     }
   };
 
-  const trySetDec = useCallback((value: string) => trySetInt(10)(value), []);
-  const trySetHex = useCallback((value: string) => trySetInt(16)(value), []);
-  const trySetOct = useCallback((value: string) => trySetInt(8)(value), []);
-  const trySetBin = useCallback((value: string) => trySetInt(2)(value), []);
+  const trySetDec = (value: string) => trySetInt(10)(value);
+  const trySetHex = (value: string) => trySetInt(16)(value);
+  const trySetOct = (value: string) => trySetInt(8)(value);
+  const trySetBin = (value: string) => trySetInt(2)(value);
 
   const onDecChange: InputProps["onChange"] = e => trySetDec(e.currentTarget.value);
   const onHexChange: InputProps["onChange"] = e => trySetHex(e.currentTarget.value);

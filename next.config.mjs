@@ -3,6 +3,7 @@ const nextConfig = {
   output: "export",
   reactStrictMode: true,
   experimental: {
+    reactCompiler: true,
     typedRoutes: true,
   },
 };

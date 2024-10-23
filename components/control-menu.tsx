@@ -1,11 +1,8 @@
-import { memo } from "react";
-import equal from "react-fast-compare";
-
 type Props = {
   list: React.ReactNode[];
 };
 
-function RawControlMenu({ list }: Props) {
+export function ControlMenu({ list }: Props) {
   return (
     <menu className="flex gap-2">
       {list.map((control, i) => (
@@ -16,5 +13,3 @@ function RawControlMenu({ list }: Props) {
     </menu>
   );
 }
-
-export const ControlMenu = memo(RawControlMenu, equal);

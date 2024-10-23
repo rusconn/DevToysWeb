@@ -1,11 +1,8 @@
-import { memo } from "react";
-import equal from "react-fast-compare";
-
 type Props = {
   list: React.ReactNode[];
 };
 
-function RawConfigurations({ list }: Props) {
+export function Configurations({ list }: Props) {
   return (
     <ul className="flex flex-col gap-1.5">
       {list.map((config, i) => (
@@ -16,5 +13,3 @@ function RawConfigurations({ list }: Props) {
     </ul>
   );
 }
-
-export const Configurations = memo(RawConfigurations, equal);

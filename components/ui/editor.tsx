@@ -31,5 +31,3 @@ export const Editor = ({ options, theme, ...props }: EditorProps) => {
     />
   );
 };
-
-Editor.displayName = "Editor";

@@ -1,6 +1,3 @@
-import { memo } from "react";
-import equal from "react-fast-compare";
-
 type Props = {
   icon: React.ReactNode;
   title: string;
@@ -8,7 +5,7 @@ type Props = {
   control: React.ReactNode;
 };
 
-function RawConfiguration({ icon, title, description, control }: Props) {
+export function Configuration({ icon, title, description, control }: Props) {
   return (
     <div className="flex h-16 items-center gap-6 rounded border bg-configuration px-4">
       {icon}
@@ -24,5 +21,3 @@ function RawConfiguration({ icon, title, description, control }: Props) {
     </div>
   );
 }
-
-export const Configuration = memo(RawConfiguration, equal);

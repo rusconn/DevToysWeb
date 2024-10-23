@@ -18,4 +18,3 @@ export const Label = ({
     {...props}
   />
 );
-Label.displayName = LabelPrimitive.Root.displayName;

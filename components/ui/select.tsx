@@ -32,7 +32,6 @@ export const Trigger = ({
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 );
-Trigger.displayName = SelectPrimitive.Trigger.displayName;
 
 export const Content = ({
   className,
@@ -62,7 +61,6 @@ export const Content = ({
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
 );
-Content.displayName = SelectPrimitive.Content.displayName;
 
 export const Label = ({
   className,
@@ -70,7 +68,6 @@ export const Label = ({
 }: React.ComponentPropsWithRef<typeof SelectPrimitive.Label>) => (
   <SelectPrimitive.Label className={cn("py-1.5 pl-8 pr-2 font-semibold", className)} {...props} />
 );
-Label.displayName = SelectPrimitive.Label.displayName;
 
 export const Item = ({
   className,
@@ -95,7 +92,6 @@ export const Item = ({
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 );
-Item.displayName = SelectPrimitive.Item.displayName;
 
 export const Separator = ({
   className,
@@ -103,4 +99,3 @@ export const Separator = ({
 }: React.ComponentPropsWithRef<typeof SelectPrimitive.Separator>) => (
   <SelectPrimitive.Separator className={cn("-mx-1 my-1 h-px bg-muted", className)} {...props} />
 );
-Separator.displayName = SelectPrimitive.Separator.displayName;

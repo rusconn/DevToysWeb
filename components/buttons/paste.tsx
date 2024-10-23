@@ -1,6 +1,3 @@
-import { memo, useCallback } from "react";
-import equal from "react-fast-compare";
-
 import * as icons from "@/components/icons";
 
 import { Base, BaseProps } from "./base";
@@ -9,8 +6,8 @@ export type PasteProps = Omit<BaseProps, "icon" | "labelText" | "onClick"> & {
   onClipboardRead: (text: string) => void;
 };
 
-export function RawPaste({ iconOnly, onClipboardRead, ...props }: PasteProps) {
-  const onClick: BaseProps["onClick"] = useCallback(() => {
+export function Paste({ iconOnly, onClipboardRead, ...props }: PasteProps) {
+  const onClick: BaseProps["onClick"] = () => {
     navigator.clipboard
       .readText()
       .then(onClipboardRead)
@@ -20,7 +17,7 @@ export function RawPaste({ iconOnly, onClipboardRead, ...props }: PasteProps) {
           alert(e.message);
         }
       });
-  }, [onClipboardRead]);
+  };
 
   return (
     <Base
@@ -31,5 +28,3 @@ export function RawPaste({ iconOnly, onClipboardRead, ...props }: PasteProps) {
     />
   );
 }
-
-export const Paste = memo(RawPaste, equal);

@@ -1,6 +1,5 @@
 "use client";
 
-import { memo } from "react";
 import Link, { LinkProps } from "next/link";
 
 import { Tool } from "@/config/tools";
@@ -14,7 +13,7 @@ type Props = Pick<Tool, "Icon" | "shortTitle"> &
   };
 
 // FIXME: css outline messed up
-function RawToolLink({ Icon, shortTitle: title, href, onClick, highlight, grouped }: Props) {
+export function ToolLink({ Icon, shortTitle: title, href, onClick, highlight, grouped }: Props) {
   return (
     <Link
       className={cn(
@@ -35,5 +34,3 @@ function RawToolLink({ Icon, shortTitle: title, href, onClick, highlight, groupe
     </Link>
   );
 }
-
-export const ToolLink = memo(RawToolLink);

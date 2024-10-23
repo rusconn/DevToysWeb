@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { safeDecodeURIComponent, safeEncodeURIComponent } from "@/lib/uri";
@@ -16,26 +16,26 @@ export default function Page() {
     encoded: "%3E%20It's%20%22URL%20encoding%22%3F",
   });
 
-  const setFormByDecoded = useCallback((text: string) => {
+  const setFormByDecoded = (text: string) => {
     setForm({
       decoded: text,
       encoded: safeEncodeURIComponent(text).unwrapOr(""),
     });
-  }, []);
+  };
 
-  const setFormByEncoded = useCallback((text: string) => {
+  const setFormByEncoded = (text: string) => {
     setForm({
       decoded: safeDecodeURIComponent(text).unwrapOr(""),
       encoded: text,
     });
-  }, []);
+  };
 
-  const clearBoth = useCallback(() => {
+  const clearBoth = () => {
     setForm({
       decoded: "",
       encoded: "",
     });
-  }, []);
+  };
 
   const onDecodedChange: TextareaProps["onChange"] = e => setFormByDecoded(e.currentTarget.value);
   const onEncodedChange: TextareaProps["onChange"] = e => setFormByEncoded(e.currentTarget.value);

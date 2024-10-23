@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { decode } from "@/lib/jwt";
@@ -20,7 +20,7 @@ export default function Page() {
   const header = h.map(x => JSON.stringify(x, null, 2)).unwrapOr("");
   const payload = p.map(x => JSON.stringify(x, null, 2)).unwrapOr("");
 
-  const clearJwt = useCallback(() => setJwt(""), []);
+  const clearJwt = () => setJwt("");
 
   const onJwtChange: TextareaProps["onChange"] = e => setJwt(e.currentTarget.value);
 
