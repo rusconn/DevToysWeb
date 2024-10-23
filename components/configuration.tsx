@@ -1,13 +1,10 @@
-import { memo, PropsWithChildren } from "react";
-import equal from "react-fast-compare";
+import { PropsWithChildren } from "react";
 
-function RawConfiguration({ children }: PropsWithChildren) {
+export function Configuration({ children }: PropsWithChildren) {
   return <ul className="flex flex-col gap-1.5">{children}</ul>;
 }
 
-export const Configuration = memo(RawConfiguration, equal);
-
-function RawConfigurationItem({
+export function ConfigurationItem({
   icon,
   title,
   description,
@@ -33,5 +30,3 @@ function RawConfigurationItem({
     </li>
   );
 }
-
-export const ConfigurationItem = memo(RawConfigurationItem, equal);

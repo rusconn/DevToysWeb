@@ -26,4 +26,3 @@ export const TooltipContent = ({
     {...props}
   />
 );
-TooltipContent.displayName = TooltipPrimitive.Content.displayName;

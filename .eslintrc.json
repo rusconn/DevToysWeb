@@ -10,7 +10,7 @@
     "next/core-web-vitals",
     "prettier"
   ],
-  "plugins": ["tailwindcss"],
+  "plugins": ["react-compiler", "tailwindcss"],
   "rules": {
     "@next/next/no-html-link-for-pages": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -27,6 +27,7 @@
       { "devDependencies": ["next.config.ts", "tests/**", "playwright.config.ts"] }
     ],
     "import/prefer-default-export": "off",
+    "react-compiler/react-compiler": "error",
     "react/function-component-definition": "off",
     "react/jsx-key": "off",
     "react/jsx-props-no-spreading": "off",

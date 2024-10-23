@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { uuid } from "@/lib/uuid";
@@ -37,23 +37,23 @@ export default function Page() {
   const [uuids, setUuids] = useState<string[]>([]);
   const ref = useAutoScroll<HTMLTextAreaElement>([uuids]);
 
-  const uuidsString = useMemo(() => uuids.join("\n"), [uuids]);
+  const uuidsString = uuids.join("\n");
 
-  const clearUuids = useCallback(() => setUuids([]), []);
+  const clearUuids = () => setUuids([]);
 
-  const onUuidVersionChange: NonNullable<Select.Props["onValueChange"]> = useCallback(value => {
+  const onUuidVersionChange: NonNullable<Select.Props["onValueChange"]> = value => {
     if (isUuidVersion(value)) {
       setUuidVersion(value);
     }
-  }, []);
+  };
 
-  const onGeneratesChange: NonNullable<InputProps["onChange"]> = useCallback(e => {
+  const onGeneratesChange: NonNullable<InputProps["onChange"]> = e => {
     const newGenerates = Number(e.currentTarget.value);
 
     if (newGenerates >= 1 && newGenerates <= 1000) {
       setGenerates(newGenerates);
     }
-  }, []);
+  };
 
   const onGenerateClick = () => {
     const newUuids = Array.from({ length: generates }, () => uuid(uuidVersion, hyphens, uppercase));

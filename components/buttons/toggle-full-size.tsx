@@ -1,6 +1,3 @@
-import { memo } from "react";
-import equal from "react-fast-compare";
-
 import * as Icon from "@/components/icons";
 
 import { Base, BaseProps } from "./base";
@@ -9,7 +6,7 @@ export type ToggleFullSizeProps = Omit<BaseProps, "icon" | "labelText"> & {
   expanded: boolean;
 };
 
-function RawToggleFullSize({ expanded, ...props }: ToggleFullSizeProps) {
+export function ToggleFullSize({ expanded, ...props }: ToggleFullSizeProps) {
   return (
     <Base
       {...props}
@@ -18,5 +15,3 @@ function RawToggleFullSize({ expanded, ...props }: ToggleFullSizeProps) {
     />
   );
 }
-
-export const ToggleFullSize = memo(RawToggleFullSize, equal);

@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   output: "export",
   reactStrictMode: true,
   experimental: {
+    reactCompiler: true,
     typedRoutes: true,
   },
 };

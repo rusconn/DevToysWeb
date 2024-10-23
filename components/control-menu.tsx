@@ -1,14 +1,9 @@
-import { memo, PropsWithChildren } from "react";
-import equal from "react-fast-compare";
+import { PropsWithChildren } from "react";
 
-function RawControlMenu({ children }: PropsWithChildren) {
+export function ControlMenu({ children }: PropsWithChildren) {
   return <menu className="flex gap-2">{children}</menu>;
 }
 
-export const ControlMenu = memo(RawControlMenu, equal);
-
-function RawControlMenuItem({ children }: PropsWithChildren) {
+export function ControlMenuItem({ children }: PropsWithChildren) {
   return <li>{children}</li>;
 }
-
-export const ControlMenuItem = memo(RawControlMenuItem, equal);

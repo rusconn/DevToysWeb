@@ -1,11 +1,10 @@
 import * as React from "react";
-import equal from "react-fast-compare";
 
 import { cn } from "@/lib/style";
 
 export type TextareaProps = React.ComponentPropsWithRef<"textarea">;
 
-export const RawTextarea = ({ className, ...props }: TextareaProps) => (
+export const Textarea = ({ className, ...props }: TextareaProps) => (
   <textarea
     className={cn(
       "border-b-1 resize-none rounded border border-b-muted-foreground bg-textarea px-3 py-2 font-mono outline-none",
@@ -19,6 +18,3 @@ export const RawTextarea = ({ className, ...props }: TextareaProps) => (
     {...props}
   />
 );
-RawTextarea.displayName = "RawTextarea";
-
-export const Textarea = React.memo(RawTextarea, equal);

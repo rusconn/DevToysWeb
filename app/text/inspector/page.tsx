@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import {
@@ -26,17 +26,14 @@ export default function Page() {
 
   const output = transformText(input, mode);
 
-  const stats = useMemo(
-    () => ({
-      characters: countCharacters(input),
-      words: countWords(input),
-      lines: countLines(input),
-      bytes: countBytes(input),
-    }),
-    [input]
-  );
+  const stats = {
+    characters: countCharacters(input),
+    words: countWords(input),
+    lines: countLines(input),
+    bytes: countBytes(input),
+  };
 
-  const clearInput = useCallback(() => setInput(""), []);
+  const clearInput = () => setInput("");
 
   const onInputChange: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
   const onModeChange = (value: string) => {

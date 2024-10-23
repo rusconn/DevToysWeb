@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { escape, unescape } from "html-escaper";
 
 import { toolGroups } from "@/config/tools";
@@ -16,26 +16,26 @@ export default function Page() {
     encoded: "&gt; It&#39;s &quot;HTML escaping&quot;.",
   });
 
-  const setFormByDecoded = useCallback((text: string) => {
+  const setFormByDecoded = (text: string) => {
     setForm({
       decoded: text,
       encoded: escape(text),
     });
-  }, []);
+  };
 
-  const setFormByEncoded = useCallback((text: string) => {
+  const setFormByEncoded = (text: string) => {
     setForm({
       decoded: unescape(text),
       encoded: text,
     });
-  }, []);
+  };
 
-  const clearBoth = useCallback(() => {
+  const clearBoth = () => {
     setForm({
       decoded: "",
       encoded: "",
     });
-  }, []);
+  };
 
   const onDecodedChange: TextareaProps["onChange"] = e => setFormByDecoded(e.currentTarget.value);
   const onEncodedChange: TextareaProps["onChange"] = e => setFormByEncoded(e.currentTarget.value);

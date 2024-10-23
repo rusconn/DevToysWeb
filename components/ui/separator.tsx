@@ -21,4 +21,3 @@ export const Separator = ({
     {...props}
   />
 );
-Separator.displayName = SeparatorPrimitive.Root.displayName;

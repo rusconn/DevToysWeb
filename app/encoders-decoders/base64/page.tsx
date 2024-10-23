@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { decode, encode } from "@/lib/base64";
@@ -16,28 +16,28 @@ export default function Page() {
     encoded: "8J+YgPCfmILwn6Sj",
   });
 
-  const setFormByDecoded = useCallback((text: string) => {
+  const setFormByDecoded = (text: string) => {
     setForm({
       decoded: text,
       encoded: encode(text),
     });
-  }, []);
+  };
 
-  const setFormByEncoded = useCallback((text: string) => {
+  const setFormByEncoded = (text: string) => {
     const newDecoded = decode(text) ?? "";
 
     setForm({
       decoded: newDecoded.includes("�") ? "" : newDecoded,
       encoded: text,
     });
-  }, []);
+  };
 
-  const clearBoth = useCallback(() => {
+  const clearBoth = () => {
     setForm({
       decoded: "",
       encoded: "",
     });
-  }, []);
+  };
 
   const onDecodedChange: TextareaProps["onChange"] = e => setFormByDecoded(e.currentTarget.value);
   const onEncodedChange: TextareaProps["onChange"] = e => setFormByEncoded(e.currentTarget.value);

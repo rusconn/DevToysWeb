@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import * as Accordion from "@radix-ui/react-accordion";
 
@@ -18,7 +18,7 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
   const pathname = usePathname();
   const triggerRef = useRef<HTMLButtonElement>(null);
 
-  const onClick = useCallback(() => triggerRef.current?.click(), []);
+  const onClick = () => triggerRef.current?.click();
 
   return (
     <Accordion.AccordionItem value={href}>

@@ -32,4 +32,3 @@ export const Switch = ({ className, ...props }: SwitchProps) => (
     />
   </SwitchPrimitives.Root>
 );
-Switch.displayName = SwitchPrimitives.Root.displayName;

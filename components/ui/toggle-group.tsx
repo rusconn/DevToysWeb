@@ -12,8 +12,6 @@ const ToggleGroup = ({
   <ToggleGroupPrimitive.Root className={cn("flex items-center gap-2.5", className)} {...props} />
 );
 
-ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName;
-
 const ToggleGroupItem = ({
   className,
   children,
@@ -33,7 +31,5 @@ const ToggleGroupItem = ({
     {children}
   </ToggleGroupPrimitive.Item>
 );
-
-ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName;
 
 export { ToggleGroup, ToggleGroupItem };

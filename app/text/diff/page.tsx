@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 
 import { PERSISTENCE_KEY } from "@/config/persistence-keys";
@@ -26,79 +26,64 @@ export default function Page() {
   const [input2, setInput2] = useState<string | undefined>("Hello, World!");
   const [diffFullHeight, setDiffFullHeight] = useState(false);
   const [inlineMode, setInlineMode] = useState(false);
-  const diffPanelMaxSize = useMemo(
-    () => (diffFullHeight ? PANEL_FULL_SIZE : VERTICAL_PANEL_MAX_SIZE),
-    [diffFullHeight]
+  const diffPanelMaxSize = diffFullHeight ? PANEL_FULL_SIZE : VERTICAL_PANEL_MAX_SIZE;
+
+  const clearInput1 = () => setInput1("");
+  const clearInput2 = () => setInput2("");
+  const toggleFullHeight = () => setDiffFullHeight(prev => !prev);
+
+  const inlineModeConfig = (
+    <ConfigurationItem
+      icon={<icons.Rows size={24} />}
+      title="Inline mode"
+      control={
+        <LabeledSwitch
+          id="uppercase-switch"
+          label={inlineMode ? "On" : "Off"}
+          checked={inlineMode}
+          onCheckedChange={setInlineMode}
+          aria-label="toggle whether to show diff in inline mode"
+        />
+      }
+    />
+  );
+  const input1Control = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setInput1} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File onFileRead={setInput1} iconOnly aria-label="load a file with old text" />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Clear onClick={clearInput1} iconOnly aria-label="clear old text input" />
+      </ControlMenuItem>
+    </ControlMenu>
   );
 
-  const clearInput1 = useCallback(() => setInput1(""), [setInput1]);
-  const clearInput2 = useCallback(() => setInput2(""), [setInput2]);
-  const toggleFullHeight = useCallback(() => setDiffFullHeight(prev => !prev), [setDiffFullHeight]);
-
-  const inlineModeConfig = useMemo(
-    () => (
-      <ConfigurationItem
-        icon={<icons.Rows size={24} />}
-        title="Inline mode"
-        control={
-          <LabeledSwitch
-            id="uppercase-switch"
-            label={inlineMode ? "On" : "Off"}
-            checked={inlineMode}
-            onCheckedChange={setInlineMode}
-            aria-label="toggle whether to show diff in inline mode"
-          />
-        }
-      />
-    ),
-    [inlineMode, setInlineMode]
-  );
-  const input1Control = useMemo(
-    () => (
-      <ControlMenu>
-        <ControlMenuItem>
-          <Button.Paste onClipboardRead={setInput1} />
-        </ControlMenuItem>
-        <ControlMenuItem>
-          <Button.File onFileRead={setInput1} iconOnly aria-label="load a file with old text" />
-        </ControlMenuItem>
-        <ControlMenuItem>
-          <Button.Clear onClick={clearInput1} iconOnly aria-label="clear old text input" />
-        </ControlMenuItem>
-      </ControlMenu>
-    ),
-    [setInput1, clearInput1]
+  const input2Control = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={setInput2} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File onFileRead={setInput2} iconOnly aria-label="load a file with new text" />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Clear onClick={clearInput2} iconOnly aria-label="clear new text input" />
+      </ControlMenuItem>
+    </ControlMenu>
   );
 
-  const input2Control = useMemo(
-    () => (
-      <ControlMenu>
-        <ControlMenuItem>
-          <Button.Paste onClipboardRead={setInput2} />
-        </ControlMenuItem>
-        <ControlMenuItem>
-          <Button.File onFileRead={setInput2} iconOnly aria-label="load a file with new text" />
-        </ControlMenuItem>
-        <ControlMenuItem>
-          <Button.Clear onClick={clearInput2} iconOnly aria-label="clear new text input" />
-        </ControlMenuItem>
-      </ControlMenu>
-    ),
-    [setInput2, clearInput2]
+  const diffControl = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.ToggleFullSize iconOnly onClick={toggleFullHeight} expanded={diffFullHeight} />
+      </ControlMenuItem>
+    </ControlMenu>
   );
 
-  const diffControl = useMemo(
-    () => (
-      <ControlMenu>
-        <ControlMenuItem>
-          <Button.ToggleFullSize iconOnly onClick={toggleFullHeight} expanded={diffFullHeight} />
-        </ControlMenuItem>
-      </ControlMenu>
-    ),
-    [diffFullHeight, toggleFullHeight]
-  );
-
-  const hiddenInFullHeightMode = useMemo(() => (diffFullHeight ? "hidden" : ""), [diffFullHeight]);
+  const hiddenInFullHeightMode = diffFullHeight ? "hidden" : "";
 
   return (
     <PageRootSection className="h-full" title={toolGroups.text.tools.diff.longTitle}>

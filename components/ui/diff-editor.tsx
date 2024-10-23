@@ -23,5 +23,3 @@ export const DiffEditor = ({ options, theme, ...props }: EditorProps) => {
     />
   );
 };
-
-DiffEditor.displayName = "Editor";
