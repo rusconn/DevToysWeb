@@ -9,12 +9,13 @@ export const TooltipProvider = TooltipPrimitive.Provider;
 export const Tooltip = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;
 
-export const TooltipContent = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
+export const TooltipContent = ({
+  className,
+  sideOffset = 4,
+  ...props
+}: React.ComponentPropsWithRef<typeof TooltipPrimitive.Content>) => (
   <TooltipPrimitive.Content
-    {...{ ref, sideOffset }}
+    {...{ sideOffset }}
     className={cn(
       "z-50 overflow-hidden rounded-md border bg-tooltip px-3 py-1.5 text-tooltip-foreground shadow-md animate-in fade-in-50",
       "data-[side=bottom]:slide-in-from-top-1",
@@ -25,5 +26,5 @@ export const TooltipContent = React.forwardRef<
     )}
     {...props}
   />
-));
+);
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;

@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 
 import { siteConfig } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -31,13 +31,16 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     type: "website",
   },
+  verification: {
+    google: "LlndxXYLHOwTH1LOIcckAWY3xg3y9TMfL-U__wnKAFw",
+  },
+};
+
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
-  verification: {
-    google: "LlndxXYLHOwTH1LOIcckAWY3xg3y9TMfL-U__wnKAFw",
-  },
 };
 
 type RootLayoutProps = {
