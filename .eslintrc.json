@@ -19,6 +19,7 @@
       "error",
       { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
     ],
+    "@typescript-eslint/no-use-before-define": "off",
     "consistent-return": "off",
     "no-else-return": "off",
     "no-nested-ternary": "off",
