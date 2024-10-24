@@ -137,6 +137,14 @@ export const toolGroups = {
         keywords: "case converter convert text inspector inspect",
         href: "/text/inspector",
       },
+      diff: {
+        Icon: icons.Diff,
+        shortTitle: "Text Diff",
+        longTitle: "Text Comparer",
+        description: "Compare two texts and highlight the differences",
+        keywords: "text comparer compare diff highlight",
+        href: "/text/diff",
+      },
     },
   },
 } as const satisfies ToolGroups;
