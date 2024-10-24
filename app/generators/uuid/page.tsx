@@ -1,7 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import { range } from "fp-ts/NonEmptyArray";
+import { useCallback, useMemo, useState } from "react";
 
 import { toolGroups } from "@/config/tools";
 import { uuid } from "@/lib/uuid";
@@ -39,7 +38,7 @@ export default function Page() {
   const [uuids, setUuids] = useState<string[]>([]);
   const ref = useAutoScroll<HTMLTextAreaElement>([uuids]);
 
-  const uuidsString = uuids.join("\n");
+  const uuidsString = useMemo(() => uuids.join("\n"), [uuids]);
 
   const clearUuids = useCallback(() => setUuids([]), []);
 
@@ -58,7 +57,7 @@ export default function Page() {
   }, []);
 
   const onGenerateClick = () => {
-    const newUuids = range(1, generates).map(_ => uuid(uuidVersion, hyphens, uppercase));
+    const newUuids = Array.from({ length: generates }, () => uuid(uuidVersion, hyphens, uppercase));
     setUuids([...uuids, ...newUuids]);
   };
 
