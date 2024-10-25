@@ -7,16 +7,16 @@ import { cn } from "@/lib/style";
 import * as icons from "@/components/icons";
 import { Indicator } from "@/components/indicator";
 
-export type Props = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>;
+export type Props = React.ComponentPropsWithRef<typeof SelectPrimitive.Root>;
 
 export const { Root, Group, Value } = SelectPrimitive;
 
-export const Trigger = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+export const Trigger = ({
+  className,
+  children,
+  ...props
+}: React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger>) => (
   <SelectPrimitive.Trigger
-    {...{ ref }}
     className={cn(
       "flex h-9 items-center justify-between rounded-md border bg-select px-2.5 py-1.5",
       "placeholder:text-muted-foreground",
@@ -31,16 +31,18 @@ export const Trigger = React.forwardRef<
       <icons.ChevronDown className="h-4 w-4 opacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
-));
+);
 Trigger.displayName = SelectPrimitive.Trigger.displayName;
 
-export const Content = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = "popper", ...props }, ref) => (
+export const Content = ({
+  className,
+  children,
+  position = "popper",
+  ...props
+}: React.ComponentPropsWithRef<typeof SelectPrimitive.Content>) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
-      {...{ ref, position }}
+      {...{ position }}
       className={cn(
         "relative z-50 overflow-hidden rounded-md border bg-select-content text-select-content-foreground shadow-md animate-in fade-in-80",
         position === "popper" && "translate-y-1",
@@ -59,27 +61,23 @@ export const Content = React.forwardRef<
       </SelectPrimitive.Viewport>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
-));
+);
 Content.displayName = SelectPrimitive.Content.displayName;
 
-export const Label = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Label>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.Label
-    {...{ ref }}
-    className={cn("py-1.5 pl-8 pr-2 font-semibold", className)}
-    {...props}
-  />
-));
+export const Label = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof SelectPrimitive.Label>) => (
+  <SelectPrimitive.Label className={cn("py-1.5 pl-8 pr-2 font-semibold", className)} {...props} />
+);
 Label.displayName = SelectPrimitive.Label.displayName;
 
-export const Item = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, ...props }, ref) => (
+export const Item = ({
+  className,
+  children,
+  ...props
+}: React.ComponentPropsWithRef<typeof SelectPrimitive.Item>) => (
   <SelectPrimitive.Item
-    {...{ ref }}
     className={cn(
       "relative flex w-full cursor-default select-none items-center rounded-sm px-2.5 py-1.5 outline-none",
       "hover:bg-select-item-hover",
@@ -96,17 +94,13 @@ export const Item = React.forwardRef<
     </span>
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
-));
+);
 Item.displayName = SelectPrimitive.Item.displayName;
 
-export const Separator = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Separator>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
->(({ className, ...props }, ref) => (
-  <SelectPrimitive.Separator
-    {...{ ref }}
-    className={cn("-mx-1 my-1 h-px bg-muted", className)}
-    {...props}
-  />
-));
+export const Separator = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof SelectPrimitive.Separator>) => (
+  <SelectPrimitive.Separator className={cn("-mx-1 my-1 h-px bg-muted", className)} {...props} />
+);
 Separator.displayName = SelectPrimitive.Separator.displayName;

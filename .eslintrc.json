@@ -24,7 +24,7 @@
     "no-nested-ternary": "off",
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": ["tests/**", "playwright.config.ts"] }
+      { "devDependencies": ["next.config.ts", "tests/**", "playwright.config.ts"] }
     ],
     "import/prefer-default-export": "off",
     "react/function-component-definition": "off",
