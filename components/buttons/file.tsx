@@ -27,7 +27,6 @@ export function File({ accept, iconOnly, maxFileSizeMb = 20, onFileRead, ...prop
     // TODO: reject if the file is unsupported
 
     if (file.size > maxFileSizeMb * 2 ** 20) {
-      // eslint-disable-next-line no-alert
       return alert(`The file is too big. Up to ${maxFileSizeMb}MiB.`);
     }
 
@@ -42,7 +41,6 @@ export function File({ accept, iconOnly, maxFileSizeMb = 20, onFileRead, ...prop
     reader.readAsText(file);
 
     // clear selected file to accept the same file again
-    // eslint-disable-next-line no-param-reassign
     e.currentTarget.value = "";
   };
 

@@ -2,8 +2,7 @@
   "$schema": "https://json.schemastore.org/eslintrc",
   "root": true,
   "extends": [
-    "airbnb",
-    "airbnb-typescript",
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:tailwindcss/recommended",
@@ -13,25 +12,16 @@
   "plugins": ["react-compiler", "tailwindcss"],
   "rules": {
     "@next/next/no-html-link-for-pages": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
     ],
-    "@typescript-eslint/no-use-before-define": "off",
-    "consistent-return": "off",
-    "no-else-return": "off",
-    "no-nested-ternary": "off",
     "import/no-extraneous-dependencies": [
       "error",
       { "devDependencies": ["next.config.ts", "tests/**", "playwright.config.ts"] }
     ],
-    "import/prefer-default-export": "off",
     "react-compiler/react-compiler": "error",
-    "react/function-component-definition": "off",
     "react/jsx-key": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/require-default-props": "off",
     "tailwindcss/no-custom-classname": "off"
   },
   "settings": {

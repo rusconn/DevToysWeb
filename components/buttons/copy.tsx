@@ -10,7 +10,6 @@ export function Copy({ text, iconOnly, ...props }: CopyProps) {
   const onClick: BaseProps["onClick"] = () => {
     navigator.clipboard.writeText(text).catch(e => {
       if (e instanceof Error) {
-        // eslint-disable-next-line no-alert
         alert(e.message);
       }
     });

@@ -13,7 +13,6 @@ export function Paste({ iconOnly, onClipboardRead, ...props }: PasteProps) {
       .then(onClipboardRead)
       .catch(e => {
         if (e instanceof Error) {
-          // eslint-disable-next-line no-alert
           alert(e.message);
         }
       });
