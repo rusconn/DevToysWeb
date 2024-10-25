@@ -11,7 +11,6 @@
   ],
   "plugins": ["react-compiler", "tailwindcss"],
   "rules": {
-    "@next/next/no-html-link-for-pages": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
@@ -20,9 +19,7 @@
       "error",
       { "devDependencies": ["next.config.ts", "tests/**", "playwright.config.ts"] }
     ],
-    "react-compiler/react-compiler": "error",
-    "react/jsx-key": "off",
-    "tailwindcss/no-custom-classname": "off"
+    "react-compiler/react-compiler": "error"
   },
   "settings": {
     "tailwindcss": {

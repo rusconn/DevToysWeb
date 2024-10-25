@@ -16,10 +16,10 @@ export default function Page() {
   const result = fuse.search({ $or: keyWordsOptions });
   const tools = result.map(({ item }) => item);
 
-  const [title, child] =
+  const { title, child } =
     tools.length === 0
-      ? ["No results found", null]
-      : [`Search results for "${q}"`, <ToolCards {...{ tools }} />];
+      ? { title: "No results found", child: null }
+      : { title: `Search results for "${q}"`, child: <ToolCards {...{ tools }} /> };
 
   return <PageRootSection {...{ title }}>{child}</PageRootSection>;
 }

@@ -9,7 +9,7 @@ export type InputProps = React.ComponentPropsWithRef<"input"> & {
 export const Input = ({ className, fontMono, ...props }: InputProps) => (
   <input
     className={cn(
-      "border-b-1 h-9 rounded border border-b-muted-foreground bg-input px-3 py-2 outline-none",
+      "h-9 rounded border border-b-muted-foreground bg-input px-3 py-2 outline-none",
       "placeholder:text-muted-foreground",
       "hover:bg-input-hover",
       "focus:border-b-2 focus:border-b-indicator focus:bg-input-focus focus:pb-[7px]",
