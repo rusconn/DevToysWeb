@@ -1,9 +1,0 @@
-dist/*
-.cache
-public
-node_modules
-*.esm.js
-out
-/test-results/
-/playwright-report/
-/playwright/.cache/

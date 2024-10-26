@@ -55,6 +55,9 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.2.1",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.13.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.0.1",
     "@next/bundle-analyzer": "15.0.1",
     "@playwright/test": "^1.39.0",
@@ -65,21 +68,20 @@
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
     "@types/uuid": "^9.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.59.7",
     "autoprefixer": "^10.4.14",
     "babel-plugin-react-compiler": "19.0.0-beta-8a03594-20241020",
-    "eslint": "^8.41.0",
+    "eslint": "^9.13.0",
     "eslint-config-next": "15.0.1",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-compiler": "19.0.0-beta-8a03594-20241020",
-    "eslint-plugin-tailwindcss": "^3.12.0",
+    "eslint-plugin-tailwindcss": "^3.17.5",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
     "serve": "^14.2.1",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "typescript-eslint": "^8.11.0"
   },
   "overrides": {
     "@types/react": "npm:types-react@rc",
