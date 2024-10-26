@@ -35,6 +35,9 @@ export default [
   ...fixupConfigRules(flatCompat.extends("next/core-web-vitals")),
   prettier,
   {
+    linterOptions: {
+      reportUnusedDisableDirectives: "error",
+    },
     plugins: {
       "react-compiler": reactCompiler,
     },
