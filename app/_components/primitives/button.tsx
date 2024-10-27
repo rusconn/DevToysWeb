@@ -1,4 +1,4 @@
-import * as React from "react";
+import { ComponentPropsWithRef } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/_lib/style";
@@ -42,7 +42,7 @@ export const buttonVariants = cva(
   }
 );
 
-export type ButtonProps = Omit<React.ComponentPropsWithRef<"button">, "className"> &
+export type ButtonProps = Omit<ComponentPropsWithRef<"button">, "className"> &
   VariantProps<typeof buttonVariants>;
 
 export const Button = ({ variant, size, ...props }: ButtonProps) => (

@@ -1,11 +1,11 @@
 "use client";
 
-import * as React from "react";
+import { ComponentPropsWithRef } from "react";
 import MonacoEditor from "@monaco-editor/react";
 
 import { useTheme } from "@/_contexts/theme";
 
-export type EditorProps = React.ComponentPropsWithRef<typeof MonacoEditor>;
+export type EditorProps = ComponentPropsWithRef<typeof MonacoEditor>;
 
 /**
  * NOTE: This component maybe doesn't shrink according to the container component's width

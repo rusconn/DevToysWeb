@@ -1,5 +1,6 @@
 import "./_styles/globals.css";
 
+import { ReactNode } from "react";
 import { Metadata, Viewport } from "next";
 
 import { siteConfig } from "./_config/site";
@@ -44,7 +45,7 @@ export const viewport: Viewport = {
 };
 
 type RootLayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {

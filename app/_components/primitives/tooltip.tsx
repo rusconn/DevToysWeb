@@ -1,5 +1,6 @@
 "use client";
 
+import { ComponentPropsWithRef } from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 
 import { cn } from "@/_lib/style";
@@ -11,7 +12,7 @@ export const TooltipTrigger = TooltipPrimitive.Trigger;
 export const TooltipContent = ({
   sideOffset = 4,
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof TooltipPrimitive.Content>, "className">) => (
+}: Omit<ComponentPropsWithRef<typeof TooltipPrimitive.Content>, "className">) => (
   <TooltipPrimitive.Content
     {...{ sideOffset }}
     className={cn(

@@ -1,14 +1,11 @@
 "use client";
 
-import * as React from "react";
+import { ComponentPropsWithRef } from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 
 import { cn } from "@/_lib/style";
 
-export type SwitchProps = Omit<
-  React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>,
-  "className"
-> & {
+export type SwitchProps = Omit<ComponentPropsWithRef<typeof SwitchPrimitives.Root>, "className"> & {
   peer?: true;
 };
 

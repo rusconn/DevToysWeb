@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
+
 import { cn } from "@/_lib/style";
 
 type Props = {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   title: string;
 };
 

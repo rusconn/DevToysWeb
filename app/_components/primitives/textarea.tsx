@@ -1,8 +1,8 @@
-import * as React from "react";
+import { ComponentPropsWithRef } from "react";
 
 import { cn } from "@/_lib/style";
 
-export type TextareaProps = Omit<React.ComponentPropsWithRef<"textarea">, "className">;
+export type TextareaProps = Omit<ComponentPropsWithRef<"textarea">, "className">;
 
 export const Textarea = (props: TextareaProps) => (
   <textarea

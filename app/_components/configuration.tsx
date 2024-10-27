@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 
 import { cn } from "@/_lib/style";
 
@@ -12,10 +12,10 @@ export function ConfigurationItem({
   description,
   control,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   description?: string;
-  control: React.ReactNode;
+  control: ReactNode;
 }) {
   return (
     <li

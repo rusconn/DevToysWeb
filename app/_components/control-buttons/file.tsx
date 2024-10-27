@@ -1,10 +1,10 @@
-import { useRef } from "react";
+import { ComponentProps, useRef } from "react";
 
 import * as icons from "@/_components/primitives/icons";
 
 import { Base, BaseProps } from "./base";
 
-type InputProps = React.ComponentProps<"input">;
+type InputProps = ComponentProps<"input">;
 
 export type FileProps = Pick<InputProps, "accept"> &
   Omit<BaseProps, "icon" | "labelText" | "onClick"> & {

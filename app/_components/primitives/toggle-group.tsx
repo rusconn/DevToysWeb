@@ -1,12 +1,12 @@
 "use client";
 
-import * as React from "react";
+import { ComponentPropsWithRef } from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 
 import { cn } from "@/_lib/style";
 
 const ToggleGroup = (
-  props: Omit<React.ComponentPropsWithRef<typeof ToggleGroupPrimitive.Root>, "className">
+  props: Omit<ComponentPropsWithRef<typeof ToggleGroupPrimitive.Root>, "className">
 ) => (
   // @ts-expect-error: why?
   <ToggleGroupPrimitive.Root className="flex flex-wrap items-center gap-2.5" {...props} />
@@ -15,7 +15,7 @@ const ToggleGroup = (
 const ToggleGroupItem = ({
   children,
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof ToggleGroupPrimitive.Item>, "className">) => (
+}: Omit<ComponentPropsWithRef<typeof ToggleGroupPrimitive.Item>, "className">) => (
   <ToggleGroupPrimitive.Item
     className={cn(
       "inline-flex h-10 items-center justify-center rounded-md bg-neutral-200 px-3 text-sm font-medium ring-offset-neutral-100 transition-colors",

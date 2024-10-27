@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Metadata } from "next";
 
 import { toolGroups } from "@/_config/tools";
@@ -11,6 +12,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return children;
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { ComponentPropsWithRef } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 export const inputVariants = cva(
@@ -26,7 +26,7 @@ export const inputVariants = cva(
   }
 );
 
-export type InputProps = Omit<React.ComponentPropsWithRef<"input">, "className"> &
+export type InputProps = Omit<ComponentPropsWithRef<"input">, "className"> &
   VariantProps<typeof inputVariants>;
 
 export const Input = ({ variant, ...props }: InputProps) => (

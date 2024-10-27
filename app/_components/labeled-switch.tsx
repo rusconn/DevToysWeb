@@ -1,4 +1,4 @@
-import * as React from "react";
+import { ReactNode } from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 
 import { cn } from "@/_lib/style";
@@ -7,7 +7,7 @@ import { Switch, SwitchProps } from "./primitives/switch";
 
 type Props = Omit<SwitchProps, "id"> & {
   id: string;
-  label: React.ReactNode;
+  label: ReactNode;
 };
 
 export function LabeledSwitch({ id, label, ...props }: Props) {

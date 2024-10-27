@@ -1,10 +1,12 @@
+import { ReactNode } from "react";
+
 import { cn } from "@/_lib/style";
 
 type Props = {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   title: string;
-  control?: React.ReactNode;
+  control?: ReactNode;
 };
 
 export function PageSection({ className, children, title, control }: Props) {

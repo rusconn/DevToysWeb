@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import { Button, ButtonProps } from "@/_components/primitives/button";
 import {
   Tooltip,
@@ -7,7 +9,7 @@ import {
 } from "@/_components/primitives/tooltip";
 
 export type BaseProps = ButtonProps & {
-  icon: React.ReactNode;
+  icon: ReactNode;
   iconOnly?: true;
   labelText: string;
 };

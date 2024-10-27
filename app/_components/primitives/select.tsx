@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { ComponentPropsWithRef } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 
 import { cn } from "@/_lib/style";
@@ -8,14 +8,14 @@ import { cn } from "@/_lib/style";
 import * as icons from "./icons";
 import { Indicator } from "./indicator";
 
-export type Props = React.ComponentPropsWithRef<typeof SelectPrimitive.Root>;
+export type Props = ComponentPropsWithRef<typeof SelectPrimitive.Root>;
 
 export const { Root, Group, Value } = SelectPrimitive;
 
 export const Trigger = ({
   children,
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof SelectPrimitive.Trigger>, "className">) => (
+}: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Trigger>, "className">) => (
   <SelectPrimitive.Trigger
     className={cn(
       "flex h-9 w-28 items-center justify-between rounded-md border bg-neutral-50 px-2.5 py-1.5",
@@ -39,7 +39,7 @@ export const Content = ({
   children,
   position = "popper",
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof SelectPrimitive.Content>, "className">) => (
+}: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Content>, "className">) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       {...{ position }}
@@ -64,13 +64,13 @@ export const Content = ({
 );
 
 export const Label = (
-  props: Omit<React.ComponentPropsWithRef<typeof SelectPrimitive.Label>, "className">
+  props: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Label>, "className">
 ) => <SelectPrimitive.Label className="py-1.5 pl-8 pr-2 font-semibold" {...props} />;
 
 export const Item = ({
   children,
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof SelectPrimitive.Item>, "className">) => (
+}: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Item>, "className">) => (
   <SelectPrimitive.Item
     className={cn(
       "relative flex w-full cursor-default select-none items-center rounded-sm px-2.5 py-1.5 outline-none",
@@ -92,5 +92,5 @@ export const Item = ({
 );
 
 export const Separator = (
-  props: Omit<React.ComponentPropsWithRef<typeof SelectPrimitive.Separator>, "className">
+  props: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Separator>, "className">
 ) => <SelectPrimitive.Separator className="-mx-1 my-1 h-px bg-neutral-850" {...props} />;
