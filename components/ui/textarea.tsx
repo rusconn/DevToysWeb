@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { cn } from "@/lib/style";
 
-export type TextareaProps = React.ComponentPropsWithRef<"textarea">;
+export type TextareaProps = Omit<React.ComponentPropsWithRef<"textarea">, "className">;
 
-export const Textarea = ({ className, ...props }: TextareaProps) => (
+export const Textarea = (props: TextareaProps) => (
   <textarea
     className={cn(
       "resize-none rounded border border-b-neutral-450 bg-neutral-50 px-3 py-2 font-mono outline-none",
@@ -15,8 +15,7 @@ export const Textarea = ({ className, ...props }: TextareaProps) => (
       "dark:border-b-neutral-400 dark:bg-neutral-750",
       "dark:placeholder:text-neutral-400",
       "dark:hover:bg-neutral-700",
-      "dark:focus:border-b-indigo-300 dark:focus:bg-neutral-850",
-      className
+      "dark:focus:border-b-indigo-300 dark:focus:bg-neutral-850"
     )}
     spellCheck="false"
     {...props}

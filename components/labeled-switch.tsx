@@ -1,4 +1,7 @@
-import { Label } from "@/components/ui/label";
+import * as React from "react";
+import * as LabelPrimitive from "@radix-ui/react-label";
+
+import { cn } from "@/lib/style";
 import { Switch, SwitchProps } from "@/components/ui/switch";
 
 type Props = Omit<SwitchProps, "id"> & {
@@ -10,10 +13,16 @@ export function LabeledSwitch({ id, label, ...props }: Props) {
   return (
     // reverse to apply peer style
     <div className="flex flex-row-reverse items-center">
-      <Switch className="peer" {...{ id }} {...props} />
-      <Label className="cursor-pointer pr-3" htmlFor={id}>
+      <Switch peer {...{ id }} {...props} />
+      <LabelPrimitive.Root
+        className={cn(
+          "cursor-pointer pr-3 leading-none", //
+          "peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        )}
+        htmlFor={id}
+      >
         {label}
-      </Label>
+      </LabelPrimitive.Root>
     </div>
   );
 }

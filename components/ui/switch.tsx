@@ -5,12 +5,18 @@ import * as SwitchPrimitives from "@radix-ui/react-switch";
 
 import { cn } from "@/lib/style";
 
-export type SwitchProps = React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>;
+export type SwitchProps = Omit<
+  React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>,
+  "className"
+> & {
+  peer?: true;
+};
 
-export const Switch = ({ className, ...props }: SwitchProps) => (
+export const Switch = ({ peer, ...props }: SwitchProps) => (
   <SwitchPrimitives.Root
     className={cn(
       "group inline-flex h-5 w-10 shrink-0 cursor-pointer items-center rounded-full border border-neutral-450 bg-neutral-150",
+      peer && "peer",
       "hover:bg-neutral-200",
       "disabled:cursor-not-allowed disabled:opacity-50",
       "hover:disabled:bg-neutral-150",
@@ -22,8 +28,7 @@ export const Switch = ({ className, ...props }: SwitchProps) => (
       "dark:hover:disabled:bg-neutral-800",
       "dark:data-[state=checked]:border-transparent dark:data-[state=checked]:bg-indigo-300",
       "dark:data-[state=checked]:hover:bg-indigo-400",
-      "dark:data-[state=checked]:disabled:hover:bg-indigo-300",
-      className
+      "dark:data-[state=checked]:disabled:hover:bg-indigo-300"
     )}
     {...props}
   >

@@ -9,10 +9,9 @@ export const Tooltip = TooltipPrimitive.Root;
 export const TooltipTrigger = TooltipPrimitive.Trigger;
 
 export const TooltipContent = ({
-  className,
   sideOffset = 4,
   ...props
-}: React.ComponentPropsWithRef<typeof TooltipPrimitive.Content>) => (
+}: Omit<React.ComponentPropsWithRef<typeof TooltipPrimitive.Content>, "className">) => (
   <TooltipPrimitive.Content
     {...{ sideOffset }}
     className={cn(
@@ -21,8 +20,7 @@ export const TooltipContent = ({
       "data-[side=left]:slide-in-from-right-1",
       "data-[side=right]:slide-in-from-left-1",
       "data-[side=top]:slide-in-from-bottom-1",
-      "dark:bg-neutral-800 dark:text-neutral-200",
-      className
+      "dark:bg-neutral-800 dark:text-neutral-200"
     )}
     {...props}
   />

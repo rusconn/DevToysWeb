@@ -99,10 +99,7 @@ export default function Page() {
       description="Choose the version of UUID to generate"
       control={
         <Select.Root value={uuidVersion} onValueChange={onUuidVersionChange}>
-          <Select.Trigger
-            className="w-28"
-            aria-label="toggle open/close state of uuid version selection"
-          >
+          <Select.Trigger aria-label="toggle open/close state of uuid version selection">
             <Select.Value placeholder={uuidVersion} />
           </Select.Trigger>
           <Select.Content>
@@ -136,11 +133,13 @@ export default function Page() {
       </PageSection>
       <PageSection title="Generate">
         <div className="flex items-center gap-2">
-          <Button variant="secondary" onClick={onGenerateClick}>
+          <Button variant="accent" onClick={onGenerateClick}>
             Generate UUID(s)
           </Button>
           <span>×</span>
-          <Input className="w-24" type="number" value={generates} onChange={onGeneratesChange} />
+          <div className="w-24">
+            <Input type="number" value={generates} onChange={onGeneratesChange} />
+          </div>
         </div>
       </PageSection>
       <PageSection className="-mt-3" title="UUID(s)" control={uuidsControl}>

@@ -18,10 +18,7 @@ export default function Page() {
       description="Select which app theme to display"
       control={
         <Select.Root value={theme} onValueChange={setTheme}>
-          <Select.Trigger
-            className="w-28"
-            aria-label="toggle open/close state of app theme selection"
-          >
+          <Select.Trigger aria-label="toggle open/close state of app theme selection">
             <Select.Value placeholder={theme} />
           </Select.Trigger>
           <Select.Content>

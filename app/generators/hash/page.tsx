@@ -104,26 +104,26 @@ export default function Page() {
       </PageSection>
       <div className="flex flex-col gap-3">
         <PageSection title="MD5">
-          <div className="flex gap-2">
-            <Input fontMono className="flex-1" value={md5} readOnly />
+          <div className="grid grid-cols-[1fr_auto] gap-2">
+            <Input value={md5} readOnly />
             {md5Control}
           </div>
         </PageSection>
         <PageSection title="SHA1">
-          <div className="flex gap-2">
-            <Input fontMono className="flex-1" value={sha1} readOnly />
+          <div className="grid grid-cols-[1fr_auto] gap-2">
+            <Input value={sha1} readOnly />
             {sha1Control}
           </div>
         </PageSection>
         <PageSection title="SHA256">
-          <div className="flex gap-2">
-            <Input fontMono className="flex-1" value={sha256} readOnly />
+          <div className="grid grid-cols-[1fr_auto] gap-2">
+            <Input value={sha256} readOnly />
             {sha256Control}
           </div>
         </PageSection>
         <PageSection title="SHA512">
-          <div className="flex gap-2">
-            <Input fontMono className="flex-1" value={sha512} readOnly />
+          <div className="grid grid-cols-[1fr_auto] gap-2">
+            <Input value={sha512} readOnly />
             {sha512Control}
           </div>
         </PageSection>

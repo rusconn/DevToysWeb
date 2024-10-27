@@ -44,7 +44,7 @@ export function SearchBar() {
     <div className="relative flex items-center">
       <Input
         ref={inputRef}
-        className="w-full pr-16"
+        variant="search"
         value={text}
         onChange={changeText}
         onKeyDown={searchIfEnter}
@@ -52,8 +52,8 @@ export function SearchBar() {
       />
       <div className="absolute right-1 flex gap-1">
         <Button
-          className={cn(!text && "hidden")}
-          variant="ghost"
+          {...(!text && { hidden: true })}
+          variant="search"
           size="shorter"
           onClick={clearText}
         >
@@ -65,7 +65,7 @@ export function SearchBar() {
           />
           <span className="sr-only">Clear search text</span>
         </Button>
-        <Button variant="ghost" size="shorter" onClick={search} aria-label="search">
+        <Button variant="search" size="shorter" onClick={search} aria-label="search">
           <icons.Search
             className={cn(
               "-scale-x-100 p-1 text-neutral-450", //

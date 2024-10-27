@@ -66,7 +66,7 @@ export default function Page() {
   return (
     <PageRootSection title={toolGroups.text.tools.inspector_and_case_converter.longTitle}>
       <PageSection title="Convert">
-        <ToggleGroup className="flex-wrap" type="single" value={mode} onValueChange={onModeChange}>
+        <ToggleGroup type="single" value={mode} onValueChange={onModeChange}>
           {textTransformModes.map(m => (
             <ToggleGroupItem key={m} value={m}>
               {modeTitle[m]}

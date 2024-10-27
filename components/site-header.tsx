@@ -5,13 +5,9 @@ import { cn } from "@/lib/style";
 import * as icons from "@/components/icons";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-type Props = {
-  className?: string;
-};
-
-export function SiteHeader({ className }: Props) {
+export function SiteHeader() {
   return (
-    <header className={cn("flex items-center justify-between px-4", className)}>
+    <header className="flex items-center justify-between px-4">
       <div className="flex items-baseline gap-x-2.5">
         <Link className="text-lg" href="/">
           {siteConfig.name}

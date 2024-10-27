@@ -109,16 +109,16 @@ export default function Page() {
       </PageSection>
       <div className="flex flex-col gap-3">
         <PageSection title="Decimal" control={decControl}>
-          <Input fontMono value={dec} onChange={onDecChange} />
+          <Input value={dec} onChange={onDecChange} />
         </PageSection>
         <PageSection title="Hexadecimal" control={hexControl}>
-          <Input fontMono value={hex} onChange={onHexChange} />
+          <Input value={hex} onChange={onHexChange} />
         </PageSection>
         <PageSection title="Octal" control={octControl}>
-          <Input fontMono value={oct} onChange={onOctChange} />
+          <Input value={oct} onChange={onOctChange} />
         </PageSection>
         <PageSection title="Binary" control={binControl}>
-          <Input fontMono value={bin} onChange={onBinChange} />
+          <Input value={bin} onChange={onBinChange} />
         </PageSection>
       </div>
     </PageRootSection>

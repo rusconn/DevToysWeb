@@ -61,7 +61,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
           <SearchTextProvider>
             <div className="grid h-full grid-cols-[18rem_1fr] grid-rows-[3.5rem_1fr]">
-              <SiteHeader className="col-span-full" />
+              <div className="col-span-full content-center">
+                <SiteHeader />
+              </div>
               <Sidebar />
               <main
                 className={cn(

@@ -6,23 +6,24 @@ import * as Icon from "@/components/icons";
 
 type Props = {
   direction?: "vertical" | "horizontal";
-} & ComponentPropsWithoutRef<typeof PanelResizeHandlePrimitive>;
+  hidden?: true;
+} & Omit<ComponentPropsWithoutRef<typeof PanelResizeHandlePrimitive>, "className">;
 
-export const PanelResizeHandle = ({ direction = "vertical", className, ...props }: Props) => {
+export const PanelResizeHandle = ({ direction = "vertical", hidden, ...props }: Props) => {
   const isVertical = direction === "vertical";
   const isHorizontal = direction === "horizontal";
 
   return (
     <PanelResizeHandlePrimitive
       className={cn(
-        isVertical && "w-4",
-        isHorizontal && "h-4",
+        isVertical && "h-full w-4",
+        isHorizontal && "h-4 w-full",
+        hidden && "hidden",
         "flex items-center justify-center",
         "data-[resize-handle-state=drag]:bg-neutral-200",
         "dark:data-[resize-handle-state=drag]:bg-neutral-600",
         "data-[resize-handle-state=hover]:bg-neutral-300",
-        "dark:data-[resize-handle-state=hover]:bg-neutral-700",
-        className
+        "dark:data-[resize-handle-state=hover]:bg-neutral-700"
       )}
       {...props}
     >

@@ -81,10 +81,7 @@ export default function Page() {
       title="Indentation"
       control={
         <Select.Root value={form.indentation} onValueChange={onIndentationChange}>
-          <Select.Trigger
-            className="w-28"
-            aria-label="toggle open/close state of indentation selection"
-          >
+          <Select.Trigger aria-label="toggle open/close state of indentation selection">
             <Select.Value placeholder={form.indentation} />
           </Select.Trigger>
           <Select.Content>

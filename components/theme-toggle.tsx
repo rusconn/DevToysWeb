@@ -10,8 +10,7 @@ export function ThemeToggle() {
 
   return (
     <Button
-      className="inline-flex aspect-square items-center justify-center"
-      variant="ghost"
+      variant="theme"
       size="taller"
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
     >

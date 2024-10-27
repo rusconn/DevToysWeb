@@ -101,7 +101,9 @@ export default function Page() {
                 <Editor value={input1} onChange={setInput1} />
               </PageSection>
             </Panel>
-            <PanelResizeHandle direction="vertical" className="mt-[42px]" />
+            <div className="mt-[42px]">
+              <PanelResizeHandle direction="vertical" />
+            </div>
 
             <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
               <PageSection className="h-full" title="New text" control={input2Control}>
@@ -110,7 +112,10 @@ export default function Page() {
             </Panel>
           </PanelGroup>
         </Panel>
-        <PanelResizeHandle direction="horizontal" className={hiddenInFullHeightMode} />
+        <PanelResizeHandle
+          direction="horizontal"
+          {...(hiddenInFullHeightMode && { hidden: true })}
+        />
         <Panel maxSize={diffPanelMaxSize}>
           <PageSection className="h-full" title="Difference" control={diffControl}>
             <DiffEditor
