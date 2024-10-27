@@ -2,22 +2,33 @@
 
 import { useState } from "react";
 
-import { toolGroups } from "@/config/tools";
-import * as baselib from "@/lib/base";
-import { Input, InputProps } from "@/components/ui/input";
-import * as Button from "@/components/buttons";
-import { Configuration, ConfigurationItem } from "@/components/configuration";
-import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
-import * as icons from "@/components/icons";
-import { LabeledSwitch } from "@/components/labeled-switch";
-import { PageRootSection } from "@/components/page-root-section";
-import { PageSection } from "@/components/page-section";
+import { toolGroups } from "@/_config/tools";
+import * as icons from "@/_components/primitives/icons";
+import { Input, InputProps } from "@/_components/primitives/input";
+import { Configuration, ConfigurationItem } from "@/_components/configuration";
+import * as Button from "@/_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
+import { LabeledSwitch } from "@/_components/labeled-switch";
+import { PageRootSection } from "@/_components/page-root-section";
+import { PageSection } from "@/_components/page-section";
+
+import {
+  formatBinary,
+  formatDecimal,
+  formatHexadecimal,
+  formatOctal,
+  isBinary,
+  isDecimal,
+  isHexadecimal,
+  isOctal,
+  unformatNumber,
+} from "./lib";
 
 const baseConfig = {
-  10: { prefix: "", validate: baselib.isDecimal },
-  16: { prefix: "0x", validate: baselib.isHexadecimal },
-  8: { prefix: "0o", validate: baselib.isOctal },
-  2: { prefix: "0b", validate: baselib.isBinary },
+  10: { prefix: "", validate: isDecimal },
+  16: { prefix: "0x", validate: isHexadecimal },
+  8: { prefix: "0o", validate: isOctal },
+  2: { prefix: "0b", validate: isBinary },
 } as const;
 
 export default function Page() {
@@ -29,10 +40,10 @@ export default function Page() {
   const newOct = int?.toString(8) ?? "";
   const newBin = int?.toString(2) ?? "";
 
-  const dec = format ? baselib.formatDecimal(newDec) : newDec;
-  const hex = format ? baselib.formatHexadecimal(newHex) : newHex;
-  const oct = format ? baselib.formatOctal(newOct) : newOct;
-  const bin = format ? baselib.formatBinary(newBin) : newBin;
+  const dec = format ? formatDecimal(newDec) : newDec;
+  const hex = format ? formatHexadecimal(newHex) : newHex;
+  const oct = format ? formatOctal(newOct) : newOct;
+  const bin = format ? formatBinary(newBin) : newBin;
 
   const trySetInt = (base: 10 | 16 | 8 | 2) => (value: string) => {
     if (value === "") {
@@ -40,7 +51,7 @@ export default function Page() {
     }
 
     const { prefix, validate } = baseConfig[base];
-    const unformatted = baselib.unformatNumber(value);
+    const unformatted = unformatNumber(value);
 
     if (validate(unformatted)) {
       setInt(BigInt(`${prefix}${unformatted}`));

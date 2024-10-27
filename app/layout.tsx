@@ -1,15 +1,15 @@
-import "@/styles/globals.css";
+import "./_styles/globals.css";
 
 import { Metadata, Viewport } from "next";
 
-import { siteConfig } from "@/config/site";
-import { fontMono, fontSans } from "@/lib/fonts";
-import { cn } from "@/lib/style";
-import { Sidebar } from "@/components/sidebar";
-import { SiteHeader } from "@/components/site-header";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { ThemeProvider } from "@/components/theme-provider";
-import { SearchTextProvider } from "@/contexts/search-text";
+import { siteConfig } from "./_config/site";
+import { SearchTextProvider } from "./_contexts/search-text";
+import { ThemeProvider } from "./_contexts/theme";
+import { Sidebar } from "./_layout/sidebar";
+import { SiteHeader } from "./_layout/site-header";
+import { TailwindIndicator } from "./_layout/tailwind-indicator";
+import { fontMono, fontSans } from "./_lib/fonts";
+import { cn } from "./_lib/style";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

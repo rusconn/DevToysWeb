@@ -3,17 +3,18 @@
 import { useState } from "react";
 import yaml from "js-yaml";
 
-import { toolGroups } from "@/config/tools";
-import { safeJsonParse } from "@/lib/json";
-import { safeYamlParse } from "@/lib/yaml";
-import { Editor, EditorProps } from "@/components/ui/editor";
-import * as Select from "@/components/ui/select";
-import * as Button from "@/components/buttons";
-import { Configuration, ConfigurationItem } from "@/components/configuration";
-import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
-import * as icons from "@/components/icons";
-import { PageRootSection } from "@/components/page-root-section";
-import { PageSection } from "@/components/page-section";
+import { toolGroups } from "@/_config/tools";
+import { safeJsonParse } from "@/_lib/json";
+import * as icons from "@/_components/primitives/icons";
+import * as Select from "@/_components/primitives/select";
+import { Configuration, ConfigurationItem } from "@/_components/configuration";
+import * as Button from "@/_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
+import { Editor, EditorProps } from "@/_components/editor";
+import { PageRootSection } from "@/_components/page-root-section";
+import { PageSection } from "@/_components/page-section";
+
+import { safeYamlParse } from "./lib";
 
 const indentations = {
   two: "  ",

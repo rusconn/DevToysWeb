@@ -1,6 +1,6 @@
-import { homeTools, singleTools } from "@/config/tools";
-import { PageRootSection } from "@/components/page-root-section";
-import { ToolCards } from "@/components/tool-cards";
+import { PageRootSection } from "./_components/page-root-section";
+import { ToolCards } from "./_components/tool-cards";
+import { homeTools, singleTools } from "./_config/tools";
 
 export default function Page() {
   return (

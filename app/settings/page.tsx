@@ -1,12 +1,11 @@
 "use client";
 
-import { useTheme } from "next-themes";
-
-import { singleTools } from "@/config/tools";
-import * as Select from "@/components/ui/select";
-import { Configuration, ConfigurationItem } from "@/components/configuration";
-import * as icons from "@/components/icons";
-import { PageRootSection } from "@/components/page-root-section";
+import { singleTools } from "@/_config/tools";
+import { useTheme } from "@/_contexts/theme";
+import * as icons from "@/_components/primitives/icons";
+import * as Select from "@/_components/primitives/select";
+import { Configuration, ConfigurationItem } from "@/_components/configuration";
+import { PageRootSection } from "@/_components/page-root-section";
 
 export default function Page() {
   const { theme = "system", setTheme } = useTheme();

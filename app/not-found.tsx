@@ -1,4 +1,4 @@
-import { PageRootSection } from "@/components/page-root-section";
+import { PageRootSection } from "./_components/page-root-section";
 
 export default function NotFound() {
   return (

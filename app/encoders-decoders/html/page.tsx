@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { escape, unescape } from "html-escaper";
 
-import { toolGroups } from "@/config/tools";
-import { Textarea, TextareaProps } from "@/components/ui/textarea";
-import * as Button from "@/components/buttons";
-import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
-import { PageRootSection } from "@/components/page-root-section";
-import { PageSection } from "@/components/page-section";
+import { toolGroups } from "@/_config/tools";
+import { Textarea, TextareaProps } from "@/_components/primitives/textarea";
+import * as Button from "@/_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
+import { PageRootSection } from "@/_components/page-root-section";
+import { PageSection } from "@/_components/page-section";
 
 export default function Page() {
   const [form, setForm] = useState({

@@ -3,18 +3,20 @@
 import { useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 
-import { PERSISTENCE_KEY } from "@/config/persistence-keys";
-import { toolGroups } from "@/config/tools";
-import { DiffEditor } from "@/components/ui/diff-editor";
-import { Editor } from "@/components/ui/editor";
-import * as Button from "@/components/buttons";
-import { Configuration, ConfigurationItem } from "@/components/configuration";
-import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
-import * as icons from "@/components/icons";
-import { LabeledSwitch } from "@/components/labeled-switch";
-import { PageRootSection } from "@/components/page-root-section";
-import { PageSection } from "@/components/page-section";
-import { PanelResizeHandle } from "@/components/panel-resize-handler";
+import { toolGroups } from "@/_config/tools";
+import * as icons from "@/_components/primitives/icons";
+import { Configuration, ConfigurationItem } from "@/_components/configuration";
+import * as Button from "@/_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
+import { DiffEditor } from "@/_components/diff-editor";
+import { Editor } from "@/_components/editor";
+import { LabeledSwitch } from "@/_components/labeled-switch";
+import { PageRootSection } from "@/_components/page-root-section";
+import { PageSection } from "@/_components/page-section";
+
+import { PanelResizeHandle } from "./_components/panel-resize-handle";
+import { ToggleFullSize } from "./_components/toggle-full-size";
+import { PERSISTENCE_KEY } from "./config";
 
 /** No particular reason for these sizes, just feels like a good balance */
 const VERTICAL_PANEL_MAX_SIZE = 80;
@@ -78,7 +80,7 @@ export default function Page() {
   const diffControl = (
     <ControlMenu>
       <ControlMenuItem>
-        <Button.ToggleFullSize iconOnly onClick={toggleFullHeight} expanded={diffFullHeight} />
+        <ToggleFullSize iconOnly onClick={toggleFullHeight} expanded={diffFullHeight} />
       </ControlMenuItem>
     </ControlMenu>
   );
@@ -90,12 +92,9 @@ export default function Page() {
       <PageSection title="Configuration" className={hiddenInFullHeightMode}>
         <Configuration>{inlineModeConfig}</Configuration>
       </PageSection>
-      <PanelGroup direction="vertical" autoSaveId={PERSISTENCE_KEY.panels.textDiff.vertical}>
+      <PanelGroup direction="vertical" autoSaveId={PERSISTENCE_KEY.panels.vertical}>
         <Panel maxSize={VERTICAL_PANEL_MAX_SIZE} className={hiddenInFullHeightMode}>
-          <PanelGroup
-            direction="horizontal"
-            autoSaveId={PERSISTENCE_KEY.panels.textDiff.horizontal}
-          >
+          <PanelGroup direction="horizontal" autoSaveId={PERSISTENCE_KEY.panels.horizontal}>
             <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
               <PageSection className="h-full" title="Old text" control={input1Control}>
                 <Editor value={input1} onChange={setInput1} />

@@ -2,21 +2,21 @@
 
 import { useState } from "react";
 
-import { toolGroups } from "@/config/tools";
-import { uuid } from "@/lib/uuid";
-import { useAutoScroll } from "@/hooks/useAutoScroll";
-import { Button } from "@/components/ui/button";
-import { Input, InputProps } from "@/components/ui/input";
-import * as Select from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { Clear } from "@/components/buttons/clear";
-import { Copy } from "@/components/buttons/copy";
-import { Configuration, ConfigurationItem } from "@/components/configuration";
-import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
-import * as icons from "@/components/icons";
-import { LabeledSwitch } from "@/components/labeled-switch";
-import { PageRootSection } from "@/components/page-root-section";
-import { PageSection } from "@/components/page-section";
+import { toolGroups } from "@/_config/tools";
+import { Button } from "@/_components/primitives/button";
+import * as icons from "@/_components/primitives/icons";
+import { Input, InputProps } from "@/_components/primitives/input";
+import * as Select from "@/_components/primitives/select";
+import { Textarea } from "@/_components/primitives/textarea";
+import { Configuration, ConfigurationItem } from "@/_components/configuration";
+import { Clear, Copy } from "@/_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
+import { LabeledSwitch } from "@/_components/labeled-switch";
+import { PageRootSection } from "@/_components/page-root-section";
+import { PageSection } from "@/_components/page-section";
+
+import { useAutoScroll } from "./hooks";
+import { uuid } from "./lib";
 
 const versions = {
   v1: "1",

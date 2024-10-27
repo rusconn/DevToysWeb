@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 
-import { toolGroups } from "@/config/tools";
+import { toolGroups } from "@/_config/tools";
+import { Textarea, TextareaProps } from "@/_components/primitives/textarea";
+import { ToggleGroup, ToggleGroupItem } from "@/_components/primitives/toggle-group";
+import * as Button from "@/_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
+import { PageRootSection } from "@/_components/page-root-section";
+import { PageSection } from "@/_components/page-section";
+
 import {
   countBytes,
   countCharacters,
@@ -12,13 +19,7 @@ import {
   TextTransformMode,
   textTransformModes,
   transformText,
-} from "@/lib/text";
-import { Textarea, TextareaProps } from "@/components/ui/textarea";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import * as Button from "@/components/buttons";
-import { ControlMenu, ControlMenuItem } from "@/components/control-menu";
-import { PageRootSection } from "@/components/page-root-section";
-import { PageSection } from "@/components/page-section";
+} from "./lib";
 
 export default function Page() {
   const [input, setInput] = useState("ConvertMe");

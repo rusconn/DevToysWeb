@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { toolGroups } from "@/config/tools";
+import { toolGroups } from "@/_config/tools";
 
 export const metadata: Metadata = {
   title: toolGroups.text.tools.inspector_and_case_converter.longTitle,

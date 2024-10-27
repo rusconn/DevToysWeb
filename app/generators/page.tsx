@@ -1,6 +1,6 @@
-import { toolGroups } from "@/config/tools";
-import { PageRootSection } from "@/components/page-root-section";
-import { ToolCards } from "@/components/tool-cards";
+import { toolGroups } from "@/_config/tools";
+import { PageRootSection } from "@/_components/page-root-section";
+import { ToolCards } from "@/_components/tool-cards";
 
 export default function Page() {
   return (
