@@ -29,7 +29,7 @@ export function SiteHeader() {
       </div>
       <div className="flex gap-x-1">
         <a
-          className="group h-10 w-10 rounded-md p-2"
+          className="group size-10 rounded-md p-2"
           href={siteConfig.links.github}
           target="_blank"
           rel="noreferrer"

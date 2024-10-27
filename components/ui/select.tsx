@@ -29,7 +29,7 @@ export const Trigger = ({
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <icons.ChevronDown className="h-4 w-4 opacity-50" />
+      <icons.ChevronDown className="size-4 opacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 );

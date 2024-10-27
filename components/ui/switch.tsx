@@ -34,9 +34,9 @@ export const Switch = ({ peer, ...props }: SwitchProps) => (
   >
     <SwitchPrimitives.Thumb
       className={cn(
-        "pointer-events-none block h-3.5 w-3.5 rounded-full bg-neutral-750/80 shadow-lg transition-transform",
-        "group-hover:h-4 group-hover:w-4",
-        "group-disabled:h-3.5 group-disabled:w-3.5",
+        "pointer-events-none block size-3.5 rounded-full bg-neutral-750/80 shadow-lg transition-transform",
+        "group-hover:size-4",
+        "group-disabled:size-3.5",
         "data-[state=checked]:translate-x-[22px] data-[state=checked]:bg-neutral-150",
         "data-[state=unchecked]:translate-x-0.5",
         "dark:bg-neutral-200/80",
