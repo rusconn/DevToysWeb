@@ -13,15 +13,8 @@
     "test": "docker compose -f compose.test.yaml run --rm playwright npx playwright test",
     "test:report": "playwright show-report",
     "deploy": "firebase deploy --project devtoysweb",
-    "check": "pnpm typecheck && pnpm lint && pnpm format:check",
-    "fix": "pnpm lint:fix && pnpm format:write",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
-    "preview": "next build && serve out",
-    "typecheck": "tsc",
-    "format:write": "pnpm format --write",
-    "format:check": "pnpm format --check",
-    "format": "prettier '**/*.{js,jsx,ts,tsx,css,json,md}' --cache"
+    "check": "tsc && next lint && prettier --cache --check '**/*.{js,jsx,ts,tsx,css,json,md}'",
+    "preview": "next build && serve out"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.5.1",
