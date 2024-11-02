@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { Tool } from "@/_config/tools";
-import { cn } from "@/_lib/style";
+import { Tool } from "../_config/tools";
+import { cn } from "../_lib/style";
 
 export type ToolCardProps = Pick<Tool, "Icon" | "longTitle" | "description" | "href">;
 

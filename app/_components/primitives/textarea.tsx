@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef } from "react";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../../_lib/style";
 
 export type TextareaProps = Omit<ComponentPropsWithRef<"textarea">, "className">;
 

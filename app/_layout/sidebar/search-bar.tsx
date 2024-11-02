@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { useSetSearchText } from "@/_contexts/search-text";
-import { cn } from "@/_lib/style";
-import { Button, ButtonProps } from "@/_components/primitives/button";
-import * as icons from "@/_components/primitives/icons";
-import { Input, InputProps } from "@/_components/primitives/input";
+import { useSetSearchText } from "../../_contexts/search-text";
+import { cn } from "../../_lib/style";
+import { Button, ButtonProps } from "../../_components/primitives/button";
+import * as icons from "../../_components/primitives/icons";
+import { Input, InputProps } from "../../_components/primitives/input";
 
 export function SearchBar() {
   const router = useRouter();

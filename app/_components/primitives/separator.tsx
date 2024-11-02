@@ -3,7 +3,7 @@
 import { ComponentPropsWithRef } from "react";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../../_lib/style";
 
 export const Separator = ({
   orientation = "horizontal",

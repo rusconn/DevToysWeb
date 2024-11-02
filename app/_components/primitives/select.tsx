@@ -3,7 +3,7 @@
 import { ComponentPropsWithRef } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../../_lib/style";
 
 import * as icons from "./icons";
 import { Indicator } from "./indicator";

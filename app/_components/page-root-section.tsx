@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../_lib/style";
 
 type Props = {
   className?: string;

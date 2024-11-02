@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/_config/site";
-import { cn } from "@/_lib/style";
-import * as icons from "@/_components/primitives/icons";
+import { siteConfig } from "../_config/site";
+import { cn } from "../_lib/style";
+import * as icons from "../_components/primitives/icons";
 
 import { ThemeToggle } from "./theme-toggle";
 

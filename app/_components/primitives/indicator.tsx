@@ -1,4 +1,4 @@
-import { cn } from "@/_lib/style";
+import { cn } from "../../_lib/style";
 
 export function Indicator() {
   return (

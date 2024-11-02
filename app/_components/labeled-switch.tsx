@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../_lib/style";
 
 import { Switch, SwitchProps } from "./primitives/switch";
 

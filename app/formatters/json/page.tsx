@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 
-import { toolGroups } from "@/_config/tools";
-import { safeJsonParse } from "@/_lib/json";
-import * as icons from "@/_components/primitives/icons";
-import * as Select from "@/_components/primitives/select";
-import { Configuration, ConfigurationItem } from "@/_components/configuration";
-import * as Button from "@/_components/control-buttons";
-import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
-import { Editor, EditorProps } from "@/_components/editor";
-import { PageRootSection } from "@/_components/page-root-section";
-import { PageSection } from "@/_components/page-section";
+import { toolGroups } from "../../_config/tools";
+import { safeJsonParse } from "../../_lib/json";
+import * as icons from "../../_components/primitives/icons";
+import * as Select from "../../_components/primitives/select";
+import { Configuration, ConfigurationItem } from "../../_components/configuration";
+import * as Button from "../../_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
+import { Editor, EditorProps } from "../../_components/editor";
+import { PageRootSection } from "../../_components/page-root-section";
+import { PageSection } from "../../_components/page-section";
 
 const indentations = {
   two: "  ",

@@ -3,16 +3,16 @@
 import { useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 
-import { toolGroups } from "@/_config/tools";
-import * as icons from "@/_components/primitives/icons";
-import { Configuration, ConfigurationItem } from "@/_components/configuration";
-import * as Button from "@/_components/control-buttons";
-import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
-import { DiffEditor } from "@/_components/diff-editor";
-import { Editor } from "@/_components/editor";
-import { LabeledSwitch } from "@/_components/labeled-switch";
-import { PageRootSection } from "@/_components/page-root-section";
-import { PageSection } from "@/_components/page-section";
+import { toolGroups } from "../../_config/tools";
+import * as icons from "../../_components/primitives/icons";
+import { Configuration, ConfigurationItem } from "../../_components/configuration";
+import * as Button from "../../_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
+import { DiffEditor } from "../../_components/diff-editor";
+import { Editor } from "../../_components/editor";
+import { LabeledSwitch } from "../../_components/labeled-switch";
+import { PageRootSection } from "../../_components/page-root-section";
+import { PageSection } from "../../_components/page-section";
 
 import { PanelResizeHandle } from "./_components/panel-resize-handle";
 import { ToggleFullSize } from "./_components/toggle-full-size";

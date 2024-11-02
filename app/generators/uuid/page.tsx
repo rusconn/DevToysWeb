@@ -2,18 +2,18 @@
 
 import { useState } from "react";
 
-import { toolGroups } from "@/_config/tools";
-import { Button } from "@/_components/primitives/button";
-import * as icons from "@/_components/primitives/icons";
-import { Input, InputProps } from "@/_components/primitives/input";
-import * as Select from "@/_components/primitives/select";
-import { Textarea } from "@/_components/primitives/textarea";
-import { Configuration, ConfigurationItem } from "@/_components/configuration";
-import { Clear, Copy } from "@/_components/control-buttons";
-import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
-import { LabeledSwitch } from "@/_components/labeled-switch";
-import { PageRootSection } from "@/_components/page-root-section";
-import { PageSection } from "@/_components/page-section";
+import { toolGroups } from "../../_config/tools";
+import { Button } from "../../_components/primitives/button";
+import * as icons from "../../_components/primitives/icons";
+import { Input, InputProps } from "../../_components/primitives/input";
+import * as Select from "../../_components/primitives/select";
+import { Textarea } from "../../_components/primitives/textarea";
+import { Configuration, ConfigurationItem } from "../../_components/configuration";
+import { Clear, Copy } from "../../_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
+import { LabeledSwitch } from "../../_components/labeled-switch";
+import { PageRootSection } from "../../_components/page-root-section";
+import { PageSection } from "../../_components/page-section";
 
 import { useAutoScroll } from "./hooks";
 import { uuid } from "./lib";

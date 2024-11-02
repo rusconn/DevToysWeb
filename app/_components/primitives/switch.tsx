@@ -3,7 +3,7 @@
 import { ComponentPropsWithRef } from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../../_lib/style";
 
 export type SwitchProps = Omit<ComponentPropsWithRef<typeof SwitchPrimitives.Root>, "className"> & {
   peer?: true;

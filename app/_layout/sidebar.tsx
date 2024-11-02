@@ -1,4 +1,4 @@
-import { Separator } from "@/_components/primitives/separator";
+import { Separator } from "../_components/primitives/separator";
 
 import { AllTools } from "./sidebar/all-tools";
 import { SearchBar } from "./sidebar/search-bar";

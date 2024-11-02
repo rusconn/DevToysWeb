@@ -2,10 +2,10 @@
 
 import Fuse from "fuse.js";
 
-import { homeTools } from "@/_config/tools";
-import { useSearchText } from "@/_contexts/search-text";
-import { PageRootSection } from "@/_components/page-root-section";
-import { ToolCards } from "@/_components/tool-cards";
+import { homeTools } from "../_config/tools";
+import { useSearchText } from "../_contexts/search-text";
+import { PageRootSection } from "../_components/page-root-section";
+import { ToolCards } from "../_components/tool-cards";
 
 export default function Page() {
   // use search params in context

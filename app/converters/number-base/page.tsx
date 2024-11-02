@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 
-import { toolGroups } from "@/_config/tools";
-import * as icons from "@/_components/primitives/icons";
-import { Input, InputProps } from "@/_components/primitives/input";
-import { Configuration, ConfigurationItem } from "@/_components/configuration";
-import * as Button from "@/_components/control-buttons";
-import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
-import { LabeledSwitch } from "@/_components/labeled-switch";
-import { PageRootSection } from "@/_components/page-root-section";
-import { PageSection } from "@/_components/page-section";
+import { toolGroups } from "../../_config/tools";
+import * as icons from "../../_components/primitives/icons";
+import { Input, InputProps } from "../../_components/primitives/input";
+import { Configuration, ConfigurationItem } from "../../_components/configuration";
+import * as Button from "../../_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
+import { LabeledSwitch } from "../../_components/labeled-switch";
+import { PageRootSection } from "../../_components/page-root-section";
+import { PageSection } from "../../_components/page-section";
 
 import {
   formatBinary,

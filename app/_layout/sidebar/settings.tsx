@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import { singleTools } from "@/_config/tools";
+import { singleTools } from "../../_config/tools";
 
 import { ToolLink } from "./tool-link";
 

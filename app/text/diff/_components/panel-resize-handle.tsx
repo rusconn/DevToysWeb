@@ -1,8 +1,8 @@
 import { ComponentPropsWithoutRef } from "react";
 import { PanelResizeHandle as PanelResizeHandlePrimitive } from "react-resizable-panels";
 
-import { cn } from "@/_lib/style";
-import * as Icon from "@/_components/primitives/icons";
+import { cn } from "../../../_lib/style";
+import * as Icon from "../../../_components/primitives/icons";
 
 type Props = {
   direction?: "vertical" | "horizontal";

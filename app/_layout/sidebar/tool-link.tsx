@@ -2,9 +2,9 @@
 
 import Link, { LinkProps } from "next/link";
 
-import { Tool } from "@/_config/tools";
-import { cn } from "@/_lib/style";
-import { Indicator } from "@/_components/primitives/indicator";
+import { Tool } from "../../_config/tools";
+import { cn } from "../../_lib/style";
+import { Indicator } from "../../_components/primitives/indicator";
 
 type Props = Pick<Tool, "Icon" | "shortTitle"> &
   Pick<LinkProps<unknown>, "href" | "onClick"> & {

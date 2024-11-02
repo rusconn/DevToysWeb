@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from "react";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../_lib/style";
 
 export function Configuration({ children }: PropsWithChildren) {
   return <ul className="flex flex-col gap-1.5">{children}</ul>;

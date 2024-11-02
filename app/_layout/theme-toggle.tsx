@@ -1,8 +1,8 @@
 "use client";
 
-import { useTheme } from "@/_contexts/theme";
-import { Button } from "@/_components/primitives/button";
-import * as icons from "@/_components/primitives/icons";
+import { useTheme } from "../_contexts/theme";
+import { Button } from "../_components/primitives/button";
+import * as icons from "../_components/primitives/icons";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();

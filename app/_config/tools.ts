@@ -2,7 +2,7 @@ import { UrlObject } from "node:url";
 
 import { LinkProps } from "next/link";
 
-import * as icons from "@/_components/primitives/icons";
+import * as icons from "../_components/primitives/icons";
 
 type ValidHref = Exclude<LinkProps<unknown>["href"], UrlObject>;
 

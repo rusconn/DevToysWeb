@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import * as Accordion from "@radix-ui/react-accordion";
 
-import { ToolGroup as IToolGroup } from "@/_config/tools";
-import { cn } from "@/_lib/style";
-import * as icons from "@/_components/primitives/icons";
+import { ToolGroup as IToolGroup } from "../../_config/tools";
+import { cn } from "../../_lib/style";
+import * as icons from "../../_components/primitives/icons";
 
 import { ToolLink } from "./tool-link";
 

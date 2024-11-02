@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import { toolGroups } from "@/_config/tools";
+import { toolGroups } from "../../_config/tools";
 
 export const metadata: Metadata = {
   title: toolGroups.encodersDecoders.tools.base64.longTitle,

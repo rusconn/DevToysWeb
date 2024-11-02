@@ -6,16 +6,16 @@ import SHA1 from "crypto-js/sha1";
 import SHA256 from "crypto-js/sha256";
 import SHA512 from "crypto-js/sha512";
 
-import { toolGroups } from "@/_config/tools";
-import * as icons from "@/_components/primitives/icons";
-import { Input } from "@/_components/primitives/input";
-import { Textarea, TextareaProps } from "@/_components/primitives/textarea";
-import { Configuration, ConfigurationItem } from "@/_components/configuration";
-import * as Button from "@/_components/control-buttons";
-import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
-import { LabeledSwitch } from "@/_components/labeled-switch";
-import { PageRootSection } from "@/_components/page-root-section";
-import { PageSection } from "@/_components/page-section";
+import { toolGroups } from "../../_config/tools";
+import * as icons from "../../_components/primitives/icons";
+import { Input } from "../../_components/primitives/input";
+import { Textarea, TextareaProps } from "../../_components/primitives/textarea";
+import { Configuration, ConfigurationItem } from "../../_components/configuration";
+import * as Button from "../../_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
+import { LabeledSwitch } from "../../_components/labeled-switch";
+import { PageRootSection } from "../../_components/page-root-section";
+import { PageSection } from "../../_components/page-section";
 
 export default function Page() {
   const [uppercase, setUppercase] = useState(false);

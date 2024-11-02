@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 
-import { toolGroups } from "@/_config/tools";
-import { Textarea, TextareaProps } from "@/_components/primitives/textarea";
-import * as Button from "@/_components/control-buttons";
-import { ControlMenu, ControlMenuItem } from "@/_components/control-menu";
-import { PageRootSection } from "@/_components/page-root-section";
-import { PageSection } from "@/_components/page-section";
+import { toolGroups } from "../../_config/tools";
+import { Textarea, TextareaProps } from "../../_components/primitives/textarea";
+import * as Button from "../../_components/control-buttons";
+import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
+import { PageRootSection } from "../../_components/page-root-section";
+import { PageSection } from "../../_components/page-section";
 
 import { decode, encode } from "./lib";
 

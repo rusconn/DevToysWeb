@@ -3,7 +3,7 @@
 import { ComponentPropsWithRef } from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../../_lib/style";
 
 const ToggleGroup = (
   props: Omit<ComponentPropsWithRef<typeof ToggleGroupPrimitive.Root>, "className">

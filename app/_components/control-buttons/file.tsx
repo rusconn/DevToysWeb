@@ -1,6 +1,6 @@
 import { ComponentProps, useRef } from "react";
 
-import * as icons from "@/_components/primitives/icons";
+import * as icons from "../../_components/primitives/icons";
 
 import { Base, BaseProps } from "./base";
 

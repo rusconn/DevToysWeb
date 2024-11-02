@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 
-import { Button, ButtonProps } from "@/_components/primitives/button";
+import { Button, ButtonProps } from "../../_components/primitives/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/_components/primitives/tooltip";
+} from "../../_components/primitives/tooltip";
 
 export type BaseProps = ButtonProps & {
   icon: ReactNode;

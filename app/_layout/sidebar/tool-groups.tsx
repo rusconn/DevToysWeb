@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import * as Accordion from "@radix-ui/react-accordion";
 
-import { toolGroups } from "@/_config/tools";
+import { toolGroups } from "../../_config/tools";
 
 import { ToolGroup } from "./tool-group";
 

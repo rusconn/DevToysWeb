@@ -1,7 +1,7 @@
 import { ComponentPropsWithRef } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
-import { cn } from "@/_lib/style";
+import { cn } from "../../_lib/style";
 
 export const buttonVariants = cva(
   "rounded-md transition-colors disabled:pointer-events-none disabled:opacity-50",
