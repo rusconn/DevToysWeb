@@ -50,7 +50,7 @@ export default function Page() {
   const onGeneratesChange: NonNullable<InputProps["onChange"]> = e => {
     const newGenerates = Number(e.currentTarget.value);
 
-    if (newGenerates >= 1 && newGenerates <= 1000) {
+    if (1 <= newGenerates && newGenerates <= 1000) {
       setGenerates(newGenerates);
     }
   };

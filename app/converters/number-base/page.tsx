@@ -58,10 +58,10 @@ export default function Page() {
     }
   };
 
-  const trySetDec = (value: string) => trySetInt(10)(value);
-  const trySetHex = (value: string) => trySetInt(16)(value);
-  const trySetOct = (value: string) => trySetInt(8)(value);
-  const trySetBin = (value: string) => trySetInt(2)(value);
+  const trySetDec = trySetInt(10);
+  const trySetHex = trySetInt(16);
+  const trySetOct = trySetInt(8);
+  const trySetBin = trySetInt(2);
 
   const onDecChange: InputProps["onChange"] = e => trySetDec(e.currentTarget.value);
   const onHexChange: InputProps["onChange"] = e => trySetHex(e.currentTarget.value);
