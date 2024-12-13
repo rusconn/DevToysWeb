@@ -14,9 +14,9 @@ import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
 const indentations = {
-  two: "  ",
-  four: "    ",
-  zero: "",
+  two: "2",
+  four: "4",
+  zero: "0",
   tab: "\t",
 };
 
@@ -25,7 +25,8 @@ export default function Page() {
   const [input, setInput] = useState('{\n"foo":"bar"\n}');
 
   const parsed = safeJsonParse(input);
-  const output = parsed.map(x => JSON.stringify(x, null, indentation)).unwrapOr("");
+  const space = indentation === "\t" ? "\t" : parseInt(indentation, 10);
+  const output = parsed.map(x => JSON.stringify(x, null, space)).unwrapOr("");
 
   const clearInput = () => setInput("");
 
