@@ -50,7 +50,7 @@
     "@eslint/js": "^9.13.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.0.1",
     "@next/bundle-analyzer": "15.1.0",
-    "@playwright/test": "^1.39.0",
+    "@playwright/test": "^1.49.1",
     "@types/crypto-js": "^4.2.2",
     "@types/html-escaper": "^3.0.0",
     "@types/js-yaml": "^4.0.5",
