@@ -1,16 +1,16 @@
 "use client";
 
 import { ComponentPropsWithRef } from "react";
-import * as SwitchPrimitives from "@radix-ui/react-switch";
+import { Switch as SwitchPrimitive } from "radix-ui";
 
 import { cn } from "../../_lib/style";
 
-export type SwitchProps = Omit<ComponentPropsWithRef<typeof SwitchPrimitives.Root>, "className"> & {
+export type SwitchProps = Omit<ComponentPropsWithRef<typeof SwitchPrimitive.Root>, "className"> & {
   peer?: true;
 };
 
 export const Switch = ({ peer, ...props }: SwitchProps) => (
-  <SwitchPrimitives.Root
+  <SwitchPrimitive.Root
     className={cn(
       "group inline-flex h-5 w-10 shrink-0 cursor-pointer items-center rounded-full border border-neutral-450 bg-neutral-150",
       peer && "peer",
@@ -29,7 +29,7 @@ export const Switch = ({ peer, ...props }: SwitchProps) => (
     )}
     {...props}
   >
-    <SwitchPrimitives.Thumb
+    <SwitchPrimitive.Thumb
       className={cn(
         "pointer-events-none block size-3.5 rounded-full bg-neutral-750/80 shadow-lg transition-transform",
         "group-hover:size-4",
@@ -40,5 +40,5 @@ export const Switch = ({ peer, ...props }: SwitchProps) => (
         "dark:data-[state=checked]:bg-neutral-850"
       )}
     />
-  </SwitchPrimitives.Root>
+  </SwitchPrimitive.Root>
 );

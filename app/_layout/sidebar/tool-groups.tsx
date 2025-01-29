@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import * as Accordion from "@radix-ui/react-accordion";
+import { Accordion } from "radix-ui";
 
 import { toolGroups } from "../../_config/tools";
 

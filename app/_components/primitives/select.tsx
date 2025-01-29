@@ -1,22 +1,22 @@
 "use client";
 
 import { ComponentPropsWithRef } from "react";
-import * as SelectPrimitive from "@radix-ui/react-select";
+import { Select } from "radix-ui";
 
 import { cn } from "../../_lib/style";
 
 import * as icons from "./icons";
 import { Indicator } from "./indicator";
 
-export type Props = ComponentPropsWithRef<typeof SelectPrimitive.Root>;
+export type Props = ComponentPropsWithRef<typeof Select.Root>;
 
-export const { Root, Group, Value } = SelectPrimitive;
+export const { Root, Group, Value } = Select;
 
 export const Trigger = ({
   children,
   ...props
-}: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Trigger>, "className">) => (
-  <SelectPrimitive.Trigger
+}: Omit<ComponentPropsWithRef<typeof Select.Trigger>, "className">) => (
+  <Select.Trigger
     className={cn(
       "flex h-9 w-28 items-center justify-between rounded-md border bg-neutral-50 px-2.5 py-1.5",
       "placeholder:text-neutral-450",
@@ -29,19 +29,19 @@ export const Trigger = ({
     {...props}
   >
     {children}
-    <SelectPrimitive.Icon asChild>
+    <Select.Icon asChild>
       <icons.ChevronDown className="size-4 opacity-50" />
-    </SelectPrimitive.Icon>
-  </SelectPrimitive.Trigger>
+    </Select.Icon>
+  </Select.Trigger>
 );
 
 export const Content = ({
   children,
   position = "popper",
   ...props
-}: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Content>, "className">) => (
-  <SelectPrimitive.Portal>
-    <SelectPrimitive.Content
+}: Omit<ComponentPropsWithRef<typeof Select.Content>, "className">) => (
+  <Select.Portal>
+    <Select.Content
       {...{ position }}
       className={cn(
         "relative z-50 overflow-hidden rounded-md border bg-neutral-50 text-neutral-750 shadow-md animate-in fade-in-80",
@@ -50,7 +50,7 @@ export const Content = ({
       )}
       {...props}
     >
-      <SelectPrimitive.Viewport
+      <Select.Viewport
         className={cn(
           "p-1",
           position === "popper" &&
@@ -58,20 +58,20 @@ export const Content = ({
         )}
       >
         {children}
-      </SelectPrimitive.Viewport>
-    </SelectPrimitive.Content>
-  </SelectPrimitive.Portal>
+      </Select.Viewport>
+    </Select.Content>
+  </Select.Portal>
 );
 
-export const Label = (
-  props: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Label>, "className">
-) => <SelectPrimitive.Label className="py-1.5 pl-8 pr-2 font-semibold" {...props} />;
+export const Label = (props: Omit<ComponentPropsWithRef<typeof Select.Label>, "className">) => (
+  <Select.Label className="py-1.5 pl-8 pr-2 font-semibold" {...props} />
+);
 
 export const Item = ({
   children,
   ...props
-}: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Item>, "className">) => (
-  <SelectPrimitive.Item
+}: Omit<ComponentPropsWithRef<typeof Select.Item>, "className">) => (
+  <Select.Item
     className={cn(
       "relative flex w-full cursor-default select-none items-center rounded-sm px-2.5 py-1.5 outline-none",
       "hover:bg-neutral-150",
@@ -83,14 +83,14 @@ export const Item = ({
     {...props}
   >
     <span className="absolute left-0">
-      <SelectPrimitive.ItemIndicator className="flex items-center">
+      <Select.ItemIndicator className="flex items-center">
         <Indicator />
-      </SelectPrimitive.ItemIndicator>
+      </Select.ItemIndicator>
     </span>
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-  </SelectPrimitive.Item>
+    <Select.ItemText>{children}</Select.ItemText>
+  </Select.Item>
 );
 
 export const Separator = (
-  props: Omit<ComponentPropsWithRef<typeof SelectPrimitive.Separator>, "className">
-) => <SelectPrimitive.Separator className="-mx-1 my-1 h-px bg-neutral-850" {...props} />;
+  props: Omit<ComponentPropsWithRef<typeof Select.Separator>, "className">
+) => <Select.Separator className="-mx-1 my-1 h-px bg-neutral-850" {...props} />;
