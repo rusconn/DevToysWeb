@@ -2,10 +2,10 @@ import "./_styles/globals.css";
 
 import { ReactNode } from "react";
 import { Metadata, Viewport } from "next";
+import { ThemeProvider } from "next-themes";
 
 import { siteConfig } from "./_config/site";
 import { SearchTextProvider } from "./_contexts/search-text";
-import { ThemeProvider } from "./_contexts/theme";
 import { Sidebar } from "./_layout/sidebar";
 import { SiteHeader } from "./_layout/site-header";
 import { TailwindIndicator } from "./_layout/tailwind-indicator";

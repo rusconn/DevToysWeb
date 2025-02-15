@@ -1,6 +1,7 @@
 "use client";
 
-import { useTheme } from "../_contexts/theme";
+import { useTheme } from "next-themes";
+
 import { Button } from "../_components/primitives/button";
 import * as icons from "../_components/primitives/icons";
 

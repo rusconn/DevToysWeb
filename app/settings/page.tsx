@@ -1,7 +1,8 @@
 "use client";
 
+import { useTheme } from "next-themes";
+
 import { singleTools } from "../_config/tools";
-import { useTheme } from "../_contexts/theme";
 import * as icons from "../_components/primitives/icons";
 import * as Select from "../_components/primitives/select";
 import { Configuration, ConfigurationItem } from "../_components/configuration";
