@@ -17,7 +17,7 @@
     "preview": "next build && serve out"
   },
   "dependencies": {
-    "@monaco-editor/react": "4.7.0-rc.0",
+    "@monaco-editor/react": "4.7.0",
     "change-case": "^5.4.4",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
