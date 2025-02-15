@@ -67,6 +67,8 @@
     "typescript-eslint": "^8.11.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["sharp"]
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   }
 }
