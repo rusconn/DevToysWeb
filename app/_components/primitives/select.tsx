@@ -1,5 +1,3 @@
-"use client";
-
 import { ComponentPropsWithRef } from "react";
 import { Select } from "radix-ui";
 

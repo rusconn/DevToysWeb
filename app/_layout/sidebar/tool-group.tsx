@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Accordion } from "radix-ui";

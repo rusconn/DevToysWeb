@@ -1,5 +1,3 @@
-"use client";
-
 import { ComponentPropsWithRef } from "react";
 import { Switch as SwitchPrimitive } from "radix-ui";
 

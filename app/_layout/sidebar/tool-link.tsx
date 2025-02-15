@@ -1,5 +1,3 @@
-"use client";
-
 import Link, { LinkProps } from "next/link";
 
 import { Tool } from "../../_config/tools";
