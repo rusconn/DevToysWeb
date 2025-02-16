@@ -1,25 +1,17 @@
-"use client";
+import { Metadata } from "next";
 
-import Fuse from "fuse.js";
+import ClientBoundary from "./page.client";
 
-import { homeTools } from "../_config/tools";
-import { useSearchText } from "../_contexts/search-text";
-import { PageRootSection } from "../_components/page-root-section";
-import { ToolCards } from "../_components/tool-cards";
+// TODO: use query param
+export const metadata: Metadata = {
+  title: "Search results",
+  robots: {
+    googleBot: {
+      index: false,
+    },
+  },
+};
 
 export default function Page() {
-  // use search params in context
-  const q = useSearchText();
-
-  const fuse = new Fuse(homeTools, { keys: ["keywords"], threshold: 0.45 });
-  const keyWordsOptions = q.split(" ").map(word => ({ keywords: word }));
-  const result = fuse.search({ $or: keyWordsOptions });
-  const tools = result.map(({ item }) => item);
-
-  const { title, child } =
-    tools.length === 0
-      ? { title: "No results found", child: null }
-      : { title: `Search results for "${q}"`, child: <ToolCards {...{ tools }} /> };
-
-  return <PageRootSection {...{ title }}>{child}</PageRootSection>;
+  return <ClientBoundary />;
 }
