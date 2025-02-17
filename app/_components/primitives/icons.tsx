@@ -1,42 +1,44 @@
-import * as icons from "lucide-react";
+import type { LucideProps } from "lucide-react";
 
-export type Icon = icons.LucideIcon;
+export {
+  type LucideIcon as Icon,
+  AlignLeft,
+  ArrowRightLeft,
+  Binary,
+  Braces,
+  CaseSensitive,
+  Check,
+  ChevronDown,
+  Clipboard,
+  Code2 as Code,
+  Copy,
+  Diff,
+  Equal,
+  FileIcon as File,
+  Fingerprint,
+  GripHorizontal,
+  GripVertical,
+  Hash,
+  Home,
+  Key,
+  Link2 as Link,
+  Maximize2 as Maximize,
+  Minimize2 as Minimize,
+  PackagePlus,
+  Paintbrush2 as Paintbrush,
+  Rows,
+  Search,
+  Settings,
+  Settings2,
+  Space,
+  SunMedium as Sun,
+  Type,
+  Minus,
+  Moon,
+  X,
+} from "lucide-react";
 
-export const { AlignLeft } = icons;
-export const { ArrowRightLeft } = icons;
-export const { Binary } = icons;
-export const { Braces } = icons;
-export const { CaseSensitive } = icons;
-export const { Check } = icons;
-export const { ChevronDown } = icons;
-export const { Clipboard } = icons;
-export const Code = icons.Code2;
-export const { Copy } = icons;
-export const { Diff } = icons;
-export const { Equal } = icons;
-export const File = icons.FileIcon;
-export const { Fingerprint } = icons;
-export const { GripHorizontal } = icons;
-export const { GripVertical } = icons;
-export const { Hash } = icons;
-export const { Home } = icons;
-export const { Key } = icons;
-export const Link = icons.Link2;
-export const Maximize = icons.Maximize2;
-export const Minimize = icons.Minimize2;
-export const { PackagePlus } = icons;
-export const Paintbrush = icons.Paintbrush2;
-export const { Rows } = icons;
-export const { Search } = icons;
-export const { Settings } = icons;
-export const { Settings2 } = icons;
-export const { Space } = icons;
-export const Sun = icons.SunMedium;
-export const { Type } = icons;
-export const { Minus } = icons;
-export const { Moon } = icons;
-export const { X } = icons;
-export const GitHub = (props: icons.LucideProps) => (
+export const GitHub = (props: LucideProps) => (
   <svg viewBox="0 0 438.549 438.549" {...props}>
     <path
       fill="currentColor"
