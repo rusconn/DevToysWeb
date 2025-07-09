@@ -99,30 +99,30 @@ export default function ClientBoundary() {
       <PageSection title="Configuration">
         <Configuration>{uppercaseConfig}</Configuration>
       </PageSection>
-      <PageSection className="-mt-2" title="Input" control={inputControl}>
+      <PageSection title="Input" control={inputControl}>
         <Textarea value={input} onChange={onInputChange} rows={5} />
       </PageSection>
-      <div className="flex flex-col gap-3">
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         <PageSection title="MD5">
-          <div className="grid grid-cols-[1fr_auto] gap-2">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "0.5rem" }}>
             <Input value={md5} readOnly />
             {md5Control}
           </div>
         </PageSection>
         <PageSection title="SHA1">
-          <div className="grid grid-cols-[1fr_auto] gap-2">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "0.5rem" }}>
             <Input value={sha1} readOnly />
             {sha1Control}
           </div>
         </PageSection>
         <PageSection title="SHA256">
-          <div className="grid grid-cols-[1fr_auto] gap-2">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "0.5rem" }}>
             <Input value={sha256} readOnly />
             {sha256Control}
           </div>
         </PageSection>
         <PageSection title="SHA512">
-          <div className="grid grid-cols-[1fr_auto] gap-2">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "0.5rem" }}>
             <Input value={sha512} readOnly />
             {sha512Control}
           </div>

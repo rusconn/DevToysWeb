@@ -1,0 +1,14 @@
+.separator {
+  background-color: #e5e5e5;
+}
+:global(html.dark) .separator {
+  background-color: #323232;
+}
+.separator-horizontal {
+  height: 1px;
+  width: 100%;
+}
+.separator-vertical {
+  width: 1px;
+  height: 100%;
+}

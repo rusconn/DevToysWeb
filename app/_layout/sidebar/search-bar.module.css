@@ -1,0 +1,42 @@
+.relative-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.absolute-container {
+  position: absolute;
+  right: 0.25rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.icon-clear {
+  padding: 0.25rem;
+  color: #8b8b8b;
+}
+:global(html.dark) .icon-x {
+  color: #a3a3a3;
+}
+
+.icon-search {
+  transform: scale(-1, 1);
+  padding: 0.25rem;
+  color: #8b8b8b;
+}
+:global(html.dark) .icon-search {
+  color: #a3a3a3;
+}
+
+/* TODO: make utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

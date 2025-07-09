@@ -2,17 +2,24 @@ import { ReactNode } from "react";
 
 import { cn } from "../_lib/style";
 
+import styles from "./page-root-section.module.css";
+
 type Props = {
-  className?: string;
+  size?: keyof typeof sizes;
   children: ReactNode;
   title: string;
 };
 
-export function PageRootSection({ className, children, title }: Props) {
+export function PageRootSection({ size = "default", children, title }: Props) {
   return (
-    <section className={cn("flex flex-col gap-6", className)}>
-      <h1 className="text-2xl">{title}</h1>
+    <section className={cn(styles.root, sizes[size])}>
+      <h1 className={styles.title}>{title}</h1>
       {children}
     </section>
   );
 }
+
+const sizes = {
+  default: undefined,
+  fullHeight: styles["size-full-height"],
+};

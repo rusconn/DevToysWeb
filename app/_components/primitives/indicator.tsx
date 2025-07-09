@@ -1,12 +1,5 @@
-import { cn } from "../../_lib/style";
+import styles from "./indicator.module.css";
 
 export function Indicator() {
-  return (
-    <span
-      className={cn(
-        "inline-block h-[18px] w-[3px] rounded bg-sky-700", //
-        "dark:bg-indigo-300",
-      )}
-    />
-  );
+  return <span className={styles.span} />;
 }

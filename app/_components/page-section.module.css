@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.control-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-title {
+  align-self: flex-end;
+}
+
+.title {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.size-full-height {
+  min-height: 200px;
+  height: 100%;
+  flex: 1 1 0%;
+}
+
+.hidden {
+  display: none;
+}

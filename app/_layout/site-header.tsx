@@ -1,25 +1,23 @@
 import Link from "next/link";
 
 import { siteConfig } from "../_config/site";
-import { cn } from "../_lib/style";
 import * as icons from "../_components/primitives/icons";
 
 import { ThemeToggle } from "./theme-toggle";
 
+import styles from "./site-header.module.css";
+
 export function SiteHeader() {
   return (
-    <header className="flex items-center justify-between px-4">
-      <div className="flex items-baseline gap-x-2.5">
-        <Link className="text-lg" href="/">
+    <header className={styles.root}>
+      <div className={styles["brand-container"]}>
+        <Link className={styles["site-link"]} href="/">
           {siteConfig.name}
         </Link>
-        <small className="text-xs">
+        <small className={styles["site-description"]}>
           web clone of{" "}
           <a
-            className={cn(
-              "text-sky-700 hover:underline", //
-              "dark:text-indigo-300",
-            )}
+            className={styles["devtoys-link"]}
             href={siteConfig.links.devtoys}
             target="_blank"
             rel="noreferrer"
@@ -28,15 +26,15 @@ export function SiteHeader() {
           </a>
         </small>
       </div>
-      <div className="flex gap-x-1">
+      <div className={styles["icons-container"]}>
         <a
-          className="group size-10 rounded-md p-2"
+          className={styles["github-link"]}
           href={siteConfig.links.github}
           target="_blank"
           rel="noreferrer"
         >
-          <icons.GitHub className="group-hover:opacity-70" />
-          <span className="sr-only">GitHub</span>
+          <icons.GitHub className={styles["github-icon"]} />
+          <span className={styles["sr-only"]}>GitHub</span>
         </a>
         <ThemeToggle />
       </div>

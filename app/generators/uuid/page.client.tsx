@@ -132,17 +132,17 @@ export default function ClientBoundary() {
         </Configuration>
       </PageSection>
       <PageSection title="Generate">
-        <div className="flex items-center gap-2">
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <Button variant="accent" onClick={onGenerateClick}>
             Generate UUID(s)
           </Button>
           <span>×</span>
-          <div className="w-24">
+          <div style={{ width: "6rem" }}>
             <Input type="number" value={generates} onChange={onGeneratesChange} />
           </div>
         </div>
       </PageSection>
-      <PageSection className="-mt-3" title="UUID(s)" control={uuidsControl}>
+      <PageSection title="UUID(s)" control={uuidsControl}>
         <Textarea {...{ ref }} value={uuidsString} rows={10} readOnly />
       </PageSection>
     </PageRootSection>

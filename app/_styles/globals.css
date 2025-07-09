@@ -1,24 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --border: #eaeaea;
+  --radius: 0.5rem;
+}
 
-@layer base {
-  :root {
-    --border: #eaeaea;
-    --radius: 0.5rem;
-  }
+.dark {
+  --border: transparent;
+}
 
-  .dark {
-    --border: transparent;
-  }
+* {
+  border-color: var(--border);
+}
 
-  * {
-    @apply border-border;
-  }
-
-  body {
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
-  }
+body {
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
 }

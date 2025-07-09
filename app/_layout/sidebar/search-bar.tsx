@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { useSetSearchText } from "../../_contexts/search-text";
-import { cn } from "../../_lib/style";
 import { Button, ButtonProps } from "../../_components/primitives/button";
 import * as icons from "../../_components/primitives/icons";
 import { Input, InputProps } from "../../_components/primitives/input";
+
+import styles from "./search-bar.module.css";
 
 export function SearchBar() {
   const router = useRouter();
@@ -41,7 +42,7 @@ export function SearchBar() {
   };
 
   return (
-    <div className="relative flex items-center">
+    <div className={styles["relative-container"]}>
       <Input
         ref={inputRef}
         variant="search"
@@ -50,29 +51,19 @@ export function SearchBar() {
         onKeyDown={searchIfEnter}
         placeholder="Type to search for tools…"
       />
-      <div className="absolute right-1 flex gap-1">
+      <div className={styles["absolute-container"]}>
         <Button
           {...(!text && { hidden: true })}
           variant="search"
           size="shorter"
           onClick={clearText}
         >
-          <icons.X
-            className={cn(
-              "p-1 text-neutral-450", //
-              "dark:text-neutral-400",
-            )}
-          />
-          <span className="sr-only">Clear search text</span>
+          <icons.X className={styles["icon-clear"]} />
+          <span className={styles["sr-only"]}>Clear search text</span>
         </Button>
         <Button variant="search" size="shorter" onClick={search} aria-label="search">
-          <icons.Search
-            className={cn(
-              "-scale-x-100 p-1 text-neutral-450", //
-              "dark:text-neutral-400",
-            )}
-          />
-          <span className="sr-only">Search tools</span>
+          <icons.Search className={styles["icon-search"]} />
+          <span className={styles["sr-only"]}>Search tools</span>
         </Button>
       </div>
     </div>

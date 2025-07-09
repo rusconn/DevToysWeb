@@ -1,0 +1,117 @@
+.trigger {
+  display: flex;
+  height: 2.25rem;
+  width: 7rem;
+  align-items: center;
+  justify-content: space-between;
+  /* TODO: --radius */
+  border-radius: calc(0.5rem - 2px);
+  border-width: 1px;
+  padding-inline: 0.625rem;
+  padding-block: 0.375rem;
+  background-color: #fafafa;
+
+  &::placeholder {
+    color: #8b8b8b;
+  }
+  &:hover {
+    background-color: #f5f5f5;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+:global(html.dark) .trigger {
+  background-color: #404040;
+
+  &::placeholder {
+    color: #a3a3a3;
+  }
+  &:hover {
+    background-color: #494949;
+  }
+}
+
+.trigger-icon {
+  width: 1rem;
+  opacity: 0.5;
+}
+
+.content {
+  position: relative;
+  z-index: 50;
+  overflow: hidden;
+  /* TODO: --radius */
+  border-radius: calc(0.5rem - 2px);
+  border-width: 1px;
+  /* TDOO: --shadow-md */
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  /* TODO: animation */
+  background-color: #fafafa;
+  color: #323232;
+}
+:global(html.dark) .content {
+  background-color: #262626;
+  color: #e5e5e5;
+}
+.content-popper {
+  transform: translateY(0.25rem);
+}
+.viewport {
+  padding: 0.25rem;
+}
+.viewport-popper {
+  width: 100%;
+  min-width: var(--radix-select-trigger-width);
+  height: var(--radix-select-trigger-height);
+}
+
+.label {
+  padding-block: 0.375rem;
+  padding-left: 2rem;
+  padding-right: 0.5rem;
+  font-weight: 600;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: default;
+  user-select: none;
+  /* TDOO: --radius */
+  border-radius: calc(0.5rem - 4px);
+  padding-block: 0.375rem;
+  padding-inline: 0.625rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+
+  &:hover,
+  &:focus {
+    background-color: #f2f2f2;
+  }
+}
+:global(html.dark) .item {
+  &:hover,
+  &:focus {
+    background-color: #323232;
+  }
+}
+.item-indicator-container {
+  position: absolute;
+  left: 0;
+}
+.item-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  margin: 0.25rem -0.25rem;
+  height: 1px;
+  background-color: #1f1f1f;
+}

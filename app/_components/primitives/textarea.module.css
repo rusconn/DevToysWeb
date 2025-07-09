@@ -1,0 +1,45 @@
+.textarea {
+  resize: none;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-bottom-color: #8b8b8b;
+  background-color: #fafafa;
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  font-family:
+    var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+
+  &::placeholder {
+    color: #8b8b8b;
+  }
+  &:hover {
+    background-color: #f5f5f5;
+  }
+  &:focus {
+    border-bottom: 2px solid #0369a1;
+    background-color: #fff;
+    padding-bottom: 7px;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+:global(html.dark) .textarea {
+  border-bottom-color: #a3a3a3;
+  background-color: #323232;
+
+  &::placeholder {
+    color: #a3a3a3;
+  }
+  &:hover {
+    background-color: #404040;
+  }
+  &:focus {
+    border-bottom-color: #a5b4fc;
+    background-color: #1f1f1f;
+  }
+}

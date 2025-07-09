@@ -1,3 +1,4 @@
+import "./_styles/reset.css";
 import "./_styles/globals.css";
 
 import { ReactNode } from "react";
@@ -8,9 +9,10 @@ import { siteConfig } from "./_config/site";
 import { SearchTextProvider } from "./_contexts/search-text";
 import { Sidebar } from "./_layout/sidebar";
 import { SiteHeader } from "./_layout/site-header";
-import { TailwindIndicator } from "./_layout/tailwind-indicator";
 import { fontMono, fontSans } from "./_lib/fonts";
 import { cn } from "./_lib/style";
+
+import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -51,31 +53,16 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "h-screen bg-neutral-150 font-sans text-sm font-medium text-neutral-750 antialiased",
-          "dark:bg-neutral-850 dark:text-neutral-200",
-          fontSans.variable,
-          fontMono.variable,
-        )}
-      >
+      <body className={cn(styles.body, fontSans.variable, fontMono.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
           <SearchTextProvider>
-            <div className="grid h-full grid-cols-[18rem_1fr] grid-rows-[3.5rem_1fr]">
-              <div className="col-span-full content-center">
+            <div className={styles.container}>
+              <div className={styles["header-container"]}>
                 <SiteHeader />
               </div>
               <Sidebar />
-              <main
-                className={cn(
-                  "overflow-y-auto rounded-tl-md border bg-neutral-100 p-12",
-                  "dark:bg-neutral-800",
-                )}
-              >
-                {children}
-              </main>
+              <main className={styles.main}>{children}</main>
             </div>
-            <TailwindIndicator />
           </SearchTextProvider>
         </ThemeProvider>
       </body>

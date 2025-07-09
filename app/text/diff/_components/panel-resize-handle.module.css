@@ -1,0 +1,33 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &[data-resize-handle-state="drag"] {
+    background-color: #e5e5e5;
+  }
+  &[data-resize-handle-state="hover"] {
+    background-color: #d4d4d4;
+  }
+}
+:global(html.dark) .root {
+  &[data-resize-handle-state="drag"] {
+    background-color: #525252;
+  }
+  &[data-resize-handle-state="hover"] {
+    background-color: #404040;
+  }
+}
+
+.direction-vertical {
+  height: 100%;
+  width: 1rem;
+}
+.direction-horizontal {
+  height: 1rem;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
