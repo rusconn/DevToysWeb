@@ -85,38 +85,33 @@ export default function ClientBoundary() {
     </ControlMenu>
   );
 
-  const hiddenInFullHeightMode = diffFullHeight ? "hidden" : "";
-
   return (
-    <PageRootSection className="h-full" title={toolGroups.text.tools.diff.longTitle}>
-      <PageSection title="Configuration" className={hiddenInFullHeightMode}>
+    <PageRootSection size="fullHeight" title={toolGroups.text.tools.diff.longTitle}>
+      <PageSection title="Configuration" {...(diffFullHeight && { hidden: true })}>
         <Configuration>{inlineModeConfig}</Configuration>
       </PageSection>
       <PanelGroup direction="vertical" autoSaveId={PERSISTENCE_KEY.panels.vertical}>
-        <Panel maxSize={VERTICAL_PANEL_MAX_SIZE} className={hiddenInFullHeightMode}>
+        <Panel maxSize={VERTICAL_PANEL_MAX_SIZE} hidden={diffFullHeight}>
           <PanelGroup direction="horizontal" autoSaveId={PERSISTENCE_KEY.panels.horizontal}>
             <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
-              <PageSection className="h-full" title="Old text" control={input1Control}>
+              <PageSection size="fullHeight" title="Old text" control={input1Control}>
                 <Editor value={input1} onChange={setInput1} />
               </PageSection>
             </Panel>
-            <div className="mt-[42px]">
+            <div style={{ marginTop: "2.625rem" }}>
               <PanelResizeHandle direction="vertical" />
             </div>
 
             <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
-              <PageSection className="h-full" title="New text" control={input2Control}>
+              <PageSection size="fullHeight" title="New text" control={input2Control}>
                 <Editor value={input2} onChange={setInput2} />
               </PageSection>
             </Panel>
           </PanelGroup>
         </Panel>
-        <PanelResizeHandle
-          direction="horizontal"
-          {...(hiddenInFullHeightMode && { hidden: true })}
-        />
+        <PanelResizeHandle direction="horizontal" {...(diffFullHeight && { hidden: true })} />
         <Panel maxSize={diffPanelMaxSize}>
-          <PageSection className="h-full" title="Difference" control={diffControl}>
+          <PageSection size="fullHeight" title="Difference" control={diffControl}>
             <DiffEditor
               original={input1}
               modified={input2}

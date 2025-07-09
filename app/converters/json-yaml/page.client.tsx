@@ -16,6 +16,8 @@ import { PageSection } from "../../_components/page-section";
 
 import { safeYamlParse } from "./lib";
 
+import styles from "./page.client.module.css";
+
 const indentations = {
   two: "  ",
   four: "    ",
@@ -78,7 +80,7 @@ export default function ClientBoundary() {
 
   const indentationConfig = (
     <ConfigurationItem
-      icon={<icons.Space size={24} className="-translate-y-1.5" />}
+      icon={<icons.Space size={24} style={{ transform: "translateY(-0.375rem)" }} />}
       title="Indentation"
       control={
         <Select.Root value={form.indentation} onValueChange={onIndentationChange}>
@@ -138,15 +140,15 @@ export default function ClientBoundary() {
   );
 
   return (
-    <PageRootSection className="h-full" title={toolGroups.converters.tools.jsonYaml.longTitle}>
+    <PageRootSection size="fullHeight" title={toolGroups.converters.tools.jsonYaml.longTitle}>
       <PageSection title="Configuration">
         <Configuration>{indentationConfig}</Configuration>
       </PageSection>
-      <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSection className="min-h-[200px] flex-1" title="Json" control={jsonControl}>
+      <div className={styles["editor-container"]}>
+        <PageSection size="fullHeight" title="Json" control={jsonControl}>
           <Editor language="json" value={form.json} onChange={onJsonChange} />
         </PageSection>
-        <PageSection className="min-h-[200px] flex-1" title="Yaml" control={yamlControl}>
+        <PageSection size="fullHeight" title="Yaml" control={yamlControl}>
           <Editor language="yaml" value={form.yaml} onChange={onYamlChange} />
         </PageSection>
       </div>

@@ -1,0 +1,12 @@
+.editor-container {
+  display: flex;
+  flex: 1 1 0%;
+  gap: 1.25rem 1rem;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .editor-container {
+    flex-direction: row;
+  }
+}
