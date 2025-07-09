@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
 export function ControlMenu({ children }: PropsWithChildren) {
-  return <menu className="flex gap-2">{children}</menu>;
+  return <menu style={{ display: "flex", gap: "0.5rem" }}>{children}</menu>;
 }
 
 export function ControlMenuItem({ children }: PropsWithChildren) {

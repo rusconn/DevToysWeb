@@ -1,0 +1,63 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1rem;
+}
+
+.brand-container {
+  display: flex;
+  align-items: baseline;
+  column-gap: 0.625rem;
+}
+
+.site-link {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.site-description {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.devtoys-link {
+  color: #0369a1;
+
+  &:hover {
+    text-decoration-line: underline;
+  }
+}
+:global(html.dark) .devtoys-link {
+  color: #a5b4fc;
+}
+
+.icons-container {
+  display: flex;
+  column-gap: 0.25rem;
+}
+
+.github-link {
+  width: 2.5rem;
+  aspect-ratio: 1 / 1;
+  /* TODO: --radius */
+  border-radius: calc(0.5rem - 2px);
+  padding: 0.5rem;
+}
+
+.github-link:hover .github-icon {
+  opacity: 0.7;
+}
+
+/* TODO: make utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

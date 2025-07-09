@@ -3,7 +3,6 @@ import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import prettier from "eslint-config-prettier";
 import reactCompiler from "eslint-plugin-react-compiler";
-import tailwind from "eslint-plugin-tailwindcss";
 import tseslint from "typescript-eslint";
 
 const flatCompat = new FlatCompat();
@@ -31,7 +30,6 @@ export default [
       },
     },
   },
-  ...tailwind.configs["flat/recommended"],
   ...fixupConfigRules(flatCompat.extends("next/core-web-vitals")),
   prettier,
   {
@@ -42,10 +40,6 @@ export default [
       "react-compiler": reactCompiler,
     },
     settings: {
-      tailwindcss: {
-        callees: ["cn", "cva"],
-        config: "./tailwind.config.js",
-      },
       next: {
         rootDir: ["./"],
       },

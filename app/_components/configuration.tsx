@@ -1,9 +1,9 @@
 import { PropsWithChildren, ReactNode } from "react";
 
-import { cn } from "../_lib/style";
+import styles from "./configuration.module.css";
 
 export function Configuration({ children }: PropsWithChildren) {
-  return <ul className="flex flex-col gap-1.5">{children}</ul>;
+  return <ul className={styles.root}>{children}</ul>;
 }
 
 export function ConfigurationItem({
@@ -18,29 +18,17 @@ export function ConfigurationItem({
   control: ReactNode;
 }) {
   return (
-    <li
-      className={cn(
-        "flex h-16 items-center gap-6 rounded border bg-neutral-50 px-4",
-        "dark:bg-neutral-750",
-      )}
-    >
+    <li className={styles.item}>
       {icon}
       {description ? (
-        <div className="flex flex-col">
+        <div className={styles["item-description-container"]}>
           <span>{title}</span>
-          <span
-            className={cn(
-              "text-xs text-neutral-450", //
-              "dark:text-neutral-400",
-            )}
-          >
-            {description}
-          </span>
+          <span className={styles["item-description"]}>{description}</span>
         </div>
       ) : (
         <span>{title}</span>
       )}
-      <div className="flex flex-1 justify-end">{control}</div>
+      <div className={styles["item-control"]}>{control}</div>
     </li>
   );
 }

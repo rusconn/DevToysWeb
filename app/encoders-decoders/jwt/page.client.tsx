@@ -59,7 +59,7 @@ export default function ClientBoundary() {
       <PageSection title="Jwt Token" control={jwtTokenControl}>
         <Textarea value={jwt} onChange={onJwtChange} rows={3} />
       </PageSection>
-      <div className="flex flex-col gap-3">
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         <PageSection title="Header" control={heaederControl}>
           <Editor height={180} language="json" value={header} options={{ readOnly: true }} />
         </PageSection>

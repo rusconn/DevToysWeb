@@ -4,8 +4,10 @@ import { PanelResizeHandle as PanelResizeHandlePrimitive } from "react-resizable
 import { cn } from "../../../_lib/style";
 import * as Icon from "../../../_components/primitives/icons";
 
+import styles from "./panel-resize-handle.module.css";
+
 type Props = {
-  direction?: "vertical" | "horizontal";
+  direction?: keyof typeof directions;
   hidden?: true;
 } & Omit<ComponentPropsWithoutRef<typeof PanelResizeHandlePrimitive>, "className">;
 
@@ -15,20 +17,16 @@ export const PanelResizeHandle = ({ direction = "vertical", hidden, ...props }: 
 
   return (
     <PanelResizeHandlePrimitive
-      className={cn(
-        isVertical && "h-full w-4",
-        isHorizontal && "h-4 w-full",
-        hidden && "hidden",
-        "flex items-center justify-center",
-        "data-[resize-handle-state=drag]:bg-neutral-200",
-        "dark:data-[resize-handle-state=drag]:bg-neutral-600",
-        "data-[resize-handle-state=hover]:bg-neutral-300",
-        "dark:data-[resize-handle-state=hover]:bg-neutral-700",
-      )}
+      className={cn(styles.root, directions[direction], hidden && styles.hidden)}
       {...props}
     >
       {isVertical && <Icon.GripVertical size={12} />}
       {isHorizontal && <Icon.GripHorizontal size={12} />}
     </PanelResizeHandlePrimitive>
   );
+};
+
+const directions = {
+  vertical: styles["direction-vertical"],
+  horizontal: styles["direction-horizontal"],
 };

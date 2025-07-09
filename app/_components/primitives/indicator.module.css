@@ -1,0 +1,10 @@
+.span {
+  display: inline-block;
+  height: 18px;
+  width: 3px;
+  border-radius: 0.25rem;
+  background-color: #0369a1;
+}
+:global(html.dark) .span {
+  background-color: #a5b4fc;
+}

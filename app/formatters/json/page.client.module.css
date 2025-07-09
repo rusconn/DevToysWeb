@@ -1,0 +1,12 @@
+.input-output-container {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem 1rem;
+}
+
+@media (min-width: 1024px) {
+  .input-output-container {
+    flex-direction: row;
+  }
+}

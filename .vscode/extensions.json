@@ -5,8 +5,8 @@
     "irongeek.vscode-env",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
     "ms-playwright.playwright",
-    "github.vscode-github-actions"
+    "github.vscode-github-actions",
+    "clinyong.vscode-css-modules"
   ]
 }

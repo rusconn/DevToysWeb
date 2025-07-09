@@ -75,7 +75,7 @@ export default function ClientBoundary() {
 
   return (
     <PageRootSection title={toolGroups.encodersDecoders.tools.html.longTitle}>
-      <div className="flex flex-col gap-3">
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         <PageSection title="Decoded" control={decodedControl}>
           <Textarea value={form.decoded} onChange={onDecodedChange} rows={10} />
         </PageSection>

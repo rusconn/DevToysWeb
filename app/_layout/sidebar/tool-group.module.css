@@ -1,0 +1,76 @@
+.header {
+  position: relative;
+  display: flex;
+}
+
+.header-2 {
+  flex: 1 1 0%;
+}
+
+.trigger {
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.25rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0s;
+
+  &:hover {
+    background-color: #e5e5e5;
+  }
+}
+:global(html.dark) .trigger:hover {
+  background-color: #323232;
+}
+
+.trigger-icon {
+  width: 1rem;
+  aspect-ratio: 1 / 1;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.trigger[data-state="open"] .trigger-icon {
+  transform: rotate(180deg);
+}
+
+.content {
+  overflow: hidden;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+
+  &[data-state="open"] {
+    animation: accordion-down 0.2s ease-out;
+  }
+  &[data-state="closed"] {
+    animation: accordion-up 0.2s ease-out;
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.content-item {
+  margin-top: 0.25rem;
+}

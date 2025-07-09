@@ -118,7 +118,7 @@ export default function ClientBoundary() {
       <PageSection title="Configuration">
         <Configuration>{formatNumberConfig}</Configuration>
       </PageSection>
-      <div className="flex flex-col gap-3">
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         <PageSection title="Decimal" control={decControl}>
           <Input value={dec} onChange={onDecChange} />
         </PageSection>

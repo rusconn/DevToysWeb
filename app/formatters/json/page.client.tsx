@@ -13,6 +13,8 @@ import { Editor, EditorProps } from "../../_components/editor";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
+import styles from "./page.client.module.css";
+
 const indentations = {
   two: "2",
   four: "4",
@@ -34,7 +36,7 @@ export default function ClientBoundary() {
 
   const indentationConfig = (
     <ConfigurationItem
-      icon={<icons.Space size={24} className="-translate-y-1.5" />}
+      icon={<icons.Space size={24} style={{ transform: "translateY(-0.375rem)" }} />}
       title="Indentation"
       control={
         <Select.Root value={indentation} onValueChange={setIndentation}>
@@ -74,15 +76,15 @@ export default function ClientBoundary() {
   );
 
   return (
-    <PageRootSection className="h-full" title={toolGroups.formatters.tools.json.longTitle}>
+    <PageRootSection size="fullHeight" title={toolGroups.formatters.tools.json.longTitle}>
       <PageSection title="Configuration">
         <Configuration>{indentationConfig}</Configuration>
       </PageSection>
-      <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSection className="min-h-[200px] flex-1" title="Input" control={inputControl}>
+      <div className={styles["input-output-container"]}>
+        <PageSection size="fullHeight" title="Input" control={inputControl}>
           <Editor language="json" value={input} onChange={onJsonChange} />
         </PageSection>
-        <PageSection className="min-h-[200px] flex-1" title="Output" control={outputControl}>
+        <PageSection size="fullHeight" title="Output" control={outputControl}>
           <Editor language="json" value={output} options={{ readOnly: true }} />
         </PageSection>
       </div>

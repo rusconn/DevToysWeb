@@ -21,6 +21,8 @@ import {
   transformText,
 } from "./lib";
 
+import styles from "./page.client.module.css";
+
 export default function ClientBoundary() {
   const [input, setInput] = useState("ConvertMe");
   const [mode, setMode] = useState(TextTransformMode.sentenceCase);
@@ -76,21 +78,21 @@ export default function ClientBoundary() {
         </ToggleGroup>
       </PageSection>
 
-      <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSection className="min-h-[200px] flex-1" title="Input" control={inputControl}>
+      <div className={styles["input-output-container"]}>
+        <PageSection size="fullHeight" title="Input" control={inputControl}>
           <Textarea value={input} onChange={onInputChange} rows={10} />
         </PageSection>
-        <PageSection className="min-h-[200px] flex-1" title="Output" control={outputControl}>
+        <PageSection size="fullHeight" title="Output" control={outputControl}>
           <Textarea value={output} rows={10} readOnly />
         </PageSection>
       </div>
 
-      <PageSection className="flex-1" title="Information">
-        <div className="grid max-w-sm grid-cols-2 gap-x-4">
-          Characters: <span className="font-mono">{stats.characters}</span>
-          Words: <span className="font-mono">{stats.words}</span>
-          Lines: <span className="font-mono">{stats.lines}</span>
-          Bytes: <span className="font-mono">{stats.bytes}</span>
+      <PageSection title="Information">
+        <div className={styles.information}>
+          Characters: <span className={styles["font-mono"]}>{stats.characters}</span>
+          Words: <span className={styles["font-mono"]}>{stats.words}</span>
+          Lines: <span className={styles["font-mono"]}>{stats.lines}</span>
+          Bytes: <span className={styles["font-mono"]}>{stats.bytes}</span>
         </div>
       </PageSection>
     </PageRootSection>

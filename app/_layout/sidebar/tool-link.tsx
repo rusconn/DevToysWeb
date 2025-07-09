@@ -4,6 +4,8 @@ import { Tool } from "../../_config/tools";
 import { cn } from "../../_lib/style";
 import { Indicator } from "../../_components/primitives/indicator";
 
+import styles from "./tool-link.module.css";
+
 type Props = Pick<Tool, "Icon" | "shortTitle"> &
   Pick<LinkProps<unknown>, "href" | "onClick"> & {
     highlight: "both" | "indicatorOnly" | "none";
@@ -15,18 +17,21 @@ export function ToolLink({ Icon, shortTitle: title, href, onClick, highlight, gr
   return (
     <Link
       className={cn(
-        "flex h-10 items-center gap-3 rounded",
-        highlight === "both" && "bg-neutral-200 dark:bg-neutral-750",
-        grouped && "pl-8 -outline-offset-1", // -outline-offset-1: ugly hack for Chrome outlines
-        "hover:bg-neutral-200",
-        "dark:hover:bg-neutral-750",
+        styles.root,
+        highlight === "both" && styles["highlight-both"],
+        grouped && styles.grouped,
       )}
       {...{ href, onClick }}
     >
-      <span className={cn("flex items-center", highlight === "none" && "invisible")}>
+      <span
+        className={cn(
+          styles["indicator-container"],
+          highlight === "none" && styles["highlight-none"],
+        )}
+      >
         <Indicator />
       </span>
-      <span className="flex select-none items-center gap-4">
+      <span className={styles["title-container"]}>
         <Icon size={16} />
         <span>{title}</span>
       </span>

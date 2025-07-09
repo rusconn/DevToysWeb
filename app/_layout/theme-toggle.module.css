@@ -1,0 +1,37 @@
+.light {
+  width: 1.75rem;
+  height: 1.75rem;
+  transform: rotate(0) scale(1);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+:global(html.dark) .light {
+  transform: rotate(90deg) scale(0);
+}
+
+.dark {
+  position: absolute;
+  height: 1.75rem;
+  width: 1.75rem;
+  transform: rotate(90deg) scale(0);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+:global(html.dark) .dark {
+  transform: rotate(0) scale(1);
+}
+
+/* TODO: make utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -5,23 +5,25 @@ import { SearchBar } from "./sidebar/search-bar";
 import { Settings } from "./sidebar/settings";
 import { ToolGroups } from "./sidebar/tool-groups";
 
+import styles from "./sidebar.module.css";
+
 export function Sidebar() {
   return (
-    <nav className="flex flex-col overflow-y-auto">
-      <div className="mt-px px-4">
+    <nav className={styles.root}>
+      <div className={styles["search-bar-container"]}>
         <SearchBar />
       </div>
-      <div className="flex-1 overflow-y-auto">
-        <div className="mt-2 p-2">
+      <div className={styles["primary-container"]}>
+        <div className={styles["all-tools-container"]}>
           <AllTools />
         </div>
         <Separator />
-        <div className="p-2">
+        <div className={styles["tool-groups-container"]}>
           <ToolGroups />
         </div>
       </div>
       <Separator />
-      <div className="p-2">
+      <div className={styles["settings-container"]}>
         <Settings />
       </div>
     </nav>

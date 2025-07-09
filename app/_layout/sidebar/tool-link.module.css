@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+
+  &:hover {
+    background-color: #e5e5e5;
+  }
+}
+:global(html.dark) .root:hover {
+  background-color: #323232;
+}
+
+.highlight-both {
+  background-color: #e5e5e5;
+}
+:global(html.dark) .highlight-both {
+  background-color: #323232;
+}
+
+.grouped {
+  padding-left: 2rem;
+  outline-offset: -1px; /* -outline-offset-1: ugly hack for Chrome outlines */
+}
+
+.indicator-container {
+  display: flex;
+  align-items: center;
+}
+
+.highlight-none {
+  visibility: hidden;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  user-select: none;
+}
