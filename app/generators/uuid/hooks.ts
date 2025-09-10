@@ -2,7 +2,7 @@ import { DependencyList, useEffect, useRef } from "react";
 
 export const useAutoScroll = <T extends HTMLElement = HTMLElement>(
   deps: DependencyList,
-  behavior: ScrollBehavior = "smooth"
+  behavior: ScrollBehavior = "smooth",
 ) => {
   const ref = useRef<T>(null);
 

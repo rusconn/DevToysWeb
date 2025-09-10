@@ -60,7 +60,7 @@ export function SearchBar() {
           <icons.X
             className={cn(
               "p-1 text-neutral-450", //
-              "dark:text-neutral-400"
+              "dark:text-neutral-400",
             )}
           />
           <span className="sr-only">Clear search text</span>
@@ -69,7 +69,7 @@ export function SearchBar() {
           <icons.Search
             className={cn(
               "-scale-x-100 p-1 text-neutral-450", //
-              "dark:text-neutral-400"
+              "dark:text-neutral-400",
             )}
           />
           <span className="sr-only">Search tools</span>

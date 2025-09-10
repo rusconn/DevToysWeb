@@ -23,7 +23,7 @@ export const PanelResizeHandle = ({ direction = "vertical", hidden, ...props }: 
         "data-[resize-handle-state=drag]:bg-neutral-200",
         "dark:data-[resize-handle-state=drag]:bg-neutral-600",
         "data-[resize-handle-state=hover]:bg-neutral-300",
-        "dark:data-[resize-handle-state=hover]:bg-neutral-700"
+        "dark:data-[resize-handle-state=hover]:bg-neutral-700",
       )}
       {...props}
     >

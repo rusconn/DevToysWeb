@@ -23,7 +23,7 @@ export const Switch = ({ peer, ...props }: SwitchProps) => (
       "dark:hover:disabled:bg-neutral-800",
       "dark:data-[state=checked]:border-transparent dark:data-[state=checked]:bg-indigo-300",
       "dark:data-[state=checked]:hover:bg-indigo-400",
-      "dark:data-[state=checked]:disabled:hover:bg-indigo-300"
+      "dark:data-[state=checked]:disabled:hover:bg-indigo-300",
     )}
     {...props}
   >
@@ -35,7 +35,7 @@ export const Switch = ({ peer, ...props }: SwitchProps) => (
         "data-[state=checked]:translate-x-[22px] data-[state=checked]:bg-neutral-150",
         "data-[state=unchecked]:translate-x-0.5",
         "dark:bg-neutral-200/80",
-        "dark:data-[state=checked]:bg-neutral-850"
+        "dark:data-[state=checked]:bg-neutral-850",
       )}
     />
   </SwitchPrimitive.Root>

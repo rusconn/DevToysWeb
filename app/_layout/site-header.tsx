@@ -18,7 +18,7 @@ export function SiteHeader() {
           <a
             className={cn(
               "text-sky-700 hover:underline", //
-              "dark:text-indigo-300"
+              "dark:text-indigo-300",
             )}
             href={siteConfig.links.devtoys}
             target="_blank"

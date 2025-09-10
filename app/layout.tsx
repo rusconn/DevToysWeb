@@ -56,7 +56,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           "h-screen bg-neutral-150 font-sans text-sm font-medium text-neutral-750 antialiased",
           "dark:bg-neutral-850 dark:text-neutral-200",
           fontSans.variable,
-          fontMono.variable
+          fontMono.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
@@ -69,7 +69,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <main
                 className={cn(
                   "overflow-y-auto rounded-tl-md border bg-neutral-100 p-12",
-                  "dark:bg-neutral-800"
+                  "dark:bg-neutral-800",
                 )}
               >
                 {children}

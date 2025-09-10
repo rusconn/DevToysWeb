@@ -30,8 +30,8 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
                 pathname === href
                   ? "both"
                   : !isOpend && pathname.startsWith(`${href}/`)
-                  ? "indicatorOnly"
-                  : "none"
+                    ? "indicatorOnly"
+                    : "none"
               }
             />
           </div>
@@ -41,7 +41,7 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
               "absolute right-0 flex size-10 items-center justify-center rounded transition-all duration-0",
               "hover:bg-neutral-200",
               "[&[data-state=open]>svg]:rotate-180",
-              "dark:hover:bg-neutral-750"
+              "dark:hover:bg-neutral-750",
             )}
             aria-label="toggle open/close state of the tool group"
           >
@@ -53,7 +53,7 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
         className={cn(
           "overflow-hidden transition-all",
           "data-[state=open]:animate-accordion-down",
-          "data-[state=closed]:animate-accordion-up"
+          "data-[state=closed]:animate-accordion-up",
         )}
       >
         <ul>

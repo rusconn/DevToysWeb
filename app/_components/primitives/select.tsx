@@ -22,7 +22,7 @@ export const Trigger = ({
       "disabled:cursor-not-allowed disabled:opacity-50",
       "dark:bg-neutral-700",
       "dark:placeholder:text-neutral-400",
-      "dark:hover:bg-neutral-650"
+      "dark:hover:bg-neutral-650",
     )}
     {...props}
   >
@@ -44,7 +44,7 @@ export const Content = ({
       className={cn(
         "relative z-50 overflow-hidden rounded-md border bg-neutral-50 text-neutral-750 shadow-md animate-in fade-in-80",
         "dark:bg-neutral-800 dark:text-neutral-200",
-        position === "popper" && "translate-y-1"
+        position === "popper" && "translate-y-1",
       )}
       {...props}
     >
@@ -52,7 +52,7 @@ export const Content = ({
         className={cn(
           "p-1",
           position === "popper" &&
-            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
         )}
       >
         {children}
@@ -76,7 +76,7 @@ export const Item = ({
       "focus:bg-neutral-150",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       "dark:hover:bg-neutral-750",
-      "dark:focus:bg-neutral-750"
+      "dark:focus:bg-neutral-750",
     )}
     {...props}
   >
@@ -90,5 +90,5 @@ export const Item = ({
 );
 
 export const Separator = (
-  props: Omit<ComponentPropsWithRef<typeof Select.Separator>, "className">
+  props: Omit<ComponentPropsWithRef<typeof Select.Separator>, "className">,
 ) => <Select.Separator className="-mx-1 my-1 h-px bg-neutral-850" {...props} />;

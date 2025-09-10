@@ -13,7 +13,7 @@ export const Separator = ({
     className={cn(
       "bg-neutral-200",
       "dark:bg-neutral-750",
-      orientation === "horizontal" ? "h-px w-full" : "h-full w-px"
+      orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
     )}
     {...props}
   />

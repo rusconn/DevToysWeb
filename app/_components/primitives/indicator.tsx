@@ -5,7 +5,7 @@ export function Indicator() {
     <span
       className={cn(
         "inline-block h-[18px] w-[3px] rounded bg-sky-700", //
-        "dark:bg-indigo-300"
+        "dark:bg-indigo-300",
       )}
     />
   );

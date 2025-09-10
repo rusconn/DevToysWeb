@@ -21,7 +21,7 @@ export function ConfigurationItem({
     <li
       className={cn(
         "flex h-16 items-center gap-6 rounded border bg-neutral-50 px-4",
-        "dark:bg-neutral-750"
+        "dark:bg-neutral-750",
       )}
     >
       {icon}
@@ -31,7 +31,7 @@ export function ConfigurationItem({
           <span
             className={cn(
               "text-xs text-neutral-450", //
-              "dark:text-neutral-400"
+              "dark:text-neutral-400",
             )}
           >
             {description}

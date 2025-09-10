@@ -4,7 +4,7 @@ import { ToggleGroup as ToggleGroupPrimitive } from "radix-ui";
 import { cn } from "../../_lib/style";
 
 const ToggleGroup = (
-  props: Omit<ComponentPropsWithRef<typeof ToggleGroupPrimitive.Root>, "className">
+  props: Omit<ComponentPropsWithRef<typeof ToggleGroupPrimitive.Root>, "className">,
 ) => (
   // @ts-expect-error: why?
   <ToggleGroupPrimitive.Root className="flex flex-wrap items-center gap-2.5" {...props} />
@@ -23,7 +23,7 @@ const ToggleGroupItem = ({
       "data-[state=on]:bg-sky-600 data-[state=on]:text-white",
       "dark:bg-neutral-750 dark:ring-offset-neutral-800",
       "dark:hover:bg-neutral-700",
-      "dark:data-[state=on]:bg-sky-600 dark:data-[state=on]:text-white"
+      "dark:data-[state=on]:bg-sky-600 dark:data-[state=on]:text-white",
     )}
     {...props}
   >

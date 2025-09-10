@@ -23,7 +23,7 @@ export const inputVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 export type InputProps = Omit<ComponentPropsWithRef<"input">, "className"> &

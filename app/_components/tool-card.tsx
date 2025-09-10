@@ -13,7 +13,7 @@ export function ToolCard({ Icon, longTitle, description, href }: ToolCardProps) 
           "group flex h-80 w-44 flex-col items-center gap-5 overflow-hidden rounded border bg-neutral-50 p-5 text-neutral-850",
           "hover:bg-neutral-150",
           "dark:bg-neutral-750 dark:text-neutral-200",
-          "dark:hover:bg-neutral-700"
+          "dark:hover:bg-neutral-700",
         )}
       >
         <div className="flex flex-col p-5">
@@ -22,7 +22,7 @@ export function ToolCard({ Icon, longTitle, description, href }: ToolCardProps) 
               "rounded bg-neutral-50 p-4",
               "group-hover:bg-neutral-50",
               "dark:bg-neutral-700",
-              "dark:group-hover:bg-neutral-650"
+              "dark:group-hover:bg-neutral-650",
             )}
           >
             <Icon size={64} />
@@ -33,7 +33,7 @@ export function ToolCard({ Icon, longTitle, description, href }: ToolCardProps) 
           <p
             className={cn(
               "text-xs text-neutral-450", //
-              "dark:text-neutral-350"
+              "dark:text-neutral-350",
             )}
           >
             {description}

@@ -19,7 +19,7 @@ export const TooltipContent = ({
       "data-[side=left]:slide-in-from-right-1",
       "data-[side=right]:slide-in-from-left-1",
       "data-[side=top]:slide-in-from-bottom-1",
-      "dark:bg-neutral-800 dark:text-neutral-200"
+      "dark:bg-neutral-800 dark:text-neutral-200",
     )}
     {...props}
   />

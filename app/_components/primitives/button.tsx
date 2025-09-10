@@ -39,7 +39,7 @@ export const buttonVariants = cva(
     defaultVariants: {
       size: "default",
     },
-  }
+  },
 );
 
 export type ButtonProps = Omit<ComponentPropsWithRef<"button">, "className"> &

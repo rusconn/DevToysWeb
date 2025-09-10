@@ -15,7 +15,7 @@ export const Textarea = (props: TextareaProps) => (
       "dark:border-b-neutral-400 dark:bg-neutral-750",
       "dark:placeholder:text-neutral-400",
       "dark:hover:bg-neutral-700",
-      "dark:focus:border-b-indigo-300 dark:focus:bg-neutral-850"
+      "dark:focus:border-b-indigo-300 dark:focus:bg-neutral-850",
     )}
     spellCheck="false"
     {...props}

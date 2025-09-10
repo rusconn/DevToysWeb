@@ -18,7 +18,7 @@ export function LabeledSwitch({ id, label, ...props }: Props) {
       <Label.Root
         className={cn(
           "cursor-pointer pr-3 leading-none", //
-          "peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
         )}
         htmlFor={id}
       >
