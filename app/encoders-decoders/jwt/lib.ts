@@ -1,7 +1,7 @@
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { err, fromThrowable, Result } from "neverthrow";
 
-const safeJwtDecode = fromThrowable(jwt_decode);
+const safeJwtDecode = fromThrowable(jwtDecode);
 
 export const decode = (token: string) => {
   let header: Result<unknown, unknown> = err("");

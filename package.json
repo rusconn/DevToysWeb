@@ -25,7 +25,7 @@
     "fuse.js": "^7.1.0",
     "html-escaper": "^3.0.3",
     "js-yaml": "^4.1.0",
-    "jwt-decode": "^3.1.2",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.453.0",
     "neverthrow": "^6.0.0",
     "next": "15.5.2",
