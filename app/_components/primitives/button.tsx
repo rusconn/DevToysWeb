@@ -1,8 +1,6 @@
 import { ComponentPropsWithRef } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
-import { cn } from "../../_lib/style";
-
 export const buttonVariants = cva(
   "rounded-md transition-colors disabled:pointer-events-none disabled:opacity-50",
   {
@@ -46,5 +44,5 @@ export type ButtonProps = Omit<ComponentPropsWithRef<"button">, "className"> &
   VariantProps<typeof buttonVariants>;
 
 export const Button = ({ variant, size, ...props }: ButtonProps) => (
-  <button className={cn(buttonVariants({ variant, size }))} type="button" {...props} />
+  <button className={buttonVariants({ variant, size })} type="button" {...props} />
 );
