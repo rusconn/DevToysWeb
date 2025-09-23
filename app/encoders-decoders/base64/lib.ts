@@ -1,6 +1,14 @@
 export const encode = (s: string) => {
   const bytes = new TextEncoder().encode(s);
-  return btoa(String.fromCharCode(...bytes));
+  const buf = [];
+  const chunkSize = 32 * 2 ** 10; // 32K
+
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    const chunk = bytes.subarray(i, i + chunkSize);
+    buf.push(String.fromCharCode(...chunk));
+  }
+
+  return btoa(buf.join(""));
 };
 
 export const decode = (base64: string) => {
