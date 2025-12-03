@@ -1,4 +1,4 @@
-import { DependencyList, useEffect, useRef } from "react";
+import { useEffect, useRef, type DependencyList } from "react";
 
 export const useAutoScroll = <T extends HTMLElement = HTMLElement>(
   deps: DependencyList,
@@ -16,8 +16,7 @@ export const useAutoScroll = <T extends HTMLElement = HTMLElement>(
         behavior,
       });
     }
-    // eslint-disable-next-line react-compiler/react-compiler
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // biome-ignore lint/correctness/useExhaustiveDependencies: client responsibility
   }, deps);
 
   return ref;

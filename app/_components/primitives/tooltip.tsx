@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
 
 import { cn } from "../../_lib/style";
@@ -14,7 +14,7 @@ export const TooltipContent = ({
   <TooltipPrimitive.Content
     sideOffset={sideOffset}
     className={cn(
-      "z-50 overflow-hidden rounded-md border bg-neutral-100 px-3 py-1.5 text-neutral-700 shadow-md animate-in fade-in-50",
+      "fade-in-50 z-50 animate-in overflow-hidden rounded-md border bg-neutral-100 px-3 py-1.5 text-neutral-700 shadow-md",
       "data-[side=bottom]:slide-in-from-top-1",
       "data-[side=left]:slide-in-from-right-1",
       "data-[side=right]:slide-in-from-left-1",

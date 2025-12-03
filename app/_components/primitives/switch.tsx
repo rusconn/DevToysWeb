@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { Switch as SwitchPrimitive } from "radix-ui";
 
 import { cn } from "../../_lib/style";

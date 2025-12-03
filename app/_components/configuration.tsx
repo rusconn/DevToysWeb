@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 
 import { cn } from "../_lib/style";
 
@@ -27,7 +27,7 @@ export function ConfigurationItem({ icon, title, description, control }: Configu
           <span>{title}</span>
           <span
             className={cn(
-              "text-xs text-neutral-450", //
+              "text-neutral-450 text-xs", //
               "dark:text-neutral-400",
             )}
           >

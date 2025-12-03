@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 export function ControlMenu({ children }: PropsWithChildren) {
   return <menu className="flex gap-2">{children}</menu>;

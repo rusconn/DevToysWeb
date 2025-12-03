@@ -1,7 +1,7 @@
 import "./_styles/globals.css";
 
-import { ReactNode } from "react";
-import { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 
 import { siteConfig } from "./_config/site";
@@ -53,7 +53,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "h-screen bg-neutral-150 font-sans text-sm font-medium text-neutral-750 antialiased",
+          "h-screen bg-neutral-150 font-medium font-sans text-neutral-750 text-sm antialiased",
           "dark:bg-neutral-850 dark:text-neutral-200",
           fontSans.variable,
           fontMono.variable,

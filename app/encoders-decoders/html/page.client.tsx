@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { escape, unescape } from "html-escaper";
+import * as html from "html-escaper";
 
 import { toolGroups } from "../../_config/tools";
-import { Textarea, TextareaProps } from "../../_components/primitives/textarea";
+import { Textarea, type TextareaProps } from "../../_components/primitives/textarea";
 import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { PageRootSection } from "../../_components/page-root-section";
@@ -19,13 +19,13 @@ export default function ClientBoundary() {
   const setFormByDecoded = (text: string) => {
     setForm({
       decoded: text,
-      encoded: escape(text),
+      encoded: html.escape(text),
     });
   };
 
   const setFormByEncoded = (text: string) => {
     setForm({
-      decoded: unescape(text),
+      decoded: html.unescape(text),
       encoded: text,
     });
   };

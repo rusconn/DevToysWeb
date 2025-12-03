@@ -10,7 +10,7 @@ import * as Select from "../../_components/primitives/select";
 import { Configuration, ConfigurationItem } from "../../_components/configuration";
 import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
-import { Editor, EditorProps } from "../../_components/editor";
+import { Editor, type EditorProps } from "../../_components/editor";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 

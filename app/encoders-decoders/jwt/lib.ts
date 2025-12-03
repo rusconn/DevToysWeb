@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { err, fromThrowable, Result } from "neverthrow";
+import { err, fromThrowable, type Result } from "neverthrow";
 
 const safeJwtDecode = fromThrowable(jwtDecode);
 

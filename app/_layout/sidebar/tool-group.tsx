@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Accordion } from "radix-ui";
 
-import { ToolGroup as IToolGroup } from "../../_config/tools";
+import type { ToolGroup as IToolGroup } from "../../_config/tools";
 import { cn } from "../../_lib/style";
 import * as icons from "../../_components/primitives/icons";
 

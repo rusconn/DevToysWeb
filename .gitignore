@@ -34,9 +34,6 @@ build
 # typescript
 tsconfig.tsbuildinfo
 
-# eslint
-.eslintcache
-
 # firebase
 .firebase
 firebase-debug.log

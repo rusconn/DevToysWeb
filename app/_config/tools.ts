@@ -1,6 +1,6 @@
-import { UrlObject } from "node:url";
+import type { UrlObject } from "node:url";
 
-import { LinkProps } from "next/link";
+import type { LinkProps } from "next/link";
 
 import * as icons from "../_components/primitives/icons";
 

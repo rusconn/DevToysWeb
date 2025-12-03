@@ -1,6 +1,6 @@
 import * as icons from "../../_components/primitives/icons";
 
-import { Base, BaseProps } from "./base";
+import { Base, type BaseProps } from "./base";
 
 export type PasteProps = Omit<BaseProps, "icon" | "labelText" | "onClick"> & {
   onClipboardRead: (text: string) => void;

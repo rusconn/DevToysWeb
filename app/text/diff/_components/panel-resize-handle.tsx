@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { PanelResizeHandle as PanelResizeHandlePrimitive } from "react-resizable-panels";
 
 import { cn } from "../../../_lib/style";

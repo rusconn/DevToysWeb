@@ -31,7 +31,7 @@ including but not limited to:
 - Apache License 2.0
   (e.g. Playwright, TypeScript, Sharp)
 - BSD 2-Clause / 3-Clause License
-  (e.g. some ESLint and source-map dependencies)
+  (e.g. some source-map dependencies)
 - ISC License
   (MIT-compatible)
 - LGPL-3.0-or-later

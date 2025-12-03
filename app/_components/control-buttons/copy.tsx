@@ -1,6 +1,6 @@
 import * as icons from "../../_components/primitives/icons";
 
-import { Base, BaseProps } from "./base";
+import { Base, type BaseProps } from "./base";
 
 export type CopyProps = Omit<BaseProps, "icon" | "labelText" | "onClick"> & {
   text: string;

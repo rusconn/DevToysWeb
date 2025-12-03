@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { Select } from "radix-ui";
 
 import { cn } from "../../_lib/style";
@@ -42,7 +42,7 @@ export const Content = ({
     <Select.Content
       position={position}
       className={cn(
-        "relative z-50 overflow-hidden rounded-md border bg-neutral-50 text-neutral-750 shadow-md animate-in fade-in-80",
+        "fade-in-80 relative z-50 animate-in overflow-hidden rounded-md border bg-neutral-50 text-neutral-750 shadow-md",
         "dark:bg-neutral-800 dark:text-neutral-200",
         position === "popper" && "translate-y-1",
       )}
@@ -62,7 +62,7 @@ export const Content = ({
 );
 
 export const Label = (props: Omit<ComponentPropsWithRef<typeof Select.Label>, "className">) => (
-  <Select.Label className="py-1.5 pl-8 pr-2 font-semibold" {...props} />
+  <Select.Label className="py-1.5 pr-2 pl-8 font-semibold" {...props} />
 );
 
 export const Item = ({

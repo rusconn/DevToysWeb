@@ -5,7 +5,7 @@ import { useState } from "react";
 import { toolGroups } from "../../_config/tools";
 import { Button } from "../../_components/primitives/button";
 import * as icons from "../../_components/primitives/icons";
-import { Input, InputProps } from "../../_components/primitives/input";
+import { Input, type InputProps } from "../../_components/primitives/input";
 import * as Select from "../../_components/primitives/select";
 import { Textarea } from "../../_components/primitives/textarea";
 import { Configuration, ConfigurationItem } from "../../_components/configuration";

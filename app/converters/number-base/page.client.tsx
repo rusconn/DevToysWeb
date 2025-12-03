@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { toolGroups } from "../../_config/tools";
 import * as icons from "../../_components/primitives/icons";
-import { Input, InputProps } from "../../_components/primitives/input";
+import { Input, type InputProps } from "../../_components/primitives/input";
 import { Configuration, ConfigurationItem } from "../../_components/configuration";
 import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";

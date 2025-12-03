@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import { Button, ButtonProps } from "../../_components/primitives/button";
+import { Button, type ButtonProps } from "../../_components/primitives/button";
 import {
   Tooltip,
   TooltipContent,

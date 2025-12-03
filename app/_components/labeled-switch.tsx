@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Label } from "radix-ui";
 
 import { cn } from "../_lib/style";
 
-import { Switch, SwitchProps } from "./primitives/switch";
+import { Switch, type SwitchProps } from "./primitives/switch";
 
 type Props = Omit<SwitchProps, "id"> & {
   id: string;

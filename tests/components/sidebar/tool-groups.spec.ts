@@ -1,4 +1,4 @@
-import { expect, Page, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 function navExpandedButton(page: Page) {
   const nav = page.getByRole("navigation");

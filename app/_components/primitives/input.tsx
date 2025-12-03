@@ -1,5 +1,5 @@
-import { ComponentPropsWithRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import type { ComponentPropsWithRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
 export const inputVariants = cva(
   [
@@ -17,7 +17,7 @@ export const inputVariants = cva(
     variants: {
       variant: {
         default: "px-3 font-mono",
-        search: "pl-3 pr-16",
+        search: "pr-16 pl-3",
       },
     },
     defaultVariants: {

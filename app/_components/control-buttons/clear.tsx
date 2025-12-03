@@ -1,6 +1,6 @@
 import * as icons from "../../_components/primitives/icons";
 
-import { Base, BaseProps } from "./base";
+import { Base, type BaseProps } from "./base";
 
 export type ClearProps = Omit<BaseProps, "icon" | "labelText">;
 

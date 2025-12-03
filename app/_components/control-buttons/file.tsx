@@ -1,8 +1,8 @@
-import { ComponentProps, useRef } from "react";
+import { useRef, type ComponentProps } from "react";
 
 import * as icons from "../../_components/primitives/icons";
 
-import { Base, BaseProps } from "./base";
+import { Base, type BaseProps } from "./base";
 
 type InputProps = ComponentProps<"input">;
 
@@ -17,7 +17,7 @@ export function File({ accept, maxFileSizeMiB = 20, onFileRead, ...props }: File
 
   const clickInput = () => inputRef.current?.click();
 
-  const tryLoadFileAsText: InputProps["onChange"] = e => {
+  const tryLoadFileAsText: InputProps["onChange"] = async e => {
     const file = e.currentTarget.files?.[0];
     if (!file) {
       return;
@@ -30,11 +30,10 @@ export function File({ accept, maxFileSizeMiB = 20, onFileRead, ...props }: File
     // currentTarget will be null after await
     const savedInput = e.currentTarget;
 
-    void file.text().then(text => {
-      onFileRead(text);
-      // clear selected file to accept the same file again
-      savedInput.value = "";
-    });
+    onFileRead(await file.text());
+
+    // clear selected file to accept the same file again
+    savedInput.value = "";
   };
 
   return (

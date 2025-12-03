@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { ToggleGroup as ToggleGroupPrimitive } from "radix-ui";
 
 import { cn } from "../../_lib/style";
@@ -16,7 +16,7 @@ const ToggleGroupItem = ({
 }: Omit<ComponentPropsWithRef<typeof ToggleGroupPrimitive.Item>, "className">) => (
   <ToggleGroupPrimitive.Item
     className={cn(
-      "inline-flex h-10 items-center justify-center rounded-md bg-neutral-200 px-3 text-sm font-medium ring-offset-neutral-100 transition-colors",
+      "inline-flex h-10 items-center justify-center rounded-md bg-neutral-200 px-3 font-medium text-sm ring-offset-neutral-100 transition-colors",
       "hover:bg-neutral-250",
       "disabled:pointer-events-none disabled:opacity-50",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",

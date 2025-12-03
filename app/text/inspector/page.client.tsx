@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { toolGroups } from "../../_config/tools";
-import { Textarea, TextareaProps } from "../../_components/primitives/textarea";
+import { Textarea, type TextareaProps } from "../../_components/primitives/textarea";
 import { ToggleGroup, ToggleGroupItem } from "../../_components/primitives/toggle-group";
 import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";

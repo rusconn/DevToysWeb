@@ -1,5 +1,5 @@
 import * as Icon from "../../../_components/primitives/icons";
-import { Base, BaseProps } from "../../../_components/control-buttons/base";
+import { Base, type BaseProps } from "../../../_components/control-buttons/base";
 
 export type ToggleFullSizeProps = Omit<BaseProps, "icon" | "labelText"> & {
   expanded: boolean;

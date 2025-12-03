@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import { useTheme } from "next-themes";
 

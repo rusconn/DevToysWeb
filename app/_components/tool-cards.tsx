@@ -1,4 +1,4 @@
-import { ToolCard, ToolCardProps } from "./tool-card";
+import { ToolCard, type ToolCardProps } from "./tool-card";
 
 type Props = {
   tools: readonly ToolCardProps[];

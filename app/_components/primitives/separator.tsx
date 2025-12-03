@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { Separator as SeparatorPrimitive } from "radix-ui";
 
 import { cn } from "../../_lib/style";

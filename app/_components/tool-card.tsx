@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Tool } from "../_config/tools";
+import type { Tool } from "../_config/tools";
 import { cn } from "../_lib/style";
 
 export type ToolCardProps = Pick<Tool, "Icon" | "longTitle" | "description" | "href">;
@@ -32,7 +32,7 @@ export function ToolCard({ Icon, longTitle, description, href }: ToolCardProps) 
           <h2 className="font-semibold">{longTitle}</h2>
           <p
             className={cn(
-              "text-xs text-neutral-450", //
+              "text-neutral-450 text-xs", //
               "dark:text-neutral-350",
             )}
           >

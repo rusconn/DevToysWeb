@@ -9,7 +9,7 @@ import SHA512 from "crypto-js/sha512";
 import { toolGroups } from "../../_config/tools";
 import * as icons from "../../_components/primitives/icons";
 import { Input } from "../../_components/primitives/input";
-import { Textarea, TextareaProps } from "../../_components/primitives/textarea";
+import { Textarea, type TextareaProps } from "../../_components/primitives/textarea";
 import { Configuration, ConfigurationItem } from "../../_components/configuration";
 import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
