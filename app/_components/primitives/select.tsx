@@ -40,7 +40,7 @@ export const Content = ({
 }: Omit<ComponentPropsWithRef<typeof Select.Content>, "className">) => (
   <Select.Portal>
     <Select.Content
-      {...{ position }}
+      position={position}
       className={cn(
         "relative z-50 overflow-hidden rounded-md border bg-neutral-50 text-neutral-750 shadow-md animate-in fade-in-80",
         "dark:bg-neutral-800 dark:text-neutral-200",

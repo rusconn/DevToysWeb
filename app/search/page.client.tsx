@@ -19,7 +19,7 @@ export default function ClientBoundary() {
   const { title, child } =
     tools.length === 0
       ? { title: "No results found", child: null }
-      : { title: `Search results for "${q}"`, child: <ToolCards {...{ tools }} /> };
+      : { title: `Search results for "${q}"`, child: <ToolCards tools={tools} /> };
 
-  return <PageRootSection {...{ title }}>{child}</PageRootSection>;
+  return <PageRootSection title={title}>{child}</PageRootSection>;
 }

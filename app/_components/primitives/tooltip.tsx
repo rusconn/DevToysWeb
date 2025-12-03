@@ -12,7 +12,7 @@ export const TooltipContent = ({
   ...props
 }: Omit<ComponentPropsWithRef<typeof TooltipPrimitive.Content>, "className">) => (
   <TooltipPrimitive.Content
-    {...{ sideOffset }}
+    sideOffset={sideOffset}
     className={cn(
       "z-50 overflow-hidden rounded-md border bg-neutral-100 px-3 py-1.5 text-neutral-700 shadow-md animate-in fade-in-50",
       "data-[side=bottom]:slide-in-from-top-1",

@@ -9,7 +9,8 @@ export const Separator = ({
   ...props
 }: Omit<ComponentPropsWithRef<typeof SeparatorPrimitive.Root>, "className">) => (
   <SeparatorPrimitive.Root
-    {...{ decorative, orientation }}
+    decorative={decorative}
+    orientation={orientation}
     className={cn(
       "bg-neutral-200",
       "dark:bg-neutral-750",

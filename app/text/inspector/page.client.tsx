@@ -36,8 +36,9 @@ export default function ClientBoundary() {
 
   const clearInput = () => setInput("");
 
-  const onInputChange: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
-  const onModeChange = (value: string) => {
+  const changeInput: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
+
+  const tryChangeMode = (value: string) => {
     if (value && value in TextTransformMode) {
       setMode(value as TextTransformMode);
     }
@@ -67,7 +68,7 @@ export default function ClientBoundary() {
   return (
     <PageRootSection title={toolGroups.text.tools.inspector_and_case_converter.longTitle}>
       <PageSection title="Convert">
-        <ToggleGroup type="single" value={mode} onValueChange={onModeChange}>
+        <ToggleGroup type="single" value={mode} onValueChange={tryChangeMode}>
           {textTransformModes.map(m => (
             <ToggleGroupItem key={m} value={m}>
               {modeTitle[m]}
@@ -78,7 +79,7 @@ export default function ClientBoundary() {
 
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
         <PageSection className="min-h-[200px] flex-1" title="Input" control={inputControl}>
-          <Textarea value={input} onChange={onInputChange} rows={10} />
+          <Textarea value={input} onChange={changeInput} rows={10} />
         </PageSection>
         <PageSection className="min-h-[200px] flex-1" title="Output" control={outputControl}>
           <Textarea value={output} rows={10} readOnly />

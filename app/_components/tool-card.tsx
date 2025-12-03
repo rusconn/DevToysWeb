@@ -7,7 +7,7 @@ export type ToolCardProps = Pick<Tool, "Icon" | "longTitle" | "description" | "h
 
 export function ToolCard({ Icon, longTitle, description, href }: ToolCardProps) {
   return (
-    <Link className="rounded" {...{ href }}>
+    <Link className="rounded" href={href}>
       <div
         className={cn(
           "group flex h-80 w-44 flex-col items-center gap-5 overflow-hidden rounded border bg-neutral-50 p-5 text-neutral-850",

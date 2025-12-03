@@ -6,17 +6,14 @@ export function Configuration({ children }: PropsWithChildren) {
   return <ul className="flex flex-col gap-1.5">{children}</ul>;
 }
 
-export function ConfigurationItem({
-  icon,
-  title,
-  description,
-  control,
-}: {
+export type ConfigurationItemProps = {
   icon: ReactNode;
   title: string;
   description?: string;
   control: ReactNode;
-}) {
+};
+
+export function ConfigurationItem({ icon, title, description, control }: ConfigurationItemProps) {
   return (
     <li
       className={cn(

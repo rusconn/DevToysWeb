@@ -63,10 +63,10 @@ export default function ClientBoundary() {
   const trySetOct = trySetInt(8);
   const trySetBin = trySetInt(2);
 
-  const onDecChange: InputProps["onChange"] = e => trySetDec(e.currentTarget.value);
-  const onHexChange: InputProps["onChange"] = e => trySetHex(e.currentTarget.value);
-  const onOctChange: InputProps["onChange"] = e => trySetOct(e.currentTarget.value);
-  const onBinChange: InputProps["onChange"] = e => trySetBin(e.currentTarget.value);
+  const tryChangeDec: InputProps["onChange"] = e => trySetDec(e.currentTarget.value);
+  const tryChangeHex: InputProps["onChange"] = e => trySetHex(e.currentTarget.value);
+  const tryChangeOct: InputProps["onChange"] = e => trySetOct(e.currentTarget.value);
+  const tryChangeBin: InputProps["onChange"] = e => trySetBin(e.currentTarget.value);
 
   const formatNumberConfig = (
     <ConfigurationItem
@@ -120,16 +120,16 @@ export default function ClientBoundary() {
       </PageSection>
       <div className="flex flex-col gap-3">
         <PageSection title="Decimal" control={decControl}>
-          <Input value={dec} onChange={onDecChange} />
+          <Input value={dec} onChange={tryChangeDec} />
         </PageSection>
         <PageSection title="Hexadecimal" control={hexControl}>
-          <Input value={hex} onChange={onHexChange} />
+          <Input value={hex} onChange={tryChangeHex} />
         </PageSection>
         <PageSection title="Octal" control={octControl}>
-          <Input value={oct} onChange={onOctChange} />
+          <Input value={oct} onChange={tryChangeOct} />
         </PageSection>
         <PageSection title="Binary" control={binControl}>
-          <Input value={bin} onChange={onBinChange} />
+          <Input value={bin} onChange={tryChangeBin} />
         </PageSection>
       </div>
     </PageRootSection>

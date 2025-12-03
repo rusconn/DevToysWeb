@@ -30,7 +30,7 @@ export default function ClientBoundary() {
 
   const clearInput = () => setInput("");
 
-  const onJsonChange: EditorProps["onChange"] = value => setInput(value ?? "");
+  const changeInput: EditorProps["onChange"] = value => setInput(value ?? "");
 
   const indentationConfig = (
     <ConfigurationItem
@@ -80,7 +80,7 @@ export default function ClientBoundary() {
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
         <PageSection className="min-h-[200px] flex-1" title="Input" control={inputControl}>
-          <Editor language="json" value={input} onChange={onJsonChange} />
+          <Editor language="json" value={input} onChange={changeInput} />
         </PageSection>
         <PageSection className="min-h-[200px] flex-1" title="Output" control={outputControl}>
           <Editor language="json" value={output} options={{ readOnly: true }} />

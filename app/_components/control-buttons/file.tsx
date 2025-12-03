@@ -8,40 +8,33 @@ type InputProps = ComponentProps<"input">;
 
 export type FileProps = Pick<InputProps, "accept"> &
   Omit<BaseProps, "icon" | "labelText" | "onClick"> & {
-    maxFileSizeMb?: number;
+    maxFileSizeMiB?: number;
     onFileRead: (text: string) => void;
   };
 
-export function File({ accept, iconOnly, maxFileSizeMb = 20, onFileRead, ...props }: FileProps) {
-  const ref = useRef<HTMLInputElement>(null);
+export function File({ accept, maxFileSizeMiB = 20, onFileRead, ...props }: FileProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const onClick = () => ref.current?.click();
+  const clickInput = () => inputRef.current?.click();
 
-  const onChange: NonNullable<InputProps["onChange"]> = e => {
-    const file = Array.from(e.currentTarget.files ?? []).at(0);
-
+  const tryLoadFileAsText: InputProps["onChange"] = e => {
+    const file = e.currentTarget.files?.[0];
     if (!file) {
       return;
     }
-
-    // TODO: reject if the file is unsupported
-
-    if (file.size > maxFileSizeMb * 2 ** 20) {
-      return alert(`The file is too big. Up to ${maxFileSizeMb}MiB.`);
+    // TODO: reject if the file type is unsupported
+    if (file.size > maxFileSizeMiB * 2 ** 20) {
+      return alert(`The file is too big. Up to ${maxFileSizeMiB}MiB.`);
     }
 
-    const reader = new FileReader();
+    // currentTarget will be null after await
+    const savedInput = e.currentTarget;
 
-    reader.onload = ({ target }) => {
-      if (typeof target?.result === "string") {
-        onFileRead(target?.result);
-      }
-    };
-
-    reader.readAsText(file);
-
-    // clear selected file to accept the same file again
-    e.currentTarget.value = "";
+    void file.text().then(text => {
+      onFileRead(text);
+      // clear selected file to accept the same file again
+      savedInput.value = "";
+    });
   };
 
   return (
@@ -49,10 +42,10 @@ export function File({ accept, iconOnly, maxFileSizeMb = 20, onFileRead, ...prop
       <Base
         {...props}
         icon={<icons.File size={16} />}
-        {...{ iconOnly, onClick }}
+        onClick={clickInput}
         labelText="Load a file"
       />
-      <input hidden type="file" {...{ ref, accept, onChange }} />
+      <input hidden type="file" ref={inputRef} accept={accept} onChange={tryLoadFileAsText} />
     </>
   );
 }

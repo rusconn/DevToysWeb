@@ -6,8 +6,8 @@ export type PasteProps = Omit<BaseProps, "icon" | "labelText" | "onClick"> & {
   onClipboardRead: (text: string) => void;
 };
 
-export function Paste({ iconOnly, onClipboardRead, ...props }: PasteProps) {
-  const onClick: BaseProps["onClick"] = () => {
+export function Paste({ onClipboardRead, ...props }: PasteProps) {
+  const readClipboardAsText: BaseProps["onClick"] = () => {
     navigator.clipboard
       .readText()
       .then(onClipboardRead)
@@ -22,7 +22,7 @@ export function Paste({ iconOnly, onClipboardRead, ...props }: PasteProps) {
     <Base
       {...props}
       icon={<icons.Clipboard size={16} />}
-      {...{ iconOnly, onClick }}
+      onClick={readClipboardAsText}
       labelText="Paste"
     />
   );

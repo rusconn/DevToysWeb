@@ -56,7 +56,7 @@ export default function ClientBoundary() {
     }));
   };
 
-  const onIndentationChange: Select.Props["onValueChange"] = value => {
+  const changeIndentation: Select.Props["onValueChange"] = value => {
     const jsonYaml = safeJsonParse(form.json)
       .map(x => ({
         json: JSON.stringify(x, null, value),
@@ -73,15 +73,15 @@ export default function ClientBoundary() {
     });
   };
 
-  const onJsonChange: EditorProps["onChange"] = value => setFormByJson(value ?? "");
-  const onYamlChange: EditorProps["onChange"] = value => setFormByYaml(value ?? "");
+  const changeJson: EditorProps["onChange"] = value => setFormByJson(value ?? "");
+  const changeYaml: EditorProps["onChange"] = value => setFormByYaml(value ?? "");
 
   const indentationConfig = (
     <ConfigurationItem
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
-        <Select.Root value={form.indentation} onValueChange={onIndentationChange}>
+        <Select.Root value={form.indentation} onValueChange={changeIndentation}>
           <Select.Trigger aria-label="toggle open/close state of indentation selection">
             <Select.Value placeholder={form.indentation} />
           </Select.Trigger>
@@ -144,10 +144,10 @@ export default function ClientBoundary() {
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
         <PageSection className="min-h-[200px] flex-1" title="Json" control={jsonControl}>
-          <Editor language="json" value={form.json} onChange={onJsonChange} />
+          <Editor language="json" value={form.json} onChange={changeJson} />
         </PageSection>
         <PageSection className="min-h-[200px] flex-1" title="Yaml" control={yamlControl}>
-          <Editor language="yaml" value={form.yaml} onChange={onYamlChange} />
+          <Editor language="yaml" value={form.yaml} onChange={changeYaml} />
         </PageSection>
       </div>
     </PageRootSection>

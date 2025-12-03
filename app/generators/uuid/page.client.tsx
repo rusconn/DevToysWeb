@@ -41,21 +41,20 @@ export default function ClientBoundary() {
 
   const clearUuids = () => setUuids([]);
 
-  const onUuidVersionChange: NonNullable<Select.Props["onValueChange"]> = value => {
+  const tryChangeUuidVersion: NonNullable<Select.Props["onValueChange"]> = value => {
     if (isUuidVersion(value)) {
       setUuidVersion(value);
     }
   };
 
-  const onGeneratesChange: NonNullable<InputProps["onChange"]> = e => {
+  const tryChangeGenerates: NonNullable<InputProps["onChange"]> = e => {
     const newGenerates = Number(e.currentTarget.value);
-
     if (1 <= newGenerates && newGenerates <= 1000) {
       setGenerates(newGenerates);
     }
   };
 
-  const onGenerateClick = () => {
+  const generate = () => {
     const newUuids = Array.from({ length: generates }, () => uuid(uuidVersion, hyphens, uppercase));
     setUuids([...uuids, ...newUuids]);
   };
@@ -98,7 +97,7 @@ export default function ClientBoundary() {
       title="UUID version"
       description="Choose the version of UUID to generate"
       control={
-        <Select.Root value={uuidVersion} onValueChange={onUuidVersionChange}>
+        <Select.Root value={uuidVersion} onValueChange={tryChangeUuidVersion}>
           <Select.Trigger aria-label="toggle open/close state of uuid version selection">
             <Select.Value placeholder={uuidVersion} />
           </Select.Trigger>
@@ -133,17 +132,17 @@ export default function ClientBoundary() {
       </PageSection>
       <PageSection title="Generate">
         <div className="flex items-center gap-2">
-          <Button variant="accent" onClick={onGenerateClick}>
+          <Button variant="accent" onClick={generate}>
             Generate UUID(s)
           </Button>
           <span>×</span>
           <div className="w-24">
-            <Input type="number" value={generates} onChange={onGeneratesChange} />
+            <Input type="number" value={generates} onChange={tryChangeGenerates} />
           </div>
         </div>
       </PageSection>
       <PageSection className="-mt-3" title="UUID(s)" control={uuidsControl}>
-        <Textarea {...{ ref }} value={uuidsString} rows={10} readOnly />
+        <Textarea ref={ref} value={uuidsString} rows={10} readOnly />
       </PageSection>
     </PageRootSection>
   );

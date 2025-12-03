@@ -14,7 +14,7 @@ export function LabeledSwitch({ id, label, ...props }: Props) {
   return (
     // reverse to apply peer style
     <div className="flex flex-row-reverse items-center">
-      <Switch peer {...{ id }} {...props} />
+      <Switch peer id={id} {...props} />
       <Label.Root
         className={cn(
           "cursor-pointer pr-3 leading-none", //

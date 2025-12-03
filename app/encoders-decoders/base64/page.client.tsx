@@ -40,8 +40,10 @@ export default function ClientBoundary() {
     });
   };
 
-  const onDecodedChange: TextareaProps["onChange"] = e => setFormByDecoded(e.currentTarget.value);
-  const onEncodedChange: TextareaProps["onChange"] = e => setFormByEncoded(e.currentTarget.value);
+  const changeFormByDecoded: TextareaProps["onChange"] = e =>
+    setFormByDecoded(e.currentTarget.value);
+  const changeFormByEncoded: TextareaProps["onChange"] = e =>
+    setFormByEncoded(e.currentTarget.value);
 
   const clearButton = (
     <Button.Clear onClick={clearBoth} iconOnly aria-label="clear decoded and encoded" />
@@ -80,10 +82,10 @@ export default function ClientBoundary() {
     <PageRootSection title={toolGroups.encodersDecoders.tools.base64.longTitle}>
       <div className="flex flex-col gap-3">
         <PageSection title="Decoded" control={decodedControl}>
-          <Textarea value={form.decoded} onChange={onDecodedChange} rows={10} />
+          <Textarea value={form.decoded} onChange={changeFormByDecoded} rows={10} />
         </PageSection>
         <PageSection title="Encoded" control={encodedControl}>
-          <Textarea value={form.encoded} onChange={onEncodedChange} rows={10} />
+          <Textarea value={form.encoded} onChange={changeFormByEncoded} rows={10} />
         </PageSection>
       </div>
     </PageRootSection>

@@ -1,4 +1,4 @@
-const match = (regex: RegExp) => (x: string) => regex.test(x);
+const match = (regex: RegExp) => regex.test.bind(regex);
 
 export const isDecimal = match(/^[0-9]*$/);
 export const isHexadecimal = match(/^[0-9A-F]*$/i);

@@ -33,7 +33,7 @@ export default function ClientBoundary() {
 
   const clearInput = () => setInput("");
 
-  const onInputChange: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
+  const changeInput: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
 
   const uppercaseConfig = (
     <ConfigurationItem
@@ -100,7 +100,7 @@ export default function ClientBoundary() {
         <Configuration>{uppercaseConfig}</Configuration>
       </PageSection>
       <PageSection className="-mt-2" title="Input" control={inputControl}>
-        <Textarea value={input} onChange={onInputChange} rows={5} />
+        <Textarea value={input} onChange={changeInput} rows={5} />
       </PageSection>
       <div className="flex flex-col gap-3">
         <PageSection title="MD5">

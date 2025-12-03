@@ -23,7 +23,7 @@ export default function ClientBoundary() {
 
   const clearJwt = () => setJwt("");
 
-  const onJwtChange: TextareaProps["onChange"] = e => setJwt(e.currentTarget.value);
+  const changeJwt: TextareaProps["onChange"] = e => setJwt(e.currentTarget.value);
 
   const jwtTokenControl = (
     <ControlMenu>
@@ -57,7 +57,7 @@ export default function ClientBoundary() {
   return (
     <PageRootSection title={toolGroups.encodersDecoders.tools.jwt.longTitle}>
       <PageSection title="Jwt Token" control={jwtTokenControl}>
-        <Textarea value={jwt} onChange={onJwtChange} rows={3} />
+        <Textarea value={jwt} onChange={changeJwt} rows={3} />
       </PageSection>
       <div className="flex flex-col gap-3">
         <PageSection title="Header" control={heaederControl}>

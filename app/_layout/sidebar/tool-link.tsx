@@ -21,7 +21,8 @@ export function ToolLink({ Icon, shortTitle: title, href, onClick, highlight, gr
         "hover:bg-neutral-200",
         "dark:hover:bg-neutral-750",
       )}
-      {...{ href, onClick }}
+      href={href}
+      onClick={onClick}
     >
       <span className={cn("flex items-center", highlight === "none" && "invisible")}>
         <Indicator />

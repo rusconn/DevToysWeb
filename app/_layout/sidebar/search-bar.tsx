@@ -51,12 +51,7 @@ export function SearchBar() {
         placeholder="Type to search for tools…"
       />
       <div className="absolute right-1 flex gap-1">
-        <Button
-          {...(!text && { hidden: true })}
-          variant="search"
-          size="shorter"
-          onClick={clearText}
-        >
+        <Button hidden={!text} variant="search" size="shorter" onClick={clearText}>
           <icons.X
             className={cn(
               "p-1 text-neutral-450", //

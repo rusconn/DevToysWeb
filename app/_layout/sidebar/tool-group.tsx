@@ -16,7 +16,7 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
   const pathname = usePathname();
   const triggerRef = useRef<HTMLButtonElement>(null);
 
-  const onClick = () => triggerRef.current?.click();
+  const clickTrigger = () => triggerRef.current?.click();
 
   return (
     <Accordion.AccordionItem value={href}>
@@ -24,7 +24,9 @@ export function ToolGroup({ Icon, title, href, tools, isOpend }: Props) {
         <div className="relative flex">
           <div className="flex-1">
             <ToolLink
-              {...{ Icon, href, onClick }}
+              Icon={Icon}
+              href={href}
+              onClick={clickTrigger}
               shortTitle={title}
               highlight={
                 pathname === href
