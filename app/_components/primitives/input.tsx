@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 export const inputVariants = cva(
   [
-    "h-9 w-full rounded border border-b-neutral-450 bg-neutral-50 py-2 outline-none",
+    "h-9 w-full rounded border border-b-neutral-450 bg-neutral-50 py-2 outline-hidden",
     "placeholder:text-neutral-450",
     "hover:bg-neutral-100",
     "focus:border-b-2 focus:border-b-sky-700 focus:bg-neutral-0 focus:pb-[7px]",
