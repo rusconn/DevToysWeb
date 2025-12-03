@@ -5,9 +5,7 @@ const nextConfig: NextConfig = {
   output: "export",
   reactStrictMode: true,
   typedRoutes: true,
-  experimental: {
-    reactCompiler: true,
-  },
+  reactCompiler: true,
 };
 
 export default withBundleAnalyzer({
