@@ -11,7 +11,10 @@ export const usePage = () => {
   const setFormByDecoded = (text: string) => {
     setForm({
       decoded: text,
-      encoded: safeEncodeURI(text).unwrapOr(""),
+      encoded: text
+        .split("\n")
+        .map(line => safeEncodeURI(line).unwrapOr(""))
+        .join("\n"),
     });
   };
 
