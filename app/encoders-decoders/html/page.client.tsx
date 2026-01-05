@@ -1,8 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import * as html from "html-escaper";
-
 import { toolGroups } from "../../_config/tools";
 import { Textarea, type TextareaProps } from "../../_components/primitives/textarea";
 import * as Button from "../../_components/control-buttons";
@@ -10,40 +7,20 @@ import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
+import { usePage } from "./use-page";
+
 export default function ClientBoundary() {
-  const [form, setForm] = useState({
-    decoded: '> It\'s "HTML escaping".',
-    encoded: "&gt; It&#39;s &quot;HTML escaping&quot;.",
-  });
+  const { form, setFormByDecoded, setFormByEncoded, clearForm } = usePage();
 
-  const setFormByDecoded = (text: string) => {
-    setForm({
-      decoded: text,
-      encoded: html.escape(text),
-    });
-  };
-
-  const setFormByEncoded = (text: string) => {
-    setForm({
-      decoded: html.unescape(text),
-      encoded: text,
-    });
-  };
-
-  const clearBoth = () => {
-    setForm({
-      decoded: "",
-      encoded: "",
-    });
-  };
-
-  const changeFormByDecoded: TextareaProps["onChange"] = e =>
+  const changeFormByDecoded: TextareaProps["onChange"] = e => {
     setFormByDecoded(e.currentTarget.value);
-  const changeFormByEncoded: TextareaProps["onChange"] = e =>
+  };
+  const changeFormByEncoded: TextareaProps["onChange"] = e => {
     setFormByEncoded(e.currentTarget.value);
+  };
 
   const clearButton = (
-    <Button.Clear onClick={clearBoth} iconOnly aria-label="clear decoded and encoded" />
+    <Button.Clear onClick={clearForm} iconOnly aria-label="clear decoded and encoded" />
   );
 
   const decodedControl = (

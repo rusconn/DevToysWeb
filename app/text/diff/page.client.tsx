@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 
 import { toolGroups } from "../../_config/tools";
@@ -16,23 +15,23 @@ import { PageSection } from "../../_components/page-section";
 
 import { PanelResizeHandle } from "./_components/panel-resize-handle";
 import { ToggleFullSize } from "./_components/toggle-full-size";
-import { PERSISTENCE_KEY } from "./config";
-
-/** No particular reason for these sizes, just feels like a good balance */
-const VERTICAL_PANEL_MAX_SIZE = 80;
-const HORIZONTAL_PANEL_MAX_SIZE = 90;
-const PANEL_FULL_SIZE = 100;
+import { HORIZONTAL_PANEL_MAX_SIZE, PERSISTENCE_KEY, VERTICAL_PANEL_MAX_SIZE } from "./config";
+import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const [input1, setInput1] = useState<string | undefined>("Hello world");
-  const [input2, setInput2] = useState<string | undefined>("Hello, World!");
-  const [diffFullHeight, setDiffFullHeight] = useState(false);
-  const [inlineMode, setInlineMode] = useState(false);
-  const diffPanelMaxSize = diffFullHeight ? PANEL_FULL_SIZE : VERTICAL_PANEL_MAX_SIZE;
-
-  const clearInput1 = () => setInput1("");
-  const clearInput2 = () => setInput2("");
-  const toggleFullHeight = () => setDiffFullHeight(prev => !prev);
+  const {
+    input1,
+    setInput1,
+    clearInput1,
+    input2,
+    setInput2,
+    clearInput2,
+    diffFullHeight,
+    inlineMode,
+    setInlineMode,
+    diffPanelMaxSize,
+    toggleFullHeight,
+  } = usePage();
 
   const inlineModeConfig = (
     <ConfigurationItem

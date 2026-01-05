@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { toolGroups } from "../../_config/tools";
 import { Textarea, type TextareaProps } from "../../_components/primitives/textarea";
 import { ToggleGroup, ToggleGroupItem } from "../../_components/primitives/toggle-group";
@@ -10,33 +8,15 @@ import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
-import {
-  countBytes,
-  countCharacters,
-  countLines,
-  countWords,
-  modeTitle,
-  TextTransformMode,
-  textTransformModes,
-  transformText,
-} from "./lib";
+import { modeTitle, TextTransformMode, textTransformModes } from "./lib";
+import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const [input, setInput] = useState("ConvertMe");
-  const [mode, setMode] = useState(TextTransformMode.sentenceCase);
+  const { input, setInput, clearInput, mode, setMode, output, stats } = usePage();
 
-  const output = transformText(input, mode);
-
-  const stats = {
-    characters: countCharacters(input),
-    words: countWords(input),
-    lines: countLines(input),
-    bytes: countBytes(input),
+  const changeInput: TextareaProps["onChange"] = e => {
+    setInput(e.currentTarget.value);
   };
-
-  const clearInput = () => setInput("");
-
-  const changeInput: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
 
   const tryChangeMode = (value: string) => {
     if (value && value in TextTransformMode) {

@@ -1,10 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import yaml from "js-yaml";
-
 import { toolGroups } from "../../_config/tools";
-import { safeJsonParse } from "../../_lib/json";
 import * as icons from "../../_components/primitives/icons";
 import * as Select from "../../_components/primitives/select";
 import { Configuration, ConfigurationItem } from "../../_components/configuration";
@@ -14,67 +10,18 @@ import { Editor, type EditorProps } from "../../_components/editor";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
-import { safeYamlParse } from "./lib";
-
-const indentations = {
-  two: "  ",
-  four: "    ",
-};
+import { indentations } from "./lib";
+import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const [form, setForm] = useState({
-    indentation: indentations.two,
-    json: '{\n  "foo": "bar"\n}',
-    yaml: "foo: bar",
-  });
+  const { form, setFormByJson, setFormByYaml, clearForm, changeIndentation } = usePage();
 
-  const setFormByJson = (text: string) => {
-    setForm(prev => ({
-      ...prev,
-      json: text,
-      yaml: safeJsonParse(text)
-        .map(x => yaml.dump(x, { indent: prev.indentation.length, quotingType: '"' }))
-        .unwrapOr(""),
-    }));
+  const changeJson: EditorProps["onChange"] = value => {
+    setFormByJson(value ?? "");
   };
-
-  const setFormByYaml = (text: string) => {
-    setForm(prev => ({
-      ...prev,
-      json: safeYamlParse(text)
-        .map(x => JSON.stringify(x, null, prev.indentation))
-        .unwrapOr(""),
-      yaml: text,
-    }));
+  const changeYaml: EditorProps["onChange"] = value => {
+    setFormByYaml(value ?? "");
   };
-
-  const clearBoth = () => {
-    setForm(prev => ({
-      ...prev,
-      json: "",
-      yaml: "",
-    }));
-  };
-
-  const changeIndentation: Select.Props["onValueChange"] = value => {
-    const jsonYaml = safeJsonParse(form.json)
-      .map(x => ({
-        json: JSON.stringify(x, null, value),
-        yaml: yaml.dump(x, { indent: value.length, quotingType: '"' }),
-      }))
-      .unwrapOr({
-        json: "",
-        yaml: "",
-      });
-
-    setForm({
-      indentation: value,
-      ...jsonYaml,
-    });
-  };
-
-  const changeJson: EditorProps["onChange"] = value => setFormByJson(value ?? "");
-  const changeYaml: EditorProps["onChange"] = value => setFormByYaml(value ?? "");
 
   const indentationConfig = (
     <ConfigurationItem
@@ -95,7 +42,7 @@ export default function ClientBoundary() {
   );
 
   const clearButton = (
-    <Button.Clear onClick={clearBoth} iconOnly aria-label="clear json and yaml" />
+    <Button.Clear onClick={clearForm} iconOnly aria-label="clear json and yaml" />
   );
 
   const jsonControl = (

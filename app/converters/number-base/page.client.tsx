@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { toolGroups } from "../../_config/tools";
 import * as icons from "../../_components/primitives/icons";
 import { Input, type InputProps } from "../../_components/primitives/input";
@@ -12,61 +10,24 @@ import { LabeledSwitch } from "../../_components/labeled-switch";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
-import {
-  formatBinary,
-  formatDecimal,
-  formatHexadecimal,
-  formatOctal,
-  isBinary,
-  isDecimal,
-  isHexadecimal,
-  isOctal,
-  unformatNumber,
-} from "./lib";
-
-const baseConfig = {
-  10: { prefix: "", validate: isDecimal },
-  16: { prefix: "0x", validate: isHexadecimal },
-  8: { prefix: "0o", validate: isOctal },
-  2: { prefix: "0b", validate: isBinary },
-} as const;
+import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const [format, setFormat] = useState(true);
-  const [int, setInt] = useState<bigint | undefined>(BigInt(42));
+  const { format, setFormat, dec, trySetDec, hex, trySetHex, oct, trySetOct, bin, trySetBin } =
+    usePage();
 
-  const newDec = int?.toString(10) ?? "";
-  const newHex = int?.toString(16).toUpperCase() ?? "";
-  const newOct = int?.toString(8) ?? "";
-  const newBin = int?.toString(2) ?? "";
-
-  const dec = format ? formatDecimal(newDec) : newDec;
-  const hex = format ? formatHexadecimal(newHex) : newHex;
-  const oct = format ? formatOctal(newOct) : newOct;
-  const bin = format ? formatBinary(newBin) : newBin;
-
-  const trySetInt = (base: 10 | 16 | 8 | 2) => (value: string) => {
-    if (value === "") {
-      return setInt(undefined);
-    }
-
-    const { prefix, validate } = baseConfig[base];
-    const unformatted = unformatNumber(value);
-
-    if (validate(unformatted)) {
-      setInt(BigInt(`${prefix}${unformatted}`));
-    }
+  const tryChangeDec: InputProps["onChange"] = e => {
+    trySetDec(e.currentTarget.value);
   };
-
-  const trySetDec = trySetInt(10);
-  const trySetHex = trySetInt(16);
-  const trySetOct = trySetInt(8);
-  const trySetBin = trySetInt(2);
-
-  const tryChangeDec: InputProps["onChange"] = e => trySetDec(e.currentTarget.value);
-  const tryChangeHex: InputProps["onChange"] = e => trySetHex(e.currentTarget.value);
-  const tryChangeOct: InputProps["onChange"] = e => trySetOct(e.currentTarget.value);
-  const tryChangeBin: InputProps["onChange"] = e => trySetBin(e.currentTarget.value);
+  const tryChangeHex: InputProps["onChange"] = e => {
+    trySetHex(e.currentTarget.value);
+  };
+  const tryChangeOct: InputProps["onChange"] = e => {
+    trySetOct(e.currentTarget.value);
+  };
+  const tryChangeBin: InputProps["onChange"] = e => {
+    trySetBin(e.currentTarget.value);
+  };
 
   const formatNumberConfig = (
     <ConfigurationItem

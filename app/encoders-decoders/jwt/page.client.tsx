@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { toolGroups } from "../../_config/tools";
 import { Textarea, type TextareaProps } from "../../_components/primitives/textarea";
 import * as Button from "../../_components/control-buttons";
@@ -10,20 +8,14 @@ import { Editor } from "../../_components/editor";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
-import { decode } from "./lib";
+import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const [jwt, setJwt] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-  );
+  const { jwt, setJwt, clearJwt, header, payload } = usePage();
 
-  const { header: h, payload: p } = decode(jwt);
-  const header = h.map(x => JSON.stringify(x, null, 2)).unwrapOr("");
-  const payload = p.map(x => JSON.stringify(x, null, 2)).unwrapOr("");
-
-  const clearJwt = () => setJwt("");
-
-  const changeJwt: TextareaProps["onChange"] = e => setJwt(e.currentTarget.value);
+  const changeJwt: TextareaProps["onChange"] = e => {
+    setJwt(e.currentTarget.value);
+  };
 
   const jwtTokenControl = (
     <ControlMenu>

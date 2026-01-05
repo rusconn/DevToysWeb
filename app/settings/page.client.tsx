@@ -1,15 +1,15 @@
 "use client";
 
-import { useTheme } from "next-themes";
-
 import { singleTools } from "../_config/tools";
 import * as icons from "../_components/primitives/icons";
 import * as Select from "../_components/primitives/select";
 import { Configuration, ConfigurationItem } from "../_components/configuration";
 import { PageRootSection } from "../_components/page-root-section";
 
+import { usePage } from "./use-page";
+
 export default function ClientBoundary() {
-  const { theme = "system", setTheme } = useTheme();
+  const { theme, setTheme } = usePage();
 
   const appThemeConfig = (
     <ConfigurationItem

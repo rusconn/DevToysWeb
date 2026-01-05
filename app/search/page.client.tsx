@@ -1,25 +1,16 @@
 "use client";
 
-import Fuse from "fuse.js";
-
-import { homeTools } from "../_config/tools";
-import { useSearchText } from "../_contexts/search-text";
 import { PageRootSection } from "../_components/page-root-section";
 import { ToolCards } from "../_components/tool-cards";
 
+import { usePage } from "./use-page";
+
 export default function ClientBoundary() {
-  // use search params in context
-  const q = useSearchText();
+  const { title, tools } = usePage();
 
-  const fuse = new Fuse(homeTools, { keys: ["keywords"], threshold: 0.45 });
-  const keyWordsOptions = q.split(" ").map(word => ({ keywords: word }));
-  const result = fuse.search({ $or: keyWordsOptions });
-  const tools = result.map(({ item }) => item);
-
-  const { title, child } =
-    tools.length === 0
-      ? { title: "No results found", child: null }
-      : { title: `Search results for "${q}"`, child: <ToolCards tools={tools} /> };
-
-  return <PageRootSection title={title}>{child}</PageRootSection>;
+  return (
+    <PageRootSection title={title}>
+      <ToolCards tools={tools} />
+    </PageRootSection>
+  );
 }

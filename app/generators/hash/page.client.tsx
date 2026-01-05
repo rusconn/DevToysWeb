@@ -1,11 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import MD5 from "crypto-js/md5";
-import SHA1 from "crypto-js/sha1";
-import SHA256 from "crypto-js/sha256";
-import SHA512 from "crypto-js/sha512";
-
 import { toolGroups } from "../../_config/tools";
 import * as icons from "../../_components/primitives/icons";
 import { Input } from "../../_components/primitives/input";
@@ -17,23 +11,15 @@ import { LabeledSwitch } from "../../_components/labeled-switch";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
+import { usePage } from "./use-page";
+
 export default function ClientBoundary() {
-  const [uppercase, setUppercase] = useState(false);
-  const [input, setInput] = useState("Hello there !");
+  const { uppercase, setUppercase, input, setInput, clearInput, md5, sha1, sha256, sha512 } =
+    usePage();
 
-  const newMd5 = MD5(input).toString();
-  const newSha1 = SHA1(input).toString();
-  const newSha256 = SHA256(input).toString();
-  const newSha512 = SHA512(input).toString();
-
-  const md5 = uppercase ? newMd5.toUpperCase() : newMd5;
-  const sha1 = uppercase ? newSha1.toUpperCase() : newSha1;
-  const sha256 = uppercase ? newSha256.toUpperCase() : newSha256;
-  const sha512 = uppercase ? newSha512.toUpperCase() : newSha512;
-
-  const clearInput = () => setInput("");
-
-  const changeInput: TextareaProps["onChange"] = e => setInput(e.currentTarget.value);
+  const changeInput: TextareaProps["onChange"] = e => {
+    setInput(e.currentTarget.value);
+  };
 
   const uppercaseConfig = (
     <ConfigurationItem

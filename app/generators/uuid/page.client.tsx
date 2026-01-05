@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { toolGroups } from "../../_config/tools";
 import { Button } from "../../_components/primitives/button";
 import * as icons from "../../_components/primitives/icons";
@@ -15,48 +13,36 @@ import { LabeledSwitch } from "../../_components/labeled-switch";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
-import { useAutoScroll } from "./hooks";
-import { uuid } from "./lib";
-
-const versions = {
-  v1: "1",
-  v4: "4",
-} as const;
-
-type UuidVersion = (typeof versions)[keyof typeof versions];
-
-function isUuidVersion(s: string): s is UuidVersion {
-  return Object.values(versions).includes(s as UuidVersion);
-}
+import { versions, type UuidVersion } from "./lib";
+import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const [hyphens, setHyphens] = useState(true);
-  const [uppercase, setUppercase] = useState(false);
-  const [uuidVersion, setUuidVersion] = useState<UuidVersion>("4");
-  const [generates, setGenerates] = useState(1);
-  const [uuids, setUuids] = useState<string[]>([]);
-  const ref = useAutoScroll<HTMLTextAreaElement>([uuids]);
+  const {
+    hyphens,
+    setHyphens,
+    uppercase,
+    setUppercase,
+    uuidVersion,
+    setUuidVersion,
+    generate,
+    generates,
+    setGenerates,
+    uuids,
+    clearUuids,
+    uuidsRef,
+  } = usePage();
 
   const uuidsString = uuids.join("\n");
 
-  const clearUuids = () => setUuids([]);
-
-  const tryChangeUuidVersion: NonNullable<Select.Props["onValueChange"]> = value => {
-    if (isUuidVersion(value)) {
-      setUuidVersion(value);
-    }
+  const changeUuidVersion: Select.Props["onValueChange"] = value => {
+    setUuidVersion(value as UuidVersion);
   };
 
-  const tryChangeGenerates: NonNullable<InputProps["onChange"]> = e => {
+  const tryChangeGenerates: InputProps["onChange"] = e => {
     const newGenerates = Number(e.currentTarget.value);
     if (1 <= newGenerates && newGenerates <= 1000) {
       setGenerates(newGenerates);
     }
-  };
-
-  const generate = () => {
-    const newUuids = Array.from({ length: generates }, () => uuid(uuidVersion, hyphens, uppercase));
-    setUuids([...uuids, ...newUuids]);
   };
 
   const hyphensConfig = (
@@ -97,7 +83,7 @@ export default function ClientBoundary() {
       title="UUID version"
       description="Choose the version of UUID to generate"
       control={
-        <Select.Root value={uuidVersion} onValueChange={tryChangeUuidVersion}>
+        <Select.Root value={uuidVersion} onValueChange={changeUuidVersion}>
           <Select.Trigger aria-label="toggle open/close state of uuid version selection">
             <Select.Value placeholder={uuidVersion} />
           </Select.Trigger>
@@ -142,7 +128,7 @@ export default function ClientBoundary() {
         </div>
       </PageSection>
       <PageSection className="-mt-3" title="UUID(s)" control={uuidsControl}>
-        <Textarea ref={ref} value={uuidsString} rows={10} readOnly />
+        <Textarea ref={uuidsRef} value={uuidsString} rows={10} readOnly />
       </PageSection>
     </PageRootSection>
   );

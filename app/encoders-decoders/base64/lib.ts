@@ -1,7 +1,7 @@
 export const encode = (s: string) => {
   const bytes = new TextEncoder().encode(s);
   const buf = [];
-  const chunkSize = 32 * 2 ** 10; // 32K
+  const chunkSize = 32 * 2 ** 10; // 32KiB
 
   for (let i = 0; i < bytes.length; i += chunkSize) {
     const chunk = bytes.subarray(i, i + chunkSize);

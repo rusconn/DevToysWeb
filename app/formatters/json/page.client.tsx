@@ -1,9 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
 import { toolGroups } from "../../_config/tools";
-import { safeJsonParse } from "../../_lib/json";
 import * as icons from "../../_components/primitives/icons";
 import * as Select from "../../_components/primitives/select";
 import { Configuration, ConfigurationItem } from "../../_components/configuration";
@@ -13,31 +10,25 @@ import { Editor, type EditorProps } from "../../_components/editor";
 import { PageRootSection } from "../../_components/page-root-section";
 import { PageSection } from "../../_components/page-section";
 
-const indentations = {
-  two: "2",
-  four: "4",
-  zero: "0",
-  tab: "\t",
-};
+import { indentations, type Indentation } from "./lib";
+import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const [indentation, setIndentation] = useState(indentations.two);
-  const [input, setInput] = useState('{\n"foo":"bar"\n}');
+  const { indentation, setIndentation, input, setInput, clearInput, output } = usePage();
 
-  const parsed = safeJsonParse(input);
-  const space = indentation === "\t" ? "\t" : parseInt(indentation, 10);
-  const output = parsed.map(x => JSON.stringify(x, null, space)).unwrapOr("");
-
-  const clearInput = () => setInput("");
-
-  const changeInput: EditorProps["onChange"] = value => setInput(value ?? "");
+  const changeInput: EditorProps["onChange"] = value => {
+    setInput(value ?? "");
+  };
+  const changeIndentation: Select.Props["onValueChange"] = value => {
+    setIndentation(value as Indentation);
+  };
 
   const indentationConfig = (
     <ConfigurationItem
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
-        <Select.Root value={indentation} onValueChange={setIndentation}>
+        <Select.Root value={indentation} onValueChange={changeIndentation}>
           <Select.Trigger aria-label="toggle open/close state of indentation selection">
             <Select.Value placeholder={indentation} />
           </Select.Trigger>
