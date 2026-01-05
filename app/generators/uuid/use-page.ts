@@ -18,7 +18,7 @@ export const usePage = () => {
     setUuids([]);
   };
 
-  const uuidsRef = useAutoScroll<HTMLTextAreaElement>([uuids]);
+  const uuidsRef = useAutoScroll<HTMLTextAreaElement>(uuids.length);
 
   return {
     hyphens,

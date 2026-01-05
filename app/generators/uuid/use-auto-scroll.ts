@@ -1,23 +1,23 @@
-import { useEffect, useRef, type DependencyList } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export const useAutoScroll = <T extends HTMLElement = HTMLElement>(
-  deps: DependencyList,
+  trigger: unknown,
   behavior: ScrollBehavior = "smooth",
 ) => {
   const ref = useRef<T>(null);
 
-  useEffect(() => {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: trigger is needed for re-rendering
+  useLayoutEffect(() => {
     const { current } = ref;
 
     if (current) {
       current.scrollTo({
-        left: current.scrollWidth,
-        top: current.scrollHeight,
+        left: current.scrollWidth - current.clientWidth,
+        top: current.scrollHeight - current.clientHeight,
         behavior,
       });
     }
-    // biome-ignore lint/correctness/useExhaustiveDependencies: client responsibility
-  }, deps);
+  }, [trigger, behavior]);
 
   return ref;
 };
