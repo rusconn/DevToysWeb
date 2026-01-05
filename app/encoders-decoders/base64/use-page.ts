@@ -3,36 +3,36 @@ import { useState } from "react";
 import { decode, encode } from "./lib";
 
 export const usePage = () => {
-  const [form, setForm] = useState({
+  const [fields, setFields] = useState({
     decoded: "internet",
     encoded: "aW50ZXJuZXQ=",
   });
 
-  const setFormByDecoded = (text: string) => {
-    setForm({
+  const setFieldsByDecoded = (text: string) => {
+    setFields({
       decoded: text,
       encoded: encode(text),
     });
   };
 
-  const setFormByEncoded = (text: string) => {
-    setForm({
+  const setFieldsByEncoded = (text: string) => {
+    setFields({
       decoded: decode(text) ?? "",
       encoded: text,
     });
   };
 
-  const clearForm = () => {
-    setForm({
+  const clearFields = () => {
+    setFields({
       decoded: "",
       encoded: "",
     });
   };
 
   return {
-    form,
-    setFormByDecoded,
-    setFormByEncoded,
-    clearForm,
+    fields,
+    setFieldsByDecoded,
+    setFieldsByEncoded,
+    clearFields,
   };
 };

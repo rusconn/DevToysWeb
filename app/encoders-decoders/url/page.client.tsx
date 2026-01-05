@@ -10,29 +10,29 @@ import { PageSection } from "../../_components/page-section";
 import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const { form, setFormByDecoded, setFormByEncoded, clearForm } = usePage();
+  const { fields, setFieldsByDecoded, setFieldsByEncoded, clearFields } = usePage();
 
-  const changeFormByDecoded: TextareaProps["onChange"] = e => {
-    setFormByDecoded(e.currentTarget.value);
+  const changeFieldsByDecoded: TextareaProps["onChange"] = e => {
+    setFieldsByDecoded(e.currentTarget.value);
   };
-  const changeFormByEncoded: TextareaProps["onChange"] = e => {
-    setFormByEncoded(e.currentTarget.value);
+  const changeFieldsByEncoded: TextareaProps["onChange"] = e => {
+    setFieldsByEncoded(e.currentTarget.value);
   };
 
   const clearButton = (
-    <Button.Clear onClick={clearForm} iconOnly aria-label="clear decoded and encoded" />
+    <Button.Clear onClick={clearFields} iconOnly aria-label="clear decoded and encoded" />
   );
 
   const decodedControl = (
     <ControlMenu>
       <ControlMenuItem>
-        <Button.Paste onClipboardRead={setFormByDecoded} />
+        <Button.Paste onClipboardRead={setFieldsByDecoded} />
       </ControlMenuItem>
       <ControlMenuItem>
-        <Button.File onFileRead={setFormByDecoded} iconOnly aria-label="load a decoded file" />
+        <Button.File onFileRead={setFieldsByDecoded} iconOnly aria-label="load a decoded file" />
       </ControlMenuItem>
       <ControlMenuItem>
-        <Button.Copy text={form.decoded} />
+        <Button.Copy text={fields.decoded} />
       </ControlMenuItem>
       <ControlMenuItem>{clearButton}</ControlMenuItem>
     </ControlMenu>
@@ -40,13 +40,13 @@ export default function ClientBoundary() {
   const encodedControl = (
     <ControlMenu>
       <ControlMenuItem>
-        <Button.Paste onClipboardRead={setFormByEncoded} />
+        <Button.Paste onClipboardRead={setFieldsByEncoded} />
       </ControlMenuItem>
       <ControlMenuItem>
-        <Button.File onFileRead={setFormByEncoded} iconOnly aria-label="load a encoded file" />
+        <Button.File onFileRead={setFieldsByEncoded} iconOnly aria-label="load a encoded file" />
       </ControlMenuItem>
       <ControlMenuItem>
-        <Button.Copy text={form.encoded} />
+        <Button.Copy text={fields.encoded} />
       </ControlMenuItem>
       <ControlMenuItem>{clearButton}</ControlMenuItem>
     </ControlMenu>
@@ -56,10 +56,10 @@ export default function ClientBoundary() {
     <PageRootSection title={toolGroups.encodersDecoders.tools.url.longTitle}>
       <div className="flex flex-col gap-3">
         <PageSection title="Decoded" control={decodedControl}>
-          <Textarea value={form.decoded} onChange={changeFormByDecoded} rows={10} />
+          <Textarea value={fields.decoded} onChange={changeFieldsByDecoded} rows={10} />
         </PageSection>
         <PageSection title="Encoded" control={encodedControl}>
-          <Textarea value={form.encoded} onChange={changeFormByEncoded} rows={10} />
+          <Textarea value={fields.encoded} onChange={changeFieldsByEncoded} rows={10} />
         </PageSection>
       </div>
     </PageRootSection>

@@ -14,13 +14,13 @@ import { indentations } from "./lib";
 import { usePage } from "./use-page";
 
 export default function ClientBoundary() {
-  const { form, setFormByJson, setFormByYaml, clearForm, changeIndentation } = usePage();
+  const { fields, setFieldsByJson, setFieldsByYaml, clearFields, changeIndentation } = usePage();
 
   const changeJson: EditorProps["onChange"] = value => {
-    setFormByJson(value ?? "");
+    setFieldsByJson(value ?? "");
   };
   const changeYaml: EditorProps["onChange"] = value => {
-    setFormByYaml(value ?? "");
+    setFieldsByYaml(value ?? "");
   };
 
   const indentationConfig = (
@@ -28,9 +28,9 @@ export default function ClientBoundary() {
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
-        <Select.Root value={form.indentation} onValueChange={changeIndentation}>
+        <Select.Root value={fields.indentation} onValueChange={changeIndentation}>
           <Select.Trigger aria-label="toggle open/close state of indentation selection">
-            <Select.Value placeholder={form.indentation} />
+            <Select.Value placeholder={fields.indentation} />
           </Select.Trigger>
           <Select.Content>
             <Select.Item value={indentations.two}>2 spaces</Select.Item>
@@ -42,24 +42,24 @@ export default function ClientBoundary() {
   );
 
   const clearButton = (
-    <Button.Clear onClick={clearForm} iconOnly aria-label="clear json and yaml" />
+    <Button.Clear onClick={clearFields} iconOnly aria-label="clear json and yaml" />
   );
 
   const jsonControl = (
     <ControlMenu>
       <ControlMenuItem>
-        <Button.Paste onClipboardRead={setFormByJson} />
+        <Button.Paste onClipboardRead={setFieldsByJson} />
       </ControlMenuItem>
       <ControlMenuItem>
         <Button.File
           accept=".json"
-          onFileRead={setFormByJson}
+          onFileRead={setFieldsByJson}
           iconOnly
           aria-label="load a json file"
         />
       </ControlMenuItem>
       <ControlMenuItem>
-        <Button.Copy text={form.json} />
+        <Button.Copy text={fields.json} />
       </ControlMenuItem>
       <ControlMenuItem>{clearButton}</ControlMenuItem>
     </ControlMenu>
@@ -67,18 +67,18 @@ export default function ClientBoundary() {
   const yamlControl = (
     <ControlMenu>
       <ControlMenuItem>
-        <Button.Paste onClipboardRead={setFormByYaml} />
+        <Button.Paste onClipboardRead={setFieldsByYaml} />
       </ControlMenuItem>
       <ControlMenuItem>
         <Button.File
           accept=".yml,.yaml"
-          onFileRead={setFormByYaml}
+          onFileRead={setFieldsByYaml}
           iconOnly
           aria-label="load a yaml file"
         />
       </ControlMenuItem>
       <ControlMenuItem>
-        <Button.Copy text={form.yaml} />
+        <Button.Copy text={fields.yaml} />
       </ControlMenuItem>
       <ControlMenuItem>{clearButton}</ControlMenuItem>
     </ControlMenu>
@@ -91,10 +91,10 @@ export default function ClientBoundary() {
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
         <PageSection className="min-h-[200px] flex-1" title="Json" control={jsonControl}>
-          <Editor language="json" value={form.json} onChange={changeJson} />
+          <Editor language="json" value={fields.json} onChange={changeJson} />
         </PageSection>
         <PageSection className="min-h-[200px] flex-1" title="Yaml" control={yamlControl}>
-          <Editor language="yaml" value={form.yaml} onChange={changeYaml} />
+          <Editor language="yaml" value={fields.yaml} onChange={changeYaml} />
         </PageSection>
       </div>
     </PageRootSection>

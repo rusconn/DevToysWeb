@@ -2,36 +2,36 @@ import { useState } from "react";
 import * as html from "html-escaper";
 
 export const usePage = () => {
-  const [form, setForm] = useState({
+  const [fields, setFields] = useState({
     decoded: "<p>NUTS & MILK</p>",
     encoded: "&lt;p&gt;NUTS &amp; MILK&lt;/p&gt;",
   });
 
-  const setFormByDecoded = (text: string) => {
-    setForm({
+  const setFieldsByDecoded = (text: string) => {
+    setFields({
       decoded: text,
       encoded: html.escape(text),
     });
   };
 
-  const setFormByEncoded = (text: string) => {
-    setForm({
+  const setFieldsByEncoded = (text: string) => {
+    setFields({
       decoded: html.unescape(text),
       encoded: text,
     });
   };
 
-  const clearForm = () => {
-    setForm({
+  const clearFields = () => {
+    setFields({
       decoded: "",
       encoded: "",
     });
   };
 
   return {
-    form,
-    setFormByDecoded,
-    setFormByEncoded,
-    clearForm,
+    fields,
+    setFieldsByDecoded,
+    setFieldsByEncoded,
+    clearFields,
   };
 };

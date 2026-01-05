@@ -3,13 +3,13 @@ import { useState } from "react";
 import { safeDecodeURI, safeEncodeURI } from "./lib";
 
 export const usePage = () => {
-  const [form, setForm] = useState({
+  const [fields, setFields] = useState({
     decoded: "https://example.com/?q=foo bar",
     encoded: "https://example.com/?q=foo%20bar",
   });
 
-  const setFormByDecoded = (text: string) => {
-    setForm({
+  const setFieldsByDecoded = (text: string) => {
+    setFields({
       decoded: text,
       encoded: text
         .split("\n")
@@ -18,24 +18,24 @@ export const usePage = () => {
     });
   };
 
-  const setFormByEncoded = (text: string) => {
-    setForm({
+  const setFieldsByEncoded = (text: string) => {
+    setFields({
       decoded: safeDecodeURI(text).unwrapOr(""),
       encoded: text,
     });
   };
 
-  const clearForm = () => {
-    setForm({
+  const clearFields = () => {
+    setFields({
       decoded: "",
       encoded: "",
     });
   };
 
   return {
-    form,
-    setFormByDecoded,
-    setFormByEncoded,
-    clearForm,
+    fields,
+    setFieldsByDecoded,
+    setFieldsByEncoded,
+    clearFields,
   };
 };

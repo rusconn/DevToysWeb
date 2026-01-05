@@ -9,37 +9,37 @@ import {
   type Indentation,
 } from "./lib";
 
-type FormState = {
+type Fields = {
   indentation: Indentation;
   json: string;
   yaml: string;
 };
 
 export const usePage = () => {
-  const [form, setForm] = useState<FormState>({
+  const [fields, setFields] = useState<Fields>({
     indentation: indentations.two,
     json: '{\n  "foo": {\n    "bar": "baz"\n  }\n}',
     yaml: "foo:\n  bar: baz",
   });
 
-  const setFormByJson = (text: string) => {
-    setForm(prev => ({
+  const setFieldsByJson = (text: string) => {
+    setFields(prev => ({
       ...prev,
       json: text,
       yaml: convertJsonToYaml(text, prev.indentation).unwrapOr(""),
     }));
   };
 
-  const setFormByYaml = (text: string) => {
-    setForm(prev => ({
+  const setFieldsByYaml = (text: string) => {
+    setFields(prev => ({
       ...prev,
       json: convertYamlToJson(text, prev.indentation).unwrapOr(""),
       yaml: text,
     }));
   };
 
-  const clearForm = () => {
-    setForm(prev => ({
+  const clearFields = () => {
+    setFields(prev => ({
       ...prev,
       json: "",
       yaml: "",
@@ -47,7 +47,7 @@ export const usePage = () => {
   };
 
   const changeIndentation = (indentation: Indentation) => {
-    setForm(prev => ({
+    setFields(prev => ({
       indentation,
       json: formatJson(prev.json, indentation).unwrapOr(""),
       yaml: formatYaml(prev.yaml, indentation).unwrapOr(""),
@@ -55,10 +55,10 @@ export const usePage = () => {
   };
 
   return {
-    form,
-    setFormByJson,
-    setFormByYaml,
-    clearForm,
+    fields,
+    setFieldsByJson,
+    setFieldsByYaml,
+    clearFields,
     changeIndentation,
   };
 };
