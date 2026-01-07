@@ -6,7 +6,11 @@ import * as icons from "../../_components/primitives/icons";
 import { Input, type InputProps } from "../../_components/primitives/input";
 import * as Select from "../../_components/primitives/select";
 import { Textarea } from "../../_components/primitives/textarea";
-import { Configuration, ConfigurationItem } from "../../_components/configuration";
+import {
+  Configuration,
+  ConfigurationItem,
+  ConfigurationItemWithDesciption,
+} from "../../_components/configuration";
 import { Clear, Copy } from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { LabeledSwitch } from "../../_components/labeled-switch";
@@ -78,7 +82,7 @@ export default function ClientBoundary() {
   );
 
   const uuidVersionConfig = (
-    <ConfigurationItem
+    <ConfigurationItemWithDesciption
       icon={<icons.Settings2 size={24} />}
       title="UUID version"
       description="Choose the version of UUID to generate"

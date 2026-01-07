@@ -9,11 +9,49 @@ export function Configuration({ children }: PropsWithChildren) {
 export type ConfigurationItemProps = {
   icon: ReactNode;
   title: string;
-  description?: string;
   control: ReactNode;
 };
 
-export function ConfigurationItem({ icon, title, description, control }: ConfigurationItemProps) {
+export function ConfigurationItem({ icon, title, control }: ConfigurationItemProps) {
+  return (
+    <Item>
+      {icon}
+      <Title title={title} />
+      <Control control={control} />
+    </Item>
+  );
+}
+
+export type ConfigurationItemWithDescriptionProps = ConfigurationItemProps & {
+  description: string;
+};
+
+export function ConfigurationItemWithDesciption({
+  icon,
+  title,
+  description,
+  control,
+}: ConfigurationItemWithDescriptionProps) {
+  return (
+    <Item>
+      {icon}
+      <div className="flex flex-col">
+        <Title title={title} />
+        <span
+          className={cn(
+            "text-neutral-450 text-xs", //
+            "dark:text-neutral-400",
+          )}
+        >
+          {description}
+        </span>
+      </div>
+      <Control control={control} />
+    </Item>
+  );
+}
+
+function Item({ children }: PropsWithChildren) {
   return (
     <li
       className={cn(
@@ -21,23 +59,15 @@ export function ConfigurationItem({ icon, title, description, control }: Configu
         "dark:bg-neutral-750",
       )}
     >
-      {icon}
-      {description ? (
-        <div className="flex flex-col">
-          <span>{title}</span>
-          <span
-            className={cn(
-              "text-neutral-450 text-xs", //
-              "dark:text-neutral-400",
-            )}
-          >
-            {description}
-          </span>
-        </div>
-      ) : (
-        <span>{title}</span>
-      )}
-      <div className="flex flex-1 justify-end">{control}</div>
+      {children}
     </li>
   );
+}
+
+function Title({ title }: Pick<ConfigurationItemProps, "title">) {
+  return <span>{title}</span>;
+}
+
+function Control({ control }: Pick<ConfigurationItemProps, "control">) {
+  return <div className="flex flex-1 justify-end">{control}</div>;
 }

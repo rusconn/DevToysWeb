@@ -3,7 +3,7 @@
 import { singleTools } from "../_config/tools";
 import * as icons from "../_components/primitives/icons";
 import * as Select from "../_components/primitives/select";
-import { Configuration, ConfigurationItem } from "../_components/configuration";
+import { Configuration, ConfigurationItemWithDesciption } from "../_components/configuration";
 import { PageRootSection } from "../_components/page-root-section";
 
 import { usePage } from "./use-page";
@@ -12,7 +12,7 @@ export default function ClientBoundary() {
   const { theme, setTheme } = usePage();
 
   const appThemeConfig = (
-    <ConfigurationItem
+    <ConfigurationItemWithDesciption
       icon={<icons.Paintbrush size={24} />}
       title="App theme"
       description="Select which app theme to display"
