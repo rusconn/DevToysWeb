@@ -8,7 +8,7 @@ import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { Editor, type EditorProps } from "../../_components/editor";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSection, PageSectionWithControl } from "../../_components/page-section";
 
 import { indentations } from "./lib";
 import { usePage } from "./use-page";
@@ -90,12 +90,12 @@ export default function ClientBoundary() {
         <Configuration>{indentationConfig}</Configuration>
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSection className="min-h-[200px] flex-1" title="Json" control={jsonControl}>
+        <PageSectionWithControl className="min-h-[200px] flex-1" title="Json" control={jsonControl}>
           <Editor language="json" value={fields.json} onChange={changeJson} />
-        </PageSection>
-        <PageSection className="min-h-[200px] flex-1" title="Yaml" control={yamlControl}>
+        </PageSectionWithControl>
+        <PageSectionWithControl className="min-h-[200px] flex-1" title="Yaml" control={yamlControl}>
           <Editor language="yaml" value={fields.yaml} onChange={changeYaml} />
-        </PageSection>
+        </PageSectionWithControl>
       </div>
     </PageRootSection>
   );

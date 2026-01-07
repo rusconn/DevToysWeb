@@ -11,7 +11,7 @@ import { DiffEditor } from "../../_components/diff-editor";
 import { Editor } from "../../_components/editor";
 import { LabeledSwitch } from "../../_components/labeled-switch";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSection, PageSectionWithControl } from "../../_components/page-section";
 
 import { PanelResizeHandle } from "./_components/panel-resize-handle";
 import { ToggleFullSize } from "./_components/toggle-full-size";
@@ -95,18 +95,18 @@ export default function ClientBoundary() {
         <Panel maxSize={VERTICAL_PANEL_MAX_SIZE} className={hiddenInFullHeightMode}>
           <PanelGroup direction="horizontal" autoSaveId={PERSISTENCE_KEY.panels.horizontal}>
             <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
-              <PageSection className="h-full" title="Old text" control={input1Control}>
+              <PageSectionWithControl className="h-full" title="Old text" control={input1Control}>
                 <Editor value={input1} onChange={setInput1} />
-              </PageSection>
+              </PageSectionWithControl>
             </Panel>
             <div className="mt-[42px]">
               <PanelResizeHandle direction="vertical" />
             </div>
 
             <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
-              <PageSection className="h-full" title="New text" control={input2Control}>
+              <PageSectionWithControl className="h-full" title="New text" control={input2Control}>
                 <Editor value={input2} onChange={setInput2} />
-              </PageSection>
+              </PageSectionWithControl>
             </Panel>
           </PanelGroup>
         </Panel>
@@ -115,7 +115,7 @@ export default function ClientBoundary() {
           {...(hiddenInFullHeightMode && { hidden: true })}
         />
         <Panel maxSize={diffPanelMaxSize}>
-          <PageSection className="h-full" title="Difference" control={diffControl}>
+          <PageSectionWithControl className="h-full" title="Difference" control={diffControl}>
             <DiffEditor
               original={input1}
               modified={input2}
@@ -124,7 +124,7 @@ export default function ClientBoundary() {
                 renderSideBySide: !inlineMode,
               }}
             />
-          </PageSection>
+          </PageSectionWithControl>
         </Panel>
       </PanelGroup>
     </PageRootSection>

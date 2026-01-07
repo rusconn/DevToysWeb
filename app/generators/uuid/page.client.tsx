@@ -15,7 +15,7 @@ import { Clear, Copy } from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { LabeledSwitch } from "../../_components/labeled-switch";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSection, PageSectionWithControl } from "../../_components/page-section";
 
 import { versions, type UuidVersion } from "./lib";
 import { usePage } from "./use-page";
@@ -131,9 +131,9 @@ export default function ClientBoundary() {
           </div>
         </div>
       </PageSection>
-      <PageSection className="-mt-3" title="UUID(s)" control={uuidsControl}>
+      <PageSectionWithControl className="-mt-3" title="UUID(s)" control={uuidsControl}>
         <Textarea ref={uuidsRef} value={uuidsString} rows={10} readOnly />
-      </PageSection>
+      </PageSectionWithControl>
     </PageRootSection>
   );
 }

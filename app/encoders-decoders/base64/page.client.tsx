@@ -5,7 +5,7 @@ import { Textarea, type TextareaProps } from "../../_components/primitives/texta
 import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSectionWithControl } from "../../_components/page-section";
 
 import { usePage } from "./use-page";
 
@@ -55,12 +55,12 @@ export default function ClientBoundary() {
   return (
     <PageRootSection title={toolGroups.encodersDecoders.tools.base64.longTitle}>
       <div className="flex flex-col gap-3">
-        <PageSection title="Decoded" control={decodedControl}>
+        <PageSectionWithControl title="Decoded" control={decodedControl}>
           <Textarea value={fields.decoded} onChange={changeFieldsByDecoded} rows={10} />
-        </PageSection>
-        <PageSection title="Encoded" control={encodedControl}>
+        </PageSectionWithControl>
+        <PageSectionWithControl title="Encoded" control={encodedControl}>
           <Textarea value={fields.encoded} onChange={changeFieldsByEncoded} rows={10} />
-        </PageSection>
+        </PageSectionWithControl>
       </div>
     </PageRootSection>
   );

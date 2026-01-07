@@ -8,7 +8,7 @@ import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { Editor, type EditorProps } from "../../_components/editor";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSection, PageSectionWithControl } from "../../_components/page-section";
 
 import { indentations, type Indentation } from "./lib";
 import { usePage } from "./use-page";
@@ -70,12 +70,20 @@ export default function ClientBoundary() {
         <Configuration>{indentationConfig}</Configuration>
       </PageSection>
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSection className="min-h-[200px] flex-1" title="Input" control={inputControl}>
+        <PageSectionWithControl
+          className="min-h-[200px] flex-1"
+          title="Input"
+          control={inputControl}
+        >
           <Editor language="json" value={input} onChange={changeInput} />
-        </PageSection>
-        <PageSection className="min-h-[200px] flex-1" title="Output" control={outputControl}>
+        </PageSectionWithControl>
+        <PageSectionWithControl
+          className="min-h-[200px] flex-1"
+          title="Output"
+          control={outputControl}
+        >
           <Editor language="json" value={output} options={{ readOnly: true }} />
-        </PageSection>
+        </PageSectionWithControl>
       </div>
     </PageRootSection>
   );

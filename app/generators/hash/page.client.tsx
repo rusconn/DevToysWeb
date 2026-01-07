@@ -9,7 +9,7 @@ import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { LabeledSwitch } from "../../_components/labeled-switch";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSection, PageSectionWithControl } from "../../_components/page-section";
 
 import { usePage } from "./use-page";
 
@@ -85,9 +85,9 @@ export default function ClientBoundary() {
       <PageSection title="Configuration">
         <Configuration>{uppercaseConfig}</Configuration>
       </PageSection>
-      <PageSection className="-mt-2" title="Input" control={inputControl}>
+      <PageSectionWithControl className="-mt-2" title="Input" control={inputControl}>
         <Textarea value={input} onChange={changeInput} rows={5} />
-      </PageSection>
+      </PageSectionWithControl>
       <div className="flex flex-col gap-3">
         <PageSection title="MD5">
           <div className="grid grid-cols-[1fr_auto] gap-2">

@@ -6,7 +6,7 @@ import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { Editor } from "../../_components/editor";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSectionWithControl } from "../../_components/page-section";
 
 import { usePage } from "./use-page";
 
@@ -48,16 +48,16 @@ export default function ClientBoundary() {
 
   return (
     <PageRootSection title={toolGroups.encodersDecoders.tools.jwt.longTitle}>
-      <PageSection title="Jwt Token" control={jwtTokenControl}>
+      <PageSectionWithControl title="Jwt Token" control={jwtTokenControl}>
         <Textarea value={jwt} onChange={changeJwt} rows={3} />
-      </PageSection>
+      </PageSectionWithControl>
       <div className="flex flex-col gap-3">
-        <PageSection title="Header" control={heaederControl}>
+        <PageSectionWithControl title="Header" control={heaederControl}>
           <Editor height={180} language="json" value={header} options={{ readOnly: true }} />
-        </PageSection>
-        <PageSection title="Payload" control={payloadControl}>
+        </PageSectionWithControl>
+        <PageSectionWithControl title="Payload" control={payloadControl}>
           <Editor height={180} language="json" value={payload} options={{ readOnly: true }} />
-        </PageSection>
+        </PageSectionWithControl>
       </div>
     </PageRootSection>
   );

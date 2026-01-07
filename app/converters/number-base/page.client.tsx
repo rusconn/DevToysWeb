@@ -8,7 +8,7 @@ import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { LabeledSwitch } from "../../_components/labeled-switch";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSection, PageSectionWithControl } from "../../_components/page-section";
 
 import { usePage } from "./use-page";
 
@@ -80,18 +80,18 @@ export default function ClientBoundary() {
         <Configuration>{formatNumberConfig}</Configuration>
       </PageSection>
       <div className="flex flex-col gap-3">
-        <PageSection title="Decimal" control={decControl}>
+        <PageSectionWithControl title="Decimal" control={decControl}>
           <Input value={dec} onChange={tryChangeDec} />
-        </PageSection>
-        <PageSection title="Hexadecimal" control={hexControl}>
+        </PageSectionWithControl>
+        <PageSectionWithControl title="Hexadecimal" control={hexControl}>
           <Input value={hex} onChange={tryChangeHex} />
-        </PageSection>
-        <PageSection title="Octal" control={octControl}>
+        </PageSectionWithControl>
+        <PageSectionWithControl title="Octal" control={octControl}>
           <Input value={oct} onChange={tryChangeOct} />
-        </PageSection>
-        <PageSection title="Binary" control={binControl}>
+        </PageSectionWithControl>
+        <PageSectionWithControl title="Binary" control={binControl}>
           <Input value={bin} onChange={tryChangeBin} />
-        </PageSection>
+        </PageSectionWithControl>
       </div>
     </PageRootSection>
   );

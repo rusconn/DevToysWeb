@@ -6,7 +6,7 @@ import { ToggleGroup, ToggleGroupItem } from "../../_components/primitives/toggl
 import * as Button from "../../_components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../_components/control-menu";
 import { PageRootSection } from "../../_components/page-root-section";
-import { PageSection } from "../../_components/page-section";
+import { PageSection, PageSectionWithControl } from "../../_components/page-section";
 
 import { modeTitle, TextTransformMode, textTransformModes } from "./lib";
 import { usePage } from "./use-page";
@@ -58,12 +58,20 @@ export default function ClientBoundary() {
       </PageSection>
 
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSection className="min-h-[200px] flex-1" title="Input" control={inputControl}>
+        <PageSectionWithControl
+          className="min-h-[200px] flex-1"
+          title="Input"
+          control={inputControl}
+        >
           <Textarea value={input} onChange={changeInput} rows={10} />
-        </PageSection>
-        <PageSection className="min-h-[200px] flex-1" title="Output" control={outputControl}>
+        </PageSectionWithControl>
+        <PageSectionWithControl
+          className="min-h-[200px] flex-1"
+          title="Output"
+          control={outputControl}
+        >
           <Textarea value={output} rows={10} readOnly />
-        </PageSection>
+        </PageSectionWithControl>
       </div>
 
       <PageSection className="flex-1" title="Information">
