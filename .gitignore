@@ -39,10 +39,5 @@ tsconfig.tsbuildinfo
 .firebase
 firebase-debug.log
 
-# playwright
-/test-results/
-/playwright-report/
-/playwright/.cache/
-
 # editors
 .idea

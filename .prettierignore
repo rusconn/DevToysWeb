@@ -9,6 +9,3 @@ build
 .contentlayer
 pnpm-lock.yaml
 out
-/test-results/
-/playwright-report/
-/playwright/.cache/

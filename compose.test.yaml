@@ -1,9 +1,0 @@
-services:
-  playwright:
-    image: mcr.microsoft.com/playwright:v1.59.1-noble
-    working_dir: /work
-    volumes:
-      - .:/work
-    network_mode: host
-    environment:
-      - CI

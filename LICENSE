@@ -29,7 +29,7 @@ This project includes open source components licensed under other terms,
 including but not limited to:
 
 - Apache License 2.0
-  (e.g. Playwright, TypeScript, Sharp)
+  (e.g. TypeScript, Sharp)
 - BSD 2-Clause / 3-Clause License
   (e.g. some source-map dependencies)
 - ISC License
