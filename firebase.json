@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "out",
+    "public": "build/client",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [
       {
@@ -13,7 +13,7 @@
         ]
       },
       {
-        "source": "favicon.ico",
+        "source": "{favicon.ico,icon.svg,apple-icon.png}",
         "headers": [
           {
             "key": "Cache-Control",
@@ -22,7 +22,7 @@
         ]
       },
       {
-        "source": "_next/static/**",
+        "source": "assets/**",
         "headers": [
           {
             "key": "Cache-Control",

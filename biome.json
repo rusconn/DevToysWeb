@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -7,7 +7,19 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**/*.ts", "**/*.tsx", "!next-env.d.ts"]
+    "includes": ["**/*.ts", "**/*.tsx"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": {
+      "arrowParentheses": "asNeeded",
+      "quoteStyle": "double"
+    }
   },
   "linter": {
     "enabled": true,
@@ -27,12 +39,8 @@
       }
     },
     "domains": {
-      "next": "recommended",
       "react": "recommended"
     }
-  },
-  "formatter": {
-    "enabled": false
   },
   "css": {
     "parser": {
@@ -42,7 +50,29 @@
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "off"
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ":NODE:",
+              ":BLANK_LINE:",
+              "react",
+              "react-dom/**",
+              "react-router",
+              "react-router/**",
+              ":BLANK_LINE:",
+              ":PACKAGE:",
+              ":BLANK_LINE:",
+              "**/config/**",
+              "**/hooks/**",
+              "**/lib/**",
+              "**/layout/**",
+              "**/components/**",
+              ":BLANK_LINE:",
+              ":PATH:"
+            ]
+          }
+        }
       }
     }
   }

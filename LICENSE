@@ -19,32 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
--------------------------------------------------------------------------------
-Third-Party Licenses Notice
--------------------------------------------------------------------------------
-
-This project includes open source components licensed under other terms,
-including but not limited to:
-
-- Apache License 2.0
-  (e.g. TypeScript, Sharp)
-- BSD 2-Clause / 3-Clause License
-  (e.g. some source-map dependencies)
-- ISC License
-  (MIT-compatible)
-- LGPL-3.0-or-later
-  (e.g. @img/sharp-libvips-darwin-arm64)
-- MPL-2.0
-  (e.g. axe-core, used in development only)
-- CC-BY-4.0 / CC0-1.0
-  (e.g. caniuse-lite, language-subtag-registry)
-- BlueOak-1.0.0
-  (e.g. path-scurry)
-
-These components remain under their respective licenses.
-See each package’s repository or `node_modules/<package>/LICENSE` file
-for detailed license information.
-
--------------------------------------------------------------------------------
