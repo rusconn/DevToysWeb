@@ -3,4 +3,4 @@ packages:
 
 allowBuilds:
   "@swc/core": true
-  sharp: true
+  esbuild: true
