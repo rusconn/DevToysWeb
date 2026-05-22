@@ -18,6 +18,9 @@ import { PageRootSection } from "./components/page-root-section";
 import type { Route } from "./+types/root";
 import interFont from "./fonts/inter-latin-wght-normal.woff2";
 import jetbrainsMonoFont from "./fonts/jetbrains-mono-latin-wght-normal.woff2";
+import appleTouchIcon from "./icons/apple-icon.png";
+import favicon from "./icons/favicon.ico";
+import icon from "./icons/icon.svg";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -37,19 +40,19 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "icon",
-    href: "/favicon.ico",
+    href: favicon,
     sizes: "32x32",
     type: "image/x-icon",
   },
   {
     rel: "icon",
-    href: "/icon.svg",
+    href: icon,
     sizes: "any",
     type: "image/svg+xml",
   },
   {
     rel: "apple-touch-icon",
-    href: "/apple-icon.png",
+    href: appleTouchIcon,
     sizes: "180x180",
     type: "image/png",
   },

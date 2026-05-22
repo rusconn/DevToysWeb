@@ -4,6 +4,9 @@ import { defineConfig } from "vite";
 import babel from "vite-plugin-babel";
 
 export default defineConfig({
+  build: {
+    assetsInlineLimit: 0,
+  },
   plugins: [
     babel({
       include: ["./app/**/*"],
