@@ -13,13 +13,10 @@ export function SearchBar() {
   const [shouldPrefetch, setShouldPrefetch] = useState(false);
 
   const search = () => {
-    const trimmedText = text.trim();
-    if (trimmedText) {
-      navigate({
-        pathname: "/search",
-        search: `q=${encodeURIComponent(trimmedText)}`,
-      });
-    }
+    navigate({
+      pathname: "/search",
+      search: `q=${encodeURIComponent(text.trim())}`,
+    });
   };
 
   const changeText: InputProps["onChange"] = e => setText(e.currentTarget.value);
