@@ -1,4 +1,4 @@
-import YAML from "js-yaml";
+import * as YAML from "js-yaml";
 import { fromThrowable } from "neverthrow";
 
 import { safeJsonParse } from "../../../lib/json";
@@ -12,7 +12,7 @@ export type Indentation = (typeof indentations)[keyof typeof indentations];
 
 export const convertJsonToYaml = (json: string, indentation: Indentation) => {
   const indent = Number(indentation);
-  return safeJsonParse(json).map(x => YAML.dump(x, { indent, quotingType: '"' }));
+  return safeJsonParse(json).map(x => YAML.dump(x, { indent, quoteStyle: "double" }));
 };
 
 export const formatJson = (json: string, indentation: Indentation) => {
@@ -29,5 +29,5 @@ export const convertYamlToJson = (yaml: string, indentation: Indentation) => {
 
 export const formatYaml = (yaml: string, indentation: Indentation) => {
   const indent = Number(indentation);
-  return safeYamlParse(yaml).map(x => YAML.dump(x, { indent, quotingType: '"' }));
+  return safeYamlParse(yaml).map(x => YAML.dump(x, { indent, quoteStyle: "double" }));
 };

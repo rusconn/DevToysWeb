@@ -235,8 +235,8 @@ importers:
         specifier: ^5.1.36
         version: 5.1.40
       js-yaml:
-        specifier: ^4.1.0
-        version: 4.1.1
+        specifier: ^5.2.0
+        version: 5.2.0
       jwt-decode:
         specifier: ^4.0.0
         version: 4.0.0
@@ -295,9 +295,6 @@ importers:
       '@types/html-escaper':
         specifier: ^3.0.0
         version: 3.0.4
-      '@types/js-yaml':
-        specifier: ^4.0.5
-        version: 4.0.9
       '@types/node':
         specifier: ~24.0.15
         version: 24.0.15
@@ -2012,9 +2009,6 @@ packages:
   '@types/html-escaper@3.0.4':
     resolution: {integrity: sha512-UKSaMPMXXKnq1jDj74seVikfdq5pWvoXcIgOUbwYzHuAEGiv8/juom1i/MsWBF8boFSI0uHQCSZauzr5OYnnJA==}
 
-  '@types/js-yaml@4.0.9':
-    resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
-
   '@types/node@24.0.15':
     resolution: {integrity: sha512-oaeTSbCef7U/z7rDeJA138xpG3NuKc64/rZ2qmUFkFJmnMsAPaluIifqyWd8hSSMxyP9oie3dLAqYPblag9KgA==}
 
@@ -2464,8 +2458,8 @@ packages:
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
-  js-yaml@4.1.1:
-    resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
+  js-yaml@5.2.0:
+    resolution: {integrity: sha512-YeLUMlvR4Ou1B119LIaM0r65JvbOBooJDc9yEu0dClb/uSC5P4FrLU8OCCz/HXWvtPoIrR0dRzABTjo1sTN9Bw==}
     hasBin: true
 
   jsdom@29.1.1:
@@ -4758,8 +4752,6 @@ snapshots:
 
   '@types/html-escaper@3.0.4': {}
 
-  '@types/js-yaml@4.0.9': {}
-
   '@types/node@24.0.15':
     dependencies:
       undici-types: 7.8.0
@@ -5172,7 +5164,7 @@ snapshots:
 
   js-tokens@4.0.0: {}
 
-  js-yaml@4.1.1:
+  js-yaml@5.2.0:
     dependencies:
       argparse: 2.0.1
 
