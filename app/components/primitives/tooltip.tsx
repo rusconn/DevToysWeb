@@ -15,7 +15,7 @@ export const TooltipContent = ({
   <TooltipPrimitive.Content
     sideOffset={sideOffset}
     className={cn(
-      "fade-in-50 z-50 animate-in overflow-hidden rounded-md border bg-neutral-100 px-3 py-1.5 text-neutral-700 shadow-md",
+      "fade-in-50 animate-in z-50 overflow-hidden rounded-md border bg-neutral-100 px-3 py-1.5 text-neutral-700 shadow-md",
       "data-[side=bottom]:slide-in-from-top-1",
       "data-[side=left]:slide-in-from-right-1",
       "data-[side=right]:slide-in-from-left-1",

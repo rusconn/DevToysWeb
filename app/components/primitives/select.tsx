@@ -43,7 +43,7 @@ export const Content = ({
     <Select.Content
       position={position}
       className={cn(
-        "fade-in-80 relative z-50 animate-in overflow-hidden rounded-md border bg-neutral-50 text-neutral-750 shadow-md",
+        "fade-in-80 animate-in text-neutral-750 relative z-50 overflow-hidden rounded-md border bg-neutral-50 shadow-md",
         "dark:bg-neutral-800 dark:text-neutral-200",
         position === "popper" && "translate-y-1",
       )}
@@ -72,7 +72,7 @@ export const Item = ({
 }: Omit<ComponentPropsWithRef<typeof Select.Item>, "className">) => (
   <Select.Item
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm px-2.5 py-1.5 outline-hidden",
+      "relative flex w-full cursor-default items-center rounded-sm px-2.5 py-1.5 outline-hidden select-none",
       "hover:bg-neutral-150",
       "focus:bg-neutral-150",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
@@ -92,4 +92,4 @@ export const Item = ({
 
 export const Separator = (
   props: Omit<ComponentPropsWithRef<typeof Select.Separator>, "className">,
-) => <Select.Separator className="-mx-1 my-1 h-px bg-neutral-850" {...props} />;
+) => <Select.Separator className="bg-neutral-850 -mx-1 my-1 h-px" {...props} />;

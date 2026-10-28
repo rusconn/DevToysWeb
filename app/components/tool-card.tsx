@@ -10,7 +10,7 @@ export function ToolCard({ Icon, longTitle, description, path }: ToolCardProps) 
     <Link className="rounded" to={path} prefetch="viewport">
       <div
         className={cn(
-          "group flex h-80 w-44 flex-col items-center gap-5 overflow-hidden rounded border bg-neutral-50 p-5 text-neutral-850",
+          "group text-neutral-850 flex h-80 w-44 flex-col items-center gap-5 overflow-hidden rounded border bg-neutral-50 p-5",
           "hover:bg-neutral-150",
           "dark:bg-neutral-750 dark:text-neutral-200",
           "dark:hover:bg-neutral-700",

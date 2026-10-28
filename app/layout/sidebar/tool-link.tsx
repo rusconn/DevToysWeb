@@ -16,7 +16,7 @@ export function ToolLink({ Icon, shortTitle: title, path, onClick, highlight, gr
     <Link
       className={cn(
         "flex h-10 items-center gap-3 rounded",
-        highlight === "both" && "bg-neutral-200 dark:bg-neutral-750",
+        highlight === "both" && "dark:bg-neutral-750 bg-neutral-200",
         grouped && "pl-8 -outline-offset-1", // -outline-offset-1: ugly hack for Chrome outlines
         "hover:bg-neutral-200",
         "dark:hover:bg-neutral-750",
@@ -28,7 +28,7 @@ export function ToolLink({ Icon, shortTitle: title, path, onClick, highlight, gr
       <span className={cn("flex items-center", highlight === "none" && "invisible")}>
         <Indicator />
       </span>
-      <span className="flex select-none items-center gap-4">
+      <span className="flex items-center gap-4 select-none">
         <Icon size={16} />
         <span>{title}</span>
       </span>

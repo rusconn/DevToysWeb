@@ -91,7 +91,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body
         className={cn(
-          "h-screen bg-neutral-150 font-medium font-sans text-neutral-750 text-sm antialiased",
+          "bg-neutral-150 text-neutral-750 h-screen font-sans text-sm font-medium antialiased",
           "dark:bg-neutral-850 dark:text-neutral-200",
         )}
       >

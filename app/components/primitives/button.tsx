@@ -17,15 +17,15 @@ export const buttonVariants = cva(
           "dark:hover:bg-neutral-750",
         ],
         control: [
-          "inline-flex items-center border bg-neutral-50 text-neutral-750",
+          "text-neutral-750 inline-flex items-center border bg-neutral-50",
           "hover:bg-neutral-100",
           "dark:bg-neutral-750 dark:text-neutral-200",
           "dark:hover:bg-neutral-700",
         ],
         accent: [
-          "bg-sky-700 text-neutral-150",
+          "text-neutral-150 bg-sky-700",
           "hover:bg-sky-600",
-          "dark:bg-indigo-300 dark:text-neutral-850",
+          "dark:text-neutral-850 dark:bg-indigo-300",
           "dark:hover:bg-indigo-400",
         ],
       },

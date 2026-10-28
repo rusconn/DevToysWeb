@@ -11,7 +11,7 @@ export type SwitchProps = Omit<ComponentPropsWithRef<typeof SwitchPrimitive.Root
 export const Switch = ({ peer, ...props }: SwitchProps) => (
   <SwitchPrimitive.Root
     className={cn(
-      "group inline-flex h-5 w-10 shrink-0 cursor-pointer items-center rounded-full border border-neutral-450 bg-neutral-150",
+      "group border-neutral-450 bg-neutral-150 inline-flex h-5 w-10 shrink-0 cursor-pointer items-center rounded-full border",
       peer && "peer",
       "hover:bg-neutral-200",
       "disabled:cursor-not-allowed disabled:opacity-50",
@@ -30,10 +30,10 @@ export const Switch = ({ peer, ...props }: SwitchProps) => (
   >
     <SwitchPrimitive.Thumb
       className={cn(
-        "pointer-events-none block size-3.5 rounded-full bg-neutral-750/80 shadow-lg transition-transform",
+        "bg-neutral-750/80 pointer-events-none block size-3.5 rounded-full shadow-lg transition-transform",
         "group-hover:size-4",
         "group-disabled:size-3.5",
-        "data-[state=checked]:translate-x-5.5 data-[state=checked]:bg-neutral-150",
+        "data-[state=checked]:bg-neutral-150 data-[state=checked]:translate-x-5.5",
         "data-[state=unchecked]:translate-x-0.5",
         "dark:bg-neutral-200/80",
         "dark:data-[state=checked]:bg-neutral-850",
