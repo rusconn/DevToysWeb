@@ -56,7 +56,7 @@
     "@types/node": "~24.0.15",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "@vitejs/plugin-react-swc": "^4.3.1",
+    "@vitejs/plugin-react": "^6.1.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "jsdom": "^30.1.3",
     "react-router-auto-routes": "^1.0.0",
