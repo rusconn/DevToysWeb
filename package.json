@@ -27,7 +27,7 @@
     "@noble/hashes": "^2.4.0",
     "@react-router/node": "7.15.1",
     "change-case": "^5.4.4",
-    "class-variance-authority": "^0.6.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "fuse.js": "^7.1.0",
     "html-escaper": "^3.0.3",
@@ -42,7 +42,7 @@
     "react-resizable-panels": "^3.0.5",
     "react-router": "7.15.1",
     "tailwindcss-animate": "^1.0.5",
-    "uuid": "^13.0.0"
+    "uuid": "^14.0.3"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.28.5",
@@ -59,7 +59,7 @@
     "@vitejs/plugin-react-swc": "^4.3.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "jsdom": "^29.1.1",
-    "react-router-auto-routes": "^0.8.4",
+    "react-router-auto-routes": "^1.0.0",
     "serve": "^14.2.1",
     "tailwindcss": "^4.1.17",
     "typescript": "^5.6.3",
