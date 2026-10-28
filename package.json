@@ -62,7 +62,7 @@
     "react-router-auto-routes": "^1.0.0",
     "serve": "^14.2.1",
     "tailwindcss": "^4.1.17",
-    "typescript": "^5.6.3",
+    "typescript": "^7.0.2",
     "vite": "^8.0.3",
     "vite-plugin-babel": "^1.7.1",
     "vitest": "^5.0.5"
