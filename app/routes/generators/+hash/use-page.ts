@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-import MD5 from "crypto-js/md5";
-import SHA1 from "crypto-js/sha1";
-import SHA256 from "crypto-js/sha256";
-import SHA512 from "crypto-js/sha512";
+import { md5, sha1 } from "@noble/hashes/legacy.js";
+import { sha256, sha512 } from "@noble/hashes/sha2.js";
+import { bytesToHex } from "@noble/hashes/utils.js";
 
 export const usePage = () => {
   const [uppercase, setUppercase] = useState(false);
@@ -13,15 +12,12 @@ export const usePage = () => {
     setInput("");
   };
 
-  const newMd5 = MD5(input).toString();
-  const newSha1 = SHA1(input).toString();
-  const newSha256 = SHA256(input).toString();
-  const newSha512 = SHA512(input).toString();
+  const bytes = encoder.encode(input);
 
-  const md5 = uppercase ? newMd5.toUpperCase() : newMd5;
-  const sha1 = uppercase ? newSha1.toUpperCase() : newSha1;
-  const sha256 = uppercase ? newSha256.toUpperCase() : newSha256;
-  const sha512 = uppercase ? newSha512.toUpperCase() : newSha512;
+  const newMd5 = bytesToHex(md5(bytes));
+  const newSha1 = bytesToHex(sha1(bytes));
+  const newSha256 = bytesToHex(sha256(bytes));
+  const newSha512 = bytesToHex(sha512(bytes));
 
   return {
     uppercase,
@@ -29,9 +25,11 @@ export const usePage = () => {
     input,
     setInput,
     clearInput,
-    md5,
-    sha1,
-    sha256,
-    sha512,
+    md5: uppercase ? newMd5.toUpperCase() : newMd5,
+    sha1: uppercase ? newSha1.toUpperCase() : newSha1,
+    sha256: uppercase ? newSha256.toUpperCase() : newSha256,
+    sha512: uppercase ? newSha512.toUpperCase() : newSha512,
   };
 };
+
+const encoder = new TextEncoder();
