@@ -1,0 +1,85 @@
+{
+  "format_on_save": "on",
+
+  "file_scan_exclusions": ["...", ".react-router"],
+
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true,
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "tailwindCSS": {
+          "classFunctions": ["cva", "cn"],
+        },
+      },
+    },
+  },
+
+  "languages": {
+    "TypeScript": {
+      "language_servers": [
+        "biome",
+        "typescript-ls",
+        "tailwindcss-language-server",
+      ],
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "TSX": {
+      "language_servers": [
+        "biome",
+        "typescript-ls",
+        "tailwindcss-language-server",
+      ],
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "JavaScript": {
+      "language_servers": [
+        "biome",
+        "typescript-ls",
+        "tailwindcss-language-server",
+      ],
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "JSON": {
+      "language_servers": ["json-language-server", "depsy"],
+      "formatter": "prettier",
+    },
+    "JSONC": {
+      "language_servers": ["json-language-server", "depsy"],
+      "formatter": "prettier",
+    },
+    "Markdown": {
+      "enable_language_server": false,
+      "formatter": "prettier",
+    },
+    "YAML": {
+      "language_servers": ["yaml-language-server", "depsy"],
+      "formatter": "prettier",
+    },
+    "CSS": {
+      "language_servers": ["tailwindcss-intellisense-css"],
+      "formatter": "prettier",
+    },
+    "TOML": {
+      "language_servers": ["taplo"],
+    },
+    "Plain Text": {
+      "language_servers": [],
+    },
+  },
+}
