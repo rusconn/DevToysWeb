@@ -25,7 +25,7 @@ export function Base({ icon, iconOnly, labelText, ...props }: BaseProps) {
   return iconOnly ? (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild>{button}</TooltipTrigger>
+        <TooltipTrigger render={button} />
         <TooltipContent>
           <p>{labelText}</p>
         </TooltipContent>

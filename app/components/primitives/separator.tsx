@@ -1,16 +1,14 @@
 import type { ComponentPropsWithRef } from "react";
 
-import { Separator as SeparatorPrimitive } from "radix-ui";
+import { Separator as SeparatorPrimitive } from "@base-ui/react/separator";
 
 import { cn } from "../../lib/style";
 
 export const Separator = ({
   orientation = "horizontal",
-  decorative = true,
   ...props
-}: Omit<ComponentPropsWithRef<typeof SeparatorPrimitive.Root>, "className">) => (
-  <SeparatorPrimitive.Root
-    decorative={decorative}
+}: Omit<ComponentPropsWithRef<typeof SeparatorPrimitive>, "className">) => (
+  <SeparatorPrimitive
     orientation={orientation}
     className={cn(
       "bg-neutral-200",

@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 
-import { Select } from "radix-ui";
+import { Select } from "@base-ui/react/select";
 
 import { cn } from "../../lib/style";
 
@@ -28,37 +28,26 @@ export const Trigger = ({
     {...props}
   >
     {children}
-    <Select.Icon asChild>
-      <icons.ChevronDown className="size-4 opacity-50" />
-    </Select.Icon>
+    <Select.Icon render={<icons.ChevronDown className="size-4 opacity-50" />} />
   </Select.Trigger>
 );
 
 export const Content = ({
   children,
-  position = "popper",
   ...props
-}: Omit<ComponentPropsWithRef<typeof Select.Content>, "className">) => (
+}: Omit<ComponentPropsWithRef<typeof Select.Positioner>, "className">) => (
   <Select.Portal>
-    <Select.Content
-      position={position}
-      className={cn(
-        "fade-in-80 animate-in text-neutral-750 relative z-50 overflow-hidden rounded-md border bg-neutral-50 shadow-md",
-        "dark:bg-neutral-800 dark:text-neutral-200",
-        position === "popper" && "translate-y-1",
-      )}
-      {...props}
-    >
-      <Select.Viewport
+    <Select.Positioner alignItemWithTrigger={false} {...props}>
+      <Select.Popup
         className={cn(
-          "p-1",
-          position === "popper" &&
-            "h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width)",
+          "fade-in-80 animate-in text-neutral-750 relative z-50 overflow-hidden rounded-md border bg-neutral-50 shadow-md",
+          "dark:bg-neutral-800 dark:text-neutral-200",
+          "translate-y-1",
         )}
       >
-        {children}
-      </Select.Viewport>
-    </Select.Content>
+        <Select.List className="min-w-(--anchor-width) p-1">{children}</Select.List>
+      </Select.Popup>
+    </Select.Positioner>
   </Select.Portal>
 );
 

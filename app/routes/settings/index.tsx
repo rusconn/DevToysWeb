@@ -25,7 +25,11 @@ export default function Index() {
       title="App theme"
       description="Select which app theme to display"
       control={
-        <Select.Root value={theme} onValueChange={value => setTheme(value as Theme)}>
+        <Select.Root
+          items={{ light: "Light", dark: "Dark", system: "System" }}
+          value={theme}
+          onValueChange={value => setTheme(value as Theme)}
+        >
           <Select.Trigger aria-label="toggle open/close state of app theme selection">
             <Select.Value placeholder={theme} />
           </Select.Trigger>

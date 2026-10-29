@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
-import { Accordion } from "radix-ui";
+import { Accordion } from "@base-ui/react/accordion";
 
 import { toolGroups } from "../../config/tools";
 
@@ -22,7 +22,7 @@ export function ToolGroups() {
   }, [pathname]);
 
   return (
-    <Accordion.Root type="multiple" value={expandedGroups} onValueChange={setExpandedGroups}>
+    <Accordion.Root multiple value={expandedGroups} onValueChange={v => setExpandedGroups(v)}>
       <ul className="flex flex-col gap-1">
         {Object.values(toolGroups).map(group => (
           <li key={group.path}>

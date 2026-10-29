@@ -37,7 +37,11 @@ export default function JsonYaml() {
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
-        <Select.Root value={fields.indentation} onValueChange={changeIndentation}>
+        <Select.Root
+          items={{ "2": "2 spaces", "4": "4 spaces" }}
+          value={fields.indentation}
+          onValueChange={v => v && changeIndentation(v)}
+        >
           <Select.Trigger aria-label="toggle open/close state of indentation selection">
             <Select.Value placeholder={fields.indentation} />
           </Select.Trigger>

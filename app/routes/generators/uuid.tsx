@@ -98,7 +98,11 @@ export default function Uuid() {
       title="UUID version"
       description="Choose the version of UUID to generate"
       control={
-        <Select.Root value={uuidVersion} onValueChange={changeUuidVersion}>
+        <Select.Root
+          items={{ [versions.v1]: "1", [versions.v4]: "4 (GUID)" }}
+          value={uuidVersion}
+          onValueChange={changeUuidVersion}
+        >
           <Select.Trigger aria-label="toggle open/close state of uuid version selection">
             <Select.Value placeholder={uuidVersion} />
           </Select.Trigger>

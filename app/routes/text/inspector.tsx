@@ -59,7 +59,7 @@ export default function Inspector() {
   return (
     <PageRootSection title={toolGroups.text.tools.inspector_and_case_converter.longTitle}>
       <PageSection title="Convert">
-        <ToggleGroup type="single" value={mode} onValueChange={tryChangeMode}>
+        <ToggleGroup value={[mode]} onValueChange={([v]) => v && tryChangeMode(v)}>
           {textTransformModes.map(m => (
             <ToggleGroupItem key={m} value={m}>
               {modeTitle[m]}

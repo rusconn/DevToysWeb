@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 
-import { Accordion } from "radix-ui";
+import { Accordion } from "@base-ui/react/accordion";
 
 import type { ToolGroup as IToolGroup } from "../../config/tools";
 import { cn } from "../../lib/style";
@@ -15,7 +15,7 @@ type Props = IToolGroup & {
 
 export function ToolGroup({ Icon, title, path, tools, isOpend }: Props) {
   const { pathname } = useLocation();
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement>(null);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -33,37 +33,34 @@ export function ToolGroup({ Icon, title, path, tools, isOpend }: Props) {
     : "none";
 
   return (
-    <Accordion.AccordionItem value={path}>
-      <Accordion.Header asChild>
-        <div className="relative flex">
-          <div className="flex-1">
-            <ToolLink
-              Icon={Icon}
-              path={path}
-              onClick={clickTrigger}
-              shortTitle={title}
-              highlight={groupHighlight}
-            />
-          </div>
-          <Accordion.Trigger
-            ref={triggerRef}
-            className={cn(
-              "absolute right-0 flex size-10 items-center justify-center rounded transition-all duration-0",
-              "hover:bg-neutral-200",
-              "[&[data-state=open]>svg]:rotate-180",
-              "dark:hover:bg-neutral-750",
-            )}
-            aria-label="toggle open/close state of the tool group"
-          >
-            <icons.ChevronDown className="size-4 transition-transform duration-200" />
-          </Accordion.Trigger>
+    <Accordion.Item value={path}>
+      <Accordion.Header render={<div className="relative flex" />}>
+        <div className="flex-1">
+          <ToolLink
+            Icon={Icon}
+            path={path}
+            onClick={clickTrigger}
+            shortTitle={title}
+            highlight={groupHighlight}
+          />
         </div>
+        <Accordion.Trigger
+          ref={triggerRef}
+          className={cn(
+            "absolute right-0 flex size-10 items-center justify-center rounded transition-all duration-0",
+            "hover:bg-neutral-200",
+            "[&[data-panel-open]>svg]:rotate-180",
+            "dark:hover:bg-neutral-750",
+          )}
+          aria-label="toggle open/close state of the tool group"
+        >
+          <icons.ChevronDown className="size-4 transition-transform duration-200" />
+        </Accordion.Trigger>
       </Accordion.Header>
-      <Accordion.AccordionContent
+      <Accordion.Panel
         className={cn(
-          "overflow-hidden transition-all",
-          "data-[state=open]:animate-accordion-down",
-          "data-[state=closed]:animate-accordion-up",
+          "h-(--accordion-panel-height) overflow-hidden transition-[height] duration-200 ease-out",
+          "data-ending-style:h-0 data-starting-style:h-0",
         )}
       >
         <ul>
@@ -77,7 +74,7 @@ export function ToolGroup({ Icon, title, path, tools, isOpend }: Props) {
             </li>
           ))}
         </ul>
-      </Accordion.AccordionContent>
-    </Accordion.AccordionItem>
+      </Accordion.Panel>
+    </Accordion.Item>
   );
 }

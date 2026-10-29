@@ -39,7 +39,11 @@ export default function Json() {
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
       title="Indentation"
       control={
-        <Select.Root value={indentation} onValueChange={changeIndentation}>
+        <Select.Root
+          items={{ "2": "2 spaces", "4": "4 spaces", "\t": "1 tab", "0": "minified" }}
+          value={indentation}
+          onValueChange={changeIndentation}
+        >
           <Select.Trigger aria-label="toggle open/close state of indentation selection">
             <Select.Value placeholder={indentation} />
           </Select.Trigger>
