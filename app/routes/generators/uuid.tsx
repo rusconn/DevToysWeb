@@ -4,7 +4,7 @@ import { toolGroups } from "../../config/tools";
 import {
   Configuration,
   ConfigurationItem,
-  ConfigurationItemWithDesciption,
+  ConfigurationItemWithDescription,
 } from "../../components/configuration";
 import { Clear, Copy } from "../../components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../components/control-menu";
@@ -93,7 +93,7 @@ export default function Uuid() {
   );
 
   const uuidVersionConfig = (
-    <ConfigurationItemWithDesciption
+    <ConfigurationItemWithDescription
       icon={<icons.Settings2 size={24} />}
       title="UUID version"
       description="Choose the version of UUID to generate"

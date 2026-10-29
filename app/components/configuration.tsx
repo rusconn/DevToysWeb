@@ -26,7 +26,7 @@ export type ConfigurationItemWithDescriptionProps = ConfigurationItemProps & {
   description: string;
 };
 
-export function ConfigurationItemWithDesciption({
+export function ConfigurationItemWithDescription({
   icon,
   title,
   description,

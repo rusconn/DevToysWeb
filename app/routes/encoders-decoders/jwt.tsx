@@ -40,7 +40,7 @@ export default function Jwt() {
     </ControlMenu>
   );
 
-  const heaederControl = (
+  const headerControl = (
     <ControlMenu>
       <ControlMenuItem>
         <Button.Copy text={header} />
@@ -61,7 +61,7 @@ export default function Jwt() {
         <Textarea value={jwt} onChange={changeJwt} rows={3} />
       </PageSectionWithControl>
       <div className="flex flex-col gap-3">
-        <PageSectionWithControl title="Header" control={heaederControl}>
+        <PageSectionWithControl title="Header" control={headerControl}>
           <Editor height={180} language="json" value={header} options={{ readOnly: true }} />
         </PageSectionWithControl>
         <PageSectionWithControl title="Payload" control={payloadControl}>
