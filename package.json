@@ -41,7 +41,6 @@
     "react-dom": "19.3.1",
     "react-resizable-panels": "^3.0.5",
     "react-router": "8.5.0",
-    "tailwindcss-animate": "^1.0.5",
     "uuid": "^14.0.3"
   },
   "devDependencies": {
@@ -61,6 +60,7 @@
     "jsdom": "^30.1.3",
     "react-router-auto-routes": "^1.0.0",
     "tailwindcss": "^4.1.17",
+    "tw-animate-css": "^1.4.0",
     "typescript": "^7.0.2",
     "vite": "^8.0.3",
     "vite-plugin-babel": "^1.7.1",
