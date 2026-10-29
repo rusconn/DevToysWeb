@@ -6,18 +6,13 @@ import { PageRootSection } from "../../components/page-root-section";
 import { PageSectionWithControl } from "../../components/page-section";
 import { Textarea, type TextareaProps } from "../../components/primitives/textarea";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import { usePage } from "./+jwt/use-page";
 import type { Route } from "./+types";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.encodersDecoders.tools.jwt.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.encodersDecoders.tools.jwt.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.encodersDecoders.tools.jwt);
+};
 
 export default function Jwt() {
   const { jwt, setJwt, clearJwt, header, payload } = usePage();

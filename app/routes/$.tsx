@@ -1,12 +1,11 @@
 import { PageRootSection } from "../components/page-root-section";
 
-import { pageTitle } from "../utils/title";
+import { noindexMeta } from "../utils/meta";
 import type { Route } from "./+types/$";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle("Not Found") },
-  { name: "googlebot", content: "noindex" },
-];
+export const meta: Route.MetaFunction = () => {
+  return noindexMeta("Not Found");
+};
 
 export default function NotFound() {
   return (

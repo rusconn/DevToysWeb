@@ -8,19 +8,14 @@ import { PageSection, PageSectionWithControl } from "../../components/page-secti
 import * as icons from "../../components/primitives/icons";
 import * as Select from "../../components/primitives/select";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import { indentations } from "./+json-yaml/lib";
 import { usePage } from "./+json-yaml/use-page";
 import type { Route } from "./+types";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.converters.tools.jsonYaml.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.converters.tools.jsonYaml.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.converters.tools.jsonYaml);
+};
 
 export default function JsonYaml() {
   const { fields, setFieldsByJson, setFieldsByYaml, clearFields, changeIndentation } = usePage();

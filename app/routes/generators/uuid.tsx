@@ -17,19 +17,14 @@ import { Input, type InputProps } from "../../components/primitives/input";
 import * as Select from "../../components/primitives/select";
 import { Textarea } from "../../components/primitives/textarea";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import type { Route } from "./+types";
 import { type UuidVersion, versions } from "./+uuid/lib";
 import { usePage } from "./+uuid/use-page";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.generators.tools.uuid.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.generators.tools.uuid.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.generators.tools.uuid);
+};
 
 export default function Uuid() {
   const {

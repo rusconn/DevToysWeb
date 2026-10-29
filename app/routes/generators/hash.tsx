@@ -11,18 +11,13 @@ import * as icons from "../../components/primitives/icons";
 import { Input } from "../../components/primitives/input";
 import { Textarea, type TextareaProps } from "../../components/primitives/textarea";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import { usePage } from "./+hash/use-page";
 import type { Route } from "./+types";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.generators.tools.hash.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.generators.tools.hash.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.generators.tools.hash);
+};
 
 export default function Hash() {
   const { uppercase, setUppercase, input, setInput, clearInput, md5, sha1, sha256, sha512 } =

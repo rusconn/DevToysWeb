@@ -2,13 +2,12 @@ import { toolGroups } from "../../config/tools";
 import { PageRootSection } from "../../components/page-root-section";
 import { ToolCards } from "../../components/tool-cards";
 
-import { pageTitle } from "../../utils/title";
+import { noindexMeta } from "../../utils/meta";
 import type { Route } from "./+types";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.converters.title) },
-  { name: "googlebot", content: "noindex" },
-];
+export const meta: Route.MetaFunction = () => {
+  return noindexMeta(toolGroups.converters.title);
+};
 
 export default function Index() {
   return (

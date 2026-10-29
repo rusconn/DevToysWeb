@@ -13,7 +13,7 @@ import { PageRootSection } from "../../components/page-root-section";
 import { PageSection, PageSectionWithControl } from "../../components/page-section";
 import * as icons from "../../components/primitives/icons";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import {
   HORIZONTAL_PANEL_MAX_SIZE,
   PERSISTENCE_KEY,
@@ -24,14 +24,9 @@ import { ToggleFullSize } from "./+diff/toggle-full-size";
 import { usePage } from "./+diff/use-page";
 import type { Route } from "./+types";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.text.tools.diff.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.text.tools.diff.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.text.tools.diff);
+};
 
 export default function Diff() {
   const {

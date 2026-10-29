@@ -6,7 +6,7 @@ import { homeTools } from "../../config/tools";
 import { PageRootSection } from "../../components/page-root-section";
 import { ToolCards } from "../../components/tool-cards";
 
-import { pageTitle } from "../../utils/title";
+import { noindexMeta } from "../../utils/meta";
 import type { Route } from "./+types";
 
 const fuse = new Fuse(homeTools, {
@@ -14,10 +14,9 @@ const fuse = new Fuse(homeTools, {
   threshold: 0.45,
 });
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle("Search results") },
-  { name: "googlebot", content: "noindex" },
-];
+export const meta: Route.MetaFunction = () => {
+  return noindexMeta("Search results");
+};
 
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
   const url = new URL(request.url);

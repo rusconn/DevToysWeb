@@ -8,19 +8,14 @@ import { PageSection, PageSectionWithControl } from "../../components/page-secti
 import { Textarea, type TextareaProps } from "../../components/primitives/textarea";
 import { ToggleGroup, ToggleGroupItem } from "../../components/primitives/toggle-group";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import { modeTitle, TextTransformMode, textTransformModes } from "./+inspector/lib";
 import { usePage } from "./+inspector/use-page";
 import type { Route } from "./+types";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.text.tools.inspector_and_case_converter.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.text.tools.inspector_and_case_converter.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.text.tools.inspector_and_case_converter);
+};
 
 export default function Inspector() {
   const { input, setInput, clearInput, mode, setMode, output, stats } = usePage();

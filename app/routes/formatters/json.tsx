@@ -10,19 +10,14 @@ import { PageSection, PageSectionWithControl } from "../../components/page-secti
 import * as icons from "../../components/primitives/icons";
 import * as Select from "../../components/primitives/select";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import { type Indentation, indentations } from "./+json/lib";
 import { usePage } from "./+json/use-page";
 import type { Route } from "./+types";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.formatters.tools.json.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.formatters.tools.json.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.formatters.tools.json);
+};
 
 export default function Json() {
   const { indentation, setIndentation, input, setInput, clearInput, output } = usePage();

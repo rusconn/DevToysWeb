@@ -7,14 +7,13 @@ import { PageRootSection } from "../../components/page-root-section";
 import * as icons from "../../components/primitives/icons";
 import * as Select from "../../components/primitives/select";
 
-import { pageTitle } from "../../utils/title";
+import { noindexMeta } from "../../utils/meta";
 import type { Route } from "./+types";
 import { usePage } from "./+use-page";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(singleTools.settings.longTitle) },
-  { name: "googlebot", content: "noindex" },
-];
+export const meta: Route.MetaFunction = () => {
+  return noindexMeta(singleTools.settings.longTitle);
+};
 
 export default function Index() {
   const { theme, setTheme } = usePage();

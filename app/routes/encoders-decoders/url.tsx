@@ -5,18 +5,13 @@ import { PageRootSection } from "../../components/page-root-section";
 import { PageSectionWithControl } from "../../components/page-section";
 import { Textarea, type TextareaProps } from "../../components/primitives/textarea";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import type { Route } from "./+types";
 import { usePage } from "./+url/use-page";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.encodersDecoders.tools.url.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.encodersDecoders.tools.url.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.encodersDecoders.tools.url);
+};
 
 export default function Url() {
   const { fields, setFieldsByDecoded, setFieldsByEncoded, clearFields } = usePage();

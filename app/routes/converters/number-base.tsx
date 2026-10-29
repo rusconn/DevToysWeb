@@ -8,18 +8,13 @@ import { PageSection, PageSectionWithControl } from "../../components/page-secti
 import * as icons from "../../components/primitives/icons";
 import { Input, type InputProps } from "../../components/primitives/input";
 
-import { pageTitle } from "../../utils/title";
+import { indexMeta } from "../../utils/meta";
 import { usePage } from "./+number-base/use-page";
 import type { Route } from "./+types";
 
-export const meta: Route.MetaFunction = () => [
-  { title: pageTitle(toolGroups.converters.tools.numberBase.longTitle) },
-  {
-    name: "description",
-    content: toolGroups.converters.tools.numberBase.description,
-  },
-  { name: "googlebot", content: "index" },
-];
+export const meta: Route.MetaFunction = () => {
+  return indexMeta(toolGroups.converters.tools.numberBase);
+};
 
 export default function NumberBase() {
   const { format, setFormat, dec, trySetDec, hex, trySetHex, oct, trySetOct, bin, trySetBin } =
