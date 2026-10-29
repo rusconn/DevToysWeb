@@ -54,7 +54,7 @@ export default function Diff() {
       title="Inline mode"
       control={
         <LabeledSwitch
-          id="uppercase-switch"
+          id="inline-mode-switch"
           label={inlineMode ? "On" : "Off"}
           checked={inlineMode}
           onCheckedChange={setInlineMode}
