@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { matchPath, useLocation } from "react-router";
 
 import { Accordion } from "@base-ui/react/accordion";
 
@@ -9,17 +9,16 @@ import { ToolGroup } from "./tool-group";
 
 export function ToolGroups() {
   const { pathname } = useLocation();
-  const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+  const activeGroup = Object.values(toolGroups).find(({ path }) =>
+    matchPath({ path: `${path}/*`, end: true }, pathname),
+  )?.path;
+  const [expandedGroups, setExpandedGroups] = useState<string[]>(activeGroup ? [activeGroup] : []);
 
   useEffect(() => {
-    const group = Object.values(toolGroups).find(({ path }) =>
-      pathname.startsWith(`${path}/`),
-    )?.path;
-
-    if (group) {
-      setExpandedGroups(prev => (prev.includes(group) ? prev : [...prev, group]));
+    if (activeGroup) {
+      setExpandedGroups(prev => (prev.includes(activeGroup) ? prev : [...prev, activeGroup]));
     }
-  }, [pathname]);
+  }, [activeGroup]);
 
   return (
     <Accordion.Root multiple value={expandedGroups} onValueChange={setExpandedGroups}>
