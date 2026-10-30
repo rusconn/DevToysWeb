@@ -1,5 +1,3 @@
-"use client";
-
 import { Panel, PanelGroup } from "react-resizable-panels";
 
 import { toolGroups } from "../../config/tools";

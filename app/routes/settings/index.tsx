@@ -1,5 +1,3 @@
-"use client";
-
 import { singleTools } from "../../config/tools";
 import type { Theme } from "../../hooks/use-theme";
 import { Configuration, ConfigurationItemWithDescription } from "../../components/configuration";

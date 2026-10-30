@@ -1,5 +1,3 @@
-"use client";
-
 import { toolGroups } from "../../config/tools";
 import { Configuration, ConfigurationItem } from "../../components/configuration";
 import * as Button from "../../components/control-buttons";
