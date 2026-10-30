@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router";
+import { useRef } from "react";
+import { useMatch } from "react-router";
 
 import { Accordion } from "@base-ui/react/accordion";
 
-import type { ToolGroup as IToolGroup } from "../../config/tools";
+import type { ToolGroup as IToolGroup, Tool } from "../../config/tools";
 import { cn } from "../../lib/style";
 import * as icons from "../../components/primitives/icons";
 
@@ -14,23 +14,17 @@ type Props = IToolGroup & {
 };
 
 export function ToolGroup({ Icon, title, path, tools, isOpend }: Props) {
-  const { pathname } = useLocation();
   const triggerRef = useRef<HTMLElement>(null);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const isGroupPage = useMatch({ path, end: true });
+  const hasActiveChild = useMatch(`${path}/*`);
 
   const clickTrigger = () => triggerRef.current?.click();
 
-  const groupHighlight = isClient
-    ? pathname === path
-      ? "both"
-      : !isOpend && pathname.startsWith(`${path}/`)
-        ? "indicatorOnly"
-        : "none"
-    : "none";
+  const groupHighlight = isGroupPage
+    ? "both"
+    : !isOpend && hasActiveChild
+      ? "indicatorOnly"
+      : "none";
 
   return (
     <Accordion.Item value={path}>
@@ -66,15 +60,22 @@ export function ToolGroup({ Icon, title, path, tools, isOpend }: Props) {
         <ul>
           {Object.values(tools).map(tool => (
             <li className="mt-1" key={tool.path}>
-              <ToolLink
-                {...tool}
-                highlight={isClient && isOpend && pathname === tool.path ? "both" : "none"}
-                grouped
-              />
+              <GroupedToolLink tool={tool} isOpend={isOpend} />
             </li>
           ))}
         </ul>
       </Accordion.Panel>
     </Accordion.Item>
+  );
+}
+
+function GroupedToolLink({ tool, isOpend }: { tool: Tool; isOpend: boolean }) {
+  const isActive = useMatch({ path: tool.path, end: true });
+  return (
+    <ToolLink
+      {...tool} //
+      highlight={isOpend && isActive ? "both" : "none"}
+      grouped
+    />
   );
 }
