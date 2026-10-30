@@ -1,6 +1,6 @@
 import { singleTools } from "../../config/tools";
 import type { Theme } from "../../hooks/use-theme";
-import { Configuration, ConfigurationItemWithDescription } from "../../components/configuration";
+import { Configuration, ConfigurationItem } from "../../components/configuration";
 import { PageRootSection } from "../../components/page-root-section";
 import * as icons from "../../components/primitives/icons";
 import * as Select from "../../components/primitives/select";
@@ -17,7 +17,7 @@ export default function Index() {
   const { theme, setTheme } = usePage();
 
   const appThemeConfig = (
-    <ConfigurationItemWithDescription
+    <ConfigurationItem
       icon={<icons.Paintbrush size={24} />}
       title="App theme"
       description="Select which app theme to display"

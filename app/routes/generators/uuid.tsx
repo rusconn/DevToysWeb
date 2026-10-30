@@ -1,9 +1,5 @@
 import { toolGroups } from "../../config/tools";
-import {
-  Configuration,
-  ConfigurationItem,
-  ConfigurationItemWithDescription,
-} from "../../components/configuration";
+import { Configuration, ConfigurationItem } from "../../components/configuration";
 import { Clear, Copy } from "../../components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../components/control-menu";
 import { LabeledSwitch } from "../../components/labeled-switch";
@@ -86,7 +82,7 @@ export default function Uuid() {
   );
 
   const uuidVersionConfig = (
-    <ConfigurationItemWithDescription
+    <ConfigurationItem
       icon={<icons.Settings2 size={24} />}
       title="UUID version"
       description="Choose the version of UUID to generate"
