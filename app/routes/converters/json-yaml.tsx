@@ -2,7 +2,7 @@ import { toolGroups } from "../../config/tools";
 import { Configuration, ConfigurationItem } from "../../components/configuration";
 import * as Button from "../../components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../components/control-menu";
-import { Editor, type EditorProps } from "../../components/editor";
+import { Editor } from "../../components/editor";
 import { PageRootSection } from "../../components/page-root-section";
 import { PageSection, PageSectionWithControl } from "../../components/page-section";
 import * as icons from "../../components/primitives/icons";
@@ -18,14 +18,7 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export default function JsonYaml() {
-  const { fields, setFieldsByJson, setFieldsByYaml, clearFields, changeIndentation } = usePage();
-
-  const changeJson: EditorProps["onChange"] = value => {
-    setFieldsByJson(value ?? "");
-  };
-  const changeYaml: EditorProps["onChange"] = value => {
-    setFieldsByYaml(value ?? "");
-  };
+  const { fields, setFieldsByJson, setFieldsByYaml, changeIndentation } = usePage();
 
   const indentationConfig = (
     <ConfigurationItem
@@ -49,62 +42,72 @@ export default function JsonYaml() {
     />
   );
 
-  const clearButton = (
-    <Button.Clear onClick={clearFields} iconOnly aria-label="clear json and yaml" />
-  );
-
-  const jsonControl = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Paste onClipboardRead={setFieldsByJson} />
-      </ControlMenuItem>
-      <ControlMenuItem>
-        <Button.File
-          accept=".json"
-          onFileRead={setFieldsByJson}
-          iconOnly
-          aria-label="load a json file"
-        />
-      </ControlMenuItem>
-      <ControlMenuItem>
-        <Button.Copy text={fields.json} />
-      </ControlMenuItem>
-      <ControlMenuItem>{clearButton}</ControlMenuItem>
-    </ControlMenu>
-  );
-  const yamlControl = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Paste onClipboardRead={setFieldsByYaml} />
-      </ControlMenuItem>
-      <ControlMenuItem>
-        <Button.File
-          accept=".yml,.yaml"
-          onFileRead={setFieldsByYaml}
-          iconOnly
-          aria-label="load a yaml file"
-        />
-      </ControlMenuItem>
-      <ControlMenuItem>
-        <Button.Copy text={fields.yaml} />
-      </ControlMenuItem>
-      <ControlMenuItem>{clearButton}</ControlMenuItem>
-    </ControlMenu>
-  );
-
   return (
     <PageRootSection className="h-full" title={toolGroups.converters.tools.jsonYaml.longTitle}>
       <PageSection title="Configuration">
         <Configuration>{indentationConfig}</Configuration>
       </PageSection>
+
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSectionWithControl className="min-h-50 flex-1" title="Json" control={jsonControl}>
-          <Editor language="json" value={fields.json} onChange={changeJson} />
-        </PageSectionWithControl>
-        <PageSectionWithControl className="min-h-50 flex-1" title="Yaml" control={yamlControl}>
-          <Editor language="yaml" value={fields.yaml} onChange={changeYaml} />
-        </PageSectionWithControl>
+        <LanguageSection
+          title="Json"
+          language="json"
+          value={fields.json}
+          onValueChange={setFieldsByJson}
+          acceptFiles=".json"
+        />
+        <LanguageSection
+          title="Yaml"
+          language="yaml"
+          value={fields.yaml}
+          onValueChange={setFieldsByYaml}
+          acceptFiles=".yml,.yaml"
+        />
       </div>
     </PageRootSection>
+  );
+}
+
+type LanguageSectionProps = {
+  title: string;
+  language: string;
+  value: string;
+  onValueChange: (value: string) => void;
+  acceptFiles: string;
+};
+
+function LanguageSection({
+  title,
+  language,
+  value,
+  onValueChange,
+  acceptFiles,
+}: LanguageSectionProps) {
+  const control = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={onValueChange} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File
+          accept={acceptFiles}
+          onFileRead={onValueChange}
+          iconOnly
+          aria-label={`load a ${language} file`}
+        />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Copy text={value} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Clear onClick={() => onValueChange("")} iconOnly aria-label={`clear ${language}`} />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
+
+  return (
+    <PageSectionWithControl className="min-h-50 flex-1" title={title} control={control}>
+      <Editor language={language} value={value} onChange={value => onValueChange(value ?? "")} />
+    </PageSectionWithControl>
   );
 }

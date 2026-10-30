@@ -4,7 +4,7 @@ import { ControlMenu, ControlMenuItem } from "../../components/control-menu";
 import { Editor } from "../../components/editor";
 import { PageRootSection } from "../../components/page-root-section";
 import { PageSectionWithControl } from "../../components/page-section";
-import { Textarea, type TextareaProps } from "../../components/primitives/textarea";
+import { Textarea } from "../../components/primitives/textarea";
 
 import { indexMeta } from "../../utils/meta";
 import { usePage } from "./+jwt/use-page";
@@ -16,10 +16,6 @@ export const meta: Route.MetaFunction = () => {
 
 export default function Jwt() {
   const { jwt, setJwt, clearJwt, header, payload } = usePage();
-
-  const changeJwt: TextareaProps["onChange"] = e => {
-    setJwt(e.currentTarget.value);
-  };
 
   const jwtTokenControl = (
     <ControlMenu>
@@ -35,34 +31,37 @@ export default function Jwt() {
     </ControlMenu>
   );
 
-  const headerControl = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Copy text={header} />
-      </ControlMenuItem>
-    </ControlMenu>
+  return (
+    <PageRootSection title={toolGroups.encodersDecoders.tools.jwt.longTitle}>
+      <PageSectionWithControl title="Jwt Token" control={jwtTokenControl}>
+        <Textarea value={jwt} onChange={e => setJwt(e.currentTarget.value)} rows={3} />
+      </PageSectionWithControl>
+
+      <div className="flex flex-col gap-3">
+        <DecodedPartSection title="Header" value={header} />
+        <DecodedPartSection title="Payload" value={payload} />
+      </div>
+    </PageRootSection>
   );
-  const payloadControl = (
+}
+
+type DecodedPartSectionProps = {
+  title: string;
+  value: string;
+};
+
+function DecodedPartSection({ title, value }: DecodedPartSectionProps) {
+  const control = (
     <ControlMenu>
       <ControlMenuItem>
-        <Button.Copy text={payload} />
+        <Button.Copy text={value} />
       </ControlMenuItem>
     </ControlMenu>
   );
 
   return (
-    <PageRootSection title={toolGroups.encodersDecoders.tools.jwt.longTitle}>
-      <PageSectionWithControl title="Jwt Token" control={jwtTokenControl}>
-        <Textarea value={jwt} onChange={changeJwt} rows={3} />
-      </PageSectionWithControl>
-      <div className="flex flex-col gap-3">
-        <PageSectionWithControl title="Header" control={headerControl}>
-          <Editor height={180} language="json" value={header} options={{ readOnly: true }} />
-        </PageSectionWithControl>
-        <PageSectionWithControl title="Payload" control={payloadControl}>
-          <Editor height={180} language="json" value={payload} options={{ readOnly: true }} />
-        </PageSectionWithControl>
-      </div>
-    </PageRootSection>
+    <PageSectionWithControl title={title} control={control}>
+      <Editor height={180} language="json" value={value} options={{ readOnly: true }} />
+    </PageSectionWithControl>
   );
 }

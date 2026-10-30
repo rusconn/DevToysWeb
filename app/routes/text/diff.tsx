@@ -30,10 +30,8 @@ export default function Diff() {
   const {
     input1,
     setInput1,
-    clearInput1,
     input2,
     setInput2,
-    clearInput2,
     diffFullHeight,
     inlineMode,
     setInlineMode,
@@ -56,33 +54,6 @@ export default function Diff() {
       }
     />
   );
-  const input1Control = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Paste onClipboardRead={setInput1} />
-      </ControlMenuItem>
-      <ControlMenuItem>
-        <Button.File onFileRead={setInput1} iconOnly aria-label="load a file with old text" />
-      </ControlMenuItem>
-      <ControlMenuItem>
-        <Button.Clear onClick={clearInput1} iconOnly aria-label="clear old text input" />
-      </ControlMenuItem>
-    </ControlMenu>
-  );
-
-  const input2Control = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Paste onClipboardRead={setInput2} />
-      </ControlMenuItem>
-      <ControlMenuItem>
-        <Button.File onFileRead={setInput2} iconOnly aria-label="load a file with new text" />
-      </ControlMenuItem>
-      <ControlMenuItem>
-        <Button.Clear onClick={clearInput2} iconOnly aria-label="clear new text input" />
-      </ControlMenuItem>
-    </ControlMenu>
-  );
 
   const diffControl = (
     <ControlMenu>
@@ -99,29 +70,35 @@ export default function Diff() {
       <PageSection title="Configuration" className={hiddenInFullHeightMode}>
         <Configuration>{inlineModeConfig}</Configuration>
       </PageSection>
+
       <PanelGroup direction="vertical" autoSaveId={PERSISTENCE_KEY.panels.vertical}>
         <Panel maxSize={VERTICAL_PANEL_MAX_SIZE} className={hiddenInFullHeightMode}>
           <PanelGroup direction="horizontal" autoSaveId={PERSISTENCE_KEY.panels.horizontal}>
-            <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
-              <PageSectionWithControl className="h-full" title="Old text" control={input1Control}>
-                <Editor value={input1} onChange={setInput1} />
-              </PageSectionWithControl>
-            </Panel>
+            <EditorSectionPanel
+              title="Old text"
+              kind="old"
+              value={input1}
+              onValueChange={setInput1}
+            />
+
             <div className="mt-10.5">
               <PanelResizeHandle direction="vertical" />
             </div>
 
-            <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
-              <PageSectionWithControl className="h-full" title="New text" control={input2Control}>
-                <Editor value={input2} onChange={setInput2} />
-              </PageSectionWithControl>
-            </Panel>
+            <EditorSectionPanel
+              title="New text"
+              kind="new"
+              value={input2}
+              onValueChange={setInput2}
+            />
           </PanelGroup>
         </Panel>
+
         <PanelResizeHandle
           direction="horizontal"
           {...(hiddenInFullHeightMode && { hidden: true })}
         />
+
         <Panel maxSize={diffPanelMaxSize}>
           <PageSectionWithControl className="h-full" title="Difference" control={diffControl}>
             <DiffEditor
@@ -136,5 +113,44 @@ export default function Diff() {
         </Panel>
       </PanelGroup>
     </PageRootSection>
+  );
+}
+
+type EditorSectionPanelProps = {
+  title: string;
+  kind: string;
+  value: string | undefined;
+  onValueChange: (value: string | undefined) => void;
+};
+
+function EditorSectionPanel({ title, kind, value, onValueChange }: EditorSectionPanelProps) {
+  const control = (
+    <ControlMenu>
+      <ControlMenuItem>
+        <Button.Paste onClipboardRead={onValueChange} />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.File
+          onFileRead={onValueChange}
+          iconOnly
+          aria-label={`load a file with ${kind} text`}
+        />
+      </ControlMenuItem>
+      <ControlMenuItem>
+        <Button.Clear
+          onClick={() => onValueChange("")}
+          iconOnly
+          aria-label={`clear ${kind} text input`}
+        />
+      </ControlMenuItem>
+    </ControlMenu>
+  );
+
+  return (
+    <Panel maxSize={HORIZONTAL_PANEL_MAX_SIZE}>
+      <PageSectionWithControl className="h-full" title={title} control={control}>
+        <Editor value={value} onChange={onValueChange} />
+      </PageSectionWithControl>
+    </Panel>
   );
 }

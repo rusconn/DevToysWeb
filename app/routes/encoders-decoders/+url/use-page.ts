@@ -25,17 +25,9 @@ export const usePage = () => {
     });
   };
 
-  const clearFields = () => {
-    setFields({
-      decoded: "",
-      encoded: "",
-    });
-  };
-
   return {
     fields,
     setFieldsByDecoded,
     setFieldsByEncoded,
-    clearFields,
   };
 };

@@ -9,12 +9,6 @@ export const usePage = () => {
   const [inlineMode, setInlineMode] = useState(false);
   const diffPanelMaxSize = diffFullHeight ? PANEL_FULL_SIZE : VERTICAL_PANEL_MAX_SIZE;
 
-  const clearInput1 = () => {
-    setInput1("");
-  };
-  const clearInput2 = () => {
-    setInput2("");
-  };
   const toggleFullHeight = () => {
     setDiffFullHeight(prev => !prev);
   };
@@ -22,10 +16,8 @@ export const usePage = () => {
   return {
     input1,
     setInput1,
-    clearInput1,
     input2,
     setInput2,
-    clearInput2,
     diffFullHeight,
     inlineMode,
     setInlineMode,

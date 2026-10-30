@@ -1,8 +1,10 @@
+import type { ReactNode } from "react";
+
 import { toolGroups } from "../../config/tools";
 import { Configuration, ConfigurationItem } from "../../components/configuration";
 import * as Button from "../../components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../components/control-menu";
-import { Editor, type EditorProps } from "../../components/editor";
+import { Editor } from "../../components/editor";
 import { PageRootSection } from "../../components/page-root-section";
 import { PageSection, PageSectionWithControl } from "../../components/page-section";
 import * as icons from "../../components/primitives/icons";
@@ -20,13 +22,6 @@ export const meta: Route.MetaFunction = () => {
 export default function Json() {
   const { indentation, setIndentation, input, setInput, clearInput, output } = usePage();
 
-  const changeInput: EditorProps["onChange"] = value => {
-    setInput(value ?? "");
-  };
-  const changeIndentation: Select.Props["onValueChange"] = value => {
-    setIndentation(value as Indentation);
-  };
-
   const indentationConfig = (
     <ConfigurationItem
       icon={<icons.Space size={24} className="-translate-y-1.5" />}
@@ -35,7 +30,7 @@ export default function Json() {
         <Select.Root
           items={{ "2": "2 spaces", "4": "4 spaces", "\t": "1 tab", "0": "minified" }}
           value={indentation}
-          onValueChange={changeIndentation}
+          onValueChange={value => setIndentation(value as Indentation)}
         >
           <Select.Trigger aria-label="toggle open/close state of indentation selection">
             <Select.Value placeholder={indentation} />
@@ -77,14 +72,40 @@ export default function Json() {
       <PageSection title="Configuration">
         <Configuration>{indentationConfig}</Configuration>
       </PageSection>
+
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSectionWithControl className="min-h-50 flex-1" title="Input" control={inputControl}>
-          <Editor language="json" value={input} onChange={changeInput} />
-        </PageSectionWithControl>
-        <PageSectionWithControl className="min-h-50 flex-1" title="Output" control={outputControl}>
-          <Editor language="json" value={output} options={{ readOnly: true }} />
-        </PageSectionWithControl>
+        <EditorSection
+          title="Input"
+          value={input}
+          onValueChange={setInput}
+          control={inputControl}
+        />
+        <EditorSection //
+          title="Output"
+          value={output}
+          control={outputControl}
+        />
       </div>
     </PageRootSection>
+  );
+}
+
+type EditorSectionProps = {
+  title: string;
+  value: string;
+  onValueChange?: (value: string) => void;
+  control: ReactNode;
+};
+
+function EditorSection({ title, value, onValueChange, control }: EditorSectionProps) {
+  return (
+    <PageSectionWithControl className="min-h-50 flex-1" title={title} control={control}>
+      <Editor
+        language="json"
+        value={value}
+        onChange={onValueChange && (value => onValueChange(value ?? ""))}
+        options={{ readOnly: onValueChange == null }}
+      />
+    </PageSectionWithControl>
   );
 }

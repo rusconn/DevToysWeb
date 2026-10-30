@@ -1,9 +1,11 @@
+import type { ReactNode } from "react";
+
 import { toolGroups } from "../../config/tools";
 import * as Button from "../../components/control-buttons";
 import { ControlMenu, ControlMenuItem } from "../../components/control-menu";
 import { PageRootSection } from "../../components/page-root-section";
 import { PageSection, PageSectionWithControl } from "../../components/page-section";
-import { Textarea, type TextareaProps } from "../../components/primitives/textarea";
+import { Textarea } from "../../components/primitives/textarea";
 import { ToggleGroup, ToggleGroupItem } from "../../components/primitives/toggle-group";
 
 import { indexMeta } from "../../utils/meta";
@@ -17,10 +19,6 @@ export const meta: Route.MetaFunction = () => {
 
 export default function Inspector() {
   const { input, setInput, clearInput, mode, setMode, output, stats } = usePage();
-
-  const changeInput: TextareaProps["onChange"] = e => {
-    setInput(e.currentTarget.value);
-  };
 
   const tryChangeMode = (value: string) => {
     if (value && value in TextTransformMode) {
@@ -62,12 +60,17 @@ export default function Inspector() {
       </PageSection>
 
       <div className="flex flex-1 flex-col gap-x-4 gap-y-5 lg:flex-row">
-        <PageSectionWithControl className="min-h-50 flex-1" title="Input" control={inputControl}>
-          <Textarea value={input} onChange={changeInput} rows={10} />
-        </PageSectionWithControl>
-        <PageSectionWithControl className="min-h-50 flex-1" title="Output" control={outputControl}>
-          <Textarea value={output} rows={10} readOnly />
-        </PageSectionWithControl>
+        <TextareaSection
+          title="Input"
+          value={input}
+          onValueChange={setInput}
+          control={inputControl}
+        />
+        <TextareaSection //
+          title="Output"
+          value={output}
+          control={outputControl}
+        />
       </div>
 
       <PageSection className="flex-1" title="Information">
@@ -79,5 +82,25 @@ export default function Inspector() {
         </div>
       </PageSection>
     </PageRootSection>
+  );
+}
+
+type TextareaSectionProps = {
+  title: string;
+  value: string;
+  onValueChange?: (value: string) => void;
+  control: ReactNode;
+};
+
+function TextareaSection({ title, value, onValueChange, control }: TextareaSectionProps) {
+  return (
+    <PageSectionWithControl className="min-h-50 flex-1" title={title} control={control}>
+      <Textarea
+        value={value}
+        onChange={onValueChange && (e => onValueChange(e.currentTarget.value))}
+        readOnly={onValueChange == null}
+        rows={10}
+      />
+    </PageSectionWithControl>
   );
 }

@@ -38,14 +38,6 @@ export const usePage = () => {
     }));
   };
 
-  const clearFields = () => {
-    setFields(prev => ({
-      ...prev,
-      json: "",
-      yaml: "",
-    }));
-  };
-
   const changeIndentation = (indentation: Indentation) => {
     setFields(prev => ({
       indentation,
@@ -58,7 +50,6 @@ export const usePage = () => {
     fields,
     setFieldsByJson,
     setFieldsByYaml,
-    clearFields,
     changeIndentation,
   };
 };

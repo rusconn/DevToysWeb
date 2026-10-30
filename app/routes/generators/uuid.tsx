@@ -40,10 +40,6 @@ export default function Uuid() {
 
   const uuidsString = uuids.join("\n");
 
-  const changeUuidVersion: Select.Props["onValueChange"] = value => {
-    setUuidVersion(value as UuidVersion);
-  };
-
   const tryChangeGenerates: InputProps["onChange"] = e => {
     const newGenerates = Number(e.currentTarget.value);
     if (1 <= newGenerates && newGenerates <= 1000) {
@@ -97,7 +93,7 @@ export default function Uuid() {
         <Select.Root
           items={{ [versions.v1]: "1", [versions.v4]: "4 (GUID)" }}
           value={uuidVersion}
-          onValueChange={changeUuidVersion}
+          onValueChange={value => setUuidVersion(value as UuidVersion)}
         >
           <Select.Trigger aria-label="toggle open/close state of uuid version selection">
             <Select.Value placeholder={uuidVersion} />
@@ -131,6 +127,7 @@ export default function Uuid() {
           {uuidVersionConfig}
         </Configuration>
       </PageSection>
+
       <PageSection title="Generate">
         <form
           className="flex items-center gap-2"
@@ -156,6 +153,7 @@ export default function Uuid() {
           </div>
         </form>
       </PageSection>
+
       <PageSectionWithControl className="-mt-3" title="UUID(s)" control={uuidsControl}>
         <Textarea ref={uuidsRef} value={uuidsString} rows={10} readOnly />
       </PageSectionWithControl>

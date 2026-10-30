@@ -7,7 +7,7 @@ import { PageRootSection } from "../../components/page-root-section";
 import { PageSection, PageSectionWithControl } from "../../components/page-section";
 import * as icons from "../../components/primitives/icons";
 import { Input } from "../../components/primitives/input";
-import { Textarea, type TextareaProps } from "../../components/primitives/textarea";
+import { Textarea } from "../../components/primitives/textarea";
 
 import { indexMeta } from "../../utils/meta";
 import { usePage } from "./+hash/use-page";
@@ -20,10 +20,6 @@ export const meta: Route.MetaFunction = () => {
 export default function Hash() {
   const { uppercase, setUppercase, input, setInput, clearInput, md5, sha1, sha256, sha512 } =
     usePage();
-
-  const changeInput: TextareaProps["onChange"] = e => {
-    setInput(e.currentTarget.value);
-  };
 
   const uppercaseConfig = (
     <ConfigurationItem
@@ -55,69 +51,43 @@ export default function Hash() {
     </ControlMenu>
   );
 
-  const md5Control = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Copy text={md5} iconOnly aria-label="copy generated md5" />
-      </ControlMenuItem>
-    </ControlMenu>
-  );
-  const sha1Control = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Copy text={sha1} iconOnly aria-label="copy generated sha1" />
-      </ControlMenuItem>
-    </ControlMenu>
-  );
-  const sha256Control = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Copy text={sha256} iconOnly aria-label="copy generated sha256" />
-      </ControlMenuItem>
-    </ControlMenu>
-  );
-  const sha512Control = (
-    <ControlMenu>
-      <ControlMenuItem>
-        <Button.Copy text={sha512} iconOnly aria-label="copy generated sha512" />
-      </ControlMenuItem>
-    </ControlMenu>
-  );
-
   return (
     <PageRootSection title={toolGroups.generators.tools.hash.longTitle}>
       <PageSection title="Configuration">
         <Configuration>{uppercaseConfig}</Configuration>
       </PageSection>
+
       <PageSectionWithControl className="-mt-2" title="Input" control={inputControl}>
-        <Textarea value={input} onChange={changeInput} rows={5} />
+        <Textarea value={input} onChange={e => setInput(e.currentTarget.value)} rows={5} />
       </PageSectionWithControl>
+
       <div className="flex flex-col gap-3">
-        <PageSection title="MD5">
-          <div className="grid grid-cols-[1fr_auto] gap-2">
-            <Input value={md5} readOnly />
-            {md5Control}
-          </div>
-        </PageSection>
-        <PageSection title="SHA1">
-          <div className="grid grid-cols-[1fr_auto] gap-2">
-            <Input value={sha1} readOnly />
-            {sha1Control}
-          </div>
-        </PageSection>
-        <PageSection title="SHA256">
-          <div className="grid grid-cols-[1fr_auto] gap-2">
-            <Input value={sha256} readOnly />
-            {sha256Control}
-          </div>
-        </PageSection>
-        <PageSection title="SHA512">
-          <div className="grid grid-cols-[1fr_auto] gap-2">
-            <Input value={sha512} readOnly />
-            {sha512Control}
-          </div>
-        </PageSection>
+        <HashSection title="MD5" kind="md5" value={md5} />
+        <HashSection title="SHA1" kind="sha1" value={sha1} />
+        <HashSection title="SHA256" kind="sha256" value={sha256} />
+        <HashSection title="SHA512" kind="sha512" value={sha512} />
       </div>
     </PageRootSection>
+  );
+}
+
+type HashSectionProps = {
+  title: string;
+  kind: string;
+  value: string;
+};
+
+function HashSection({ title, kind, value }: HashSectionProps) {
+  return (
+    <PageSection title={title}>
+      <div className="grid grid-cols-[1fr_auto] gap-2">
+        <Input value={value} readOnly />
+        <ControlMenu>
+          <ControlMenuItem>
+            <Button.Copy text={value} iconOnly aria-label={`copy generated ${kind}`} />
+          </ControlMenuItem>
+        </ControlMenu>
+      </div>
+    </PageSection>
   );
 }
