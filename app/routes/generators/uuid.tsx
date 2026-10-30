@@ -1,3 +1,5 @@
+import type { SubmitEventHandler } from "react";
+
 import { toolGroups } from "../../config/tools";
 import { Configuration, ConfigurationItem } from "../../components/configuration";
 import { Clear, Copy } from "../../components/control-buttons";
@@ -47,6 +49,11 @@ export default function Uuid() {
     if (1 <= newGenerates && newGenerates <= 1000) {
       setGenerates(newGenerates);
     }
+  };
+
+  const submitGenerate: SubmitEventHandler<HTMLFormElement> = event => {
+    event.preventDefault();
+    generate();
   };
 
   const hyphensConfig = (
@@ -125,15 +132,29 @@ export default function Uuid() {
         </Configuration>
       </PageSection>
       <PageSection title="Generate">
-        <div className="flex items-center gap-2">
-          <Button variant="accent" onClick={generate}>
+        <form
+          className="flex items-center gap-2"
+          aria-label="Generate UUIDs"
+          onSubmit={submitGenerate}
+        >
+          <Button type="submit" variant="accent">
             Generate UUID(s)
           </Button>
           <span>×</span>
           <div className="w-24">
-            <Input type="number" value={generates} onChange={tryChangeGenerates} />
+            <Input
+              type="number"
+              name="generates"
+              aria-label="Number of UUIDs to generate"
+              min={1}
+              max={1000}
+              step={1}
+              enterKeyHint="go"
+              value={generates}
+              onChange={tryChangeGenerates}
+            />
           </div>
-        </div>
+        </form>
       </PageSection>
       <PageSectionWithControl className="-mt-3" title="UUID(s)" control={uuidsControl}>
         <Textarea ref={uuidsRef} value={uuidsString} rows={10} readOnly />

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { type SubmitEventHandler, useRef, useState } from "react";
 import { PrefetchPageLinks, useNavigate } from "react-router";
 
 import { cn } from "../../lib/style";
@@ -12,7 +12,8 @@ export function SearchBar() {
   const [text, setText] = useState("");
   const [shouldPrefetch, setShouldPrefetch] = useState(false);
 
-  const search = () => {
+  const submitSearch: SubmitEventHandler<HTMLFormElement> = event => {
+    event.preventDefault();
     navigate({
       pathname: "/search",
       search: `q=${encodeURIComponent(text.trim())}`,
@@ -20,12 +21,6 @@ export function SearchBar() {
   };
 
   const changeText: InputProps["onChange"] = e => setText(e.currentTarget.value);
-
-  const searchIfEnter: InputProps["onKeyDown"] = ({ code }) => {
-    if (code === "Enter") {
-      search();
-    }
-  };
 
   const firePrefetch = () => {
     setShouldPrefetch(true);
@@ -37,14 +32,17 @@ export function SearchBar() {
   };
 
   return (
-    <div className="relative flex items-center">
+    <form className="relative flex items-center" aria-label="Tool search" onSubmit={submitSearch}>
       {shouldPrefetch && <PrefetchPageLinks page="/search" />}
       <Input
         ref={inputRef}
         variant="search"
+        type="search"
+        name="q"
+        enterKeyHint="search"
+        autoComplete="off"
         value={text}
         onChange={changeText}
-        onKeyDown={searchIfEnter}
         onMouseEnter={firePrefetch}
         onFocus={firePrefetch}
         placeholder="Type to search for tools…"
@@ -59,7 +57,7 @@ export function SearchBar() {
           />
           <span className="sr-only">Clear search text</span>
         </Button>
-        <Button variant="search" size="shorter" onClick={search} aria-label="search">
+        <Button type="submit" variant="search" size="shorter">
           <icons.Search
             className={cn(
               "text-neutral-450 -scale-x-100 p-1", //
@@ -69,6 +67,6 @@ export function SearchBar() {
           <span className="sr-only">Search tools</span>
         </Button>
       </div>
-    </div>
+    </form>
   );
 }

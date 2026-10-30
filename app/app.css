@@ -49,6 +49,10 @@
     --radius: 0.5rem;
   }
 
+  input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+  }
+
   .dark {
     --border: transparent;
   }
