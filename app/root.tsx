@@ -7,12 +7,13 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { ThemeProvider } from "next-themes";
+
 import { siteConfig } from "./config/site";
 import { cn } from "./lib/style";
 import { Sidebar } from "./layout/sidebar";
 import { SiteHeader } from "./layout/site-header";
 import { TailwindIndicator } from "./layout/tailwind-indicator";
-import { ThemeScript } from "./layout/theme-script";
 import { PageRootSection } from "./components/page-root-section";
 
 import type { Route } from "./+types/root";
@@ -85,7 +86,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           name="google-site-verification"
           content="LlndxXYLHOwTH1LOIcckAWY3xg3y9TMfL-U__wnKAFw"
         />
-        <ThemeScript />
         <Meta />
         <Links />
       </head>
@@ -95,21 +95,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
           "dark:bg-neutral-850 dark:text-neutral-200",
         )}
       >
-        <div className="grid h-full grid-cols-[18rem_1fr] grid-rows-[3.5rem_1fr]">
-          <div className="col-span-full content-center">
-            <SiteHeader />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="grid h-full grid-cols-[18rem_1fr] grid-rows-[3.5rem_1fr]">
+            <div className="col-span-full content-center">
+              <SiteHeader />
+            </div>
+            <Sidebar />
+            <main
+              className={cn(
+                "overflow-y-auto rounded-tl-md border bg-neutral-100 p-12",
+                "dark:bg-neutral-800",
+              )}
+            >
+              {children}
+            </main>
           </div>
-          <Sidebar />
-          <main
-            className={cn(
-              "overflow-y-auto rounded-tl-md border bg-neutral-100 p-12",
-              "dark:bg-neutral-800",
-            )}
-          >
-            {children}
-          </main>
-        </div>
-        <TailwindIndicator />
+          <TailwindIndicator />
+        </ThemeProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

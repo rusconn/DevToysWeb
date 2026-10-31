@@ -1,86 +1,57 @@
-import { useEffect, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
+
+import { useTheme as useNextTheme } from "next-themes";
 
 export type Theme = "light" | "dark" | "system";
+export type ResolvedTheme = Exclude<Theme, "system">;
 
-type ThemeSnapshot = `${Theme}:${"light" | "dark"}`;
-
-const themeStore = {
-  subscribe(callback: () => void) {
-    if (typeof window === "undefined") {
-      return () => {};
-    }
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    window.addEventListener("storage", callback);
-    mediaQuery.addEventListener("change", callback);
-    window.addEventListener("theme-change", callback);
-
-    return () => {
-      window.removeEventListener("storage", callback);
-      mediaQuery.removeEventListener("change", callback);
-      window.removeEventListener("theme-change", callback);
-    };
-  },
-
-  getSnapshot(): ThemeSnapshot {
-    if (typeof window === "undefined") {
-      return "system:light";
-    }
-
-    const preference = (localStorage.getItem("theme") as Theme) || "system";
-    const isSystemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const resolved = preference === "system" ? (isSystemDark ? "dark" : "light") : preference;
-
-    return `${preference}:${resolved}`;
-  },
-
-  getServerSnapshot(): ThemeSnapshot {
-    return "system:light";
-  },
-
-  setTheme(theme: Theme) {
-    if (typeof window === "undefined") {
-      return;
-    }
-    localStorage.setItem("theme", theme);
-    window.dispatchEvent(new CustomEvent("theme-change"));
-  },
-};
-
+/**
+ * Thin adapter around next-themes
+ *
+ * next-themes reads localStorage during the first client render, while the
+ * prerendered HTML is generated without a window. To keep hydration consistent
+ * with the server output, consumers see the server defaults ("system" resolved
+ * to "light") until hydration completes, then get the actual values.
+ *
+ * The hydration check uses useSyncExternalStore instead of a mounted flag so
+ * components mounted later (e.g. on client-side navigation) read the real
+ * values immediately instead of flashing the server defaults first.
+ */
 export function useTheme() {
-  const snapshot = useSyncExternalStore(
-    themeStore.subscribe,
-    themeStore.getSnapshot,
-    themeStore.getServerSnapshot,
+  const { theme, resolvedTheme, setTheme: setNextTheme } = useNextTheme();
+  const hydrated = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
   );
 
-  const [theme, resolvedTheme] = snapshot.split(":") as [Theme, "light" | "dark"];
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-    document.documentElement.classList.toggle("dark", resolvedTheme === "dark");
-    document.documentElement.style.colorScheme = resolvedTheme;
-  }, [resolvedTheme]);
+  const currentTheme: Theme = (hydrated && normalizeTheme(theme)) || "system";
+  const currentResolvedTheme: ResolvedTheme =
+    (hydrated && normalizeResolvedTheme(resolvedTheme)) || "light";
 
   const setTheme = (newTheme: Theme) => {
-    if (typeof window === "undefined") {
-      return;
-    }
-    themeStore.setTheme(newTheme);
+    setNextTheme(newTheme);
   };
 
   const toggleTheme = () => {
-    const toggled = resolvedTheme === "light" ? "dark" : "light";
-    setTheme(toggled);
+    setNextTheme(currentResolvedTheme === "light" ? "dark" : "light");
   };
 
   return {
-    theme,
-    resolvedTheme,
+    theme: currentTheme,
+    resolvedTheme: currentResolvedTheme,
     setTheme,
     toggleTheme,
   };
+}
+
+// must be a singleton
+const subscribe = () => () => {};
+
+function normalizeTheme(value: string | undefined): Theme {
+  return value === "light" || value === "dark" ? value : "system";
+}
+
+function normalizeResolvedTheme(value: string | undefined): ResolvedTheme {
+  return value === "dark" ? "dark" : "light";
 }
