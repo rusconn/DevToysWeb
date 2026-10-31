@@ -7,8 +7,8 @@ import { useTheme } from "../hooks/use-theme";
 export type EditorProps = ComponentPropsWithRef<typeof MonacoDiffEditor>;
 
 export const DiffEditor = ({ options, theme, ...props }: EditorProps) => {
-  const { theme: appTheme } = useTheme();
-  const themeToUse = theme ?? (appTheme === "light" ? "light" : "vs-dark");
+  const { resolvedTheme } = useTheme();
+  const themeToUse = theme ?? (resolvedTheme === "light" ? "light" : "vs-dark");
 
   return (
     <MonacoDiffEditor

@@ -13,8 +13,8 @@ export type EditorProps = ComponentPropsWithRef<typeof MonacoEditor>;
  *
  */
 export const Editor = ({ options, theme, ...props }: EditorProps) => {
-  const { theme: appTheme } = useTheme();
-  const themeToUse = theme ?? (appTheme === "light" ? "light" : "vs-dark");
+  const { resolvedTheme } = useTheme();
+  const themeToUse = theme ?? (resolvedTheme === "light" ? "light" : "vs-dark");
 
   return (
     <MonacoEditor
