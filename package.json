@@ -19,7 +19,7 @@
     "check": "react-router typegen && tsc && biome check",
     "test": "vitest",
     "build": "react-router build && mv build/client/404/index.html build/client/404.html",
-    "start": "firebase serve --project devtoysweb",
+    "start": "firebase emulators:start --only hosting --project devtoysweb",
     "deploy": "firebase deploy --project devtoysweb"
   },
   "dependencies": {
