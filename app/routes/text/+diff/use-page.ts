@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { PANEL_FULL_SIZE, VERTICAL_PANEL_MAX_SIZE } from "./config";
 
-export const usePage = () => {
+export function usePage() {
   const [input1, setInput1] = useState<string | undefined>("Hello world");
   const [input2, setInput2] = useState<string | undefined>("Hello, World!");
   const [diffFullHeight, setDiffFullHeight] = useState(false);
@@ -24,4 +24,4 @@ export const usePage = () => {
     diffPanelMaxSize,
     toggleFullHeight,
   };
-};
+}

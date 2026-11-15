@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { safeDecodeURI, safeEncodeURI } from "./lib";
 
-export const usePage = () => {
+export function usePage() {
   const [fields, setFields] = useState({
     decoded: "https://example.com/?q=foo bar",
     encoded: "https://example.com/?q=foo%20bar",
@@ -30,4 +30,4 @@ export const usePage = () => {
     setFieldsByDecoded,
     setFieldsByEncoded,
   };
-};
+}

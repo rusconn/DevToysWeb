@@ -10,7 +10,7 @@ import {
   unformatNumber,
 } from "./lib";
 
-export const usePage = () => {
+export function usePage() {
   const [format, setFormat] = useState(true);
   const [int, setInt] = useState<bigint | undefined>(BigInt(42));
 
@@ -56,4 +56,4 @@ export const usePage = () => {
     bin,
     trySetBin,
   };
-};
+}

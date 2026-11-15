@@ -10,24 +10,24 @@ export const indentations = {
 
 export type Indentation = (typeof indentations)[keyof typeof indentations];
 
-export const convertJsonToYaml = (json: string, indentation: Indentation) => {
+export function convertJsonToYaml(json: string, indentation: Indentation) {
   const indent = Number(indentation);
   return safeJsonParse(json).map(x => YAML.dump(x, { indent, quoteStyle: "double" }));
-};
+}
 
-export const formatJson = (json: string, indentation: Indentation) => {
+export function formatJson(json: string, indentation: Indentation) {
   const indent = Number(indentation);
   return safeJsonParse(json).map(x => JSON.stringify(x, null, indent));
-};
+}
 
 const safeYamlParse = fromThrowable(YAML.load);
 
-export const convertYamlToJson = (yaml: string, indentation: Indentation) => {
+export function convertYamlToJson(yaml: string, indentation: Indentation) {
   const indent = Number(indentation);
   return safeYamlParse(yaml).map(x => JSON.stringify(x, null, indent));
-};
+}
 
-export const formatYaml = (yaml: string, indentation: Indentation) => {
+export function formatYaml(yaml: string, indentation: Indentation) {
   const indent = Number(indentation);
   return safeYamlParse(yaml).map(x => YAML.dump(x, { indent, quoteStyle: "double" }));
-};
+}

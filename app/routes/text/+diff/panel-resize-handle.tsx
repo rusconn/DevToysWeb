@@ -10,7 +10,7 @@ type Props = {
   hidden?: true;
 } & Omit<ComponentPropsWithoutRef<typeof PanelResizeHandlePrimitive>, "className">;
 
-export const PanelResizeHandle = ({ direction = "vertical", hidden, ...props }: Props) => {
+export function PanelResizeHandle({ direction = "vertical", hidden, ...props }: Props) {
   const isVertical = direction === "vertical";
   const isHorizontal = direction === "horizontal";
 
@@ -32,4 +32,4 @@ export const PanelResizeHandle = ({ direction = "vertical", hidden, ...props }: 
       {isHorizontal && <Icon.GripHorizontal size={12} />}
     </PanelResizeHandlePrimitive>
   );
-};
+}

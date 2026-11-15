@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { decode, encode } from "./lib";
 
-export const usePage = () => {
+export function usePage() {
   const [fields, setFields] = useState({
     decoded: "internet",
     encoded: "aW50ZXJuZXQ=",
@@ -27,4 +27,4 @@ export const usePage = () => {
     setFieldsByDecoded,
     setFieldsByEncoded,
   };
-};
+}

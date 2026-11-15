@@ -1,9 +1,9 @@
 import { useLayoutEffect, useRef } from "react";
 
-export const useAutoScroll = <T extends HTMLElement = HTMLElement>(
+export function useAutoScroll<T extends HTMLElement = HTMLElement>(
   trigger: unknown,
   behavior: ScrollBehavior = "smooth",
-) => {
+) {
   const ref = useRef<T>(null);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: trigger is needed for re-rendering
@@ -20,4 +20,4 @@ export const useAutoScroll = <T extends HTMLElement = HTMLElement>(
   }, [trigger, behavior]);
 
   return ref;
-};
+}

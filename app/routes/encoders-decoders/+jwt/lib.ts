@@ -3,7 +3,7 @@ import { err, fromThrowable, type Result } from "neverthrow";
 
 const safeJwtDecode = fromThrowable(jwtDecode);
 
-export const decode = (token: string) => {
+export function decode(token: string) {
   let header: Result<unknown, unknown> = err("");
   let payload: Result<unknown, unknown> = err("");
 
@@ -13,4 +13,4 @@ export const decode = (token: string) => {
   }
 
   return { header, payload };
-};
+}

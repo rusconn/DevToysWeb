@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import * as html from "html-escaper";
 
-export const usePage = () => {
+export function usePage() {
   const [fields, setFields] = useState({
     decoded: "<p>NUTS & MILK</p>",
     encoded: "&lt;p&gt;NUTS &amp; MILK&lt;/p&gt;",
@@ -27,4 +27,4 @@ export const usePage = () => {
     setFieldsByDecoded,
     setFieldsByEncoded,
   };
-};
+}

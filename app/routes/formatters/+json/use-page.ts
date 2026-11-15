@@ -4,7 +4,7 @@ import { safeJsonParse } from "../../../lib/json";
 
 import { type Indentation, indentations } from "./lib";
 
-export const usePage = () => {
+export function usePage() {
   const [indentation, setIndentation] = useState<Indentation>(indentations.two);
   const [input, setInput] = useState('{\n"foo":"bar"\n}');
 
@@ -24,4 +24,4 @@ export const usePage = () => {
     clearInput,
     output,
   };
-};
+}

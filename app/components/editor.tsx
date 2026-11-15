@@ -12,7 +12,7 @@ export type EditorProps = ComponentPropsWithRef<typeof MonacoEditor>;
  * @see https://github.com/suren-atoyan/monaco-react/issues/346
  *
  */
-export const Editor = ({ options, theme, ...props }: EditorProps) => {
+export function Editor({ options, theme, ...props }: EditorProps) {
   const { resolvedTheme } = useTheme();
   const themeToUse = theme ?? (resolvedTheme === "light" ? "light" : "vs-dark");
 
@@ -30,4 +30,4 @@ export const Editor = ({ options, theme, ...props }: EditorProps) => {
       {...props}
     />
   );
-};
+}

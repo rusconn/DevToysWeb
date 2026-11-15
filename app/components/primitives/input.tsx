@@ -30,6 +30,6 @@ export const inputVariants = cva(
 export type InputProps = Omit<ComponentPropsWithRef<"input">, "className"> &
   VariantProps<typeof inputVariants>;
 
-export const Input = ({ variant, ...props }: InputProps) => (
-  <input className={inputVariants({ variant })} spellCheck="false" {...props} />
-);
+export function Input({ variant, ...props }: InputProps) {
+  return <input className={inputVariants({ variant })} spellCheck="false" {...props} />;
+}

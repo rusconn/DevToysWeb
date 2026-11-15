@@ -12,7 +12,7 @@ const uuidvn = {
   "4": uuidv4,
 };
 
-export const generateUuid = (version: UuidVersion, hyphens = true, uppercase = true) => {
+export function generateUuid(version: UuidVersion, hyphens = true, uppercase = true) {
   let generated = uuidvn[version]();
 
   if (!hyphens) {
@@ -24,13 +24,13 @@ export const generateUuid = (version: UuidVersion, hyphens = true, uppercase = t
   }
 
   return generated;
-};
+}
 
-export const generateUuids = (
+export function generateUuids(
   count: number,
   version: UuidVersion,
   hyphens = true,
   uppercase = true,
-) => {
+) {
   return Array.from({ length: count }, () => generateUuid(version, hyphens, uppercase));
-};
+}

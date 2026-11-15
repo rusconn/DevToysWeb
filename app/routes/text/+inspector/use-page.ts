@@ -9,7 +9,7 @@ import {
   transformText,
 } from "./lib";
 
-export const usePage = () => {
+export function usePage() {
   const [input, setInput] = useState("ConvertMe");
   const [mode, setMode] = useState(TextTransformMode.sentenceCase);
 
@@ -35,4 +35,4 @@ export const usePage = () => {
     output,
     stats,
   };
-};
+}

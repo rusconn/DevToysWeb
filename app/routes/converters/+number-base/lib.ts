@@ -16,9 +16,13 @@ export const formatHexadecimal = formatNumber(4, " ");
 export const formatOctal = formatNumber(3, " ");
 export const formatBinary = formatNumber(4, " ");
 
-export const unformatNumber = (x: string) => x.replaceAll(/[ ,]/g, "");
+export function unformatNumber(x: string) {
+  return x.replaceAll(/[ ,]/g, "");
+}
 
-const match = (regex: RegExp) => regex.test.bind(regex);
+function match(regex: RegExp) {
+  return regex.test.bind(regex);
+}
 
 const baseConfig = {
   10: { prefix: "", validate: match(/^[0-9]*$/) },
@@ -29,10 +33,10 @@ const baseConfig = {
 
 export type Base = keyof typeof baseConfig;
 
-export const toBigInt = (value: string, base: Base) => {
+export function toBigInt(value: string, base: Base) {
   const { prefix, validate } = baseConfig[base];
 
   if (validate(value)) {
     return BigInt(`${prefix}${value}`);
   }
-};
+}

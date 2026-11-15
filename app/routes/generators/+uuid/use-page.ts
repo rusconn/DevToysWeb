@@ -3,7 +3,7 @@ import React from "react";
 import { generateUuids, type UuidVersion } from "./lib";
 import { useAutoScroll } from "./use-auto-scroll";
 
-export const usePage = () => {
+export function usePage() {
   const [hyphens, setHyphens] = React.useState(true);
   const [uppercase, setUppercase] = React.useState(false);
   const [uuidVersion, setUuidVersion] = React.useState<UuidVersion>("4");
@@ -34,4 +34,4 @@ export const usePage = () => {
     clearUuids,
     uuidsRef,
   };
-};
+}

@@ -15,7 +15,7 @@ type Fields = {
   yaml: string;
 };
 
-export const usePage = () => {
+export function usePage() {
   const [fields, setFields] = useState<Fields>({
     indentation: indentations.two,
     json: '{\n  "foo": {\n    "bar": "baz"\n  }\n}',
@@ -52,4 +52,4 @@ export const usePage = () => {
     setFieldsByYaml,
     changeIndentation,
   };
-};
+}
