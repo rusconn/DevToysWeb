@@ -7,15 +7,15 @@ export type PasteProps = Omit<BaseProps, "icon" | "labelText" | "onClick"> & {
 };
 
 export function Paste({ onClipboardRead, ...props }: PasteProps) {
-  const readClipboardAsText: BaseProps["onClick"] = () => {
-    navigator.clipboard
-      .readText()
-      .then(onClipboardRead)
-      .catch(e => {
-        if (e instanceof Error) {
-          alert(e.message);
-        }
-      });
+  const readClipboardAsText: BaseProps["onClick"] = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      onClipboardRead(text);
+    } catch (e) {
+      if (e instanceof Error) {
+        alert(e.message);
+      }
+    }
   };
 
   return (
