@@ -1,5 +1,5 @@
 export function encode(s: string) {
-  const bytes = new TextEncoder().encode(s);
+  const bytes = textEncoder.encode(s);
   const buf = [];
   const chunkSize = 32 * 2 ** 10; // 32KiB
 
@@ -11,12 +11,16 @@ export function encode(s: string) {
   return btoa(buf.join(""));
 }
 
+const textEncoder = new TextEncoder();
+
 export function decode(base64: string) {
   try {
     const binString = atob(base64);
     const bytes = Uint8Array.from(binString, c => c.charCodeAt(0));
-    return new TextDecoder().decode(bytes);
+    return textDecoder.decode(bytes);
   } catch {
     return undefined;
   }
 }
+
+const textDecoder = new TextDecoder();

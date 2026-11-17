@@ -18,8 +18,10 @@ export function countLines(text: string): number {
 }
 
 export function countBytes(text: string): number {
-  return new TextEncoder().encode(text).length;
+  return textEncoder.encode(text).length;
 }
+
+const textEncoder = new TextEncoder();
 
 export enum TextTransformMode {
   sentenceCase = "sentenceCase",
